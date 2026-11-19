@@ -34,7 +34,7 @@
   "format": "carousel",
   "topic": "6 signs your website is quietly costing you customers (unclear headline, non-tappable phone number, long contact form, slow load, no clear CTA, out-of-date content)",
   "hook": "Your website is losing you customers. And it won't tell you.",
-  "style": "v3: Nexa brand colours (indigo #6557E8, lavender #B9A6FF, deep navy #150C2B, light lavender paper #F5F3FD), DM Sans headlines with key words in indigo, 'n.' logo badge, navy hook/CTA slides, wireframe mockups with navy outline + solid indigo offset shadow, hand-drawn indigo marker circles + Caveat notes, navy FIX box with lavender label.",
+  "style": "v3: Nexa brand colours (indigo #6557E8, lavender #B9A6FF, deep navy #150C2B, light lavender paper #F5F3FD), DM Sans headlines with key words in indigo, 'n.' logo badge, navy hook/CTA slides, wireframe mockups with navy outline + solid indigo offset shadow, hand-drawn indigo marker circles + Caveat notes, navy FIX box with lavender label. v4: adds real CC0 photos (Openverse/rawpixel/wordpress.org, credits in src/img/CREDITS.md) inside the website mockups and behind the hook slide; one photo per slide max, form + CTA slides photo-free.",
   "media": [
    "nexa/images/website-costing-customers-6-signs/01.jpg",
    "nexa/images/website-costing-customers-6-signs/02.jpg",
@@ -51,6 +51,6 @@
   "approved": false,
   "posted": false,
   "status": "awaiting approval",
-  "note": "v1 (cream/orange) rejected: too AI. v2 (flat paper + orange marker) liked but asked: more visual, brand colours not orange. v3 awaiting approval."
+  "note": "v1 (cream/orange) rejected: too AI. v2 (flat paper + orange marker) liked but asked: more visual, brand colours not orange. v3 awaiting approval. v3 liked; asked for images, visually appealing but not overloaded. v4 awaiting approval."
  }
 ]

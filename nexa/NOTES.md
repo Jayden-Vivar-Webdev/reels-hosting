@@ -9,3 +9,6 @@
   lavender #B9A6FF (highlight word / label boxes), deep navy #150C2B (dark backgrounds/text). Headline font: DM Sans ExtraBold.
   Approved-direction carousel template: nexa/images/website-costing-customers-6-signs/src/slides.html (v3). He liked the
   hand-annotated wireframe idea and asked for it to be more visually appealing.
+- 2026-11-20 (Jayden): carousels need real images (visually appealing, not overloaded). Use CC0 photos via Openverse
+  (api.openverse.org, license=cc0; stocksnap downloads fail here, rawpixel/wordpress.org/wikimedia work), max one per slide,
+  no recognisable faces. Keep credits in src/img/CREDITS.md.

@@ -29,19 +29,17 @@ svg.mk{position:absolute;overflow:visible}
 .pill{border:2px solid var(--line);border-radius:10px;padding:10px 20px;font-size:26px;font-weight:600;color:var(--mute);display:inline-block}
 .bar{height:18px;background:#ECE8F7;border-radius:6px}
 .img{background:var(--soft);border-radius:12px;position:relative;overflow:hidden}
+.ph{display:block;width:100%;height:100%;object-fit:cover;border-radius:12px}
 .img:before{content:"";position:absolute;left:12%;bottom:-30%;width:60%;height:80%;background:var(--lav);border-radius:50% 50% 0 0;opacity:.8}
 .img:after{content:"";position:absolute;right:16%;top:20%;width:46px;height:46px;border-radius:50%;background:#fff}
 </style></head><body>
 
 <!-- 1 HOOK (dark) -->
-<div class="s dark" id="s1">
+<div class="s dark" id="s1"><img src="img/hook.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><div style="position:absolute;inset:0;background:rgba(21,12,43,.66)"></div>
  <div class="logo">n.</div><div class="pg">@nexaweb_dev</div>
  <div class="h" style="top:230px;font-size:132px">Your website is losing you <em>customers.</em></div>
  <div class="hand" style="left:90px;top:680px;font-size:92px;transform:rotate(-3deg)">and it won't tell you.</div>
- <div class="win" style="left:430px;right:auto;width:600px;top:860px;height:330px;transform:rotate(4deg);box-shadow:12px 12px 0 var(--lav)">
-  <div class="wbar"><i></i><i></i><i></i><span>yoursite.example</span></div>
-  <div style="padding:26px 30px;color:var(--navy)"><div class="bar" style="width:60%"></div><div class="img" style="height:120px;margin-top:20px"></div><div class="bar" style="width:80%;margin-top:20px"></div></div></div>
- <div style="position:absolute;left:84px;top:900px;font-size:40px;font-weight:600;line-height:1.35;width:330px">6 quiet signs to check today.</div>
+  <div style="position:absolute;left:84px;top:900px;font-size:48px;font-weight:600;line-height:1.3;width:800px">6 quiet signs to check today.<br><span style="color:#B9A6FF">Most take 5 minutes to fix.</span></div>
  <svg class="mk" style="left:84px;top:1090px" width="300" height="80"><path d="M6 40 C 80 30, 170 50, 250 38 M226 18 L 262 38 L 230 62" stroke="#B9A6FF" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
  <div class="hand" style="left:90px;top:1180px;font-size:56px">swipe</div>
 </div>
@@ -55,7 +53,7 @@ svg.mk{position:absolute;overflow:visible}
   <div style="padding:30px 40px;display:flex;gap:30px"><div style="flex:1"><div style="font-size:20px;letter-spacing:3px;color:var(--mute);font-weight:700">HOME &nbsp; ABOUT &nbsp; CONTACT</div>
   <div style="font-weight:800;font-size:56px;margin-top:30px;letter-spacing:-.02em;line-height:1.05">Welcome to our website!</div>
   <div style="font-size:24px;color:var(--mute);margin-top:14px">We are passionate about excellence.</div></div>
-  <div class="img" style="width:250px;height:250px"></div></div></div>
+  <div style="width:270px;height:270px"><img class="ph" src="img/pipes.jpg"></div></div></div>
  <svg class="mk" id="c2" style="left:96px;top:676px" width="590" height="170"></svg>
  <div class="hand" style="left:440px;top:478px;font-size:56px;white-space:nowrap;transform:rotate(-2deg)">ok... but what do you do?</div>
  <div class="fix"><b>FIX</b><br>Say what you do, who it's for and where. "Blocked drain? Fixed today in Parramatta."</div>
@@ -68,12 +66,12 @@ svg.mk{position:absolute;overflow:visible}
  <div class="lbl"><span class="tagl">Sign 02</span></div>
  <div class="h" style="top:268px;font-size:80px">Your phone number <em>can't be tapped</em> on mobile.</div>
  <div class="win" style="left:130px;right:auto;width:440px;top:530px;height:440px;border-radius:48px">
-  <div style="padding:46px 36px"><div class="bar" style="width:55%;margin:0 auto 26px;height:12px"></div><div class="img" style="height:110px"></div>
+  <div style="padding:46px 36px"><div class="bar" style="width:55%;margin:0 auto 26px;height:12px"></div><div style="height:130px"><img class="ph" src="img/cafe.jpg" style="object-position:50% 85%"></div>
   <div style="font-size:28px;font-weight:700;margin-top:26px">Call us today!</div>
   <div style="font-size:38px;font-weight:500;margin-top:6px;color:#5d5675">02 5550 4321</div>
   <div class="bar" style="width:80%;margin-top:26px"></div></div></div>
- <svg class="mk" id="c3" style="left:140px;top:782px" width="380" height="84"></svg>
- <div class="hand" style="left:640px;top:740px;font-size:58px;transform:rotate(-4deg);width:380px">&larr; not a link.<br>copy, paste,<br>give up</div>
+ <svg class="mk" id="c3" style="left:140px;top:802px" width="380" height="84"></svg>
+ <div class="hand" style="left:640px;top:760px;font-size:58px;transform:rotate(-4deg);width:380px">&larr; not a link.<br>copy, paste,<br>give up</div>
  <div class="fix"><b>FIX</b><br>Make every number a tap to call link, plus a call button that stays on screen.</div>
  <div class="foot"><span>Nexa Web Development</span><span>Save for later</span></div>
 </div>
@@ -100,7 +98,7 @@ svg.mk{position:absolute;overflow:visible}
  <div class="h" style="top:268px;font-size:80px">It loads slower than they can <em>scroll away.</em></div>
  <div class="win" style="top:540px;height:410px"><div class="wbar"><i></i><i></i><i></i><span>loading...</span></div>
   <div style="height:6px;background:#ECE8F7"><div style="width:22%;height:100%;background:var(--ind)"></div></div>
-  <div style="height:240px;margin:24px 36px 0;border:3px dashed var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--mute);font-weight:600">hero-photo-FINAL-v3.png (14 MB)</div></div>
+  <div style="height:300px;margin:24px 36px 0;border-radius:12px;overflow:hidden;position:relative;background:#ECE8F7"><img src="img/garden.jpg" style="width:100%;height:300px;object-fit:cover;clip-path:inset(0 0 50% 0)"><div style="position:absolute;left:0;right:0;top:50%;height:6px;background:linear-gradient(90deg,transparent,var(--ind),transparent)"></div><div style="position:absolute;left:0;right:0;bottom:40px;text-align:center;font-size:28px;color:var(--mute);font-weight:600">hero-photo-FINAL-v3.png (14 MB)</div></div></div>
  <div class="hand" style="left:600px;top:460px;font-size:60px;transform:rotate(-3deg)">still loading...</div>
  <div class="fix"><b>FIX</b><br>Resize and compress your images, then test your site for free at pagespeed.web.dev</div>
  <div class="foot"><span>Nexa Web Development</span><span>Save for later</span></div>
@@ -114,8 +112,8 @@ svg.mk{position:absolute;overflow:visible}
  <div class="win" style="top:480px;height:440px"><div class="wbar"><i></i><i></i><i></i><span>yourbusiness.example</span></div>
   <div style="padding:34px 40px;display:flex;flex-wrap:wrap;gap:16px">
   <span class="pill">Learn more</span><span class="pill">Our story</span><span class="pill">Explore</span><span class="pill">Discover</span><span class="pill">Resources</span><span class="pill">Gallery</span><span class="pill">Find out more</span><span class="pill">Blog</span></div>
-  <div class="img" style="height:120px;margin:6px 40px 0"></div></div>
- <svg class="mk" id="c6" style="left:88px;top:540px" width="904" height="200"></svg>
+  <div style="height:150px;margin:6px 40px 0"><img class="ph" src="img/cafe2.jpg" style="object-position:50% 60%"></div></div>
+ <svg class="mk" id="c6" style="left:74px;top:530px" width="932" height="196"></svg>
  <div class="hand" style="left:520px;top:940px;font-size:58px;transform:rotate(-3deg)">so... how do I book?</div>
  <div class="fix"><b>FIX</b><br>One main button ("Get a quote") near the top, repeated as they scroll. Same words every time.</div>
  <div class="foot"><span>Nexa Web Development</span><span>Save for later</span></div>
@@ -128,11 +126,11 @@ svg.mk{position:absolute;overflow:visible}
  <div class="h" style="top:268px;font-size:80px">Your site looks like <em>nobody's home.</em></div>
  <div class="win" style="top:480px;height:420px"><div class="wbar"><i></i><i></i><i></i><span>yourbusiness.example/news</span></div>
   <div style="padding:34px 40px"><div style="font-size:24px;color:var(--mute);font-weight:600">Posted March 2019</div>
-  <div style="font-size:44px;font-weight:800;margin-top:8px;letter-spacing:-.01em">Exciting things coming soon!</div>
-  <div class="bar" style="width:85%;margin-top:22px"></div><div class="bar" style="width:60%;margin-top:12px"></div>
+  <div style="display:flex;gap:28px;margin-top:8px"><div style="flex:1"><div style="font-size:44px;font-weight:800;letter-spacing:-.01em;line-height:1.1">Exciting things coming soon!</div>
+  <div class="bar" style="width:85%;margin-top:22px"></div><div class="bar" style="width:60%;margin-top:12px"></div></div><div style="width:250px;height:170px"><img class="ph" src="img/closed.jpg"></div></div>
   <div style="height:2px;background:#ECE8F7;margin:40px 0 20px"></div>
   <div style="font-size:24px;color:var(--mute)">© 2019 Example Co &nbsp;·&nbsp; Opening hours: TBC</div></div></div>
- <svg class="mk" id="c7" style="left:100px;top:586px" width="720" height="100"></svg>
+ <svg class="mk" id="c7" style="left:96px;top:600px" width="560" height="150"></svg>
  <div class="hand" style="left:540px;top:930px;font-size:58px;transform:rotate(-3deg)">are they still open?</div>
  <div class="fix"><b>FIX</b><br>Update the footer year, hours and old posts, or delete them. Stale looks closed.</div>
  <div class="foot"><span>Nexa Web Development</span><span>Save for later</span></div>
@@ -157,6 +155,6 @@ svg.mk{position:absolute;overflow:visible}
 function loop(id,w,h,rot,col){const el=document.getElementById(id);let r=1;const rnd=()=>{r=(r*9301+49297)%233280;return r/233280};
 let d='',cx=w/2,cy=h/2;for(let i=0;i<=56;i++){const a=-1.9+i/50*Math.PI*2;const k=1+(rnd()-.5)*.05+(i>50?.06:0);const x=cx+Math.cos(a)*(w/2-8)*k,y=cy+Math.sin(a)*(h/2-8)*k;d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}
 el.innerHTML=`<path d="${d}" stroke="${col||'#6557E8'}" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="rotate(${rot} ${cx} ${cy})"/>`}
-loop("c2",590,170,-1.5);loop('c3',380,84,2);loop('c4',420,84,-2);loop('c6',904,200,1);loop('c7',720,100,-1);
+loop("c2",590,170,-1.5);loop('c3',380,84,2);loop('c4',420,84,-2);loop('c6',932,200,1);loop('c7',560,150,-1);
 </script>
 </body></html>
