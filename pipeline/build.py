@@ -1,7 +1,7 @@
 import json, re, sys
 from plan import PLAN
 S = json.load(open("script.json"))
-KEY = {"max","storm","laundry","licks","licked","alone","slowly","neighbour","dog","soaked","again","good","boy","boy.","whispered","hands","four","three","2","window","windows","door","once","twice","locked","lights","light","my","inside","hollow","shadow","fourth","moved","never","three","eleven","mannequins","mannequin","double","scratched","facing","breathing","gone","behind","count","twelve","thirteen","empty","follow","two","five","3","9","alone","shut","dead"}
+KEY = {"legend","truck","roof","thumped","branch","flash","empty","nobody","sunroof","white","on","trucker","max","storm","laundry","licks","licked","alone","slowly","neighbour","dog","soaked","again","good","boy","boy.","whispered","hands","four","three","2","window","windows","door","once","twice","locked","lights","light","my","inside","hollow","shadow","fourth","moved","never","three","eleven","mannequins","mannequin","double","scratched","facing","breathing","gone","behind","count","twelve","thirteen","empty","follow","two","five","3","9","alone","shut","dead"}
 BADGE = json.load(open("badges.json")) if __import__("os").path.exists("badges.json") else {}
 
 def tokens(line):
