@@ -34,7 +34,7 @@
   "format": "carousel",
   "topic": "6 signs your website is quietly costing you customers (unclear headline, non-tappable phone number, long contact form, slow load, no clear CTA, out-of-date content)",
   "hook": "Your website is losing you customers. And it won't tell you.",
-  "style": "v2: flat off-white paper background, black Inter headlines, wireframe browser mockups with 3px black outlines, hand-drawn orange marker circles + Caveat handwritten notes, plain 'Fix:' text under a rule. No gradients, dot grids, glows or highlight boxes.",
+  "style": "v3: Nexa brand colours (indigo #6557E8, lavender #B9A6FF, deep navy #150C2B, light lavender paper #F5F3FD), DM Sans headlines with key words in indigo, 'n.' logo badge, navy hook/CTA slides, wireframe mockups with navy outline + solid indigo offset shadow, hand-drawn indigo marker circles + Caveat notes, navy FIX box with lavender label.",
   "media": [
    "nexa/images/website-costing-customers-6-signs/01.jpg",
    "nexa/images/website-costing-customers-6-signs/02.jpg",
@@ -51,6 +51,6 @@
   "approved": false,
   "posted": false,
   "status": "awaiting approval",
-  "note": "v1 (cream gradient/dot-grid reel style) rejected 2026-11-20: Jayden said it looked too AI and asked for no em/en dashes. v2 awaiting approval."
+  "note": "v1 (cream/orange) rejected: too AI. v2 (flat paper + orange marker) liked but asked: more visual, brand colours not orange. v3 awaiting approval."
  }
 ]

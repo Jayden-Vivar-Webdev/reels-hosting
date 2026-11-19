@@ -5,3 +5,7 @@
   flat off-white background, black Inter headlines, simple wireframe mockups with black outlines,
   hand-drawn orange marker circles and handwritten notes (pipeline/fonts/Caveat.ttf), plain "Fix:" text. No gradients, glows, dot grids.
 - 2026-11-20 (Jayden): no em dashes or en dashes (— –) anywhere: slides, captions, on-screen text. Use full stops or commas.
+- 2026-11-20 (Jayden): use Nexa brand colours, not orange. Brand (from ads/nexa-sprint-v4): indigo #6557E8 (logo "n." badge),
+  lavender #B9A6FF (highlight word / label boxes), deep navy #150C2B (dark backgrounds/text). Headline font: DM Sans ExtraBold.
+  Approved-direction carousel template: nexa/images/website-costing-customers-6-signs/src/slides.html (v3). He liked the
+  hand-annotated wireframe idea and asked for it to be more visually appealing.
