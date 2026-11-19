@@ -12,3 +12,6 @@
 - 2026-11-20 (Jayden): carousels need real images (visually appealing, not overloaded). Use CC0 photos via Openverse
   (api.openverse.org, license=cc0; stocksnap downloads fail here, rawpixel/wordpress.org/wikimedia work), max one per slide,
   no recognisable faces. Keep credits in src/img/CREDITS.md.
+- 2026-11-20 (Jayden): still "looks AI" with template elements. Current direction (v5, src/slides.html): fewer elements,
+  casual short copy, realistic screenshots, freehand marker scribbles, no label pills / FIX boxes / logo badges / handwriting font,
+  slightly different layout per slide. He has no own screenshots or photos to supply.
