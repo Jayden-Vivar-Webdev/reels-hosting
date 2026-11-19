@@ -17,7 +17,7 @@
   "slug": "internet-stories-ep2-chatbot",
   "format": "reel",
   "topic": "Internet Stories ep.2: AI chatbots speaking for businesses \u2014 Chevy dealer bot agrees to sell a Tahoe for $1 (Dec 2023) + Air Canada held liable for its chatbot (Feb 2024, C$812)",
-  "style": "bright & bold kinetic (cream bg, colour-block wipes, giant type, chat-bubble UI, highlighter captions)",
+  "style": "warm cream/peach dot-grid, 'DID YOU KNOW' orange label, huge tight Inter Display Black headlines, orange highlight boxes, italic Lora accents, soft white cards + dark terminal windows, own pixel-robot mascot (style per Jayden's reference reel; no Claude icon)",
   "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
   "media": [
    "nexa/videos/internet-stories-ep2-chatbot/ep2.mp4"
@@ -26,6 +26,6 @@
   "post_on": "2026-11-19",
   "approved": false,
   "posted": false,
-  "note": "awaiting Jayden's approval"
+  "note": "v3 re-styled per Jayden's reference screenshots; awaiting approval"
  }
 ]

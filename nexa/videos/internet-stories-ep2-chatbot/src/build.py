@@ -35,5 +35,5 @@ for a,b in zip(allw,allw[1:]): a["end"]=min(a["end"],b["start"]-0.03)
 for a,b in zip(chunks,chunks[1:]): a["end"]=b["start"]-0.25
 chunks[-1]["end"]=st["total"]
 D={"lines":L,"chunks":chunks,"total":st["total"]}
-h=open(f"{H}/scene.html").read().replace("/*DATA*/null",json.dumps(D))
-open(f"{H}/reel.html","w").write(h); print(len(chunks),"chunks",st["total"])
+h=open(f"{H}/scene3.html").read().replace("/*DATA*/null",json.dumps(D))
+open(f"{H}/reel3.html","w").write(h); print(len(chunks),"chunks",st["total"])
