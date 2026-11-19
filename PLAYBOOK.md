@@ -52,7 +52,7 @@ Run every script through these checks BEFORE voicing it:
 6. **Make it crazy, not vague.** The reveal should flip the whole story (the narrator is the ghost, the dog was never the dog,
    the warning was about the roof). Avoid soft endings ("she was bringing me home") — be literal about what it means.
 7. **Kicker pulls the viewer in.** Last line before/with the CTA makes it the viewer's problem ("And if she waves at you tonight,
-   don't stop."). Then "Follow".
+   don't stop."). The spoken "Follow" is optional (owner dropped it on Miller's Bridge); the on-screen FOLLOW box stays.
 8. **Plain words, short sentences.** ≤ 18 words per line, concrete nouns, no metaphors that need decoding.
 9. **Talk like a real person.** Owner's preferred voice: casual, first-person, like telling a mate what happened
    ("I pulled over. Hey, are you okay?", "Nothing. Okay..."). Real dialogue and small reactions build suspense better than legend recaps.
