@@ -6,8 +6,8 @@ def load(path):
     if a.ndim > 1: a = a.mean(1)
     if sr != SR: a = resample_poly(a, SR, sr).astype(np.float32)
     return a
-FX = {n: load(f"sfx/{n}.wav") for n in ["drone","static","radio","rclick","stinger","hit","heartbeat","paper","escalator","powerdown","door","swell","car","glitch"]}
-GAIN = {"static":0.22,"radio":0.35,"rclick":0.4,"stinger":0.55,"hit":0.4,"heartbeat":0.5,"paper":0.3,"escalator":0.16,"powerdown":0.35,"door":0.55,"swell":0.35,"car":0.3,"glitch":0.2}
+FX = {n: load(f"sfx/{n}.wav") for n in ["drone","static","radio","rclick","stinger","hit","heartbeat","paper","escalator","powerdown","door","swell","car","glitch","knock","knock2"]}
+GAIN = {"static":0.22,"radio":0.35,"rclick":0.4,"stinger":0.55,"hit":0.4,"heartbeat":0.5,"paper":0.3,"escalator":0.16,"powerdown":0.35,"door":0.55,"swell":0.35,"car":0.3,"glitch":0.2,"knock":0.8,"knock2":0.8}
 rng = np.random.default_rng(1)
 ir = (rng.standard_normal(int(SR*1.2)) * np.exp(-np.arange(int(SR*1.2))/SR/0.35)).astype(np.float32)
 for p in json.load(open("script.json")):
@@ -29,6 +29,8 @@ for p in json.load(open("script.json")):
             elif f == "heartbeat":
                 for k in np.arange(0, d, 0.95): add(f, s["start"]+k)
             elif f in ("stinger", "swell") and f == "swell": add(f, max(s["start"]-0.3, 0))
+            elif f == "knock2": add(f, s["end"] - 0.6)
+            elif f == "door": add(f, s["start"] + 0.6, 0.4)
             else: add(f, s["start"])
     mix = np.tanh(mix * 1.1)
     sf.write(f"{p}_mix.wav", np.stack([mix, mix], 1), SR)

@@ -1,0 +1,15 @@
+PLAN = {"p1": [
+ ("house", {"count": True}, ["hit"], "06:41:12 PM", "PHONE · REC"),
+ ("floorplan", {}, ["paper"], "06:52:30 PM", "PHONE · REC"),
+ ("house", {"day": True, "sold": True}, [], "11:04:09 AM", "MOVE-IN DAY"),
+ ("house", {"lit": [2], "flick": 2, "mark": 2}, ["stinger"], "02:00:14 AM", "DOORBELL CAM"),
+ ("house", {"lit": [2], "shadow": 2, "push": True}, ["heartbeat"], "02:03:41 AM", "PHONE · REC"),
+ ("wall", {}, ["static"], "02:19:05 AM", "PHONE · HALLWAY"),
+ ("wall", {"knock": 1}, ["knock"], "02:19:22 AM", "PHONE · HALLWAY"),
+ ("wall", {"knock": 2, "back": True}, ["knock2", "hit"], "02:19:25 AM", "PHONE · HALLWAY"),
+ ("wall", {"torn": True, "door": True}, ["paper"], "01:47:50 AM", "PHONE · HALLWAY"),
+ ("wall", {"torn": True, "door": True, "lock": True}, ["door"], "01:48:31 AM", "PHONE · HALLWAY"),
+ ("house", {"lit": [0, 1, 2, 3], "count": True}, ["static"], "01:51:02 AM", "PHONE · YARD"),
+ ("house", {"lit": [0, 1, 2, 3], "wave": 1, "mark": 1, "push": True}, ["stinger"], "01:51:16 AM", "PHONE · YARD"),
+ ("endcard", {"next": "END", "follow": True}, ["swell"], "", "SIGNAL LOST"),
+]}
