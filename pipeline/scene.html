@@ -887,16 +887,15 @@ SC.bridge = (c, p, lt, d) => {
     const x = 540 + 110 + 230*k*k, y = 905 - 30 + 380*k*k;
     coatWoman(c, x, y - 520*k*1.1, k*1.25, 1, p.thumb ? ease((lt-0.4)/0.6) : 0, lt);
   }
-  if (p.memorial){
-    // bent guardrail section + flowers + ribbon (the crash site)
-    c.save(); c.translate(860, 1180);
-    c.strokeStyle = 'rgba(200,205,210,.9)'; c.lineWidth = 16; c.beginPath(); c.moveTo(-200, 40); c.quadraticCurveTo(-40, 140, 140, -10); c.stroke();
-    c.fillStyle = '#1a1a1a'; c.fillRect(-30, 60, 10, 140);
-    const cols = ['#d23a3a','#e8e2d0','#c94a6a','#e8e2d0','#b33'];
-    cols.forEach((col, i) => { c.fillStyle = col; c.beginPath(); c.arc(-60 + i*28, 70 + (i%2)*16, 16, 0, 7); c.fill(); });
-    c.fillStyle = '#000'; c.beginPath(); c.moveTo(-26, 60); c.lineTo(-60, 120); c.lineTo(-40, 120); c.lineTo(-26, 80); c.lineTo(-10, 120); c.lineTo(8, 120); c.fill();
+  if (p.memorial && p.woman){
+    // dead flowers tied to the guardrail post beside her (roadside memorial)
+    const k = 0.18 + 0.25*clamp(lt/d,0,1), fx = 540 + 110 + 230*k*k - 70*k*1.25, fy = 905 - 30 + 380*k*k + 40*k;
+    c.save(); c.translate(fx, fy); c.scale(k*1.25, k*1.25);
+    c.fillStyle = '#7d878c'; c.fillRect(-10, -160, 20, 220);
+    c.strokeStyle = '#3d3a22'; c.lineWidth = 6; const r = R(31);
+    for (let i=0;i<9;i++){ const x = -60 + r()*120, y = -150 - r()*80; c.beginPath(); c.moveTo(0, -40); c.lineTo(x, y); c.stroke(); c.fillStyle = ['#5e3f36','#6b4a3a','#4e3a34'][i%3]; c.beginPath(); c.arc(x, y, 16, 0, 7); c.fill(); }
+    c.fillStyle = '#b9b3a6'; c.beginPath(); c.moveTo(-40, -90); c.lineTo(40, -90); c.lineTo(8, 10); c.lineTo(-8, 10); c.fill();
     c.restore();
-    if (p.woman2){ coatWoman(c, 760, 760, 0.62, ease((lt-0.6)/1.2)*0.85, 0, lt); }
   }
   rainFx(c, lt, .25);
   windshield(c);

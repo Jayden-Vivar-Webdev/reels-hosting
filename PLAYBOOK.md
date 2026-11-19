@@ -78,7 +78,7 @@ playwright via `npm i -g playwright`, google-chrome). Then copy `pipeline/` to a
   vignette, glitch on cuts), word-by-word Anton captions at y≈1330 with key words in red, red PART badge.
   Existing scene types: exterior, monitors, card, escalator, window (mannequins), mannequin, guard, radio,
   bigtext, door, sunrise, badge, endcard, hall. **New stories need new scene functions** — add them to scene.html
-  (draw on canvas, deterministic from local time). Keep text out of the bottom ~400 px and keep the scene readable
+  (draw on canvas, deterministic from local time). Every drawn object must read instantly as what it is (owner flagged an abstract 'memorial' of a bent rail + dots + ribbon as random shapes) — if a prop isn't obvious in a still, redraw it or cut it. Keep text out of the bottom ~400 px and keep the scene readable
   (not too dark). Vary settings: houses, forests, hospitals, phones, cars, motels, lakes, etc.
 - Paths: vo.py/mix.py/hsfx.py were written for `/root/reel`; run from the work dir and fix paths if needed.
 
