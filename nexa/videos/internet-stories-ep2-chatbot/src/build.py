@@ -1,18 +1,13 @@
 import json, os, re
 H="/root/ep2b"
-lines=json.load(open(f"{H}/script.json")); st=json.load(open(f"{H}/starts.json")); words=json.load(open(f"{H}/vo_words.json"))
+lines=json.load(open(f"{H}/script.json")); st=json.load(open(f"{H}/starts.json")); LW=json.load(open(f"{H}/line_words.json"))
 KEY=re.compile(r"[\d$%]|^(deal|Tahoe|AI|business|Follow|rules|pay|wrong|viral|never|funny)\b",re.I)
 L=[];chunks=[]
 for i,ln in enumerate(lines):
     s=st["starts"][i]; e=st["starts"][i+1] if i+1<len(lines) else st["total"]
     L.append({"start":round(s,3)})
-    tw=[w for w in words if s-0.1<=w["start"]<e-0.05]
+    times=[(w["start"],w["end"]) for w in LW[i]]
     cw=ln["text"].split()
-    if len(tw)==len(cw): times=[(w["start"],w["end"]) for w in tw]
-    else:
-        a=tw[0]["start"] if tw else s; b=tw[-1]["end"] if tw else e-0.3
-        lens=[len(x)+2 for x in cw]; tot=sum(lens); acc=0; times=[]
-        for l in lens: times.append((a+(b-a)*acc/tot, a+(b-a)*(acc+l)/tot)); acc+=l
     # chunk: up to 4 words, break after punctuation, no single orphan
     cur=[]; groups=[]
     for j,wd in enumerate(cw):
