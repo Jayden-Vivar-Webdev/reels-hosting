@@ -54,7 +54,10 @@ Run every script through these checks BEFORE voicing it:
 7. **Kicker pulls the viewer in.** Last line before/with the CTA makes it the viewer's problem ("And if she waves at you tonight,
    don't stop."). Then "Follow".
 8. **Plain words, short sentences.** ≤ 18 words per line, concrete nouns, no metaphors that need decoding.
-9. **Approval message must include:** the one-line twist + a "who / why" list (each character → who they are, each mystery → its answer),
+9. **Talk like a real person.** Owner's preferred voice: casual, first-person, like telling a mate what happened
+   ("I pulled over. Hey, are you okay?", "Nothing. Okay..."). Real dialogue and small reactions build suspense better than legend recaps.
+   A ghost/other character's spoken line can use a second Kokoro voice (voices.json, e.g. af_nicole); the narrator stays am_onyx.
+10. **Approval message must include:** the one-line twist + a "who / why" list (each character → who they are, each mystery → its answer),
    so the owner can spot confusion before watching.
 
 ## Pipeline (pipeline/)

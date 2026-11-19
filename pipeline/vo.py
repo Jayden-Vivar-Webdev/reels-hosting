@@ -5,10 +5,13 @@ S = json.load(open("script.json"))
 def trim(a, thr=0.01):
     idx = np.where(np.abs(a) > thr)[0]
     return a[max(idx[0]-240,0):idx[-1]+480] if len(idx) else a
+VO = json.load(open("voices.json")) if os.path.exists("voices.json") else {}
 for p, lines in S.items():
     sr = 24000; out = [np.zeros(int(sr*0.3))]; t = 0.3; starts = []
     for i, line in enumerate(lines):
-        a, sr = k.create(line, voice="am_onyx", speed=0.96, lang="en-us")
+        vv = VO.get(p, {}).get(str(i))
+        a, sr = k.create(line, voice=vv or "am_onyx", speed=0.88 if vv else 0.96, lang="en-us")
+        if vv: a = a * 0.8
         a = trim(a)
         starts.append(round(t, 3)); out.append(a); t += len(a)/sr
         gap = 0.55 if line.endswith(("...", ".")) and len(line) < 20 else 0.32

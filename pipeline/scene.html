@@ -904,7 +904,7 @@ SC.bridge = (c, p, lt, d) => {
   const wa = (Math.sin(lt*3.2)+1)/2*1.4 - 0.2;
   c.save(); c.translate(250, 1460); c.rotate(-wa); c.fillStyle = '#050505'; c.fillRect(0, -6, 520, 12); c.restore();
   mirror(c, {}, lt, d);
-  if (p.title){ const a = ease((lt-0.2)/0.6); c.save(); c.globalAlpha = a; c.shadowColor = '#000'; c.shadowBlur = 20; text(c, "MILLER'S BRIDGE", 540, 640, 84, 'Salt', '#e8e2d0'); c.restore(); }
+  if (p.title){ const a = ease((lt-0.2)/0.6); c.save(); c.globalAlpha = a; c.shadowColor = '#000'; c.shadowBlur = 20; text(c, p.titleText || "MILLER'S BRIDGE", 540, 640, 84, 'Salt', '#e8e2d0'); c.restore(); }
 };
 SC.carradio = (c, p, lt, d) => {
   bg(c, '#1a1d20', '#070809');
@@ -1020,6 +1020,77 @@ SC.photo = (c, p, lt, d) => {
   if (p.at){ const q = lt - p.at; if (q > 0){ const a = ease(q/0.3); c.save(); c.globalAlpha = a; c.shadowColor = 'rgba(160,0,0,.9)'; c.shadowBlur = 40; text(c, p.label || 'MY FACE.', 540, 400, 140, 'Salt', '#e0261c'); c.restore(); } }
 };
 
+// ---------- bridge v3: back-seat crying passenger ----------
+function seatedWoman(c, x, y, s, a=1, shake=0, eyes=false){
+  c.save(); c.globalAlpha *= a; c.translate(x + shake, y); c.scale(s, s);
+  const g = c.createLinearGradient(-150,0,150,0); g.addColorStop(0,'#98a1a4'); g.addColorStop(.5,'#e6ecec'); g.addColorStop(1,'#8b9496'); c.fillStyle = g;
+  c.beginPath(); c.moveTo(-170, 420); c.quadraticCurveTo(-180, 90, 0, 70); c.quadraticCurveTo(180, 90, 170, 420); c.fill();
+  c.fillStyle = '#07090a'; c.beginPath(); c.ellipse(0, -40, 92, 112, 0, 0, 7); c.fill();
+  c.beginPath(); c.moveTo(-92, -30); c.lineTo(-110, 170); c.lineTo(110, 170); c.lineTo(92, -30); c.fill();
+  if (eyes){ c.fillStyle = 'rgba(235,240,235,.95)'; c.beginPath(); c.ellipse(-30, -30, 13, 7, 0, 0, 7); c.ellipse(30, -30, 13, 7, 0, 0, 7); c.fill(); c.fillStyle = '#000'; c.beginPath(); c.arc(-30, -30, 5, 0, 7); c.arc(30, -30, 5, 0, 7); c.fill(); }
+  c.restore();
+}
+SC.rearview = (c, p, lt, d) => {
+  bridgeRoad(c, lt, 1.2, false);
+  rainFx(c, lt, .22);
+  windshield(c);
+  // big rear-view mirror close-up
+  const big = p.big ? 1 : 0;
+  const mw = big ? 900 : 560, mh = big ? 460 : 240, mx = 540, my = big ? 720 : 470;
+  c.save(); c.translate(mx, my);
+  c.fillStyle = '#0d0f11'; c.beginPath(); c.roundRect(-mw/2-20, -mh/2-20, mw+40, mh+40, 50); c.fill();
+  c.beginPath(); c.roundRect(-mw/2, -mh/2, mw, mh, 36); c.clip();
+  c.fillStyle = '#1c1f22'; c.fillRect(-mw/2, -mh/2, mw, mh);
+  c.fillStyle = '#0a1018'; c.beginPath(); c.roundRect(-mw/2+40, -mh/2+20, mw-80, mh*0.45, 30); c.fill();
+  c.fillStyle = '#2e2d2b'; c.fillRect(-mw/2, mh*0.1, mw, mh*0.5);
+  const sh = p.shake ? Math.sin(lt*38)*(4 + 3*Math.sin(lt*3)) : 0;
+  seatedWoman(c, 40, -mh*0.05, big ? 1.05 : 0.55, 1, sh, !!p.eyes);
+  c.restore();
+  if (p.cry){ for (let i=0;i<3;i++){ const q = (lt*0.9 + i*0.33) % 1; c.save(); c.globalAlpha = (1-q)*.7; text(c, 'sob', 820 + i*20, 520 - q*120, 46, 'Hand', '#cfe'); c.restore(); } }
+};
+SC.backseat2 = (c, p, lt, d) => {
+  SC.backseat(c, {dome: p.dome}, lt, d);
+  const gone = p.goneAt != null && lt > p.goneAt;
+  if (p.woman && !gone){ const fl = p.goneAt != null && lt > p.goneAt - 0.25 ? (Math.floor(lt*30)%2) : 1; if (fl) seatedWoman(c, 540, 820, 1.0, 1, Math.sin(lt*30)*3); }
+  if (gone || p.wet){
+    const g = c.createRadialGradient(540, 1180, 10, 540, 1180, 330); g.addColorStop(0,'rgba(160,195,225,.55)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.beginPath(); c.ellipse(540, 1190, 340, 120, 0, 0, 7); c.fill();
+    for (let i=0;i<5;i++){ const y = 1240 + ((lt*300 + i*60) % 200); c.fillStyle = 'rgba(200,220,235,.7)'; c.beginPath(); c.ellipse(420 + i*60, y, 5, 9, 0, 0, 7); c.fill(); }
+  }
+  if (p.playback){
+    // playback UI: scrub bar + audio waveform of crying
+    c.translate(0, -1220); c.fillStyle = 'rgba(0,0,0,.6)'; c.fillRect(60, 1470, 960, 260);
+    text(c, '▶ PLAYBACK  CABIN_2316.MP4', 100, 1515, 44, 'VT', '#d7fbe9', 'left');
+    const k = clamp(0.55 + 0.45*lt/d, 0, 1);
+    c.fillStyle = '#3a4a44'; c.fillRect(100, 1690, 880, 10); c.fillStyle = '#ff3b30'; c.fillRect(100, 1690, 880*k, 10);
+    for (let i=0;i<88;i++){ const x = 100 + i*10, amp = (i/88 < k ? 1 : .35) * (12 + 50*Math.abs(Math.sin(i*0.9)*Math.sin(i*0.23 + 1))); c.fillStyle = i/88 < k ? 'rgba(185,245,216,.9)' : 'rgba(185,245,216,.35)'; c.fillRect(x, 1610 - amp, 6, amp*2); }
+    text(c, 'AUDIO DETECTED', 980, 1515, 40, 'VT', '#ff4a3d', 'right'); c.setTransform(1,0,0,1,0,0);
+  }
+  if (p.label) { c.save(); c.strokeStyle = `rgba(185,245,216,${.5+.3*Math.sin(lt*6)})`; c.lineWidth = 5; c.setLineDash([24,14]); c.strokeRect(150, 790, 780, 580); c.restore(); text(c, p.label, 540, 740, 60, 'VT', '#b9f5d8'); }
+};
+SC.flowers = (c, p, lt, d) => {
+  // grey morning, close-up of bridge railing with old flowers + new card
+  bg(c, '#56626a', '#1f2529');
+  { const g = c.createRadialGradient(540, 500, 40, 540, 600, 900); g.addColorStop(0,'rgba(220,230,235,.35)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+  c.fillStyle = 'rgba(30,38,44,.6)'; c.fillRect(0, 700, W, 40);
+  c.strokeStyle = '#9aa4aa'; c.lineWidth = 26; c.beginPath(); c.moveTo(-20, 880); c.lineTo(W+20, 840); c.stroke();
+  c.lineWidth = 14; c.beginPath(); c.moveTo(-20, 1060); c.lineTo(W+20, 1030); c.stroke();
+  for (const x of [140, 540, 940]){ c.fillStyle = '#7d878c'; c.fillRect(x-14, 840, 28, 600); }
+  // wilted old flowers (brown) + tied bunch
+  const r = R(12);
+  for (let i=0;i<14;i++){ const x = 330 + r()*260, y = 900 + r()*160; c.strokeStyle = '#3d3a22'; c.lineWidth = 6; c.beginPath(); c.moveTo(460, 1180); c.lineTo(x, y); c.stroke(); c.fillStyle = ['#6b4a3a','#7a5d48','#5e3f36','#8a6d55'][i%4]; c.beginPath(); c.arc(x, y, 22 + r()*10, 0, 7); c.fill(); }
+  c.fillStyle = '#2a2622'; c.fillRect(440, 1100, 40, 100);
+  // new card (white), swaying
+  const sw = Math.sin(lt*1.6)*0.06;
+  c.save(); c.translate(600, 860); c.rotate(0.08 + sw);
+  c.strokeStyle = '#ddd'; c.lineWidth = 3; c.beginPath(); c.moveTo(-80, -60); c.lineTo(0, 0); c.stroke();
+  c.fillStyle = '#f4f2ec'; c.fillRect(-10, 0, 360, 230);
+  text(c, 'Rest easy,', 170, 70, 54, 'Hand', '#333');
+  const at = p.at ?? 0; const a = ease((lt - at)/0.3);
+  text(c, 'DANNY', 170, 160, 86, 'Hand', a > 0 ? `rgba(200,20,15,${0.35 + 0.65*a})` : 'rgba(40,40,40,.85)');
+  c.restore();
+  rainFx(c, lt, .12, 3);
+};
+
 // ---------- HUD, captions, post ----------
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
@@ -1070,7 +1141,7 @@ window.render = (t) => {
   X.setTransform(1,0,0,1,0,0); X.fillStyle = '#000'; X.fillRect(0,0,W,H);
   X.save(); X.translate(W/2, H/2); X.scale(push, push); X.translate(-W/2, -H/2);
   // CCTV tint
-  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='photo' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
+  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='photo' || sc.scene==='flowers' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
   X.drawImage(S, 0, 0);
   X.filter = 'none';
   X.restore();
