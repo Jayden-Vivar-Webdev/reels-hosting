@@ -1,0 +1,87 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0a14}
+body{font-family:'DM Sans',sans-serif;color:#fff}
+#bg{position:absolute;inset:0;background:
+ radial-gradient(700px 520px at 50% 34%,rgba(92,70,200,.22),transparent 70%),
+ radial-gradient(520px 520px at 88% 88%,rgba(190,80,40,.16),transparent 70%),
+ linear-gradient(#0d0c18,#09080f)}
+#stage{position:absolute;left:0;top:70px;width:1080px;height:1920px;transform:scale(1.22);transform-origin:540px 600px}
+.card{position:absolute;left:170px;width:740px;background:#17151f;border:2px solid #2c2838;border-radius:30px;box-shadow:0 30px 80px rgba(0,0,0,.55);overflow:hidden}
+.bar{height:58px;background:#1e1b29;border-bottom:2px solid #2c2838;display:flex;align-items:center;padding:0 26px;gap:12px;font-family:'DejaVu Sans Mono',monospace;font-size:22px;color:#9a95ad}
+.dot{width:14px;height:14px;border-radius:50%}
+.mono{font-family:'DejaVu Sans Mono',monospace}
+.lime{color:#c9ff3d}
+.chip{position:absolute;padding:10px 20px;border-radius:14px;font-weight:800;font-size:28px}
+#logo{position:absolute;left:906px;top:285px;width:98px;height:98px;border-radius:24px;background:#6b55f0;display:flex;align-items:center;justify-content:center;font-family:'Archivo Black';font-size:54px;box-shadow:0 0 50px rgba(107,85,240,.55);transform:rotate(4deg)}
+#tag{position:absolute;left:64px;top:300px;font-family:'DejaVu Sans Mono',monospace;font-size:24px;letter-spacing:3px;color:#a59fd0;background:rgba(107,85,240,.14);border:1.5px solid rgba(107,85,240,.45);padding:10px 18px;border-radius:12px}
+#cap{position:absolute;left:80px;width:920px;top:1270px;text-align:center;font-family:'Archivo Black';font-size:76px;line-height:1.28}
+#cap span{display:inline-block;margin:0 10px;padding:0 12px;border:5px solid transparent;border-radius:14px}
+#cap span.on{border-color:#fff}
+#cap span.k{color:#c9ff3d}
+#cap span.on.k{border-color:#c9ff3d}
+#cap span.f{opacity:.35}
+.cursor{position:absolute;width:0;height:0}
+</style></head><body>
+<div id="bg"></div><div id="stage"></div>
+<div id="tag">INTERNET STORIES · EP.02</div>
+<div id="logo">n.</div>
+<div id="cap"></div>
+<script>
+const DATA = /*DATA*/null;
+window.fontsReady = document.fonts.ready;
+const S = document.getElementById('stage'), C = document.getElementById('cap');
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const spring=x=>{x=clamp(x);return 1-Math.exp(-6*x)*Math.cos(9*x)};
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+const CUR='<svg width="54" height="70" viewBox="0 0 24 31"><path d="M2 2 L2 25 L8 19 L12 29 L16 27 L12 18 L20 18 Z" fill="#fff" stroke="#111" stroke-width="1.6"/></svg>';
+function cur(x,y){return `<div style="position:absolute;left:${x}px;top:${y}px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.6))">${CUR}</div>`}
+function card(top,h,title,body,extra=''){return `<div class="card" style="top:${top}px;height:${h}px;${extra}"><div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><span style="margin-left:10px">${title}</span></div>${body}</div>`}
+function retroBanner(w,txt,flash){ // 1994-style banner: bevelled, tiled bg
+ return `<div style="margin:0 auto;width:${w}px;min-height:${w*0.128+40}px;padding:18px 26px;text-align:center;line-height:1.15;border:6px outset #c0c0c0;background:repeating-linear-gradient(90deg,#1b2a8a 0 22px,#2235a8 22px 44px);display:flex;align-items:center;justify-content:center;gap:18px;font-family:'Times New Roman',serif;font-weight:700;font-size:${w*0.068}px;color:#fff;text-shadow:3px 3px 0 #000">${txt}</div>`}
+const SC = [
+ // 0 hook: clicks counter
+ (p,d)=>{const v=44*ease(p*1.6);let dots='';for(let i=0;i<44;i++){const s=clamp(p*1.4-i/60);if(s>0){const x=60+((i*137)%620),y=110+((i*71)%250);dots+=`<div style="position:absolute;left:${x}px;top:${y}px;width:18px;height:18px;border-radius:50%;background:#c9ff3d;opacity:${s};box-shadow:0 0 14px #c9ff3d;transform:scale(${spring(s)})"></div>`}}
+  return card(420,520,'ad_stats · 1994',`<div style="position:relative;height:300px">${dots}</div><div style="text-align:center;font-family:Archivo Black;font-size:118px;line-height:1" class="lime">${Math.round(v)}%</div><div style="text-align:center;font-size:30px;color:#bbb;margin-top:10px">of viewers clicked</div>`)},
+ // 1 first banner ad
+ (p)=>card(470,420,'the-internet · 1994',`<div style="padding:50px 40px 0">${retroBanner(650,'AD',false)}<div style="margin-top:40px;height:22px;width:80%;background:#2a2738;border-radius:8px"></div><div style="margin-top:18px;height:22px;width:60%;background:#2a2738;border-radius:8px"></div></div>`)+`<div class="chip" style="left:760px;top:440px;background:#ff7a2f;transform:rotate(6deg) scale(${spring(p*3)})">#1</div>`,
+ // 2 date + hotwired
+ (p)=>card(430,500,'hotwired.com',`<div style="background:#c0c0c0;height:442px;padding:36px;color:#000;font-family:'Times New Roman',serif"><div style="font-size:54px;font-weight:700">Welcome!</div><div style="font-size:26px;margin-top:8px">a web page, October 1994</div><div style="margin-top:30px;height:110px;border:4px inset #fff;background:#d8d8d8;display:flex;align-items:center;justify-content:center;font-size:30px;color:#555">[ banner goes here ]</div><div style="margin-top:24px;font-size:24px;color:#00e;text-decoration:underline">Enter &gt;&gt;</div></div>`)+`<div class="chip" style="left:640px;top:395px;background:#c9ff3d;color:#111;transform:rotate(5deg) scale(${spring(p*3)})">📅 OCT 27 · 1994</div>`,
+ // 3 invoice
+ (p)=>{const v=30000*ease(p*2.4);return card(440,470,'invoice.txt',`<div class="mono" style="padding:40px 46px;font-size:32px;line-height:1.9;color:#ddd">item: 1 banner spot<br>where: hotwired.com<br>length: 3 months<br><span style="color:#888">──────────────────</span><br>total: <span class="lime" style="font-size:52px;font-weight:700">$${fmt(v)}</span></div>`)},
+ // 4 the ad
+ (p)=>{const cx=600-160*ease(p*1.2), cy=820-60*ease(p*1.2);return card(470,400,'hotwired.com',`<div style="padding:60px 30px">${retroBanner(680,'Have you ever clicked your mouse right HERE? <span style="font-size:60px">→</span>')}</div>`)+cur(cx,cy)},
+ // 5 you will
+ (p)=>card(470,400,'hotwired.com',`<div style="padding:60px 30px">${retroBanner(680,`<span style="font-size:64px;color:#ffeb3b;transform:scale(${spring(p*2.5)});display:inline-block">YOU WILL.</span>`)}</div>`)+cur(600,730),
+ // 6 44% bar
+ (p)=>{const v=44*ease(p*1.5);return card(450,440,'click_through_rate',`<div style="padding:50px 46px"><div style="font-family:Archivo Black;font-size:120px" class="lime">${Math.round(v)}%</div><div style="margin-top:20px;height:44px;border-radius:22px;background:#2a2738;overflow:hidden"><div style="height:100%;width:${v}%;background:#c9ff3d;border-radius:22px"></div></div><div style="font-size:28px;color:#aaa;margin-top:18px">1994 · first banner ad</div></div>`)},
+ // 7 today
+ (p)=>{const g=ease(p*2);return card(440,480,'click_through_rate',`<div style="padding:46px">${['1994',44,'#c9ff3d'].length?'':''}<div style="font-size:30px;color:#aaa">1994</div><div style="height:46px;border-radius:23px;background:#2a2738;margin:10px 0 30px"><div style="height:100%;width:44%;background:#c9ff3d;border-radius:23px"></div></div><div style="font-size:30px;color:#aaa">today (avg display ad)</div><div style="height:46px;border-radius:23px;background:#2a2738;margin-top:10px;position:relative"><div style="height:100%;width:${0.9*g}%;min-width:${g>0?10:0}px;background:#ff5a5a;border-radius:23px"></div></div><div style="font-family:Archivo Black;font-size:64px;color:#ff5a5a;margin-top:24px;opacity:${g}">&lt; 1%</div></div>`)},
+ // 8 nobody remembers
+ (p)=>{const t='the part nobody\nremembers...',n=Math.floor(t.length*clamp(p*1.4));return card(470,380,'💡 fun_fact.txt',`<div class="mono" style="padding:50px;font-size:44px;line-height:1.6;color:#e8e6f0;white-space:pre">${t.slice(0,n)}<span style="opacity:${Math.floor(p*12)%2}">▍</span></div>`)},
+ // 9 not a sales page
+ (p)=>{const x=spring(clamp((p-0.45)*3));return card(440,460,'where-the-click-went',`<div style="padding:50px;text-align:center"><div style="font-family:Archivo Black;font-size:58px;color:#888">SALES PAGE</div><div style="margin:34px auto 0;width:420px;padding:26px;border-radius:18px;background:#3a3550;font-size:40px;font-weight:800;color:#aaa">BUY NOW</div></div>`)+`<div style="position:absolute;left:730px;top:740px;width:170px;height:170px;border-radius:50%;background:#ff4d4d;display:flex;align-items:center;justify-content:center;font-size:130px;font-weight:900;transform:scale(${x}) rotate(${(1-x)*-30}deg);box-shadow:0 10px 40px rgba(255,77,77,.5)">✕</div>`},
+ // 10 museums
+ (p)=>{const cols=['#e85d4a','#3c6df0','#f2c14e','#4ec98f','#b05cf0','#f08a3c'];let fr='';for(let i=0;i<6;i++){const s=spring(clamp(p*2.2-i*0.18));const sh=i%3==0?'50%':i%3==1?'0':'30% 70%';fr+=`<div style="width:190px;height:150px;border:10px solid #c8a25a;background:#f3eee2;display:flex;align-items:center;justify-content:center;transform:scale(${s})"><div style="width:80px;height:80px;background:${cols[i]};border-radius:${sh};transform:rotate(${i*17}deg)"></div></div>`}
+  return card(420,540,'online-art-tour.html',`<div style="padding:30px 40px 10px;font-size:30px;font-weight:800;color:#ddd">🖼️ Tour the museums</div><div style="display:flex;flex-wrap:wrap;gap:30px;padding:10px 40px;justify-content:center">${fr}</div>`)+cur(700-200*ease(p),880-120*ease(p))},
+ // 11 no pitch
+ (p)=>{const a=spring(clamp(p*3)),b=spring(clamp(p*3-1.2));return card(470,400,'checklist',`<div style="padding:50px 50px;font-size:50px;font-weight:800;line-height:2"><div style="opacity:${a};color:#ff6b6b">✕ <s style="color:#888">the pitch</s></div><div style="opacity:${b}"><span class="lime">✓</span> worth clicking</div></div>`)},
+ // 12 the rule
+ (p)=>{const t='give people a\nreason to click.',n=Math.floor(t.length*clamp(p*1.6));return card(450,420,'📌 rule.txt  (still true)',`<div class="mono" style="padding:56px 50px;font-size:52px;line-height:1.55;white-space:pre;color:#c9ff3d">${t.slice(0,n)}</div>`)},
+ // 13 CTA
+ (p)=>{const a=spring(clamp(p*3)),f=spring(clamp(p*2.2-1));return card(430,460,'would_you_click?',`<div style="padding:50px;display:flex;gap:30px;justify-content:center;transform:scale(${a})"><div style="padding:30px 60px;border-radius:20px;background:#c9ff3d;color:#111;font-size:50px;font-weight:900">YES</div><div style="padding:30px 60px;border-radius:20px;background:#3a3550;font-size:50px;font-weight:900">NO</div></div><div style="text-align:center;margin-top:20px;transform:scale(${f})"><span style="display:inline-block;padding:22px 40px;border-radius:999px;background:#6b55f0;font-size:40px;font-weight:900">+ Follow @nexaweb_dev</span></div>`)+cur(440,640)},
+];
+function lineAt(t){let i=0;for(let k=0;k<DATA.lines.length;k++)if(t>=DATA.lines[k].start-0.05)i=k;return i}
+window.render=function(t){
+ const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
+ const end=nx?nx.start:DATA.total, d=end-L.start, lt=t-L.start+0.05, p=clamp(lt/d);
+ const ein=spring(lt/0.45), out=clamp((t-(end-0.15))/0.15);
+ S.innerHTML=`<div style="position:absolute;inset:0;transform:translateY(${(1-ein)*140-out*160}px) rotate(${(1-ein)*-3}deg);opacity:${clamp(ein*1.5)*(1-out)}">${SC[i](p,d)}</div>`;
+ // captions
+ const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25)||null;
+ if(!ch){C.innerHTML='';return}
+ C.innerHTML=ch.words.map(w=>{const on=t>=w.start&&t<w.end+0.02,past=t>=w.start;return `<span class="${w.k?'k':''} ${on?'on':''} ${past?'':'f'}">${w.w}</span>`}).join(' ');
+};
+</script></body></html>
