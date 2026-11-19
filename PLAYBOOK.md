@@ -5,8 +5,8 @@ The owner (Jayden) handed Claude day-to-day running of the Instagram account **@
 connector slug `instagram`). Goal: build an audience with original scary stories, posted regularly.
 Single stories are fine; multi-part series (cliffhanger + "follow for part N") are used now and then.
 
-## Each run (scheduled 3x daily: 7:43 am, 12:43 pm, 7:43 pm Sydney — one post slot per run)
-0. Skip the slot if 3 posts are already logged today or the last post was under 3 hours ago.
+## Each run (scheduled 5x daily: 9:43 am, 12:43 pm, 3:43 pm, 6:43 pm, 9:43 pm Sydney — one post slot per run)
+0. Skip the slot if 5 posts are already logged today or the last post was under 2 hours ago.
 1. `git pull`, read `queue.json` and `log.json`.
 2. If `queue.json` has an item with `approved: true`, `posted: false` and `post_on` (Australia/Sydney) today or earlier:
    post the earliest one (step 6) and stop — don't also make a new story in that slot.
