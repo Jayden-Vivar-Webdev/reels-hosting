@@ -15,6 +15,9 @@ Single stories are fine; multi-part series (cliffhanger + "follow for part N") a
    Every few days, do a quick web search for what's working in horror short-form (formats, hooks).
    Proven formats: rules lists, "POV" setups, found footage/CCTV, "the clue was there from the start" twists,
    creepy facts told as a story, text-message/911-call style, "what I found in my new house".
+   **Owner's direction (2026-11-19):** start from a story people already know (classic urban legends / folklore
+   like the licked hand, backseat killer, vanishing hitchhiker, or a viral *trope*) and twist it slightly — new ending,
+   reversal, or modern format. Keep it simple and instantly understandable. Don't copy recent authored viral stories.
    Story must be ORIGINAL (no retelling copyrighted creepypastas/films), no real people, no gore, no self-harm,
    nothing involving children in danger. Hook in the first line (a shock statement or tease).
    Length 30–50 s spoken. Plant the twist's clue early. End with a short follow CTA.
