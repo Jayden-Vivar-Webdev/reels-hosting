@@ -60,6 +60,10 @@ Run every script through these checks BEFORE voicing it:
 10. **Approval message must include:** the one-line twist + a "who / why" list (each character → who they are, each mystery → its answer),
    so the owner can spot confusion before watching.
 
+11. **Endings stay with the narrator (and the viewer).** Owner prefers endings where the threat is still happening now and getting
+   closer (she's behind him in every mirror, a little closer each night) over one-off reveals. Keep timelines recent and personal
+   ("two months ago", not "ten/twenty years ago").
+
 ## Pipeline (pipeline/)
 Setup each run (fresh machine): follow the instagram-reels skill's setup (Kokoro voice, Parakeet/sherpa-onnx,
 playwright via `npm i -g playwright`, google-chrome). Then copy `pipeline/` to a work dir, put `fonts/` beside the html.
