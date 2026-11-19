@@ -903,6 +903,7 @@ SC.bridge = (c, p, lt, d) => {
   const wa = (Math.sin(lt*3.2)+1)/2*1.4 - 0.2;
   c.save(); c.translate(250, 1460); c.rotate(-wa); c.fillStyle = '#050505'; c.fillRect(0, -6, 520, 12); c.restore();
   mirror(c, {}, lt, d);
+  if (p.follow){ const a = ease((lt-0.3)/0.5); c.save(); c.globalAlpha = a; c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(290, 515, 500, 140); c.strokeStyle = '#d82a20'; c.lineWidth = 8; c.strokeRect(300, 522, 480, 126); text(c, 'FOLLOW', 540, 587, 92, 'Anton', '#ff3b30'); c.restore(); }
   if (p.title){ const a = ease((lt-0.2)/0.6); c.save(); c.globalAlpha = a; c.shadowColor = '#000'; c.shadowBlur = 20; text(c, p.titleText || "MILLER'S BRIDGE", 540, 640, 84, 'Salt', '#e8e2d0'); c.restore(); }
 };
 SC.carradio = (c, p, lt, d) => {

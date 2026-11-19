@@ -10,5 +10,5 @@ PLAN = {"p1": [
  ("bridge", {"woman": True, "near": True, "thumb": True, "title": True, "titleText": "2 MONTHS AGO"}, ["rain", "engine"], "11:12:40 PM", "DASHCAM · SEP 19"),
  ("montage", {"t1": 2.25, "t2": 3.05, "glitch": True}, ["heartbeat"], "02:14:09 AM", "HOME CAM"),
  ("bathmirror", {"close": True, "at": 2.72, "push": True}, ["stinger"], "03:00:00 AM", "HOME CAM"),
- ("endcard", {"next": "END", "follow": True}, ["hit"], "", "SIGNAL LOST"),
+ ("bridge", {"woman": True, "thumb": True, "stop": True, "follow": True}, ["rain", "hit"], "11:47:02 PM", "DASHCAM · TONIGHT"),
 ]}
