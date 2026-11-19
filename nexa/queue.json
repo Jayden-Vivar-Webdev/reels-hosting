@@ -1,3 +1,31 @@
 [
- {"slug":"internet-stories-ep2","format":"reel","topic":"Internet Stories ep.2: the first banner ad (AT&T on HotWired, Oct 27 1994, ~44% CTR; click led to an online art-museum tour)","media":["nexa/videos/internet-stories-ep2/ep2.mp4"],"created":"2026-11-19 20:50 AEDT","post_on":"2026-11-19","approved":false,"posted":false,"note":"awaiting Jayden's approval; voice is Chatterbox built-in AI voice (ElevenLabs key not available in scheduled run)"}
+ {
+  "slug": "internet-stories-ep2",
+  "format": "reel",
+  "topic": "Internet Stories ep.2: the first banner ad (AT&T on HotWired, Oct 27 1994, ~44% CTR; click led to an online art-museum tour)",
+  "media": [
+   "nexa/videos/internet-stories-ep2/ep2.mp4"
+  ],
+  "created": "2026-11-19 20:50 AEDT",
+  "post_on": "2026-11-19",
+  "approved": false,
+  "posted": false,
+  "note": "Jayden rejected 2026-11-19: wanted a different story, a different visual style, and Brian's ElevenLabs voice. Don't reuse.",
+  "status": "rejected"
+ },
+ {
+  "slug": "internet-stories-ep2-chatbot",
+  "format": "reel",
+  "topic": "Internet Stories ep.2: AI chatbots speaking for businesses \u2014 Chevy dealer bot agrees to sell a Tahoe for $1 (Dec 2023) + Air Canada held liable for its chatbot (Feb 2024, C$812)",
+  "style": "bright & bold kinetic (cream bg, colour-block wipes, giant type, chat-bubble UI, highlighter captions)",
+  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
+  "media": [
+   "nexa/videos/internet-stories-ep2-chatbot/ep2.mp4"
+  ],
+  "created": "2026-11-19 22:30 AEDT",
+  "post_on": "2026-11-19",
+  "approved": false,
+  "posted": false,
+  "note": "awaiting Jayden's approval"
+ }
 ]
