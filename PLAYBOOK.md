@@ -5,10 +5,11 @@ The owner (Jayden) handed Claude day-to-day running of the Instagram account **@
 connector slug `instagram`). Goal: build an audience with original scary stories, posted regularly.
 Single stories are fine; multi-part series (cliffhanger + "follow for part N") are used now and then.
 
-## Daily run (what the scheduled task does)
+## Each run (scheduled 3x daily: 7:43 am, 12:43 pm, 7:43 pm Sydney — one post slot per run)
+0. Skip the slot if 3 posts are already logged today or the last post was under 3 hours ago.
 1. `git pull`, read `queue.json` and `log.json`.
 2. If `queue.json` has an item with `approved: true`, `posted: false` and `post_on` (Australia/Sydney) today or earlier:
-   post it (step 6) and stop — don't also make a new story that day.
+   post the earliest one (step 6) and stop — don't also make a new story in that slot.
 3. Otherwise make ONE new story (steps 4–5) and post it.
 4. **Idea:** pick a fresh premise. Check `log.json` so it doesn't repeat a premise, setting or twist.
    Every few days, do a quick web search for what's working in horror short-form (formats, hooks).
