@@ -30,6 +30,7 @@ for p in json.load(open("script.json")):
                 for k in np.arange(0, d, 0.95): add(f, s["start"]+k)
             elif f in ("stinger", "swell") and f == "swell": add(f, max(s["start"]-0.3, 0))
             elif f == "knock2": add(f, s["end"] - 0.6)
+            elif f == "stinger" and s["p"].get("at"): add(f, s["start"] + s["p"]["at"])
             elif f == "door": add(f, s["start"] + 0.6, 0.4)
             else: add(f, s["start"])
     mix = np.tanh(mix * 1.1)

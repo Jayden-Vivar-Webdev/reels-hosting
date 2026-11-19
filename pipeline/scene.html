@@ -270,6 +270,7 @@ SC.radio = (c, p, lt, d) => {
   if (p.dead) text(c, 'NO SIGNAL', 540, 1520, 60, 'VT', '#ff4a3d');
 };
 SC.bigtext = (c, p, lt, d) => {
+  if (p.at){ if (lt < p.at){ SC.bedroom(c, {hand:true, dark:true, eyes:true, eyesAt:-1}, lt+5, d); c.fillStyle=`rgba(0,0,0,${.4*lt/p.at})`; c.fillRect(0,0,W,H); return; } lt -= p.at; }
   bg(c, '#070909', '#000');
   const k = ease(lt/0.5), sc = 1.25 - .25*k + lt*0.02;
   c.save(); c.translate(540, 940); c.scale(sc, sc);
@@ -484,6 +485,143 @@ SC.wall = (c, p, lt, d) => {
   }
 };
 
+// ---------- licked-hand story scenes ----------
+function dogHead(c, x, y, s, a=1, shiver=0){
+  c.save(); c.globalAlpha *= a; c.translate(x + shiver, y); c.scale(s, s);
+  c.fillStyle = '#8a6a48';
+  c.beginPath(); c.ellipse(0, 0, 70, 58, 0, 0, 7); c.fill();           // head
+  c.beginPath(); c.ellipse(62, 18, 46, 30, 0.1, 0, 7); c.fill();        // snout
+  c.fillStyle = '#5e4630'; c.beginPath(); c.ellipse(-38, 8, 24, 52, 0.3, 0, 7); c.fill(); // ear
+  c.fillStyle = '#111'; c.beginPath(); c.ellipse(104, 10, 12, 9, 0, 0, 7); c.fill();  // nose
+  c.fillStyle = '#111'; c.beginPath(); c.arc(22, -14, 8, 0, 7); c.fill();
+  c.fillStyle = 'rgba(255,255,255,.8)'; c.beginPath(); c.arc(25, -17, 3, 0, 7); c.fill();
+  c.restore();
+}
+function bedroom(c, p, lt, d){
+  const lit = !p.dark;
+  bg(c, lit ? '#2c3a4a' : '#1d2a33', lit ? '#121a22' : '#0a1014');
+  // window with moon light
+  c.fillStyle = '#0d1520'; c.fillRect(640, 330, 300, 330);
+  if (p.storm){ const f = (Math.floor(lt*30)%37<2) ? .9 : 0; c.fillStyle = `rgba(220,235,255,${.15+f})`; c.fillRect(650,340,280,310); }
+  else { const g = c.createRadialGradient(830, 420, 5, 830, 420, 160); g.addColorStop(0,'rgba(220,230,240,.9)'); g.addColorStop(.25,'rgba(150,175,200,.35)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(650,340,280,310); }
+  c.strokeStyle = '#3d4b5a'; c.lineWidth = 14; c.strokeRect(640, 330, 300, 330); c.beginPath(); c.moveTo(790,330); c.lineTo(790,660); c.stroke();
+  // moonlight patch on wall
+  { const g = c.createRadialGradient(700, 900, 60, 700, 900, 650); g.addColorStop(0, lit ? 'rgba(170,195,225,.22)' : 'rgba(120,150,170,.14)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+  // floor
+  c.fillStyle = '#141b22'; c.fillRect(0, 1200, W, 720);
+  // nightstand + lamp
+  c.fillStyle = '#2a2420'; c.fillRect(30, 900, 130, 300);
+  c.fillStyle = '#3a332c'; c.fillRect(70, 820, 12, 80); c.beginPath(); c.moveTo(35,830); c.lineTo(120,830); c.lineTo(100,760); c.lineTo(55,760); c.fill();
+  if (p.lamp){ const g = c.createRadialGradient(78, 800, 10, 78, 900, 420); g.addColorStop(0,'rgba(255,210,140,.5)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+  // bed frame
+  c.fillStyle = '#3b2e24'; c.fillRect(180, 820, 30, 380); c.fillRect(940, 960, 26, 240);
+  // under-bed darkness
+  c.fillStyle = '#05070a'; c.fillRect(210, 1060, 730, 140);
+  // mattress + blanket
+  c.fillStyle = '#c9cfd6'; c.fillRect(200, 960, 760, 100);
+  c.fillStyle = '#4b5f78'; c.beginPath(); c.moveTo(380, 960); c.quadraticCurveTo(560, 880, 700, 930); c.quadraticCurveTo(860, 950, 965, 955); c.lineTo(965, 1065); c.lineTo(380, 1065); c.closePath(); c.fill();
+  // pillow + head
+  c.fillStyle = '#e3e6ea'; c.beginPath(); c.ellipse(290, 940, 85, 38, 0, 0, 7); c.fill();
+  c.fillStyle = '#6b4d38'; c.beginPath(); c.ellipse(330, 905, 48, 44, 0, 0, 7); c.fill();
+  // hanging hand
+  if (p.hand){
+    const tw = p.lick ? Math.max(0, Math.sin(lt*5))*6 : 0;
+    c.fillStyle = '#c9a185';
+    c.save(); c.translate(560, 1040); c.rotate(0.06);
+    c.fillRect(-22, 0, 44, 110 + tw);
+    c.beginPath(); c.ellipse(0, 125 + tw, 30, 36, 0, 0, 7); c.fill();
+    for (let k=0;k<4;k++){ c.fillRect(-24 + k*13, 140 + tw, 10, 34 - Math.abs(k-1.5)*5); }
+    c.restore();
+  }
+  // tongue from darkness
+  if (p.lick){
+    const ph = (lt*1.1) % 1, ext = Math.sin(clamp(ph,0,1)*Math.PI);
+    c.fillStyle = `rgba(200,90,110,${.85*ext})`;
+    c.beginPath(); c.ellipse(560 - 40 + ext*10, 1200 - ext*16, 28*ext + 2, 13, -0.5, 0, 7); c.fill();
+  }
+  if (p.eyes){
+    const a = ease((lt - (p.eyesAt||0.4))/0.8);
+    c.fillStyle = `rgba(235,240,230,${a})`;
+    c.shadowColor='rgba(255,255,240,.8)'; c.shadowBlur=18; c.beginPath(); c.ellipse(420, 1130, 22, 11, 0, 0, 7); c.ellipse(500, 1130, 22, 11, 0, 0, 7); c.fill(); c.shadowBlur=0;
+    c.fillStyle = `rgba(0,0,0,${a})`; c.beginPath(); c.arc(426, 1130, 7, 0, 7); c.arc(506, 1130, 7, 0, 7); c.fill();
+  }
+  if (p.dog){ const a = ease(lt/0.8); dogHead(c, 300 - 60*(1-a), 1140, 0.9, 1); }
+  if (p.zzz){ for (let i=0;i<3;i++){ const q = (lt*0.6 + i/3)%1; text(c, 'z', 380 + q*90, 860 - q*200, 50 + q*40, 'Salt', `rgba(220,230,240,${1-q})`); } }
+  if (p.phoneGlow){ const on = Math.floor(lt*4)%2===0; if (on){ const g = c.createRadialGradient(110, 890, 5, 110, 890, 260); g.addColorStop(0,'rgba(190,220,255,.75)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,600,500,600); } c.fillStyle = on ? '#cfe4ff' : '#223'; c.fillRect(85, 880, 60, 20); }
+}
+SC.bedroom = bedroom;
+SC.laundry = (c, p, lt, d) => {
+  bg(c,'#33404a','#141a20');
+  const f = (Math.floor(lt*30)%41<2) || (lt>0.5 && lt<0.6) ? 1 : 0;
+  c.fillStyle = `rgba(210,225,245,${.25+.6*f})`; c.fillRect(160, 380, 260, 240);
+  c.strokeStyle = '#4a5866'; c.lineWidth = 12; c.strokeRect(160, 380, 260, 240);
+  // rain
+  c.strokeStyle = 'rgba(200,220,240,.35)'; c.lineWidth = 2; const r = R(Math.floor(lt*20)+3);
+  for (let i=0;i<30;i++){ const x = 165 + r()*250, y = 385 + r()*230; c.beginPath(); c.moveTo(x,y); c.lineTo(x-6,y+24); c.stroke(); }
+  c.fillStyle = '#1c232a'; c.fillRect(0, 1200, W, 720);
+  // washer
+  c.fillStyle = '#d4d8dc'; c.fillRect(520, 760, 400, 440);
+  c.fillStyle = '#b4bac0'; c.fillRect(520, 760, 400, 70);
+  c.fillStyle = '#2a333c'; c.beginPath(); c.arc(720, 1010, 130, 0, 7); c.fill();
+  c.strokeStyle = '#8c949c'; c.lineWidth = 18; c.beginPath(); c.arc(720, 1010, 140, 0, 7); c.stroke();
+  // dog curled beside washer, shivering
+  const sh = Math.sin(lt*40)*3;
+  c.fillStyle = '#8a6a48'; c.beginPath(); c.ellipse(330 + sh, 1130, 150, 75, 0, 0, 7); c.fill();
+  dogHead(c, 250, 1095, 0.75, 1, sh);
+  if (f) { c.fillStyle = 'rgba(230,240,255,.18)'; c.fillRect(0,0,W,H); }
+};
+SC.storm = (c, p, lt, d) => {
+  bg(c,'#2a3644','#10161c');
+  const fl = (lt>0.3 && lt<0.4) || (lt>0.55 && lt<0.62) ? 1 : 0;
+  c.fillStyle = '#0b121a'; c.fillRect(240, 380, 600, 760);
+  c.fillStyle = `rgba(200,220,255,${.12+.8*fl})`; c.fillRect(250, 390, 580, 740);
+  if (fl){ c.strokeStyle = '#fff'; c.lineWidth = 6; c.beginPath(); c.moveTo(560,390); c.lineTo(510,600); c.lineTo(580,620); c.lineTo(500,900); c.stroke(); }
+  c.strokeStyle = 'rgba(210,225,240,.4)'; c.lineWidth = 2; const r = R(Math.floor(lt*24)+9);
+  for (let i=0;i<60;i++){ const x = 255 + r()*570, y = 395 + r()*720; c.beginPath(); c.moveTo(x,y); c.lineTo(x-8,y+34); c.stroke(); }
+  c.strokeStyle = '#46546a'; c.lineWidth = 16; c.strokeRect(240, 380, 600, 760); c.beginPath(); c.moveTo(540,380); c.lineTo(540,1140); c.stroke();
+  // lamp in foreground goes off
+  const off = lt > d*0.55;
+  c.fillStyle = '#3a332c'; c.fillRect(900, 1000, 14, 200); c.beginPath(); c.moveTo(850,1010); c.lineTo(960,1010); c.lineTo(935,930); c.lineTo(875,930); c.fill();
+  if (!off){ const g = c.createRadialGradient(906, 980, 10, 906, 1050, 420); g.addColorStop(0,'rgba(255,210,140,.55)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+  if (off){ c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(0,0,W,H); c.save(); c.shadowColor='#ff3b30'; c.shadowBlur=20; text(c, 'POWER OUT', 540, 300, 80, 'VT', '#ff4a3d'); c.restore(); }
+};
+SC.phone = (c, p, lt, d) => {
+  bg(c,'#16202b','#06090d');
+  const g = c.createRadialGradient(540, 820, 50, 540, 820, 700); g.addColorStop(0,'rgba(140,180,230,.28)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H);
+  const buzz = p.buzz ? Math.sin(lt*70)*(lt%0.8<0.35?6:0) : 0;
+  c.save(); c.translate(540 + buzz, 770); c.rotate(-0.03); c.scale(.85,.85);
+  c.fillStyle = '#0b0d10'; c.beginPath(); c.roundRect(-300, -520, 600, 1040, 60); c.fill();
+  c.fillStyle = '#f2f3f5'; c.beginPath(); c.roundRect(-275, -495, 550, 990, 44); c.fill();
+  // header
+  c.fillStyle = '#e4e6ea'; c.fillRect(-275, -420, 550, 130);
+  text(c, '3:07', -200, -460, 34, 'Anton', '#111');
+  c.fillStyle = '#9aa4b0'; c.beginPath(); c.arc(0, -385, 34, 0, 7); c.fill(); text(c, 'D', 0, -383, 40, 'Anton', '#fff');
+  text(c, 'Dave (next door)', 0, -325, 34, 'Anton', '#222');
+  const msgs = p.msgs || [];
+  let y = -230;
+  msgs.forEach((m, i) => {
+    const a = ease((lt - m.at)/0.25); if (a <= 0) return;
+    c.save(); c.globalAlpha = a;
+    if (m.photo){
+      c.fillStyle = '#dfe3e8'; c.beginPath(); c.roundRect(-245, y, 330, 260, 26); c.fill();
+      c.fillStyle = '#2b3a2a'; c.fillRect(-230, y+15, 300, 230);
+      c.fillStyle = '#16201a'; c.fillRect(-230, y+175, 300, 70);
+      c.fillStyle = '#8a6a48'; c.beginPath(); c.ellipse(-80, y+185, 90, 45, 0, 0, 7); c.fill();
+      dogHead(c, -140, y+150, 0.55, 1);
+      c.strokeStyle = 'rgba(200,220,240,.5)'; c.lineWidth = 2; for (let k=0;k<14;k++){ const xx = -225 + k*21, yy = y + 20 + (k*37)%180; c.beginPath(); c.moveTo(xx,yy); c.lineTo(xx-5,yy+20); c.stroke(); }
+      y += 290;
+    } else {
+      c.font = '40px Anton'; const lines = m.t.split('\n'); const w = Math.max(...lines.map(l => c.measureText(l).width)) + 50, h = lines.length*52 + 34;
+      c.fillStyle = '#e2e5ea'; c.beginPath(); c.roundRect(-245, y, w, h, 28); c.fill();
+      lines.forEach((l, j) => text(c, l, -220, y + 42 + j*52, 40, 'Anton', '#111', 'left'));
+      y += h + 26;
+    }
+    c.restore();
+  });
+  c.restore();
+  if (p.buzz && lt < 1.6){ c.save(); c.globalAlpha = 1 - ease((lt-1.1)/0.5); c.fillStyle = 'rgba(30,34,40,.95)'; c.beginPath(); c.roundRect(150, 360, 780, 150, 30); c.fill(); text(c, 'Dave (next door)', 200, 410, 40, 'Anton', '#fff', 'left'); text(c, '1 new message', 200, 465, 36, 'VT', '#bcd', 'left'); c.restore(); }
+};
+
 // ---------- HUD, captions, post ----------
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
@@ -534,7 +672,7 @@ window.render = (t) => {
   X.setTransform(1,0,0,1,0,0); X.fillStyle = '#000'; X.fillRect(0,0,W,H);
   X.save(); X.translate(W/2, H/2); X.scale(push, push); X.translate(-W/2, -H/2);
   // CCTV tint
-  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
+  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
   X.drawImage(S, 0, 0);
   X.filter = 'none';
   X.restore();
