@@ -34,7 +34,7 @@
   "format": "carousel",
   "topic": "6 signs your website is quietly costing you customers (unclear headline, non-tappable phone number, long contact form, slow load, no clear CTA, out-of-date content)",
   "hook": "Your website is losing you customers. And it won't tell you.",
-  "style": "warm cream/peach dot-grid, orange labels, Inter Display Black headlines, orange highlight boxes, Lora italic accents, white cards + dark 'THE FIX' boxes (matches Nexa reel style)",
+  "style": "v2: flat off-white paper background, black Inter headlines, wireframe browser mockups with 3px black outlines, hand-drawn orange marker circles + Caveat handwritten notes, plain 'Fix:' text under a rule. No gradients, dot grids, glows or highlight boxes.",
   "media": [
    "nexa/images/website-costing-customers-6-signs/01.jpg",
    "nexa/images/website-costing-customers-6-signs/02.jpg",
@@ -45,11 +45,12 @@
    "nexa/images/website-costing-customers-6-signs/07.jpg",
    "nexa/images/website-costing-customers-6-signs/08.jpg"
   ],
-  "caption": "Your website might be losing you customers right now — and it won't tell you. 👀\n6 quiet signs (most take 5 minutes to fix).\n\nHow many did your site fail? Comment your score 👇 and save this for your next website check.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #smallbusinesstips #conversionrate #ux #digitalmarketing #websitedesign",
+  "caption": "Your website might be losing you customers right now, and it won't tell you. 👀\n6 quiet signs. Most take 5 minutes to fix.\n\nHow many did your site fail? Comment your score 👇 and save this for your next website check.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #smallbusinesstips #conversionrate #ux #digitalmarketing #websitedesign",
   "created": "2026-11-20 08:30 AEDT",
   "post_on": "2026-11-20",
   "approved": false,
   "posted": false,
-  "status": "awaiting approval"
+  "status": "awaiting approval",
+  "note": "v1 (cream gradient/dot-grid reel style) rejected 2026-11-20: Jayden said it looked too AI and asked for no em/en dashes. v2 awaiting approval."
  }
 ]

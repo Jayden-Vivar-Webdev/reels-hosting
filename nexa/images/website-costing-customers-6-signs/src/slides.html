@@ -1,126 +1,137 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:Hand;src:url(/home/claude/reels-hosting/pipeline/fonts/Caveat.ttf)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter Display','Inter',sans-serif;color:#1a1412;background:#ccc}
-.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:#F5ECE3}
-.bg{position:absolute;inset:0;background:
- radial-gradient(900px 700px at 0% 0%,rgba(236,170,135,.55),transparent 70%),
- radial-gradient(800px 800px at 100% 100%,rgba(236,170,135,.45),transparent 70%),
- radial-gradient(700px 500px at 100% 20%,rgba(255,255,255,.6),transparent 70%),#F5ECE3}
-.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(120,85,65,.22) 2px,transparent 2.4px);background-size:38px 38px}
-.tag{position:absolute;right:80px;top:70px;font-weight:900;font-size:40px;letter-spacing:-2px;opacity:.85}
-.tag b,.O{color:#DD6431}
-.pg{position:absolute;left:80px;top:78px;font-weight:800;font-size:28px;letter-spacing:6px;color:#DD6431}
-.pg i{display:inline-block;width:18px;height:18px;border-radius:50%;background:#DD6431;margin-right:12px;box-shadow:0 0 0 6px rgba(221,100,49,.18);vertical-align:1px}
-.c{position:absolute;left:80px;right:80px}
-.h{font-weight:900;letter-spacing:-.055em;line-height:.98}
-.box{display:inline-block;background:#DD6431;color:#fff;padding:0 .14em .04em;border-radius:.12em;letter-spacing:-.04em}
-.ser{font-family:'Lora';font-style:italic;font-weight:500;color:#DD6431;letter-spacing:-.01em}
-.card{background:#FFFBF6;border-radius:36px;box-shadow:0 30px 60px rgba(120,70,40,.16);border:1.5px solid rgba(120,80,60,.08);overflow:hidden}
-.bar{height:76px;display:flex;align-items:center;gap:12px;padding:0 30px;border-bottom:1.5px solid #eee2d8}
-.bar s{width:18px;height:18px;border-radius:50%;background:#e8dcd2;display:inline-block}.bar s:first-child{background:#DD6431}
-.url{font-family:'DejaVu Sans Mono',monospace;font-size:24px;color:#a89a90;margin-left:14px}
-.fix{position:absolute;left:80px;right:80px;bottom:90px;background:#242120;color:#f2e8e0;border-radius:32px;padding:34px 40px;font-size:38px;font-weight:600;line-height:1.3;letter-spacing:-.01em}
-.fix b{color:#DD6431;font-weight:900;letter-spacing:2px;font-size:28px;display:block;margin-bottom:10px}
-.bad{display:inline-block;background:#F3D3C0;color:#B44E22;border-radius:999px;padding:8px 24px;font-weight:800;font-size:28px}
-.mono{font-family:'DejaVu Sans Mono',monospace}
-.swipe{position:absolute;right:80px;bottom:90px;font-weight:800;font-size:34px;color:#DD6431}
+body{font-family:'Inter','Inter Display',sans-serif;color:#141414;background:#999}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:#F3F1EC}
+.top{position:absolute;left:84px;right:84px;top:72px;display:flex;justify-content:space-between;font-size:28px;font-weight:600;color:#141414}
+.top span:last-child{color:#8b8780}
+.num{position:absolute;left:84px;top:150px;font-family:'Inter Display';font-weight:800;font-size:34px;color:#DD6431}
+.h{position:absolute;left:84px;right:84px;font-family:'Inter Display';font-weight:800;letter-spacing:-.035em;line-height:1.02}
+.win{position:absolute;left:84px;right:84px;background:#fff;border:3px solid #141414;border-radius:14px;overflow:hidden}
+.wbar{height:58px;border-bottom:3px solid #141414;display:flex;align-items:center;padding:0 22px;gap:10px}
+.wbar i{width:16px;height:16px;border-radius:50%;border:2.5px solid #141414;display:inline-block}
+.wbar span{margin-left:16px;font-family:'DejaVu Sans Mono',monospace;font-size:22px;color:#6f6b64}
+.hand{font-family:Hand;color:#DD6431;font-weight:700;position:absolute;line-height:1}
+svg.mk{position:absolute;overflow:visible;pointer-events:none}
+.fix{position:absolute;left:84px;right:84px;bottom:110px;border-top:3px solid #141414;padding-top:28px;font-size:38px;line-height:1.32;font-weight:500}
+.fix b{font-weight:800}
+.foot{position:absolute;left:84px;right:84px;bottom:46px;display:flex;justify-content:space-between;font-size:24px;color:#8b8780;font-weight:600}
+.grey{color:#8b8780}
+.field{border:2px solid #cfcac2;border-radius:8px;padding:12px 16px;font-size:24px;color:#9a958d}
+.pill{border:2px solid #cfcac2;border-radius:8px;padding:10px 20px;font-size:26px;font-weight:600;color:#8b8780;display:inline-block}
 </style></head><body>
 
-<!-- 1 HOOK -->
-<div class="s" id="s1"><div class="bg"></div><div class="dots"></div><div class="tag">nexa<b>.</b></div>
-<div class="pg"><i></i>WEBSITE CHECK</div>
-<div class="c h" style="top:330px;font-size:140px">Your website<br>is losing you<br><span class="box">customers.</span></div>
-<div class="c ser" style="top:800px;font-size:80px;line-height:1.1">And it won't tell you.</div>
-<div class="c" style="top:960px;font-size:44px;font-weight:600;line-height:1.35;color:#5a4a42">6 quiet signs to check today &mdash;<br>most take 5 minutes to fix.</div>
-<div class="swipe">Swipe &rarr;</div>
+<div class="s" id="s1">
+ <div class="top"><span>nexa.</span><span>@nexaweb_dev</span></div>
+ <div class="h" style="top:260px;font-size:136px">Your website is losing you customers.</div>
+ <div class="hand" style="left:90px;top:720px;font-size:96px;transform:rotate(-3deg)">and it won't tell you.</div>
+ 
+ <div style="position:absolute;left:84px;top:900px;font-size:44px;font-weight:500;line-height:1.35;width:820px">6 quiet signs to check today.<br><span class="grey">Most take 5 minutes to fix.</span></div>
+ <div class="foot"><span>Website check</span><span>Swipe</span></div>
 </div>
 
-<!-- 2 -->
-<div class="s" id="s2"><div class="bg"></div><div class="dots"></div><div class="tag">nexa<b>.</b></div>
-<div class="pg"><i></i>SIGN 01 / 06</div>
-<div class="c h" style="top:170px;font-size:92px">A stranger can't tell <span class="box">what you do</span> in 5 seconds.</div>
-<div class="c card" style="top:500px"><div class="bar"><s></s><s></s><s></s><span class="url">yourplumber.example</span></div>
- <div style="padding:34px 40px"><span class="bad">Before</span><div class="h" style="font-size:54px;margin-top:16px;color:#8a7c74">Welcome to our website!</div>
- <div style="height:2px;background:#eee2d8;margin:26px 0"></div><span class="bad" style="background:#DD6431;color:#fff">After</span><div class="h" style="font-size:54px;margin-top:16px">Blocked drain? Fixed today in Parramatta.</div></div></div>
-<div class="fix"><b>THE FIX</b>Headline = what you do + who it's for + where. "Welcome" says nothing.</div>
+<div class="s" id="s2">
+ <div class="top"><span>nexa.</span><span>2 / 8</span></div>
+ <div class="num">Sign 1</div>
+ <div class="h" style="top:210px;font-size:84px">A stranger can't tell what you do in 5 seconds.</div>
+ <div class="win" style="top:540px;height:420px"><div class="wbar"><i></i><i></i><i></i><span>yourplumber.example</span></div>
+  <div style="padding:40px 44px"><div style="font-size:24px;letter-spacing:3px;color:#9a958d;font-weight:700">HOME &nbsp; ABOUT &nbsp; SERVICES &nbsp; CONTACT</div>
+  <div style="font-family:'Inter Display';font-weight:700;font-size:70px;margin-top:44px;letter-spacing:-.02em">Welcome to our website!</div>
+  <div style="font-size:28px;color:#9a958d;margin-top:18px">We are passionate about excellence and quality.</div></div></div>
+ <svg class="mk" id="c2" style="left:100px;top:660px" width="860" height="160"></svg>
+ <div class="hand" style="left:470px;top:975px;font-size:62px;transform:rotate(-4deg)">ok but what do you do?</div>
+ <div class="fix"><b>Fix:</b> say what you do, who it's for and where. "Blocked drain? Fixed today in Parramatta."</div>
+ <div class="foot"><span>@nexaweb_dev</span><span>Save for later</span></div>
 </div>
 
-<!-- 3 -->
-<div class="s" id="s3"><div class="bg"></div><div class="dots"></div><div class="tag">nexa<b>.</b></div>
-<div class="pg"><i></i>SIGN 02 / 06</div>
-<div class="c h" style="top:170px;font-size:92px">Your phone number <span class="box">can't be tapped</span> on mobile.</div>
-<div style="position:absolute;left:300px;top:470px;width:480px;height:520px" class="card">
- <div style="height:40px;display:flex;justify-content:center;align-items:center"><span style="width:120px;height:12px;border-radius:9px;background:#e8dcd2"></span></div>
- <div style="padding:20px 36px"><div style="height:22px;width:70%;background:#eee2d8;border-radius:8px"></div><div style="height:22px;width:90%;background:#eee2d8;border-radius:8px;margin-top:14px"></div>
- <div class="mono" style="margin-top:30px;font-size:34px;color:#8a7c74">Ph: 02 5550 4321</div><div style="font-size:24px;color:#B44E22;font-weight:700;margin-top:8px">&uarr; just text. Copy, switch apps, paste&hellip;</div>
- <div style="margin-top:36px;background:#DD6431;color:#fff;border-radius:999px;text-align:center;padding:24px;font-weight:900;font-size:36px">&#9742; Tap to call</div>
- <div style="font-size:24px;color:#5a4a42;font-weight:700;margin-top:10px;text-align:center">&uarr; one tap. Done.</div></div></div>
-<div class="fix"><b>THE FIX</b>Link every number with tel: and add a call button that's always in reach.</div>
+<div class="s" id="s3">
+ <div class="top"><span>nexa.</span><span>3 / 8</span></div>
+ <div class="num">Sign 2</div>
+ <div class="h" style="top:210px;font-size:84px">Your phone number can't be tapped on mobile.</div>
+ <div class="win" style="left:120px;right:auto;width:480px;top:520px;height:470px;border-radius:44px">
+  <div style="padding:60px 40px"><div style="height:20px;width:70%;background:#e6e2db;border-radius:6px"></div><div style="height:20px;width:90%;background:#e6e2db;border-radius:6px;margin-top:14px"></div>
+  <div style="font-size:30px;font-weight:600;margin-top:46px">Call us today!</div>
+  <div style="font-size:40px;font-weight:500;margin-top:8px;color:#6f6b64">02 5550 4321</div>
+  <div style="height:20px;width:80%;background:#e6e2db;border-radius:6px;margin-top:46px"></div><div style="height:20px;width:60%;background:#e6e2db;border-radius:6px;margin-top:14px"></div></div></div>
+ <svg class="mk" id="c3" style="left:125px;top:722px" width="400" height="90"></svg>
+ <div class="hand" style="left:640px;top:690px;font-size:60px;transform:rotate(-4deg);width:380px">&larr; not a link.<br>copy, paste,<br>give up</div>
+ <div class="fix"><b>Fix:</b> make every number a tap to call link, plus a call button that stays on screen.</div>
+ <div class="foot"><span>@nexaweb_dev</span><span>Save for later</span></div>
 </div>
 
-<!-- 4 -->
-<div class="s" id="s4"><div class="bg"></div><div class="dots"></div><div class="tag">nexa<b>.</b></div>
-<div class="pg"><i></i>SIGN 03 / 06</div>
-<div class="c h" style="top:170px;font-size:92px">Your contact form asks for their <span class="box">life story.</span></div>
-<div class="c card" style="top:500px;height:470px;padding:34px 40px">
- <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
- <div class="mono" style="font-size:24px;color:#a89a90;border:2px solid #eee2d8;border-radius:14px;padding:14px">Name *</div><div class="mono" style="font-size:24px;color:#a89a90;border:2px solid #eee2d8;border-radius:14px;padding:14px">Company *</div>
- <div class="mono" style="font-size:24px;color:#a89a90;border:2px solid #eee2d8;border-radius:14px;padding:14px">Job title *</div><div class="mono" style="font-size:24px;color:#a89a90;border:2px solid #eee2d8;border-radius:14px;padding:14px">Budget *</div>
- <div class="mono" style="font-size:24px;color:#a89a90;border:2px solid #eee2d8;border-radius:14px;padding:14px">Address *</div><div class="mono" style="font-size:24px;color:#a89a90;border:2px solid #eee2d8;border-radius:14px;padding:14px">Postcode *</div>
- <div class="mono" style="font-size:24px;color:#a89a90;border:2px solid #eee2d8;border-radius:14px;padding:14px">How did you hear? *</div><div class="mono" style="font-size:24px;color:#a89a90;border:2px solid #eee2d8;border-radius:14px;padding:14px">Fax *</div></div>
- <div class="ser" style="font-size:52px;margin-top:36px;text-align:center">&hellip;and they're gone.</div></div>
-<div class="fix"><b>THE FIX</b>Ask only what you need to reply: name, phone or email, message. Get the rest on the call.</div>
+<div class="s" id="s4">
+ <div class="top"><span>nexa.</span><span>4 / 8</span></div>
+ <div class="num">Sign 3</div>
+ <div class="h" style="top:210px;font-size:84px">Your contact form asks for their life story.</div>
+ <div class="win" style="top:540px;height:420px"><div class="wbar"><i></i><i></i><i></i><span>Get in touch</span></div>
+  <div style="padding:30px 40px;display:grid;grid-template-columns:1fr 1fr;gap:14px">
+  <div class="field">Name *</div><div class="field">Company *</div><div class="field">Job title *</div><div class="field">Budget *</div>
+  <div class="field">Street address *</div><div class="field">Postcode *</div><div class="field">How did you hear? *</div><div class="field">Fax *</div></div></div>
+ <svg class="mk" id="c4" style="left:535px;top:824px" width="420" height="84"></svg>
+ <div class="hand" style="left:760px;top:965px;font-size:64px;transform:rotate(-3deg)">fax??</div>
+ <div class="fix"><b>Fix:</b> ask only what you need to reply. Name, phone or email, message. Get the rest on the call.</div>
+ <div class="foot"><span>@nexaweb_dev</span><span>Save for later</span></div>
 </div>
 
-<!-- 5 -->
-<div class="s" id="s5"><div class="bg"></div><div class="dots"></div><div class="tag">nexa<b>.</b></div>
-<div class="pg"><i></i>SIGN 04 / 06</div>
-<div class="c h" style="top:170px;font-size:92px">It loads slower than they can <span class="box">scroll away.</span></div>
-<div class="c card" style="top:500px;height:400px"><div class="bar"><s></s><s></s><s></s><span class="url">loading&hellip;</span></div>
- <div style="padding:46px 44px">
- <div style="height:34px;border-radius:999px;background:#eee2d8;overflow:hidden"><div style="width:28%;height:100%;background:#DD6431;border-radius:999px"></div></div>
- <div style="display:flex;justify-content:space-between;margin-top:22px;font-weight:800;font-size:32px;color:#8a7c74"><span>hero-photo-FINAL.png</span><span class="mono">14.2 MB</span></div>
- <div class="ser" style="font-size:52px;margin-top:40px">One giant photo can do this.</div></div></div>
-<div class="fix"><b>THE FIX</b>Compress and resize images, then test your site free at pagespeed.web.dev.</div>
+<div class="s" id="s5">
+ <div class="top"><span>nexa.</span><span>5 / 8</span></div>
+ <div class="num">Sign 4</div>
+ <div class="h" style="top:210px;font-size:84px">It loads slower than they can scroll away.</div>
+ <div class="win" style="top:480px;height:440px"><div class="wbar"><i></i><i></i><i></i><span>loading...</span></div>
+  <div style="height:270px;background:#e6e2db;display:flex;align-items:center;justify-content:center;font-size:30px;color:#9a958d;font-weight:600">hero-photo-FINAL-v3.png (14 MB)</div>
+  <div style="padding:22px 40px"><div style="height:20px;width:60%;background:#e6e2db;border-radius:6px"></div></div></div>
+ <div class="hand" style="left:540px;top:850px;font-size:60px;transform:rotate(-3deg)">still loading...</div>
+ <div class="fix"><b>Fix:</b> resize and compress your images, then test your site for free at pagespeed.web.dev</div>
+ <div class="foot"><span>@nexaweb_dev</span><span>Save for later</span></div>
 </div>
 
-<!-- 6 -->
-<div class="s" id="s6"><div class="bg"></div><div class="dots"></div><div class="tag">nexa<b>.</b></div>
-<div class="pg"><i></i>SIGN 05 / 06</div>
-<div class="c h" style="top:170px;font-size:92px">They have to <span class="box">hunt</span> for the next step.</div>
-<div class="c card" style="top:500px;height:400px;padding:40px 44px">
- <div style="display:flex;gap:16px;flex-wrap:wrap">
- <span style="border:2px solid #e8dcd2;border-radius:999px;padding:12px 24px;font-weight:700;font-size:28px;color:#8a7c74">Learn more</span>
- <span style="border:2px solid #e8dcd2;border-radius:999px;padding:12px 24px;font-weight:700;font-size:28px;color:#8a7c74">Our story</span>
- <span style="border:2px solid #e8dcd2;border-radius:999px;padding:12px 24px;font-weight:700;font-size:28px;color:#8a7c74">Explore</span>
- <span style="border:2px solid #e8dcd2;border-radius:999px;padding:12px 24px;font-weight:700;font-size:28px;color:#8a7c74">Discover</span>
- <span style="border:2px solid #e8dcd2;border-radius:999px;padding:12px 24px;font-weight:700;font-size:28px;color:#8a7c74">Resources</span>
- <span style="border:2px solid #e8dcd2;border-radius:999px;padding:12px 24px;font-weight:700;font-size:28px;color:#8a7c74">Gallery</span></div>
- <div style="text-align:center;margin-top:44px"><span style="background:#DD6431;color:#fff;border-radius:999px;padding:24px 56px;font-weight:900;font-size:40px;display:inline-block">Get a free quote &rarr;</span></div>
- <div style="text-align:center;font-size:26px;font-weight:700;color:#5a4a42;margin-top:16px">One main action. Make it obvious.</div></div>
-<div class="fix"><b>THE FIX</b>One clear button near the top, repeated as they scroll. Same words every time.</div>
+<div class="s" id="s6">
+ <div class="top"><span>nexa.</span><span>6 / 8</span></div>
+ <div class="num">Sign 5</div>
+ <div class="h" style="top:210px;font-size:84px">They have to hunt for the next step.</div>
+ <div class="win" style="top:480px;height:420px"><div class="wbar"><i></i><i></i><i></i><span>yourbusiness.example</span></div>
+  <div style="padding:40px 44px;display:flex;flex-wrap:wrap;gap:16px">
+  <span class="pill">Learn more</span><span class="pill">Our story</span><span class="pill">Explore</span><span class="pill">Discover</span><span class="pill">Resources</span><span class="pill">Gallery</span><span class="pill">Find out more</span><span class="pill">Blog</span></div></div>
+ <svg class="mk" id="c6" style="left:100px;top:540px" width="880" height="250"></svg>
+ <div class="hand" style="left:520px;top:830px;font-size:58px;transform:rotate(-3deg)">so... how do I book?</div>
+ <div class="fix"><b>Fix:</b> one main button ("Get a quote") near the top, repeated as they scroll. Same words every time.</div>
+ <div class="foot"><span>@nexaweb_dev</span><span>Save for later</span></div>
 </div>
 
-<!-- 7 -->
-<div class="s" id="s7"><div class="bg"></div><div class="dots"></div><div class="tag">nexa<b>.</b></div>
-<div class="pg"><i></i>SIGN 06 / 06</div>
-<div class="c h" style="top:170px;font-size:92px">Your site looks like nobody's <span class="box">home.</span></div>
-<div class="c card" style="top:500px;height:400px;padding:40px 44px">
- <div style="font-weight:800;font-size:34px">Latest news</div>
- <div style="margin-top:20px;border-left:6px solid #DD6431;padding-left:20px"><div class="mono" style="font-size:26px;color:#B44E22">Posted March 2019</div><div style="font-size:34px;font-weight:700;margin-top:6px">"Exciting things coming soon!"</div></div>
- <div style="height:2px;background:#eee2d8;margin:34px 0 22px"></div>
- <div class="mono" style="font-size:26px;color:#8a7c74">&copy; 2019 Example Co &middot; Opening hours: TBC</div></div>
-<div class="fix"><b>THE FIX</b>Update the footer year, hours and old posts &mdash; or delete them. Stale looks closed.</div>
+<div class="s" id="s7">
+ <div class="top"><span>nexa.</span><span>7 / 8</span></div>
+ <div class="num">Sign 6</div>
+ <div class="h" style="top:210px;font-size:84px">Your site looks like nobody's home.</div>
+ <div class="win" style="top:480px;height:420px"><div class="wbar"><i></i><i></i><i></i><span>yourbusiness.example/news</span></div>
+  <div style="padding:36px 44px"><div style="font-size:26px;color:#9a958d;font-weight:600">Posted March 2019</div>
+  <div style="font-size:44px;font-weight:700;margin-top:10px">Exciting things coming soon!</div>
+  <div style="height:2px;background:#e6e2db;margin:60px 0 24px"></div>
+  <div style="font-size:24px;color:#9a958d">© 2019 Example Co &nbsp;·&nbsp; Opening hours: TBC</div></div></div>
+ <svg class="mk" id="c7" style="left:100px;top:590px" width="720" height="100"></svg>
+ <div class="hand" style="left:560px;top:820px;font-size:58px;transform:rotate(-3deg)">are they still open?</div>
+ <div class="fix"><b>Fix:</b> update the footer year, hours and old posts, or delete them. Stale looks closed.</div>
+ <div class="foot"><span>@nexaweb_dev</span><span>Save for later</span></div>
 </div>
 
-<!-- 8 CTA -->
-<div class="s" id="s8"><div class="bg"></div><div class="dots"></div><div class="tag">nexa<b>.</b></div>
-<div class="pg"><i></i>QUICK RECAP</div>
-<div class="c h" style="top:170px;font-size:84px">How many did your site <span class="box">fail?</span></div>
-<div class="c card" style="top:430px;padding:30px 44px;font-size:36px;font-weight:700;line-height:1.75">
- <div>&#9744;&nbsp; Clear "what we do" headline</div><div>&#9744;&nbsp; Tap-to-call number</div><div>&#9744;&nbsp; Short contact form</div>
- <div>&#9744;&nbsp; Fast load (test it free)</div><div>&#9744;&nbsp; One obvious button</div><div>&#9744;&nbsp; Nothing out of date</div></div>
-<div class="c" style="top:1000px;text-align:center"><div class="ser" style="font-size:58px">Save this. Check yours tonight.</div>
- <div style="margin-top:34px;display:inline-block;background:#242120;color:#fff;border-radius:999px;padding:24px 50px;font-weight:900;font-size:40px">Follow <span class="O">@nexaweb_dev</span> for more</div></div>
+<div class="s" id="s8">
+ <div class="top"><span>nexa.</span><span>8 / 8</span></div>
+ <div class="h" style="top:170px;font-size:92px">How many did your site fail?</div>
+ <div style="position:absolute;left:84px;right:84px;top:420px;font-size:42px;font-weight:500;line-height:1">
+  <div style="border-top:3px solid #141414;padding:26px 0;display:flex;gap:26px"><span class="grey">1</span>Clear "what we do" headline</div>
+  <div style="border-top:2px solid #cfcac2;padding:26px 0;display:flex;gap:26px"><span class="grey">2</span>Tap to call number</div>
+  <div style="border-top:2px solid #cfcac2;padding:26px 0;display:flex;gap:26px"><span class="grey">3</span>Short contact form</div>
+  <div style="border-top:2px solid #cfcac2;padding:26px 0;display:flex;gap:26px"><span class="grey">4</span>Loads fast</div>
+  <div style="border-top:2px solid #cfcac2;padding:26px 0;display:flex;gap:26px"><span class="grey">5</span>One obvious button</div>
+  <div style="border-top:2px solid #cfcac2;border-bottom:3px solid #141414;padding:26px 0;display:flex;gap:26px"><span class="grey">6</span>Nothing out of date</div></div>
+ <div class="hand" style="left:84px;top:1060px;font-size:72px;transform:rotate(-2deg)">save this, check yours tonight</div>
+ <div style="position:absolute;left:84px;top:1170px;font-size:38px;font-weight:700">Follow @nexaweb_dev for more.</div>
 </div>
+
+<script>
+// hand-drawn marker loops (deterministic wobble)
+function loop(id,w,h,rot){const el=document.getElementById(id);let r=1;const rnd=()=>{r=(r*9301+49297)%233280;return r/233280};
+let d='',cx=w/2,cy=h/2;for(let i=0;i<=56;i++){const a=-1.9+i/50*Math.PI*2;const k=1+(rnd()-.5)*.05+(i>50?.06:0);const x=cx+Math.cos(a)*(w/2-8)*k,y=cy+Math.sin(a)*(h/2-8)*k;d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)}
+el.innerHTML=`<path d="${d}" stroke="#DD6431" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="rotate(${rot} ${cx} ${cy})"/>`}
+loop('c2',860,160,-1.5);loop('c3',400,90,2);loop("c4",420,84,-2);loop('c6',880,250,1);loop("c7",720,100,-1);
+</script>
 </body></html>
