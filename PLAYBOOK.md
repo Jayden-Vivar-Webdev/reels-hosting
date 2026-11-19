@@ -7,7 +7,7 @@ Single stories are fine; multi-part series (cliffhanger + "follow for part N") a
 
 ## Daily run (what the scheduled task does)
 1. `git pull`, read `queue.json` and `log.json`.
-2. If `queue.json` has an item whose `post_on` date (Australia/Sydney) is today or earlier and `posted` is false:
+2. If `queue.json` has an item with `approved: true`, `posted: false` and `post_on` (Australia/Sydney) today or earlier:
    post it (step 6) and stop — don't also make a new story that day.
 3. Otherwise make ONE new story (steps 4–5) and post it.
 4. **Idea:** pick a fresh premise. Check `log.json` so it doesn't repeat a premise, setting or twist.
@@ -20,6 +20,8 @@ Single stories are fine; multi-part series (cliffhanger + "follow for part N") a
    About 1 in 4 stories can be a 2–3 part series: queue the later parts in `queue.json` for the following days.
 5. **Make it** with the pipeline in `pipeline/` (see below). Check stills before the full render and the
    contact sheet after; run transcribe.py on the final mp4 and confirm every scripted word comes back.
+5b. **Approval:** Jayden approves every NEW video before it goes live. Send him the video + caption and wait
+   for 'post it' (or change requests). Only already-approved queued series parts post without asking.
 6. **Post:** copy the mp4 to `videos/<slug>/...mp4`, commit, push; confirm the raw URL returns HTTP 200
    (`https://raw.githubusercontent.com/Jayden-Vivar-Webdev/reels-hosting/main/videos/<slug>/<file>.mp4`), then
    Windsor `execute_action` connector `instagram`, action `create_video_post`, account `17841430630524125`,
