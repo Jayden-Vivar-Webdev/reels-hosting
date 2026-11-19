@@ -22,6 +22,7 @@ Single stories are fine; multi-part series (cliffhanger + "follow for part N") a
    nothing involving children in danger. Hook in the first line (a shock statement or tease).
    Length 30–50 s spoken. Plant the twist's clue early. End with a short follow CTA.
    About 1 in 4 stories can be a 2–3 part series: queue the later parts in `queue.json` for the following days.
+4b. **Storytelling check:** run the script through *Storytelling rules* below before voicing it.
 5. **Make it** with the pipeline in `pipeline/` (see below). Check stills before the full render and the
    contact sheet after; run transcribe.py on the final mp4 and confirm every scripted word comes back.
 5b. **Approval:** Jayden approves every NEW video before it goes live. Send him the video + caption and wait
@@ -34,6 +35,27 @@ Single stories are fine; multi-part series (cliffhanger + "follow for part N") a
    #creepypasta #scary #storytime #fyp + 1–2 story-specific).
 7. Append to `log.json` (date, slug, title, premise, twist, media_id, caption) and mark queue items posted; commit + push.
 8. If anything fails (render, upload, Windsor error), don't post a broken video: log the failure and tell the owner.
+
+## Storytelling rules (owner feedback 2026-11-19: "poor and confusing, not crazy enough")
+A viewer hears the story ONCE, at normal speed, while scrolling. If they can't explain the ending to a friend, it failed.
+Run every script through these checks BEFORE voicing it:
+1. **One-line twist test.** Write the twist as one plain sentence ("The driver was the dead one; the hitchhiker brings dead drivers home").
+   If it needs two sentences or the word "kind of", rewrite.
+2. **Name every character's identity on screen.** No "an old woman", "someone", "a voice": say who they are to the narrator
+   (Mum, my neighbour Dave, the trucker). Give the key character a name if the reveal hinges on them (e.g. "Danny?").
+3. **Answer every "why".** List the questions a viewer will ask (Why did she get in? Who opened the door? Why that address?).
+   Each one must be answered by a line in the script, or cut the thing that raises it.
+4. **One concrete clue, paid off by name.** Plant one specific, visual clue early (a year, a number, an object) and repeat the
+   SAME word at the reveal so the connection clicks ("a song from 2006" → "Miller's Bridge, 2006").
+5. **Escalate every line.** Each line must raise the stakes or add a new fact. No mood-only lines, no repeating the legend at length.
+   Beat map: hook (1 line) → normal-but-wrong clue → strange event → investigation → reveal → explanation (max 1 line) → kicker.
+6. **Make it crazy, not vague.** The reveal should flip the whole story (the narrator is the ghost, the dog was never the dog,
+   the warning was about the roof). Avoid soft endings ("she was bringing me home") — be literal about what it means.
+7. **Kicker pulls the viewer in.** Last line before/with the CTA makes it the viewer's problem ("And if she waves at you tonight,
+   don't stop."). Then "Follow".
+8. **Plain words, short sentences.** ≤ 18 words per line, concrete nouns, no metaphors that need decoding.
+9. **Approval message must include:** the one-line twist + a "who / why" list (each character → who they are, each mystery → its answer),
+   so the owner can spot confusion before watching.
 
 ## Pipeline (pipeline/)
 Setup each run (fresh machine): follow the instagram-reels skill's setup (Kokoro voice, Parakeet/sherpa-onnx,

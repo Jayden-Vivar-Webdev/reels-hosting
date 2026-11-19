@@ -948,7 +948,7 @@ SC.passenger = (c, p, lt, d) => {
     c.fillStyle = 'rgba(190,195,190,.35)'; c.beginPath(); c.ellipse(70, 10, 18, 40, 0, 0, 7); c.fill();
     c.restore();
     for (let i=0;i<6;i++){ const y = 900 + ((lt*500 + i*130) % 500); c.fillStyle = 'rgba(200,220,235,.7)'; c.beginPath(); c.ellipse(380 + i*45, y, 5, 9, 0, 0, 7); c.fill(); }
-    if (p.addr){ const a = ease((lt-0.4)/0.4); c.save(); c.globalAlpha = a; c.shadowColor='#000'; c.shadowBlur=20; text(c, '14 ELM STREET', 540, 420, 80, 'Salt', '#e8e2d0'); c.restore(); }
+    if (p.addr){ const a = ease((lt-0.4)/0.4); c.save(); c.globalAlpha = a; c.shadowColor='#000'; c.shadowBlur=20; text(c, "MUM'S HOUSE", 540, 420, 84, 'Salt', '#e8e2d0'); c.restore(); }
   } else {
     // puddle on seat
     const g = c.createRadialGradient(520, 1360, 10, 520, 1360, 260); g.addColorStop(0,'rgba(170,200,225,.55)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.beginPath(); c.ellipse(520, 1360, 280, 90, 0, 0, 7); c.fill();
@@ -1007,7 +1007,7 @@ SC.photo = (c, p, lt, d) => {
   c.fillStyle = '#c9b8a6'; c.beginPath(); c.ellipse(110, -60, 62, 76, 0, 0, 7); c.fill();
   c.fillStyle = '#2a201a'; c.beginPath(); c.ellipse(110, -110, 66, 36, 0, Math.PI, 0); c.fill();
   c.fillStyle = '#222'; c.beginPath(); c.arc(88, -64, 6, 0, 7); c.arc(132, -64, 6, 0, 7); c.fill();
-  text(c, '2006', -150, -260, 52, 'Hand', 'rgba(40,30,25,.8)');
+  text(c, 'Danny · 2006', -110, -260, 52, 'Hand', 'rgba(40,30,25,.85)');
   // black ribbon across corner
   c.fillStyle = '#050505'; c.beginPath(); c.moveTo(130, -380); c.lineTo(300, -380); c.lineTo(300, -210); c.closePath(); c.fill();
   c.restore();
@@ -1017,7 +1017,7 @@ SC.photo = (c, p, lt, d) => {
   { const g = c.createRadialGradient(805, 1270, 2, 805, 1270, 180*fl); g.addColorStop(0,'rgba(255,200,110,.75)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
   c.fillStyle = '#ffd27a'; c.beginPath(); c.ellipse(805, 1272, 9, 20*fl, 0, 0, 7); c.fill();
   c.fillStyle = '#1a140f'; c.fillRect(0, 1410, W, 510);
-  if (p.at){ const q = lt - p.at; if (q > 0){ const a = ease(q/0.3); c.save(); c.globalAlpha = a; c.shadowColor = 'rgba(160,0,0,.9)'; c.shadowBlur = 40; text(c, 'MY FACE.', 540, 400, 140, 'Salt', '#e0261c'); c.restore(); } }
+  if (p.at){ const q = lt - p.at; if (q > 0){ const a = ease(q/0.3); c.save(); c.globalAlpha = a; c.shadowColor = 'rgba(160,0,0,.9)'; c.shadowBlur = 40; text(c, p.label || 'MY FACE.', 540, 400, 140, 'Salt', '#e0261c'); c.restore(); } }
 };
 
 // ---------- HUD, captions, post ----------
