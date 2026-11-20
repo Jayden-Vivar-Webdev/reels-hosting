@@ -1,0 +1,20 @@
+# The Help Button (owner's storyline, 2026-11-20). One entry per script line.
+PLAN = {"p1": [
+ ("panel", {"status": "HELP", "pressed": True}, ["hum"], "04:51:07 AM", "ELEVATOR CAM"),
+ ("hospital", {}, [], "04:40:12 AM", "HOME CAM"),
+ ("hallDark", {}, ["hum"], "04:41:30 AM", "CAM 14 · HALLWAY"),
+ ("mirrorCar", {"floor": "▼12"}, ["hum"], "04:42:02 AM", "ELEVATOR CAM"),
+ ("hallDark", {"flicker": True}, ["hum"], "04:47:55 AM", "CAM 14 · YESTERDAY"),
+ ("mirrorCar", {"floor": "7", "flicker": True, "push": True}, ["powerdown"], "04:48:31 AM", "ELEVATOR CAM"),
+ ("mirrorCar", {"floor": "7", "figure": True, "eyes": True, "figureAt": 0.45, "outAt": 0.8, "flicker": True}, ["heartbeat"], "04:48:36 AM", "ELEVATOR CAM"),
+ ("panel", {"pressed": True, "dim": True}, ["rclick"], "04:48:44 AM", "ELEVATOR CAM"),
+ ("panel", {"status": "CONNECTED", "talk": True, "dim": True}, ["static"], "04:48:58 AM", "ELEVATOR CAM"),
+ ("panel", {"status": "CONNECTED", "dim": True}, [], "04:49:02 AM", "ELEVATOR CAM"),
+ ("panel", {"status": "CONNECTED", "talk": True, "evil": True, "dim": True, "push": True, "glitch": True}, ["glitch"], "04:49:20 AM", "ELEVATOR CAM"),
+ ("mirrorCar", {"floor": "7", "dark": True}, ["heartbeat"], "04:49:25 AM", "ELEVATOR CAM"),
+ ("mirrorCar", {"floor": "7", "dark": True, "eyesInDark": True, "hush": True}, ["stinger"], "04:49:29 AM", "ELEVATOR CAM"),
+ ("mirrorCar", {"floor": "7", "phone": True}, [], "04:49:33 AM", "ELEVATOR CAM"),
+ ("mirrorCar", {"floor": "7", "phone": True, "push": True}, [], "04:49:36 AM", "ELEVATOR CAM"),
+ ("lobby", {}, ["ding"], "04:50:41 AM", "CAM 01 · LOBBY"),
+ ("stairwell", {"follow": True}, ["hum"], "06:12:09 PM", "CAM 03 · STAIRWELL"),
+]}

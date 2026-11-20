@@ -1322,6 +1322,106 @@ SC.emma = (c, p, lt, d) => {
   text(c, 'EMMA', 483, 860, 60, 'VT', `rgba(255,90,60,${ease((lt-0.8)/0.4)})`);
 };
 
+// ---------- elevator-call story scenes ----------
+function flick(lt, on){ if (!on) return 0; const v = Math.sin(lt*41)+Math.sin(lt*17.3)+Math.sin(lt*7.1); return v > 1.2 ? .5 : v > .6 ? .22 : 0; }
+function shadowFig(c, x, y, s, a, eyes){
+  c.save(); c.globalAlpha *= a; c.translate(x, y); c.scale(s, s);
+  c.fillStyle = '#050506'; c.beginPath(); c.ellipse(0, 0, 70, 95, 0, 0, 7); c.fill();
+  c.beginPath(); c.moveTo(-60, 60); c.quadraticCurveTo(-190, 140, -200, 700); c.lineTo(200, 700); c.quadraticCurveTo(190, 140, 60, 60); c.fill();
+  if (eyes){ c.fillStyle = 'rgba(230,235,225,.9)'; c.beginPath(); c.ellipse(-24, 0, 9, 5, 0, 0, 7); c.ellipse(24, 0, 9, 5, 0, 0, 7); c.fill(); }
+  c.restore();
+}
+SC.hospital = (c, p, lt, d) => {
+  bg(c, '#1c2326', '#07090a');
+  c.fillStyle = '#20282b'; c.fillRect(0, 1200, W, 720);
+  c.strokeStyle = '#2d6fb0'; c.lineWidth = 14; c.beginPath(); c.moveTo(420, 0); c.lineTo(540, 560); c.lineTo(660, 0); c.stroke();
+  c.save(); c.translate(540, 870); c.rotate(-0.05 + 0.02*Math.sin(lt*1.5));
+  c.fillStyle = '#eef1f2'; c.beginPath(); c.roundRect(-230, -320, 460, 640, 28); c.fill();
+  c.fillStyle = '#2d6fb0'; c.fillRect(-230, -320, 460, 130);
+  text(c, 'CITY GENERAL', 0, -280, 54, 'Anton', '#fff'); text(c, 'HOSPITAL', 0, -222, 40, 'Anton', '#dce9f5');
+  c.fillStyle = '#9aa3a8'; c.fillRect(-110, -160, 220, 250); manBust(c, 0, -60, .7, 1);
+  c.restore();
+  c.save(); c.translate(540, 870); c.rotate(-0.05 + 0.02*Math.sin(lt*1.5));
+  c.fillStyle = '#c0281e'; c.fillRect(-230, 140, 460, 90); text(c, 'NIGHT SHIFT', 0, 186, 58, 'Anton', '#fff');
+  text(c, 'STAFF', 0, 270, 40, 'Type', '#333'); c.restore();
+};
+SC.hallDark = (c, p, lt, d) => {
+  hallBase(c, .6);
+  elevatorFrame(c, 0, '14');
+  const f = flick(lt, p.flicker);
+  c.fillStyle = `rgba(0,0,0,${.2 + f})`; c.fillRect(0, 0, W, H);
+};
+SC.mirrorCar = (c, p, lt, d) => {
+  // inside the elevator, camera high in the corner, looking at the mirrored back wall
+  bg(c, '#6d6a5f', '#26241f');
+  c.fillStyle = '#3a3730'; c.fillRect(0, 1350, W, 570);
+  const MX = 170, MY = 360, MW = 740, MH = 1000;
+  c.fillStyle = '#8c8f8d'; c.fillRect(MX-18, MY-18, MW+36, MH+36);
+  c.save(); c.beginPath(); c.rect(MX, MY, MW, MH); c.clip();
+  const g = c.createLinearGradient(MX, MY, MX+MW, MY+MH); g.addColorStop(0, '#7d827f'); g.addColorStop(.5, '#a7aca8'); g.addColorStop(1, '#5d625f'); c.fillStyle = g; c.fillRect(MX, MY, MW, MH);
+  // reflected doors behind him
+  c.fillStyle = '#6c7174'; c.fillRect(MX+170, MY+120, 400, 880); c.fillStyle = 'rgba(0,0,0,.3)'; c.fillRect(MX+368, MY+120, 4, 880);
+  // the thing behind him
+  if (p.figure){ const a = p.figureAt != null ? clamp((lt - p.figureAt*d)/0.25, 0, 1) : 1; shadowFig(c, 690, MY+300, 1.05, a, p.eyes); }
+  manBust(c, 520, MY+430, 1.25, 1);
+  if (p.phone){ const gl = c.createRadialGradient(470, MY+640, 5, 470, MY+640, 160); gl.addColorStop(0, 'rgba(255,255,255,.95)'); gl.addColorStop(1, 'rgba(255,255,255,0)'); c.fillStyle = gl; c.fillRect(MX, MY, MW, MH); }
+  c.fillStyle = 'rgba(255,255,255,.08)'; c.beginPath(); c.moveTo(MX+80, MY); c.lineTo(MX+220, MY); c.lineTo(MX+40, MY+MH); c.lineTo(MX-100, MY+MH); c.fill();
+  c.restore();
+  // handrail + his back in the foreground
+  c.fillStyle = '#b9bdb9'; c.fillRect(120, 1240, 840, 22);
+  c.fillStyle = '#121416'; c.beginPath(); c.ellipse(520, 1390, 120, 140, 0, 0, 7); c.fill(); c.beginPath(); c.moveTo(250, 1920); c.quadraticCurveTo(260, 1520, 520, 1500); c.quadraticCurveTo(780, 1520, 790, 1920); c.fill();
+  // floor indicator
+  c.fillStyle = '#0b0b0b'; c.fillRect(470, 250, 140, 80); text(c, p.floor || '▼9', 540, 292, 62, 'VT', '#ff5a3a');
+  // lighting
+  let dark = p.dark ? .9 : 0;
+  if (p.outAt != null && lt > p.outAt*d) dark = 1;
+  const f = flick(lt, p.flicker);
+  if (p.phone){ c.fillStyle = 'rgba(0,0,0,.55)'; c.fillRect(0,0,W,H); const cone = c.createRadialGradient(470, 1000, 20, 470, 1000, 700); cone.addColorStop(0,'rgba(0,0,0,0)'); cone.addColorStop(1,'rgba(0,0,0,.85)'); c.fillStyle = cone; c.fillRect(0,0,W,H); }
+  c.fillStyle = `rgba(0,0,0,${Math.min(1, dark + f)})`; c.fillRect(0, 0, W, H);
+  if (p.dark && p.eyesInDark){ const a = clamp((lt - 0.3)/0.6, 0, 1); c.save(); c.shadowColor = 'rgba(255,255,255,.8)'; c.shadowBlur = 25; c.fillStyle = `rgba(235,240,230,${.95*a})`; c.beginPath(); c.ellipse(650, 660, 20, 11, 0, 0, 7); c.ellipse(730, 660, 20, 11, 0, 0, 7); c.fill(); c.restore(); }
+};
+SC.panel = (c, p, lt, d) => {
+  bg(c, '#7b7f80', '#3d4142');
+  c.fillStyle = '#a3a8aa'; c.beginPath(); c.roundRect(240, 300, 600, 1180, 20); c.fill();
+  c.strokeStyle = '#6a6f71'; c.lineWidth = 6; c.stroke();
+  // floor buttons
+  for (let i=0;i<14;i++){ const col = i%2, row = Math.floor(i/2); const bx = 440 + col*200, by = 1020 - row*82; c.fillStyle = '#d7dadb'; c.beginPath(); c.arc(bx, by, 30, 0, 7); c.fill(); text(c, String(i+1), bx, by+2, 30, 'Anton', '#333'); }
+  c.fillStyle = '#d7dadb'; c.beginPath(); c.arc(540, 1110, 30, 0, 7); c.fill(); text(c, 'G', 540, 1112, 30, 'Anton', '#333');
+  // speaker grille
+  c.fillStyle = '#2b2e2f'; for (let r=0;r<5;r++) for (let k=0;k<9;k++){ c.beginPath(); c.arc(410 + k*32, 380 + r*28, 7, 0, 7); c.fill(); }
+  // LCD
+  c.fillStyle = '#0d120f'; c.fillRect(330, 520, 420, 110);
+  const st = p.status || 'CALLING...'; const blink = p.status ? 1 : (Math.floor(lt*2)%2 ? 1 : .35);
+  text(c, st, 540, 577, 56, 'VT', `rgba(255,${p.evil ? 60 : 200},${p.evil ? 40 : 120},${blink})`);
+  // HELP button
+  const glow = p.pressed ? .6 + .4*Math.sin(lt*10) : .4;
+  c.save(); c.shadowColor = '#ff2a20'; c.shadowBlur = 50*glow; c.fillStyle = '#c4261d'; c.beginPath(); c.arc(540, 1260, 80, 0, 7); c.fill(); c.restore();
+  text(c, '🔔', 540, 1250, 60, 'Anton', '#fff'); text(c, 'HELP', 540, 1380, 48, 'Anton', '#7a1510');
+  // voice waveform on the LCD strip when someone is talking
+  if (p.talk){ c.fillStyle = p.evil ? '#ff3b30' : '#7cf0b0'; for (let k=0;k<26;k++){ const h = 8 + 34*Math.abs(Math.sin(lt*9 + k*1.7) * Math.sin(lt*3.1 + k*.6)); c.fillRect(345 + k*15.5, 690 - h/2, 9, h); } }
+  // finger press
+  if (p.pressed){ const pk = Math.abs(Math.sin(lt*6)); c.fillStyle = '#c9a88a'; c.beginPath(); c.ellipse(560, 1330 + 30*pk, 55, 120, -.2, 0, 7); c.fill(); }
+  const f = flick(lt, p.flicker); c.fillStyle = `rgba(0,0,0,${(p.dim ? .45 : .1) + f})`; c.fillRect(0,0,W,H);
+};
+SC.lobby = (c, p, lt, d) => {
+  hallBase(c, 1.2);
+  c.fillStyle = '#2b2620'; c.fillRect(0, 1300, W, 620);
+  elevatorInside(c, {empty: true}, lt);
+  elevatorFrame(c, ease((lt-0.1)/0.7), 'G');
+  // him running out of frame
+  const k = ease((lt - 0.8)/1.2); person(c, 540 - 700*k, 760, 1.2, {coat: '#2d6fb0', a: 1 - .2*k});
+};
+SC.stairwell = (c, p, lt, d) => {
+  bg(c, '#23282a', '#08090a');
+  // concrete stairs going down into darkness
+  for (let i=0;i<10;i++){ const y = 700 + i*90, w = 900 - i*40; c.fillStyle = `rgb(${70-i*6},${74-i*6},${76-i*6})`; c.fillRect(540 - w/2, y, w, 60); c.fillStyle = `rgb(${40-i*3},${42-i*3},${44-i*3})`; c.fillRect(540 - w/2, y+60, w, 30); }
+  c.strokeStyle = '#7a807f'; c.lineWidth = 12; c.beginPath(); c.moveTo(120, 640); c.lineTo(330, 1600); c.stroke();
+  c.save(); c.shadowColor = '#3cff7a'; c.shadowBlur = 30; c.fillStyle = '#0f8a3a'; c.fillRect(700, 380, 220, 90); text(c, 'EXIT', 810, 427, 62, 'Anton', '#d9ffe4'); c.restore();
+  const g = c.createRadialGradient(540, 1500, 50, 540, 1500, 600); g.addColorStop(0, 'rgba(0,0,0,.85)'); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0,0,W,H);
+  const f = flick(lt, true) * .6; c.fillStyle = `rgba(0,0,0,${.15 + f})`; c.fillRect(0,0,W,H);
+  if (p.follow){ c.save(); c.globalAlpha = ease((lt - d + 1.8)/0.5); c.fillStyle='rgba(0,0,0,.75)'; c.fillRect(270, 1390, 540, 170); c.strokeStyle = '#d82a20'; c.lineWidth = 8; c.strokeRect(300, 1415, 480, 120); text(c, 'FOLLOW', 540, 1477, 84, 'Anton', '#ff3b30'); c.restore(); }
+};
+
 // ---------- HUD, captions, post ----------
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
@@ -1372,7 +1472,7 @@ window.render = (t) => {
   X.setTransform(1,0,0,1,0,0); X.fillStyle = '#000'; X.fillRect(0,0,W,H);
   X.save(); X.translate(W/2, H/2); X.scale(push, push); X.translate(-W/2, -H/2);
   // CCTV tint
-  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='photo' || sc.scene==='flowers' || sc.scene==='notice' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
+  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='photo' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
   X.drawImage(S, 0, 0);
   X.filter = 'none';
   X.restore();

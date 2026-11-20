@@ -11,7 +11,7 @@ for p, lines in S.items():
     sr = 24000; out = [np.zeros(int(sr*0.3))]; t = 0.3; starts = []
     for i, line in enumerate(lines):
         vv = VO.get(p, {}).get(str(i))
-        a, sr = k.create(line, voice=vv or "am_onyx", speed=0.88 if vv else 0.96, lang="en-us")
+        a, sr = k.create(line, voice=vv or "am_onyx", speed=0.94 if vv else 0.96, lang="en-us")
         if vv: a = a * 0.8
         a = trim(a)
         starts.append(round(t, 3)); out.append(a); t += len(a)/sr

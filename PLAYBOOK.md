@@ -111,6 +111,17 @@ a polite, calm threat (calm voices are scarier than screams).
 The one-line twist, the critique scores, a who/why list (each character → who they are, each mystery → its answer), the clue(s)
 and where they pay off, the caption, and the video.
 
+### H. Owner's taste (2026-11-20, rejected the ending-first "Room for One More" v2 as "horrible")
+He wants **grounded, personal, "this happened to me" stories**, told like a real person recounting a scary night:
+- Set up the narrator's **real routine first** (job, time of day, the walk he always does: "I work night shift at the hospital,
+  every morning I take the elevator down alone") so the viewer can picture themselves there.
+- Build **slow, relatable unease** (dark hallways, mirrors, "it always felt like someone was in there with me", "I blamed my imagination")
+  before the event. Flickering lights / a stalled elevator are fine in this personal context.
+- The scare is a **direct, personal encounter** (a voice that knows what he saw, "I'm right behind you"), then a "nothing was there" beat.
+- End on the **lasting real-life effect** ("I haven't used it since. I'm moving out. Even the stairs scare me now.").
+- He prefers this over clever moral-dilemma or supernatural-rule twists. Section D's cliché bans are guidance, not hard rules,
+  when they fit this grounded style. When he gives a storyline, keep every beat he wrote; only tighten wording.
+
 ## Pipeline (pipeline/)
 Setup each run (fresh machine): follow the instagram-reels skill's setup (Kokoro voice, Parakeet/sherpa-onnx,
 playwright via `npm i -g playwright`, google-chrome). Then copy `pipeline/` to a work dir, put `fonts/` beside the html.
