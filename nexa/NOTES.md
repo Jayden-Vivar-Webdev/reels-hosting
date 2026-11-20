@@ -16,3 +16,8 @@
   casual short copy, realistic screenshots, freehand marker scribbles, no label pills / FIX boxes / logo badges / handwriting font,
   slightly different layout per slide. He has no own screenshots or photos to supply.
 - 2026-11-20 (Jayden): mockups must look like actual websites (real browser chrome, logos, nav, hero photos, per-business fonts/colours, blurred URL bar). Business names are made up.
+- 2026-11-20 (Jayden): reels must use the whole Instagram safe area, not cram into the top half. Safe zones on 1080x1920
+  (from his phone screenshot): keep text out of the top 220 px (header/back arrow), the right icon column x>925 below y~940,
+  and the bottom 300 px (y>1620: username, caption, audio). Safe content area x 60-920, y 230-1600; visuals ~y 280-1340,
+  captions ~y 1385-1600 (box left 60, width 860). Check stills with red zone overlays (see instagram-reels skill section 3b).
+- 2026-11-20 (Jayden): reels use ElevenLabs Brian v3 (he supplies the key per chat; never save it).

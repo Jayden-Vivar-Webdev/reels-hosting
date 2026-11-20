@@ -5,7 +5,7 @@ html,body{width:1080px;height:1920px;overflow:hidden}
 body{font-family:'DM Sans','Inter',sans-serif;color:#150C2B;background:#FAF9F6}
 #stage{position:absolute;inset:0}
 .I{color:#6557E8}
-.lab{position:absolute;left:0;right:0;top:250px;text-align:center;font-weight:800;font-size:34px;letter-spacing:8px;color:#6557E8}
+.lab{position:absolute;left:0;right:0;top:285px;text-align:center;font-weight:800;font-size:34px;letter-spacing:8px;color:#6557E8}
 .h{font-weight:800;letter-spacing:-.045em;line-height:1;color:#150C2B}
 .box{display:inline-block;background:#6557E8;color:#fff;padding:0 .14em .06em;border-radius:.12em}
 .lav{display:inline-block;background:#B9A6FF;color:#150C2B;padding:0 .14em .06em;border-radius:.12em}
@@ -14,11 +14,11 @@ body{font-family:'DM Sans','Inter',sans-serif;color:#150C2B;background:#FAF9F6}
 .chip{display:inline-block;background:#150C2B;color:#fff;border-radius:999px;padding:18px 40px;font-weight:800;font-size:44px;white-space:nowrap}
 .stamp{display:inline-block;border:8px solid #E5484D;color:#E5484D;border-radius:20px;padding:4px 30px 10px;font-weight:800;font-size:96px;letter-spacing:4px}
 .bar{height:22px;border-radius:11px;background:#ECEAF3}
-#cap{position:absolute;left:80px;width:920px;top:1250px;text-align:center;font-weight:800;font-size:84px;letter-spacing:-.04em;line-height:1.14}
+#cap{position:absolute;left:60px;width:860px;top:1385px;text-align:center;font-weight:800;font-size:88px;letter-spacing:-.04em;line-height:1.14}
 #cap span{display:inline-block;margin:0 .1em}
 #cap span.k{background:#6557E8;color:#fff;padding:0 .12em .05em;border-radius:.12em}
-#tag{position:absolute;left:880px;top:160px;font-weight:800;font-size:44px;letter-spacing:-2px}
-#ser{position:absolute;left:90px;top:170px;font-weight:700;font-size:28px;letter-spacing:4px;color:rgba(21,12,43,.45)}
+#tag{position:absolute;left:870px;top:214px;font-weight:800;font-size:44px;letter-spacing:-2px}
+#ser{position:absolute;left:90px;top:228px;font-weight:700;font-size:28px;letter-spacing:4px;color:rgba(21,12,43,.45)}
 </style></head><body>
 <div id="stage"></div>
 <div id="ser">WEBSITE MYTHS</div>
@@ -46,12 +46,12 @@ function lines(n,w=600){let h='';for(let i=0;i<n;i++)h+=`<div class="bar" style=
 function cursor(x,y,click=0){return `<div style="position:absolute;left:${x}px;top:${y}px;transform:scale(${1-0.15*click})"><svg width="60" height="72" viewBox="0 0 30 36"><path d="M2 2 L2 28 L9 21 L14 33 L19 31 L14 19 L24 19 Z" fill="#150C2B" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/></svg></div>`}
 function phone(w,h,inner,o=''){return `<div style="position:relative;width:${w}px;height:${h}px;border-radius:70px;background:#150C2B;padding:22px;box-shadow:0 40px 80px rgba(21,12,43,.3);${o}"><div style="position:relative;width:100%;height:100%;border-radius:52px;overflow:hidden;background:#fff">${inner}<div style="position:absolute;left:50%;top:18px;width:120px;height:34px;margin-left:-60px;border-radius:20px;background:#150C2B"></div></div></div>`}
 function phoneSite(){return `<div style="padding:90px 36px 0"><div style="height:220px;border-radius:24px;background:${SL[0]}"></div><div class="h" style="font-size:44px;margin:30px 0 10px">Fresh bread,<br>baked daily.</div>${lines(6,340)}</div>`}
-function mythHead(n,txt,p){return `<div class="lab">MYTH ${n}</div>`+at(p,0,`<div class="h" style="font-size:112px;text-align:center;width:960px">${txt}</div>`,540,330)+at(p,.55,'<div class="stamp" style="background:#FAF9F6">MYTH</div>',830,1010,{r:-30,rr:-10,css:'z-index:5'})}
+function mythHead(n,txt,p){return `<div class="lab">MYTH ${n}</div>`+at(p,0,`<div class="h" style="font-size:100px;text-align:center;width:880px">${txt}</div>`,540,330)+at(p,.55,'<div class="stamp" style="background:#FAF9F6">MYTH</div>',260,1010,{r:30,rr:10,css:'z-index:5'})}
 const SC=[
  // 0 hook: slider, cursor scrolls past
  (p,t)=>at(p,0,browser(900,700,slider(900,420,t)+`<div style="padding:10px 50px">${lines(4,700)}</div>`),540,330,{r:-2})
   +cursor(700-260*ease(p*1.4),620+300*ease(p*1.4))
-  +at(p,.35,'<div class="h" style="font-size:96px;background:#FAF9F6;padding:16px 34px 26px;border-radius:30px;box-shadow:0 24px 50px rgba(21,12,43,.15);white-space:nowrap">almost <span class="box">nobody</span> clicks</div>',540,960,{r:3}),
+  +at(p,.35,'<div class="h" style="font-size:84px;background:#FAF9F6;padding:16px 34px 26px;border-radius:30px;box-shadow:0 24px 50px rgba(21,12,43,.15);white-space:nowrap">almost <span class="box">nobody</span> clicks</div>',540,960,{r:3}),
  // 1 three myths
  (p,t)=>at(p,0,'<div class="h" style="font-size:150px;white-space:nowrap"><span class="box">3</span> website</div>',540,330)+at(p,.08,'<div class="h" style="font-size:150px">myths</div>',540,500)
   +['🎠 the slider','🪟 the pop-up','🖥️ the desktop'].map((x,i)=>at(p,.25+i*.12,`<div class="card" style="padding:26px 44px;font-weight:800;font-size:54px;white-space:nowrap">${x}</div>`,540,700+i*150,{r:i%2?3:-3,rr:i%2?2:-2})).join(''),
@@ -79,7 +79,7 @@ const SC=[
   return '<div class="lab">GOOGLE · SINCE 2017</div>'+at(p,0,`<div class="card" style="position:relative;width:860px;height:620px;overflow:hidden"><div style="margin:36px 40px;height:64px;border-radius:32px;border:2px solid #E3E0EC;padding:12px 30px;font-size:30px;color:#8F8AA3">🔍 bakery near me</div>${rows}</div>`,540,340)
   +at(p,.5,'<div class="chip" style="background:#E5484D;font-size:46px">↓ rankings can drop</div>',540,1010,{r:-3})},
  // 8 fix small banner
- (p,t)=>{const b=ease((p-.25)*4);return '<div class="lab">THE FIX</div>'+at(p,0,phone(420,800,phoneSite()+`<div style="position:absolute;left:18px;right:18px;bottom:${18-(1-b)*200}px;border-radius:24px;background:#150C2B;color:#fff;padding:24px 26px;font-size:26px;font-weight:700;display:flex;align-items:center;gap:14px">10% off your first order <span style="margin-left:auto;background:#6557E8;padding:10px 18px;border-radius:12px">Get it</span><span style="color:#8F8AA3">✕</span></div>`),540,330)
+ (p,t)=>{const b=ease((p-.25)*4);return '<div class="lab">THE FIX</div>'+at(p,0,phone(420,800,phoneSite()+`<div style="position:absolute;left:18px;right:18px;bottom:${18-(1-b)*200}px;border-radius:24px;background:#150C2B;color:#fff;padding:24px 26px;font-size:26px;font-weight:700;display:flex;align-items:center;gap:14px">10% off your first order <span style="margin-left:auto;background:#6557E8;padding:10px 18px;border-radius:12px">Get it</span><span style="color:#8F8AA3">✕</span></div>`),540,350)
   +at(p,.55,'<div class="chip" style="background:#6557E8">✓ small, skippable</div>',540,1060,{r:2})},
  // 9 myth three desktop
  (p,t)=>mythHead('03','they find you on a <span class="lav">computer</span>',p)+at(p,.25,`<div style="display:flex;flex-direction:column;align-items:center"><div class="navy" style="width:720px;height:440px;padding:22px;border-radius:30px"><div style="width:100%;height:100%;background:#fff;border-radius:14px;overflow:hidden">${slider(676,180,t,false)}<div style="padding:10px 30px">${lines(3,500)}</div></div></div><div style="width:120px;height:70px;background:#2E2160"></div><div style="width:320px;height:24px;border-radius:12px;background:#150C2B"></div></div>`,540,640),
@@ -88,7 +88,7 @@ const SC=[
   +at(p,.1,'<div class="navy" style="width:400px;height:270px;padding:16px;border-radius:24px"><div style="width:100%;height:100%;background:#fff;border-radius:10px;padding:14px 24px"><div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#6557E8,#B9A6FF)"></div><div class="bar" style="width:300px;margin-top:20px"></div><div class="bar" style="width:220px;margin-top:14px"></div></div></div>',780,520,{r:3})
   +at(p,.3,`<div class="card" style="width:880px;padding:36px 44px"><div style="display:flex;height:70px;border-radius:20px;overflow:hidden"><div style="width:${50+12*m}%;background:#6557E8"></div><div style="flex:1;background:#D9D5E6"></div></div><div style="display:flex;justify-content:space-between;margin-top:18px;font-weight:800;font-size:44px"><span class="I">📱 phones: most</span><span style="color:#8F8AA3">🖥️ the rest</span></div></div>`,540,990)},
  // 11 thumb first
- (p,t)=>{const a=ease((p-.2)*2.5);return '<div class="lab">DESIGN FOR THE THUMB</div>'+at(p,0,phone(440,860,phoneSite()+`<div style="position:absolute;left:-120px;bottom:-200px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(101,87,232,.45),rgba(101,87,232,.15) 65%,transparent 70%);opacity:${a}"></div><div style="position:absolute;left:30px;right:30px;bottom:40px;background:#6557E8;color:#fff;font-weight:800;font-size:36px;text-align:center;padding:26px;border-radius:20px;opacity:${clamp((p-.45)*4)}">📞 Tap to call</div>`),540,320)
+ (p,t)=>{const a=ease((p-.2)*2.5);return '<div class="lab">DESIGN FOR THE THUMB</div>'+at(p,0,phone(440,860,phoneSite()+`<div style="position:absolute;left:-120px;bottom:-200px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(101,87,232,.45),rgba(101,87,232,.15) 65%,transparent 70%);opacity:${a}"></div><div style="position:absolute;left:30px;right:30px;bottom:40px;background:#6557E8;color:#fff;font-weight:800;font-size:36px;text-align:center;padding:26px;border-radius:20px;opacity:${clamp((p-.45)*4)}">📞 Tap to call</div>`),540,350)
   +at(p,.55,'<div class="chip">easy reach zone 👍</div>',540,1080,{r:-2})},
  // 12 CTA
  (p,t)=>{const it=['🎠 the slider','🪟 the pop-up','🖥️ desktop first'];let h='';it.forEach((x,i)=>{const s=spring(p*3.4-i*.35);h+=`<div style="display:flex;align-items:center;gap:22px;margin:18px 0;font-weight:800;font-size:54px;opacity:${clamp(s*2)};transform:translateX(${(1-s)*-50}px)"><span style="width:60px;height:60px;border-radius:16px;border:5px solid #6557E8;display:inline-block"></span>${x}</div>`});
@@ -99,7 +99,7 @@ window.render=function(t){
  const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
  const end=nx?nx.start:DATA.total,d=end-L.start,lt=t-L.start+0.05,p=clamp(lt/d);
  const out=nx?clamp((t-(end-0.14))/0.14):0, inn=ease(lt/0.25);
- S.innerHTML=`<div style="position:absolute;inset:0;opacity:${inn*(1-out)};transform:translateY(${-out*40}px);filter:blur(${(1-inn)*8+out*8}px)">${SC[i](p,t)}</div>`;
+ S.innerHTML=`<div style="position:absolute;inset:0;transform-origin:520px 330px;transform:scale(1.1)"><div style="position:absolute;inset:0;opacity:${inn*(1-out)};transform:translateY(${-out*40}px);filter:blur(${(1-inn)*8+out*8}px)">${SC[i](p,t)}</div></div>`;
  const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25);
  if(!ch){C.innerHTML='';return}
  C.innerHTML=ch.words.filter(w=>t>=w.start-0.02).map(w=>`<span class="${w.k?'k':''}">${w.w}</span>`).join(' ');
