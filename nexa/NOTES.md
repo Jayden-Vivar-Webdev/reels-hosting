@@ -21,3 +21,7 @@
   and the bottom 300 px (y>1620: username, caption, audio). Safe content area x 60-920, y 230-1600; visuals ~y 280-1340,
   captions ~y 1385-1600 (box left 60, width 860). Check stills with red zone overlays (see instagram-reels skill section 3b).
 - 2026-11-20 (Jayden): reels use ElevenLabs Brian v3 (he supplies the key per chat; never save it).
+- 2026-11-20 (Jayden): captions kept coming out left of centre and out of time with the voice. Rules: caption box centred on x=540
+  (left 150, width 780); render the whole chunk with unspoken words at opacity 0 so lines never re-centre/slide; word times from
+  per-line transcription of the FINAL vo.wav (align.py), rebuilt after any re-voice. Run capcheck.mjs + synccheck.py
+  (in nexa/videos/website-myths-3/src/) before sending. Details in instagram-reels skill section 3c.
