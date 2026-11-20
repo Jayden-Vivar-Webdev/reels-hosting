@@ -1350,6 +1350,7 @@ SC.hallDark = (c, p, lt, d) => {
   elevatorFrame(c, 0, '14');
   const f = flick(lt, p.flicker);
   c.fillStyle = `rgba(0,0,0,${.2 + f})`; c.fillRect(0, 0, W, H);
+  if (p.follow){ c.save(); c.globalAlpha = ease((lt - d + 1.8)/0.5); c.fillStyle='rgba(0,0,0,.75)'; c.fillRect(270, 1390, 540, 170); c.strokeStyle = '#d82a20'; c.lineWidth = 8; c.strokeRect(300, 1415, 480, 120); text(c, 'FOLLOW', 540, 1477, 84, 'Anton', '#ff3b30'); c.restore(); }
 };
 SC.mirrorCar = (c, p, lt, d) => {
   // inside the elevator, camera high in the corner, looking at the mirrored back wall
