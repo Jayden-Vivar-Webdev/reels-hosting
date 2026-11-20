@@ -96,7 +96,7 @@
   "topic": "Internet Stories ep.3: lost domains. google.com bought for $12 via Google Domains by a former Google employee (Sept 2015, owned ~1 min, $6,006.13 reward spells 'Google', doubled when donated to charity) + Microsoft forgot to renew passport.com (Dec 1999, Hotmail partly broken, a programmer paid the $35 fee). Lesson: turn on auto-renew.",
   "hook": "Someone bought google.com. For $12.",
   "style": "v2 dark motion graphics (Jayden asked 2026-11-20 for darker, professional, impressive motion graphics): deep navy/violet bg #0A0616-#1B1036 with drifting indigo glow orbs, scrolling perspective grid floor, floating particles, glass cards with light sweeps, 3D flip-up entrances with blur, pulse rings, counters, glitch on 'cancelled', DM Sans 800, indigo #6557E8 gradient key-word boxes, lavender #B9A6FF accents, progress bar. src/scene_dark.html",
-  "voice": "Chatterbox built-in female voice (no ElevenLabs key in this scheduled run)",
+  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
   "media": [
    "nexa/videos/internet-stories-ep3-domains/ep3.mp4"
   ],
@@ -106,6 +106,6 @@
   "approved": false,
   "posted": false,
   "status": "awaiting approval",
-  "note": "8:17 pm slot. Fallback voice: ElevenLabs key is supplied per chat. capcheck + synccheck pass; transcript complete. v1 (cream ep.2 style) -> Jayden asked for darker professional motion graphics; v2 dark awaiting approval."
+  "note": "8:17 pm slot. Fallback voice: ElevenLabs key is supplied per chat. capcheck + synccheck pass; transcript complete. v1 (cream ep.2 style) -> Jayden asked for darker professional motion graphics; v2 dark awaiting approval. v3: re-voiced with Brian (55 s); capcheck + synccheck pass, awaiting approval."
  }
 ]
