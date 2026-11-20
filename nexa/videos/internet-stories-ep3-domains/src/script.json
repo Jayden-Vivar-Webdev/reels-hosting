@@ -1,0 +1,14 @@
+[
+ {"text":"Someone bought google.com. For $12.","say":"Someone bought google dot com. For twelve dollars."},
+ {"text":"September 2015. A former Google employee was searching Google's own domain shop.","say":"September twenty fifteen. A former Google employee was searching Google's own domain shop."},
+ {"text":"He typed in google.com. It said: available. $12.","say":"He typed in google dot com. It said: available. Twelve dollars."},
+ {"text":"So he bought it. For about one minute, he owned the most visited website on Earth."},
+ {"text":"Then an email arrived. Order cancelled."},
+ {"text":"Google paid him a reward: $6,006.13. Squint, and the number spells Google.","say":"Google paid him a reward: six thousand and six dollars, thirteen cents. Squint, and the number spells Google."},
+ {"text":"He gave it to charity, so Google doubled it."},
+ {"text":"And Google isn't the only giant to lose its own domain."},
+ {"text":"In 1999, Microsoft forgot to renew passport.com, and Hotmail broke for many users.","say":"In nineteen ninety-nine, Microsoft forgot to renew passport dot com, and Hotmail broke for many users."},
+ {"text":"A programmer paid the $35 renewal fee for them.","say":"A programmer paid the thirty-five dollar renewal fee for them."},
+ {"text":"The lesson: if your domain expires, your website and your email go with it."},
+ {"text":"Turn on auto-renew today. Follow for more Internet Stories."}
+]

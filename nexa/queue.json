@@ -89,5 +89,23 @@
   "posted": false,
   "status": "awaiting approval",
   "note": "5:17 pm slot. Fallback voice because ElevenLabs key is supplied per chat. capcheck + synccheck pass."
+ },
+ {
+  "slug": "internet-stories-ep3-domains",
+  "format": "reel",
+  "topic": "Internet Stories ep.3: lost domains. google.com bought for $12 via Google Domains by a former Google employee (Sept 2015, owned ~1 min, $6,006.13 reward spells 'Google', doubled when donated to charity) + Microsoft forgot to renew passport.com (Dec 1999, Hotmail partly broken, a programmer paid the $35 fee). Lesson: turn on auto-renew.",
+  "hook": "Someone bought google.com. For $12.",
+  "style": "Internet Stories ep.2 style (warm cream dot-grid, orange label, Inter Display Black headlines, mock browser/email/receipt UIs), captions centred x=540 at y1385, safe zones",
+  "voice": "Chatterbox built-in female voice (no ElevenLabs key in this scheduled run)",
+  "media": [
+   "nexa/videos/internet-stories-ep3-domains/ep3.mp4"
+  ],
+  "caption": "Someone bought google.com for $12. 🤯\nAnd Microsoft once forgot to renew a domain that Hotmail needed to work.\n\nDo you know when your domain renews? Check today, then tell me below 👇 Save this so you don't forget.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #domainname #webdesign #websitetips #smallbusinessaustralia #techhistory #google #digitalmarketing",
+  "created": "2026-11-20 20:42 AEDT",
+  "post_on": "2026-11-20",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval",
+  "note": "8:17 pm slot. Fallback voice: ElevenLabs key is supplied per chat. capcheck + synccheck pass; transcript complete."
  }
 ]

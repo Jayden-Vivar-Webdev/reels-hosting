@@ -1,0 +1,105 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:'Inter Display','Inter',sans-serif;color:#1a1412;background:#F5ECE3}
+#bg{position:absolute;inset:0;background:
+ radial-gradient(900px 700px at 0% 0%,rgba(236,170,135,.55),transparent 70%),
+ radial-gradient(800px 800px at 100% 100%,rgba(236,170,135,.45),transparent 70%),
+ radial-gradient(700px 500px at 100% 20%,rgba(255,255,255,.6),transparent 70%),#F5ECE3}
+#dots{position:absolute;inset:0;background-image:radial-gradient(rgba(120,85,65,.22) 2px,transparent 2.4px);background-size:38px 38px}
+#glow{position:absolute;inset:0}
+#stage{position:absolute;inset:0}
+.O{color:#DD6431}
+.lab{position:absolute;left:0;right:0;top:290px;text-align:center;font-weight:800;font-size:34px;letter-spacing:9px;color:#DD6431}
+.lab i{display:inline-block;width:22px;height:22px;border-radius:50%;background:#DD6431;margin-right:14px;box-shadow:0 0 0 7px rgba(221,100,49,.18);vertical-align:2px}
+.h{font-weight:900;letter-spacing:-.055em;line-height:.98;color:#1a1412}
+.box{display:inline-block;background:#DD6431;color:#fff;padding:0 .14em .04em;border-radius:.12em;letter-spacing:-.04em}
+.ser{font-family:'Lora';font-style:italic;font-weight:500;color:#DD6431;letter-spacing:-.01em}
+.card{position:absolute;background:#FFFBF6;border-radius:40px;box-shadow:0 34px 70px rgba(120,70,40,.18),0 2px 0 rgba(255,255,255,.9) inset;border:1.5px solid rgba(120,80,60,.08)}
+.rel{position:relative}
+.dark{position:absolute;background:#242120;border-radius:44px;box-shadow:0 40px 80px rgba(60,30,15,.35);overflow:hidden}
+.dbar{height:90px;display:flex;align-items:center;gap:16px;padding:0 38px;border-bottom:1.5px solid #3a3533;color:#fff;font-weight:800;font-size:32px}
+.dbar s{width:20px;height:20px;border-radius:50%;display:inline-block;text-decoration:none}
+.mono{font-family:'DejaVu Sans Mono',monospace}
+.chip{display:inline-block;background:#fff;border-radius:999px;padding:14px 30px;font-weight:800;font-size:38px;box-shadow:0 14px 30px rgba(120,70,40,.15);white-space:nowrap}
+.pchip{display:inline-block;background:#F3D3C0;color:#B44E22;border-radius:999px;padding:12px 30px;font-weight:800;font-size:40px;white-space:nowrap}
+.btn{display:inline-block;background:#DD6431;color:#fff;border-radius:22px;padding:22px 44px;font-weight:800;font-size:40px;white-space:nowrap}
+.bar{height:80px;display:flex;align-items:center;gap:14px;padding:0 32px;border-bottom:1.5px solid #eee2d8}
+.bar s{width:18px;height:18px;border-radius:50%;background:#e8dcd2;display:inline-block}
+.bar s:first-child{background:#DD6431}
+#cap{position:absolute;left:150px;width:780px;top:1385px;text-align:center;font-weight:900;font-size:82px;letter-spacing:-.05em;line-height:1.12}
+#cap span{display:inline-block;margin:0 .1em}
+#cap span.k{background:#DD6431;color:#fff;padding:0 .12em .03em;border-radius:.12em}
+#tag{position:absolute;left:60px;top:236px;font-weight:800;font-size:28px;letter-spacing:4px;color:#1a1412;opacity:.6}
+</style></head><body>
+<div id="bg"></div><div id="dots"></div><div id="glow"></div><div id="stage"></div>
+<div id="tag">INTERNET STORIES · EP.3</div>
+<div id="cap"></div>
+<script>
+const DATA=/*DATA*/null;
+const S=document.getElementById('stage'),C=document.getElementById('cap'),G=document.getElementById('glow');
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const spring=x=>{x=clamp(x);return 1-Math.exp(-7*x)*Math.cos(8*x)};
+function at(p,d,html,x,y,o={}){const s=spring((p-d)*3.4),ty=(1-s)*(o.dy??60);return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(${o.c===false?0:'-50%'},${ty}px) scale(${0.9+0.1*s}) rotate(${(o.r||0)*(1-s)}deg);opacity:${clamp(s*2.5)};${o.css||''}">${html}</div>`}
+function lab(t){return `<div class="lab"><i></i>${t}</div>`}
+function typed(t,p,a,b){return t.slice(0,Math.floor(t.length*clamp((p-a)/(b-a))))}
+const caret=t=>`<span style="display:inline-block;width:4px;height:1em;background:#DD6431;vertical-align:-.12em;opacity:${Math.floor(t*3)%2}"></span>`;
+function browser(w,url,inner){return `<div class="card rel" style="width:${w}px;overflow:hidden"><div class="bar"><s></s><s></s><s></s><span class="mono" style="margin-left:14px;font-size:26px;color:#a89a90">${url}</span></div>${inner}</div>`}
+function search(q,res,p,t){return browser(880,'domains.example',`<div style="padding:44px"><div class="h" style="font-size:58px">Find your domain</div><div style="margin-top:28px;border:3px solid #1a1412;border-radius:22px;padding:22px 28px;font-size:46px;font-weight:700" class="mono">${q}${res?'':caret(t)}</div>${res||''}</div>`)}
+const RES=(s)=>`<div style="margin-top:30px;display:flex;align-items:center;justify-content:space-between;background:#F0E7DF;border-radius:22px;padding:24px 30px;transform:scale(${.9+.1*s});opacity:${clamp(s*2)}"><div><div class="mono" style="font-size:40px;font-weight:700">google.com</div><div style="font-size:32px;font-weight:800;color:#2e9b5a;margin-top:6px">✓ Available</div></div><div class="h" style="font-size:72px">$12</div></div>`;
+// 6006.13 -> GOOGLE morph
+function morph(p){const src='6,006.13'.split(''),L={0:'G',2:'O',3:'O',4:'G',6:'L',7:'E'};let h='',k=0;const m0=clamp((p-.6)/.1);src.forEach((c,i)=>{if(!(i in L)){h+=`<span style="display:inline-block;overflow:hidden;width:${(1-m0)*.6}em;opacity:${1-m0}">${c}</span>`;return}const m=clamp((p-.64-k*.035)/.12);k++;h+=`<span style="position:relative;display:inline-block;width:.62em;text-align:center"><span style="position:absolute;left:0;right:0;opacity:${1-m};filter:blur(${m*10}px)">${c}</span><span style="opacity:${m};filter:blur(${(1-m)*10}px);color:#DD6431">${L[i]}</span></span>`});return h}
+const SC=[
+ // 0 hook
+ (p,t)=>lab('DID YOU KNOW')+at(p,0,'<div class="h" style="font-size:150px;text-align:left;width:940px">someone<br>bought<br><span class="box">google.com</span></div>',80,400,{c:false})
+   +at(p,.4,'<div class="chip" style="font-size:90px;padding:22px 56px;font-weight:900;letter-spacing:-3px">for $12<span class="O">.</span></div>',700,1020,{r:6}),
+ // 1 sept 2015 domain shop
+ (p,t)=>lab('SEPTEMBER 2015')+at(p,0,search(typed('google',p,.35,.9),'',p,t),540,420)
+   +at(p,.15,'<div class="pchip">a former Google employee</div>',540,1010,{r:-3}),
+ // 2 available $12
+ (p,t)=>at(p,0,search('google.com',RES(spring((p-.3)*3)),p,t),540,360)+at(p,.62,'<div class="h" style="font-size:120px;white-space:nowrap;background:rgba(245,236,227,.92);padding:6px 30px 16px;border-radius:30px">available<span class="O">?!</span></div>',540,1000,{r:-4}),
+ // 3 bought it, one minute
+ (p,t)=>{const s=clamp((p-.25)/.6),r=Math.max(0,60-Math.floor(s*60));
+  return at(p,0,browser(880,'domains.example/checkout',`<div style="padding:44px"><div style="font-size:36px;font-weight:700;color:#8a7c72">Order complete</div><div class="mono" style="font-size:54px;font-weight:700;margin-top:10px">google.com <span style="color:#2e9b5a">✓</span></div><div style="margin-top:22px;font-size:34px;font-weight:700">Owner: <span class="O">you</span></div></div>`),540,360)
+  +at(p,.2,`<div class="card rel" style="padding:30px 60px;text-align:center"><div style="font-size:34px;font-weight:800;letter-spacing:6px;color:#8a7c72">TIME OWNED</div><div class="h mono" style="font-size:140px;letter-spacing:-4px">0:${String(Math.min(59,Math.floor(s*60))).padStart(2,'0')}</div></div>`,540,780,{r:3})
+  +at(p,.55,'<div class="pchip">#1 most visited site on Earth</div>',540,1170)},
+ // 4 email cancelled
+ (p,t)=>lab('NEW EMAIL')+at(p,0,`<div class="card rel" style="width:880px;padding:44px"><div style="display:flex;gap:22px;align-items:center"><div style="width:84px;height:84px;border-radius:50%;background:#242120;color:#fff;font-weight:900;font-size:44px;display:flex;align-items:center;justify-content:center">D</div><div><div style="font-weight:800;font-size:38px">Domain orders</div><div style="font-size:30px;color:#8a7c72">to me · 1 min later</div></div></div><div style="margin-top:34px;font-size:44px;font-weight:800">Your order has been cancelled.</div><div style="margin-top:14px;height:20px;width:80%;background:#efe4da;border-radius:8px"></div><div style="margin-top:12px;height:20px;width:60%;background:#efe4da;border-radius:8px"></div></div>`,540,400)
+  +at(p,.35,'<div class="h" style="font-size:160px;color:#fff;background:#DD6431;padding:6px 44px 22px;border-radius:30px;box-shadow:0 20px 40px rgba(221,100,49,.35);white-space:nowrap">cancelled.</div>',540,900,{r:-7}),
+ // 5 reward 6006.13 -> GOOGLE
+ (p,t)=>lab('THE REWARD')+at(p,0,`<div class="card rel" style="width:900px;padding:50px 30px;text-align:center"><div class="h mono" style="font-size:150px;letter-spacing:-6px;white-space:nowrap">$${morph(p)}</div></div>`,540,430)
+   +at(p,.6,'<div class="ser" style="font-size:100px;white-space:nowrap">squint a little…</div>',540,800,{r:-3})
+   +at(p,.82,'<div class="pchip">6=G · 0=O · 0=O · 6=G · 1=L · 3=E</div>',540,980),
+ // 6 charity doubled
+ (p,t)=>lab('THEN')+at(p,0,'<div class="card rel" style="width:860px;padding:50px;text-align:center"><div style="font-size:150px;line-height:1">❤️</div><div class="h" style="font-size:80px;margin-top:20px">donated to charity</div></div>',540,400,{r:2})
+   +at(p,.4,'<div class="h" style="font-size:170px;color:#fff;background:#DD6431;padding:0 46px 18px;border-radius:34px;box-shadow:0 20px 40px rgba(221,100,49,.35)">×2</div>',540,850,{r:-6})
+   +at(p,.6,'<div class="chip" style="font-size:52px">$12,012.26 <span class="O">total</span></div>',540,1110),
+ // 7 not the only giant
+ (p,t)=>at(p,0,'<div class="h" style="font-size:130px;text-align:center;width:960px">Google<br>wasn\'t the<br><span class="box">only</span> giant<span class="O">.</span></div>',540,430),
+ // 8 1999 microsoft passport.com
+ (p,t)=>lab('DECEMBER 1999')+at(p,0,`<div class="dark rel" style="width:880px;height:560px;position:relative"><div class="dbar"><s style="background:#DD6431"></s><s style="background:#e8dcd2"></s><s style="background:#e8dcd2"></s><span class="mono" style="margin-left:14px;font-size:26px;color:#9c918a;font-weight:400">passport.com</span></div><div style="padding:60px;text-align:center;color:#f2e8e0"><div style="font-size:120px">⚠️</div><div class="mono" style="font-size:46px;font-weight:700;margin-top:20px">Server not found</div><div class="mono" style="font-size:30px;color:#9c918a;margin-top:18px">domain registration expired</div></div></div>`,540,400)
+   +at(p,.45,'<div class="pchip" style="font-size:46px">Hotmail: partly broken</div>',540,1010,{r:-3}),
+ // 9 programmer paid $35
+ (p,t)=>lab('A STRANGER FIXED IT')+at(p,0,`<div class="card rel" style="width:760px;padding:50px 56px"><div style="font-size:34px;font-weight:800;letter-spacing:6px;color:#8a7c72">RECEIPT</div><div style="display:flex;justify-content:space-between;margin-top:30px;font-size:42px;font-weight:700"><span class="mono">passport.com renewal</span></div><div style="border-top:3px dashed #e3d6cb;margin:30px 0"></div><div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-size:40px;font-weight:800">Paid by</span><span style="font-size:40px;font-weight:800" class="O">a programmer</span></div></div>`,540,400,{r:-2})
+   +at(p,.35,'<div class="h" style="font-size:190px;letter-spacing:-6px">$35</div>',540,880,{r:4}),
+ // 10 lesson
+ (p,t)=>lab('THE LESSON')+at(p,0,'<div class="h" style="font-size:120px;text-align:left;width:920px">domain expires?<br>your website<br>and your email<br><span class="box">go with it.</span></div>',80,410,{c:false}),
+ // 11 CTA auto-renew toggle
+ (p,t)=>{const on=clamp((p-.25)/.12);return lab('DO THIS TODAY')+at(p,0,`<div class="card rel" style="width:860px;padding:44px 54px"><div class="mono" style="font-size:42px;font-weight:700">yourbusiness.com.au</div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:34px"><span style="font-size:50px;font-weight:800">Auto-renew</span><span style="width:170px;height:92px;border-radius:999px;background:${on>.5?'#2e9b5a':'#d9cdc3'};position:relative;display:inline-block"><span style="position:absolute;top:8px;left:${8+on*78}px;width:76px;height:76px;border-radius:50%;background:#fff;box-shadow:0 4px 10px rgba(0,0,0,.2)"></span></span></div><div style="margin-top:20px;font-size:34px;font-weight:700;color:${on>.5?'#2e9b5a':'#8a7c72'}">${on>.5?'✓ On. You\'re safe.':'Off'}</div></div>`,540,400)
+  +at(p,.55,'<div class="chip" style="background:#242120;color:#fff;font-size:50px;padding:24px 50px">+ Follow <span class="O">@nexaweb_dev</span></div>',540,960)},
+];
+function lineAt(t){let i=0;for(let k=0;k<DATA.lines.length;k++)if(t>=DATA.lines[k].start-0.05)i=k;return i}
+window.render=function(t){
+ const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
+ const end=nx?nx.start:DATA.total,d=end-L.start,lt=t-L.start+0.05,p=clamp(lt/d);
+ const gx=50+30*Math.sin(t*.4),gy=30+20*Math.cos(t*.3);
+ G.style.background=`radial-gradient(600px 500px at ${gx}% ${gy}%,rgba(255,200,170,.35),transparent 70%)`;
+ const out=nx?clamp((t-(end-0.14))/0.14):0, inn=ease(lt/0.25);
+ S.innerHTML=`<div style="position:absolute;inset:0;opacity:${inn*(1-out)};transform:translateY(${-out*40}px);filter:blur(${(1-inn)*8+out*8}px)">${SC[i](p,t)}</div>`;
+ const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25);
+ if(!ch){C.innerHTML='';return}
+ C.innerHTML=ch.words.map(w=>{const a=t-(w.start-0.03),on=a>=0,pop=on?0.85+0.15*ease(a/0.12):1;return `<span class="${w.k?'k':''}" style="opacity:${on?1:0};transform:scale(${pop})">${w.w}</span>`}).join(' ');
+};
+</script></body></html>
