@@ -166,10 +166,18 @@ svg.sc{position:absolute;overflow:visible;pointer-events:none}
 
 <!-- 8 -->
 <div class="s" id="s8">
- <div class="t" style="top:160px;font-size:76px">So, how many did your site fail?</div>
- <div class="p" style="top:400px;font-size:44px;line-height:1.75;color:var(--ink)">
-  1. Clear "what we do"<br>2. Tap to call number<br>3. Short contact form<br>4. Loads fast<br>5. One obvious button<br>6. Nothing out of date</div>
- <div class="p" style="top:1000px;font-size:40px;color:var(--ink)">Save this and check yours tonight.<br>Follow <b style="color:var(--ind)">@nexaweb_dev</b> for more like this.</div>
+ <div class="t" style="top:100px;font-size:76px">So, how many did your site fail?</div>
+ <div style="position:absolute;left:80px;right:80px;top:340px;display:flex;flex-wrap:wrap;gap:46px 25px"><div style="width:290px"><div style="height:205px;border-radius:14px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,.1),0 12px 26px rgba(0,0,0,.12);transform:rotate(-1.5deg);background:#fff"><img src="img/t02.jpg" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div style="display:flex;align-items:center;gap:14px;margin-top:22px;font-size:29px;font-weight:600"><span style="width:34px;height:34px;flex:none;border:3.5px solid #6557E8;border-radius:8px"></span>Say what you do</div></div><div style="width:290px"><div style="height:205px;border-radius:14px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,.1),0 12px 26px rgba(0,0,0,.12);transform:rotate(1deg);background:#fff"><img src="img/t03.jpg" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div style="display:flex;align-items:center;gap:14px;margin-top:22px;font-size:29px;font-weight:600"><span style="width:34px;height:34px;flex:none;border:3.5px solid #6557E8;border-radius:8px"></span>Tap to call</div></div><div style="width:290px"><div style="height:205px;border-radius:14px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,.1),0 12px 26px rgba(0,0,0,.12);transform:rotate(-0.8deg);background:#fff"><img src="img/t04.jpg" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div style="display:flex;align-items:center;gap:14px;margin-top:22px;font-size:29px;font-weight:600"><span style="width:34px;height:34px;flex:none;border:3.5px solid #6557E8;border-radius:8px"></span>Short form</div></div><div style="width:290px"><div style="height:205px;border-radius:14px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,.1),0 12px 26px rgba(0,0,0,.12);transform:rotate(1.2deg);background:#fff"><img src="img/t05.jpg" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div style="display:flex;align-items:center;gap:14px;margin-top:22px;font-size:29px;font-weight:600"><span style="width:34px;height:34px;flex:none;border:3.5px solid #6557E8;border-radius:8px"></span>Loads fast</div></div><div style="width:290px"><div style="height:205px;border-radius:14px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,.1),0 12px 26px rgba(0,0,0,.12);transform:rotate(-1deg);background:#fff"><img src="img/t06.jpg" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div style="display:flex;align-items:center;gap:14px;margin-top:22px;font-size:29px;font-weight:600"><span style="width:34px;height:34px;flex:none;border:3.5px solid #6557E8;border-radius:8px"></span>One clear button</div></div><div style="width:290px"><div style="height:205px;border-radius:14px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,.1),0 12px 26px rgba(0,0,0,.12);transform:rotate(1.4deg);background:#fff"><img src="img/t07.jpg" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div style="display:flex;align-items:center;gap:14px;margin-top:22px;font-size:29px;font-weight:600"><span style="width:34px;height:34px;flex:none;border:3.5px solid #6557E8;border-radius:8px"></span>Keep it current</div></div></div>
+ <div style="position:absolute;left:80px;top:960px;font-size:46px;font-weight:700">Your score:</div>
+ <div style="position:absolute;left:400px;top:946px;font:700 62px Inter;color:#6557E8;transform:rotate(-5deg)">__ / 6</div>
+ <svg class="sc" id="k8" style="left:372px;top:926px" width="240" height="116"></svg>
+ <div style="position:absolute;left:80px;top:1090px;font-size:38px;line-height:1.4;color:#3d3a44">Save this and check yours tonight.<br>Follow <b style="color:var(--ind)">@nexaweb_dev</b> for more like this.</div>
 </div>
 
 <script>
@@ -188,6 +196,6 @@ function arrow(id,x1,y1,x2,y2,bend){const el=document.getElementById(id);const m
  for(let i=0;i<=30;i++){const t=i/30;pts.push([(1-t)*(1-t)*x1+2*(1-t)*t*mx+t*t*x2+(rnd()-.5)*2,(1-t)*(1-t)*y1+2*(1-t)*t*my+t*t*y2+(rnd()-.5)*2])}
  const a=Math.atan2(y2-pts[27][1],x2-pts[27][0]);const h1=[x2-26*Math.cos(a-.5),y2-26*Math.sin(a-.5)],h2=[x2-26*Math.cos(a+.5),y2-26*Math.sin(a+.5)];
  el.innerHTML=`<path d="${P(pts)} M${h1[0]} ${h1[1]} L${x2} ${y2} L${h2[0]} ${h2[1]}" stroke="${C}" stroke-width="6.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`}
-circle('k2',670,110,-2);circle('k3',170,62,2);arrow('a3',20,120,200,62,45);circle("k4",470,122,-1);circle('k6',520,88,1);circle('k7',290,60,-2);circle('k7b',230,58,-1);
+circle('k2',670,110,-2);circle('k3',170,62,2);arrow('a3',20,120,200,62,45);circle("k4",470,122,-1);circle('k6',520,88,1);circle('k7',290,60,-2);circle('k7b',230,58,-1);circle('k8',240,116,-5);
 </script>
 </body></html>
