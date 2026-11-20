@@ -6,6 +6,7 @@ def trim(a, thr=0.01):
     idx = np.where(np.abs(a) > thr)[0]
     return a[max(idx[0]-240,0):idx[-1]+480] if len(idx) else a
 VO = json.load(open("voices.json")) if os.path.exists("voices.json") else {}
+PA = json.load(open("pauses.json")) if os.path.exists("pauses.json") else {}
 for p, lines in S.items():
     sr = 24000; out = [np.zeros(int(sr*0.3))]; t = 0.3; starts = []
     for i, line in enumerate(lines):
@@ -16,6 +17,7 @@ for p, lines in S.items():
         starts.append(round(t, 3)); out.append(a); t += len(a)/sr
         gap = 0.55 if line.endswith(("...", ".")) and len(line) < 20 else 0.32
         if i == len(lines)-2: gap = 0.7
+        gap = float(PA.get(p, {}).get(str(i), gap))
         out.append(np.zeros(int(sr*gap))); t += gap
     out.append(np.zeros(int(sr*1.2)))
     y = np.concatenate(out); sf.write(f"{p}_vo.wav", y, sr)

@@ -16,11 +16,16 @@ for p in json.load(open("script.json")):
     wet = fftconvolve(vo, ir)[:len(vo)]; wet *= 0.12 * np.abs(vo).max() / (np.abs(wet).max()+1e-9)
     mix = np.zeros(n, np.float32); mix[:len(vo)] += 0.95*vo + wet
     dr = np.tile(FX["drone"], 2)[:n]; t = np.arange(n)/SR
-    mix += dr * (0.10 + 0.05*np.clip(t/D["dur"],0,1))
+    bed = np.zeros(n, np.float32); bed += dr * (0.10 + 0.05*np.clip(t/D["dur"],0,1))
+    mask = np.ones(n, np.float32)
+    for s in D["scenes"]:
+        if s["p"].get("hush"):
+            a, b = int(max(s["start"]-0.4, 0)*SR), int(s["end"]*SR); mask[a:b] = 0
+    mask = np.convolve(mask, np.ones(int(SR*0.12))/int(SR*0.12), "same").astype(np.float32)
     def add(name, at, g=None, length=None):
         x = FX[name] if length is None else np.tile(FX[name], int(length/ (len(FX[name])/SR)) + 1)[:int(length*SR)]
         if length: x = x * np.minimum(1, np.minimum(np.arange(len(x)), len(x)-np.arange(len(x)))/ (0.15*SR))
-        k = int(at*SR); x = x[:max(0, n-k)]; mix[k:k+len(x)] += x * (GAIN[name] if g is None else g)
+        k = int(at*SR); x = x[:max(0, n-k)]; (bed if length else mix)[k:k+len(x)] += x * (GAIN[name] if g is None else g)
     for i, s in enumerate(D["scenes"]):
         d = s["end"] - s["start"]
         if i and "static" not in s["sfx"]: add("glitch", s["start"], 0.12)
@@ -39,6 +44,7 @@ for p in json.load(open("script.json")):
             elif f == "stinger" and s["p"].get("at"): add(f, s["start"] + s["p"]["at"])
             elif f == "door": add(f, s["start"] + 0.6, 0.4)
             else: add(f, s["start"])
+    mix += bed * mask
     mix = np.tanh(mix * 1.1)
     sf.write(f"{p}_mix.wav", np.stack([mix, mix], 1), SR)
     print(p, "mixed")
