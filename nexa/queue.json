@@ -52,5 +52,22 @@
   "posted": false,
   "status": "awaiting approval",
   "note": "v1 (cream/orange) rejected: too AI. v2 (flat paper + orange marker) liked but asked: more visual, brand colours not orange. v3 awaiting approval. v3 liked; asked for images, visually appealing but not overloaded. v4 awaiting approval. Jayden asked how to look less AI; no own screenshots/photos available, so v5 drops the template elements. v5 awaiting approval. Asked to make the mockups look like actual sites. v6 awaiting approval."
+ },
+ {
+  "slug": "website-myths-3",
+  "format": "reel",
+  "topic": "3 website myths: homepage sliders (Notre Dame 2013 data: ~1% click, ~9 in 10 clicks on slide 1), instant full-screen pop-ups (Google mobile intrusive interstitials, since Jan 2017), desktop-first design (most web traffic is mobile)",
+  "hook": "That fancy slider on your homepage? Almost nobody clicks it.",
+  "style": "Nexa brand: off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold, mock browser/phone UIs, word-by-word captions with indigo key-word boxes, red MYTH stamp",
+  "voice": "Chatterbox built-in female voice (ElevenLabs key not available in unattended run), atempo 1.05",
+  "media": [
+   "nexa/videos/website-myths-3/website-myths-3.mp4"
+  ],
+  "caption": "That fancy slider on your homepage? Almost nobody clicks it. 🎠\nPlus 2 more website myths quietly costing you customers.\n\nWhich one is your site guilty of? Be honest 👇 Save this for your next website update.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #ux #seo #mobilefirst #digitalmarketing #websitedesign",
+  "created": "2026-11-20 11:55 AEDT",
+  "post_on": "2026-11-20",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval"
  }
 ]
