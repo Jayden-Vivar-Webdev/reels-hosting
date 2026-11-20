@@ -25,3 +25,8 @@
   (left 150, width 780); render the whole chunk with unspoken words at opacity 0 so lines never re-centre/slide; word times from
   per-line transcription of the FINAL vo.wav (align.py), rebuilt after any re-voice. Run capcheck.mjs + synccheck.py
   (in nexa/videos/website-myths-3/src/) before sending. Details in instagram-reels skill section 3c.
+- 2026-11-20 (Jayden): Internet Stories ep.3 script "really horrible at explaining". Every story must explain the WHY in plain words
+  (what a service is, why a domain mattered, who paid what for whom). Don't assume the viewer knows the context.
+  Also: ElevenLabs v3 inserts long mid-sentence pauses ("domain ... shop"). Shorten silences >0.26 s inside lines to 0.2 s
+  (nexa/videos/internet-stories-ep3-domains/src-v2/join2.py) and LISTEN for flow, not just word completeness.
+  Caption text word order must match the spoken `say` order exactly.
