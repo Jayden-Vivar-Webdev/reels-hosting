@@ -34,7 +34,7 @@
   "format": "carousel",
   "topic": "6 signs your website is quietly costing you customers (unclear headline, non-tappable phone number, long contact form, slow load, no clear CTA, out-of-date content)",
   "hook": "6 things quietly killing your website",
-  "style": "v5 (less-AI style): off-white #FAF9F6, plain Inter bold headlines with indigo #6557E8 numbers, casual short copy, realistic browser/phone screenshots with CC0 photos, slightly tilted, freehand indigo marker circles/arrow (no handwriting font), plain 'Fix:' sentence, no labels/boxes/badges. Cover = full-bleed photo with navy fade.",
+  "style": "v5 (less-AI style): off-white #FAF9F6, plain Inter bold headlines with indigo #6557E8 numbers, casual short copy, realistic browser/phone screenshots with CC0 photos, slightly tilted, freehand indigo marker circles/arrow (no handwriting font), plain 'Fix:' sentence, no labels/boxes/badges. Cover = full-bleed photo with navy fade. v6: mockups rebuilt as realistic made-up small-business sites (Brightline Plumbing, The Corner Cafe, Northside Accounting, Greenleaf Landscapes, Ember & Oak, Willow & Co) with real Chrome/iOS browser chrome, blurred URLs, per-business fonts/colours.",
   "media": [
    "nexa/images/website-costing-customers-6-signs/01.jpg",
    "nexa/images/website-costing-customers-6-signs/02.jpg",
@@ -51,6 +51,6 @@
   "approved": false,
   "posted": false,
   "status": "awaiting approval",
-  "note": "v1 (cream/orange) rejected: too AI. v2 (flat paper + orange marker) liked but asked: more visual, brand colours not orange. v3 awaiting approval. v3 liked; asked for images, visually appealing but not overloaded. v4 awaiting approval. Jayden asked how to look less AI; no own screenshots/photos available, so v5 drops the template elements. v5 awaiting approval."
+  "note": "v1 (cream/orange) rejected: too AI. v2 (flat paper + orange marker) liked but asked: more visual, brand colours not orange. v3 awaiting approval. v3 liked; asked for images, visually appealing but not overloaded. v4 awaiting approval. Jayden asked how to look less AI; no own screenshots/photos available, so v5 drops the template elements. v5 awaiting approval. Asked to make the mockups look like actual sites. v6 awaiting approval."
  }
 ]

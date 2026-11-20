@@ -15,3 +15,4 @@
 - 2026-11-20 (Jayden): still "looks AI" with template elements. Current direction (v5, src/slides.html): fewer elements,
   casual short copy, realistic screenshots, freehand marker scribbles, no label pills / FIX boxes / logo badges / handwriting font,
   slightly different layout per slide. He has no own screenshots or photos to supply.
+- 2026-11-20 (Jayden): mockups must look like actual websites (real browser chrome, logos, nav, hero photos, per-business fonts/colours, blurred URL bar). Business names are made up.

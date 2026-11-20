@@ -1,24 +1,31 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
-@font-face{font-family:DMS;src:url("/usr/share/fonts/truetype/google-fonts/ofl/dmsans/DMSans[opsz,wght].ttf");font-weight:100 1000}
-:root{--ind:#6557E8;--lav:#B9A6FF;--navy:#150C2B;--ink:#1d1b22;--mute:#77737f}
+:root{--ind:#6557E8;--ink:#1d1b22}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',sans-serif;color:var(--ink);background:#999}
 .s{position:relative;width:1080px;height:1350px;overflow:hidden;background:#FAF9F6}
 .t{position:absolute;left:80px;right:80px;font-weight:700;font-size:66px;line-height:1.08;letter-spacing:-.025em}
 .t .n{color:var(--ind)}
-.p{position:absolute;left:80px;right:80px;font-size:36px;line-height:1.38;color:#3d3a44;font-weight:400}
-.fx{position:absolute;left:80px;right:80px;font-size:36px;line-height:1.38;font-weight:400;color:#3d3a44}
+.p{position:absolute;left:80px;right:80px;font-size:36px;line-height:1.38;color:#3d3a44}
+.fx{position:absolute;left:80px;right:80px;font-size:36px;line-height:1.38;color:#3d3a44}
 .fx b{font-weight:700;color:var(--ink)}
 .handle{position:absolute;left:80px;bottom:52px;font-size:26px;color:#a6a2ad;font-weight:500}
 .cnt{position:absolute;right:80px;bottom:52px;font-size:26px;color:#a6a2ad;font-weight:500}
-/* screenshot */
-.shot{position:absolute;background:#fff;border-radius:30px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.08),0 18px 40px rgba(0,0,0,.10);font-family:DMS,sans-serif}
-.sb{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 34px;font-family:'Inter';font-weight:600;font-size:24px;color:#111}
-.sb .ic{display:flex;gap:8px;align-items:center}
-.sb .bat{width:40px;height:19px;border:2px solid #111;border-radius:5px;position:relative}.sb .bat:after{content:"";position:absolute;inset:2px 10px 2px 2px;background:#111;border-radius:2px}
-.url{margin:0 24px;height:52px;border-radius:14px;background:#EEEDF0;display:flex;align-items:center;justify-content:center;font-family:'Inter';font-size:23px;color:#444}
+.shot{position:absolute;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.10),0 20px 44px rgba(0,0,0,.13)}
+/* chrome */
+.tabs{height:42px;background:#DFE3E8;display:flex;align-items:flex-end;padding-left:84px;position:relative}
+.tabs:before{content:"";position:absolute;left:18px;top:15px;width:12px;height:12px;border-radius:50%;background:#FF5F57;box-shadow:19px 0 0 #FEBC2E,38px 0 0 #28C840}
+.tab{height:34px;background:#fff;border-radius:10px 10px 0 0;width:270px;display:flex;align-items:center;gap:9px;padding:0 14px;font:500 15px Roboto,sans-serif;color:#333;white-space:nowrap;overflow:hidden}
+.fav{width:16px;height:16px;border-radius:4px;flex:none}
+.tool{height:44px;background:#fff;display:flex;align-items:center;gap:16px;padding:0 16px;border-bottom:1px solid #e3e3e3;font:18px Roboto;color:#777}
+.omni{flex:1;height:32px;border-radius:16px;background:#F1F3F4;display:flex;align-items:center;padding:0 14px;gap:10px}
+.lock{width:11px;height:13px;border:2px solid #666;border-radius:2px;position:relative;margin-top:4px}.lock:before{content:"";position:absolute;left:0;top:-8px;width:7px;height:8px;border:2px solid #666;border-bottom:none;border-radius:5px 5px 0 0}
+.blur{filter:blur(4.5px);font:15px Roboto;color:#333}
+.vp{position:relative;overflow:hidden}
 .ph{display:block;width:100%;height:100%;object-fit:cover}
 svg.sc{position:absolute;overflow:visible;pointer-events:none}
+/* iOS */
+.sb{height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font:600 21px Inter;color:#111;background:#fff}
+.bat{width:34px;height:16px;border:2px solid #111;border-radius:5px;position:relative;display:inline-block}.bat:after{content:"";position:absolute;inset:2px 8px 2px 2px;background:#111;border-radius:2px}
 </style></head><body>
 
 <!-- 1 cover -->
@@ -30,99 +37,130 @@ svg.sc{position:absolute;overflow:visible;pointer-events:none}
  <div class="handle" style="color:#cfc8e8">@nexaweb_dev</div>
 </div>
 
-<!-- 2 -->
+<!-- 2 plumber -->
 <div class="s" id="s2">
  <div class="t" style="top:110px"><span class="n">1.</span> Nobody can tell what you actually do</div>
  <div class="p" style="top:330px">If the homepage says "Welcome to our website", a stranger has no clue if you can help them.</div>
- <div class="shot" style="left:80px;top:500px;width:920px;height:470px;transform:rotate(-1.2deg)">
-  <div class="url" style="margin-top:20px">yourplumber.example</div>
-  <div style="display:flex;gap:26px;padding:30px 34px"><div style="flex:1">
-   <div style="font-size:21px;letter-spacing:2px;color:#999;font-weight:700">HOME &nbsp; ABOUT &nbsp; CONTACT</div>
-   <div style="font-weight:800;font-size:58px;line-height:1.05;margin-top:26px;color:#222">Welcome to our website!</div>
-   <div style="font-size:24px;color:#888;margin-top:14px">We are passionate about excellence.</div></div>
-   <div style="width:300px;height:300px;border-radius:12px;overflow:hidden"><img class="ph" src="img/pipes.jpg"></div></div></div>
- <svg class="sc" id="k2" style="left:90px;top:640px" width="560" height="190"></svg>
- <div class="fx" style="top:1050px"><b>Fix:</b> say what, who and where. "Blocked drains fixed today, Parramatta."</div>
+ <div class="shot dk" data-t="Home | Brightline" data-f="#1F5FA8" style="left:80px;top:500px;width:920px;height:500px;transform:rotate(-1deg)">
+  <div class="vp" style="height:414px;font-family:Montserrat">
+   <div style="height:62px;display:flex;align-items:center;padding:0 30px;gap:12px;border-bottom:1px solid #eee">
+    <svg width="26" height="30" viewBox="0 0 26 30"><path d="M13 1 C 6 11, 2 16, 2 20 a11 9 0 0 0 22 0 C 24 16, 20 11, 13 1z" fill="#1F5FA8"/></svg>
+    <div style="font-weight:800;font-size:19px;color:#14325a;line-height:1">BRIGHTLINE<br><span style="font-weight:600;font-size:11px;letter-spacing:3px;color:#5a7aa0">PLUMBING</span></div>
+    <div style="margin-left:auto;display:flex;gap:24px;font-size:14px;font-weight:600;color:#333">HOME<span>ABOUT</span><span>SERVICES</span><span>GALLERY</span><span>CONTACT</span></div></div>
+   <div style="position:relative;height:352px"><img class="ph" src="img/pipes.jpg" style="object-position:50% 40%"><div style="position:absolute;inset:0;background:rgba(10,25,45,.55)"></div>
+    <div style="position:absolute;left:0;right:0;top:92px;text-align:center;color:#fff">
+     <div style="font-weight:800;font-size:46px;letter-spacing:-.5px">Welcome to our website!</div>
+     <div style="font-size:17px;margin-top:12px;opacity:.9">We are passionate about excellence and quality in everything we do.</div>
+     <div style="display:inline-block;margin-top:24px;border:2px solid #fff;padding:11px 26px;font-size:14px;font-weight:700;letter-spacing:2px">LEARN MORE</div></div></div></div></div>
+ <svg class="sc" id="k2" style="left:205px;top:712px" width="670" height="110"></svg>
+ <div class="fx" style="top:1070px"><b>Fix:</b> say what, who and where. "Blocked drains fixed today, Parramatta."</div>
  <div class="handle">@nexaweb_dev</div><div class="cnt">2/8</div>
 </div>
 
-<!-- 3 -->
+<!-- 3 cafe mobile -->
 <div class="s" id="s3">
  <div class="t" style="top:110px"><span class="n">2.</span> Your phone number isn't tappable</div>
  <div class="p" style="top:330px;right:520px">On a phone they have to copy it, switch apps and paste it.<br><br>Plenty of people won't bother.</div>
- <div class="shot" style="left:600px;top:300px;width:400px;height:720px;border-radius:40px">
-  <div class="sb"><span>9:41</span><span class="ic">&#9679;&#9679;&#9679; <span class="bat"></span></span></div>
-  <div style="height:200px"><img class="ph" src="img/cafe.jpg" style="object-position:50% 85%"></div>
-  <div style="padding:26px 28px"><div style="font-weight:800;font-size:38px;line-height:1.1">The Corner Cafe</div>
-  <div style="font-size:22px;color:#888;margin-top:10px">Open 7 days</div>
-  <div style="font-size:26px;font-weight:700;margin-top:34px">Call us to book:</div>
-  <div style="font-size:30px;color:#444;margin-top:6px">02 5550 4321</div>
-  <div style="height:16px;width:85%;background:#eee;border-radius:5px;margin-top:40px"></div><div style="height:16px;width:65%;background:#eee;border-radius:5px;margin-top:12px"></div></div>
-  <div class="url" style="position:absolute;left:0;right:0;bottom:26px">thecornercafe.example</div></div>
- <svg class="sc" id="k3" style="left:604px;top:720px" width="300" height="80"></svg>
- <svg class="sc" id="a3" style="left:380px;top:650px" width="230" height="140"></svg>
- <div class="fx" style="top:1080px"><b>Fix:</b> make it a tap to call link, and add a call button that stays on screen.</div>
+ <div class="shot" style="left:590px;top:290px;width:410px;height:750px;border-radius:40px;font-family:Lora">
+  <div class="sb"><span>9:41</span><span style="display:flex;gap:8px;align-items:center;font-size:15px">&#9679;&#9679;&#9679;&#9679; <span class="bat"></span></span></div>
+  <div style="height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:#F6F0E6;border-bottom:1px solid #e6dccb">
+   <div style="font-family:Lora;font-style:italic;font-weight:600;font-size:25px;color:#4a3426">The Corner Café</div>
+   <div style="width:26px;height:16px;border-top:3px solid #4a3426;border-bottom:3px solid #4a3426;position:relative"><div style="position:absolute;left:0;right:0;top:3px;border-top:3px solid #4a3426"></div></div></div>
+  <div style="position:relative;height:210px"><img class="ph" src="img/cafe.jpg" style="object-position:50% 80%"><div style="position:absolute;inset:0;background:rgba(40,25,15,.35)"></div>
+   <div style="position:absolute;left:22px;bottom:20px;color:#fff;font-size:30px;font-weight:600;line-height:1.1">Good coffee.<br>Good food.</div></div>
+  <div style="padding:22px;background:#FBF8F3;height:330px;font-family:'Open Sans'">
+   <div style="font-family:Lora;font-weight:700;font-size:22px;color:#4a3426">Bookings</div>
+   <div style="font-size:16px;color:#555;margin-top:8px;line-height:1.5">We'd love to have you. To book a table please call us on:</div>
+   <div style="font-size:19px;color:#333;margin-top:6px">02 5550 4321</div>
+   <div style="font-family:Lora;font-weight:700;font-size:22px;color:#4a3426;margin-top:22px">Opening hours</div>
+   <div style="font-size:15px;color:#555;margin-top:6px;line-height:1.6">Mon to Fri &nbsp; 7am to 3pm<br>Sat and Sun &nbsp; 8am to 2pm</div></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:86px;background:#F7F7F8;border-top:1px solid #e5e5e5;display:flex;align-items:flex-start;justify-content:center;padding-top:14px">
+   <div style="width:330px;height:40px;border-radius:12px;background:#E9E9EC;display:flex;align-items:center;justify-content:center"><span class="blur" style="font-size:16px">thecornercafe.com.au</span></div></div></div>
+ <svg class="sc" id="k3" style="left:592px;top:700px" width="170" height="62"></svg>
+ <svg class="sc" id="a3" style="left:380px;top:660px" width="230" height="140"></svg>
+ <div class="fx" style="top:1090px"><b>Fix:</b> make it a tap to call link, and add a call button that stays on screen.</div>
  <div class="handle">@nexaweb_dev</div><div class="cnt">3/8</div>
 </div>
 
-<!-- 4 -->
+<!-- 4 contact form -->
 <div class="s" id="s4">
  <div class="t" style="top:110px"><span class="n">3.</span> Your contact form wants their life story</div>
- <div class="shot" style="left:80px;top:360px;width:920px;height:560px;transform:rotate(1deg)">
-  <div class="url" style="margin-top:20px">yourbusiness.example/contact</div>
-  <div style="padding:26px 34px"><div style="font-weight:800;font-size:40px;margin-bottom:20px">Get in touch</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;font-family:Inter;font-size:23px;color:#999">
-  <div style="border:2px solid #e2e2e2;border-radius:8px;padding:13px 16px">Full name *</div><div style="border:2px solid #e2e2e2;border-radius:8px;padding:13px 16px">Company *</div>
-  <div style="border:2px solid #e2e2e2;border-radius:8px;padding:13px 16px">Job title *</div><div style="border:2px solid #e2e2e2;border-radius:8px;padding:13px 16px">Budget *</div>
-  <div style="border:2px solid #e2e2e2;border-radius:8px;padding:13px 16px">Street address *</div><div style="border:2px solid #e2e2e2;border-radius:8px;padding:13px 16px">Postcode *</div>
-  <div style="border:2px solid #e2e2e2;border-radius:8px;padding:13px 16px">How did you hear? *</div><div style="border:2px solid #e2e2e2;border-radius:8px;padding:13px 16px">Fax number *</div></div></div></div>
- <svg class="sc" id="k4" style="left:520px;top:727px" width="470" height="96"></svg>
- <svg class="sc" id="u4" style="left:200px;top:1020px" width="10" height="10"></svg>
- <div class="fx" style="top:1000px"><b>Fix:</b> ask for name, phone or email and a message. That's it. Get the rest on the call.</div>
+ <div class="shot dk" data-t="Contact Us | Northside Accounting" data-f="#0E7C6B" style="left:80px;top:340px;width:920px;height:620px;transform:rotate(.8deg)">
+  <div class="vp" style="height:534px;font-family:'Source Sans 3','Open Sans'">
+   <div style="height:58px;display:flex;align-items:center;padding:0 30px;gap:10px;border-bottom:1px solid #eee;font-family:'Open Sans'">
+    <div style="width:28px;height:28px;border-radius:6px;background:#0E7C6B;color:#fff;font:700 16px 'Open Sans';display:flex;align-items:center;justify-content:center">N</div>
+    <div style="font-weight:700;font-size:17px;color:#123">Northside Accounting</div>
+    <div style="margin-left:auto;display:flex;gap:22px;font-size:14px;color:#444">Home<span>Services</span><span>About</span><span style="color:#0E7C6B;font-weight:700">Contact</span></div></div>
+   <div style="background:#0E7C6B;color:#fff;padding:20px 30px;font:700 26px 'Open Sans'">Contact Us</div>
+   <div style="padding:20px 30px;display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;font-family:'Open Sans';font-size:13px;color:#333">
+    <div>First name *<div class="in"></div></div><div>Last name *<div class="in"></div></div>
+    <div>Company *<div class="in"></div></div><div>Job title *<div class="in"></div></div>
+    <div>Street address *<div class="in"></div></div><div>Postcode *<div class="in"></div></div>
+    <div>Annual budget *<div class="in sel">Please select</div></div><div>How did you hear about us? *<div class="in sel">Please select</div></div>
+    <div>Phone *<div class="in"></div></div><div>Fax number *<div class="in"></div></div></div>
+   <div style="padding:0 30px"><span style="display:inline-block;background:#0E7C6B;color:#fff;font:700 14px 'Open Sans';padding:11px 24px;border-radius:4px">SUBMIT</span></div></div></div>
+ <style>.in{height:32px;border:1px solid #cfd4d9;border-radius:3px;margin-top:5px;background:#fff}.sel{font-size:12px;color:#888;padding:7px 10px}</style>
+ <svg class="sc" id="k4" style="left:520px;top:815px" width="470" height="122"></svg>
+ <div class="fx" style="top:1030px"><b>Fix:</b> ask for name, phone or email and a message. That's it. Get the rest on the call.</div>
  <div class="handle">@nexaweb_dev</div><div class="cnt">4/8</div>
 </div>
 
-<!-- 5 -->
+<!-- 5 slow landscaper -->
 <div class="s" id="s5">
  <div class="t" style="top:110px"><span class="n">4.</span> It takes forever to load</div>
- <div class="p" style="top:260px">Usually one giant photo straight off a camera.</div>
- <div class="shot" style="left:80px;top:390px;width:920px;height:560px;transform:rotate(-.8deg)">
-  <div class="url" style="margin-top:20px">yourlandscaper.example</div>
-  <div style="height:5px;background:#eee;margin:16px 24px 0;border-radius:3px"><div style="width:30%;height:100%;background:#2f7cf6;border-radius:3px"></div></div>
-  <div style="margin:20px 24px 0;height:430px;border-radius:12px;overflow:hidden;background:#f1f0f3;position:relative"><img src="img/garden.jpg" style="width:100%;height:430px;object-fit:cover;clip-path:inset(0 0 58% 0)">
-  <div style="position:absolute;left:50%;top:66%;width:56px;height:56px;margin:-28px;border:6px solid #ddd;border-top-color:#999;border-radius:50%"></div></div></div>
- <svg class="sc" id="u5" style="left:110px;top:950px" width="10" height="10"></svg>
- <div class="fx" style="top:1040px"><b>Fix:</b> shrink your images, then test your site free at pagespeed.web.dev</div>
+ <div class="p" style="top:230px">Usually one giant photo straight off a camera.</div>
+ <div class="shot dk" data-t="Greenleaf Landscapes" data-f="spin" style="left:80px;top:360px;width:920px;height:600px;transform:rotate(-.8deg)">
+  <div style="height:3px;background:#fff"><div style="width:34%;height:100%;background:#1a73e8"></div></div>
+  <div class="vp" style="height:511px;font-family:Poppins">
+   <div style="height:64px;display:flex;align-items:center;padding:0 30px;gap:10px">
+    <svg width="28" height="28" viewBox="0 0 28 28"><path d="M4 24 C 4 10, 14 4, 25 3 C 24 15, 17 24, 4 24z" fill="#3E8E41"/><path d="M4 24 L 16 12" stroke="#fff" stroke-width="2"/></svg>
+    <div style="font-weight:600;font-size:19px;color:#25502a">Greenleaf <span style="font-weight:400">Landscapes</span></div>
+    <div style="margin-left:auto;display:flex;gap:22px;font-size:14px;color:#444">Home<span>Our Work</span><span>Services</span><span>Contact</span></div></div>
+   <div style="position:relative;height:447px;background:#f1f1f1"><img src="img/garden.jpg" style="width:100%;height:447px;object-fit:cover;clip-path:inset(0 0 61% 0)">
+    <div style="position:absolute;left:50%;top:68%;width:50px;height:50px;margin:-25px;border:5px solid #ddd;border-top-color:#888;border-radius:50%"></div></div></div></div>
+ <div class="fx" style="top:1045px"><b>Fix:</b> shrink your images, then test your site free at pagespeed.web.dev</div>
  <div class="handle">@nexaweb_dev</div><div class="cnt">5/8</div>
 </div>
 
-<!-- 6 -->
+<!-- 6 no next step -->
 <div class="s" id="s6">
  <div class="t" style="top:110px"><span class="n">5.</span> No obvious next step</div>
- <div class="p" style="top:230px">Eight buttons, none of them say "book" or "get a quote".</div>
- <div class="shot" style="left:80px;top:400px;width:920px;height:540px;transform:rotate(1.1deg)">
-  <div class="url" style="margin-top:20px">thecornercafe.example</div>
-  <div style="height:220px;margin:20px 24px 0;border-radius:12px;overflow:hidden"><img class="ph" src="img/cafe2.jpg" style="object-position:50% 60%"></div>
-  <div style="padding:26px 30px;display:flex;flex-wrap:wrap;gap:14px;font-size:26px;font-weight:600;color:#888">
-  <span style="border:2px solid #e2e2e2;border-radius:8px;padding:9px 18px">Learn more</span><span style="border:2px solid #e2e2e2;border-radius:8px;padding:9px 18px">Our story</span><span style="border:2px solid #e2e2e2;border-radius:8px;padding:9px 18px">Explore</span><span style="border:2px solid #e2e2e2;border-radius:8px;padding:9px 18px">Discover</span><span style="border:2px solid #e2e2e2;border-radius:8px;padding:9px 18px">Gallery</span><span style="border:2px solid #e2e2e2;border-radius:8px;padding:9px 18px">Find out more</span><span style="border:2px solid #e2e2e2;border-radius:8px;padding:9px 18px">Blog</span><span style="border:2px solid #e2e2e2;border-radius:8px;padding:9px 18px">Resources</span></div></div>
- <svg class="sc" id="q6" style="left:900px;top:330px" width="10" height="10"></svg>
- <div class="fx" style="top:1030px"><b>Fix:</b> pick one action, like "Book a table", and put that button near the top and again further down.</div>
+ <div class="p" style="top:230px">Lots of buttons, none of them say "book a table".</div>
+ <div class="shot dk" data-t="Home | Ember &amp; Oak" data-f="#9A5B34" style="left:80px;top:370px;width:920px;height:580px;transform:rotate(1deg)">
+  <div class="vp" style="height:494px;font-family:'Gelasio'">
+   <div style="height:60px;display:flex;align-items:center;padding:0 30px;background:#1f1a17;color:#eee">
+    <div style="font-size:22px;letter-spacing:1px">Ember <i style="color:#D69A6A">&amp;</i> Oak</div>
+    <div style="margin-left:auto;display:flex;gap:20px;font:13px 'Open Sans';letter-spacing:1px;color:#ccc">HOME<span>OUR STORY</span><span>EXPLORE</span><span>GALLERY</span><span>BLOG</span><span>RESOURCES</span></div></div>
+   <div style="position:relative;height:300px"><img class="ph" src="img/cafe2.jpg" style="object-position:50% 60%"><div style="position:absolute;inset:0;background:rgba(20,14,10,.45)"></div>
+    <div style="position:absolute;left:0;right:0;top:70px;text-align:center;color:#fff"><div style="font-size:44px">A place to gather</div>
+     <div style="margin-top:22px;display:flex;justify-content:center;gap:14px;font:600 13px 'Open Sans';letter-spacing:1.5px">
+      <span style="border:1.5px solid #fff;padding:10px 18px">DISCOVER</span><span style="border:1.5px solid #fff;padding:10px 18px">LEARN MORE</span><span style="border:1.5px solid #fff;padding:10px 18px">EXPLORE</span></div></div></div>
+   <div style="padding:22px 40px;display:flex;gap:30px;font:14px 'Open Sans';color:#555;line-height:1.6">
+    <div style="flex:1"><div style="font:20px Gelasio;color:#222;margin-bottom:6px">Our story</div>Founded on a love of slow mornings and good company. <u>Find out more</u></div>
+    <div style="flex:1"><div style="font:20px Gelasio;color:#222;margin-bottom:6px">Seasonal menu</div>Fresh local produce that changes with the seasons. <u>Read more</u></div></div></div></div>
+ <svg class="sc" id="k6" style="left:290px;top:642px" width="520" height="88"></svg>
+ <div class="fx" style="top:1040px"><b>Fix:</b> pick one action, like "Book a table", and put that button near the top and again further down.</div>
  <div class="handle">@nexaweb_dev</div><div class="cnt">6/8</div>
 </div>
 
-<!-- 7 -->
+<!-- 7 nobody home -->
 <div class="s" id="s7">
  <div class="t" style="top:110px"><span class="n">6.</span> It looks like nobody's home</div>
  <div class="p" style="top:230px">If the latest post is from 2019, people wonder if you're still open.</div>
- <div class="shot" style="left:80px;top:400px;width:920px;height:520px;transform:rotate(-1deg)">
-  <div class="url" style="margin-top:20px">yourbusiness.example/news</div>
-  <div style="display:flex;gap:28px;padding:32px 34px"><div style="flex:1"><div style="font-family:Inter;font-size:23px;color:#999">Posted 14 March 2019</div>
-  <div style="font-weight:800;font-size:46px;line-height:1.08;margin-top:10px">Exciting things coming soon!</div>
-  <div style="height:16px;width:90%;background:#eee;border-radius:5px;margin-top:26px"></div><div style="height:16px;width:70%;background:#eee;border-radius:5px;margin-top:12px"></div></div>
-  <div style="width:330px;height:240px;border-radius:12px;overflow:hidden"><img class="ph" src="img/closed.jpg"></div></div>
-  <div style="position:absolute;left:34px;right:34px;bottom:30px;border-top:2px solid #eee;padding-top:18px;font-family:Inter;font-size:22px;color:#aaa">© 2019 Example Co &nbsp;·&nbsp; Opening hours: TBC</div></div>
- <svg class="sc" id="k7" style="left:96px;top:478px" width="380" height="84"></svg>
- <div class="fx" style="top:1010px"><b>Fix:</b> update the footer year and opening hours, and delete old posts you won't update.</div>
+ <div class="shot dk" data-t="News | Willow &amp; Co Homewares" data-f="#7A8F6A" style="left:80px;top:380px;width:920px;height:580px;transform:rotate(-1deg)">
+  <div class="vp" style="height:494px;font-family:'Crimson Text'">
+   <div style="text-align:center;padding:16px 0 10px;border-bottom:1px solid #eee"><div style="font-size:30px;letter-spacing:4px;color:#3b4a32">WILLOW &amp; CO</div>
+    <div style="font:12px 'Open Sans';letter-spacing:2px;color:#777;margin-top:6px">SHOP &nbsp;&nbsp; ABOUT &nbsp;&nbsp; <b style="color:#3b4a32">NEWS</b> &nbsp;&nbsp; CONTACT</div></div>
+   <div style="padding:26px 40px;display:flex;gap:30px">
+    <div style="width:330px;height:230px;flex:none"><img class="ph" src="img/closed.jpg"></div>
+    <div style="font-family:'Open Sans'"><div style="font-size:14px;color:#888">Posted 14 March 2019</div>
+     <div style="font:600 34px 'Crimson Text';color:#222;margin-top:6px;line-height:1.1">Exciting things coming soon!</div>
+     <div style="font-size:15px;color:#555;line-height:1.6;margin-top:10px">We have some big news to share with you all. Stay tuned for updates over the coming weeks!</div>
+     <div style="font-size:14px;color:#3b4a32;margin-top:12px;text-decoration:underline">Read more</div></div></div>
+   <div style="position:absolute;left:0;right:0;bottom:0;background:#3b4a32;color:#d8dfd0;padding:16px 40px;font:13px 'Open Sans';display:flex;justify-content:space-between"><span>© 2019 Willow &amp; Co. All rights reserved.</span><span>Opening hours: TBC</span></div></div></div>
+ <svg class="sc" id="k7" style="left:452px;top:558px" width="290" height="60"></svg>
+ <svg class="sc" id="k7b" style="left:770px;top:892px" width="230" height="58"></svg>
+ <div class="fx" style="top:1040px"><b>Fix:</b> update the footer year and opening hours, and delete old posts you won't update.</div>
  <div class="handle">@nexaweb_dev</div><div class="cnt">7/8</div>
 </div>
 
@@ -131,28 +169,25 @@ svg.sc{position:absolute;overflow:visible;pointer-events:none}
  <div class="t" style="top:160px;font-size:76px">So, how many did your site fail?</div>
  <div class="p" style="top:400px;font-size:44px;line-height:1.75;color:var(--ink)">
   1. Clear "what we do"<br>2. Tap to call number<br>3. Short contact form<br>4. Loads fast<br>5. One obvious button<br>6. Nothing out of date</div>
- <svg class="sc" id="u8" style="left:80px;top:1090px" width="10" height="10"></svg>
  <div class="p" style="top:1000px;font-size:40px;color:var(--ink)">Save this and check yours tonight.<br>Follow <b style="color:var(--ind)">@nexaweb_dev</b> for more like this.</div>
 </div>
 
 <script>
-// freehand marker: two slightly different passes, wobble, open ends
-let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
-const C='#6557E8';
-function P(pts){return pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ')}
+document.querySelectorAll('.dk').forEach(el=>{const f=el.dataset.f;
+ const fav=f=='spin'?'<span class="fav" style="border:2.5px solid #ccc;border-top-color:#1a73e8;border-radius:50%"></span>':`<span class="fav" style="background:${f}"></span>`;
+ const url={'Home | Brightline':'brightlineplumbing.com.au','Contact Us | Northside Accounting':'northsideaccounting.com.au/contact','Greenleaf Landscapes':'greenleaflandscapes.com.au','Home | Ember &amp; Oak':'emberandoak.com.au','News | Willow &amp; Co Homewares':'willowandco.com.au/news'}[el.dataset.t.replace('&','&amp;')]||'yourwebsite.com.au';
+ el.insertAdjacentHTML('afterbegin',`<div class="tabs"><div class="tab">${fav}<span>${el.dataset.t}</span><span style="margin-left:auto;color:#888">×</span></div></div><div class="tool"><span>&#8592;</span><span>&#8594;</span><span>&#8635;</span><div class="omni"><span class="lock"></span><span class="blur">${url}</span></div></div>`)});
+let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};const C='#6557E8';
+function P(p){return p.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ')}
 function circle(id,w,h,rot=0){const el=document.getElementById(id);let out='';
  for(let pass=0;pass<2;pass++){const pts=[];const st=-2.2+pass*.35,n=60,end=st+Math.PI*2*(1.08+pass*.04);
   for(let i=0;i<=n;i++){const a=st+(end-st)*i/n;const k=1+(rnd()-.5)*.035+pass*.025;pts.push([w/2+Math.cos(a)*(w/2-10)*k,h/2+Math.sin(a)*(h/2-10)*k])}
   out+=`<path d="${P(pts)}" stroke="${C}" stroke-width="${pass?4:6.5}" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="${pass?.75:.95}"/>`}
  el.innerHTML=`<g transform="rotate(${rot} ${w/2} ${h/2})">${out}</g>`}
-function underline(id,x,y,len){const el=document.getElementById(id);const pts=[];for(let i=0;i<=24;i++){pts.push([x+len*i/24,y+Math.sin(i/3)*2+(rnd()-.5)*3-(i/24)*8])}
- el.innerHTML=`<path d="${P(pts)}" stroke="${C}" stroke-width="7" fill="none" stroke-linecap="round" opacity=".9"/>`}
-function arrow(id,x1,y1,x2,y2,bend){const el=document.getElementById(id);const mx=(x1+x2)/2,my=(y1+y2)/2-bend;
- const pts=[];for(let i=0;i<=30;i++){const t=i/30;pts.push([(1-t)*(1-t)*x1+2*(1-t)*t*mx+t*t*x2+(rnd()-.5)*2,(1-t)*(1-t)*y1+2*(1-t)*t*my+t*t*y2+(rnd()-.5)*2])}
+function arrow(id,x1,y1,x2,y2,bend){const el=document.getElementById(id);const mx=(x1+x2)/2,my=(y1+y2)/2-bend;const pts=[];
+ for(let i=0;i<=30;i++){const t=i/30;pts.push([(1-t)*(1-t)*x1+2*(1-t)*t*mx+t*t*x2+(rnd()-.5)*2,(1-t)*(1-t)*y1+2*(1-t)*t*my+t*t*y2+(rnd()-.5)*2])}
  const a=Math.atan2(y2-pts[27][1],x2-pts[27][0]);const h1=[x2-26*Math.cos(a-.5),y2-26*Math.sin(a-.5)],h2=[x2-26*Math.cos(a+.5),y2-26*Math.sin(a+.5)];
  el.innerHTML=`<path d="${P(pts)} M${h1[0]} ${h1[1]} L${x2} ${y2} L${h2[0]} ${h2[1]}" stroke="${C}" stroke-width="6.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`}
-function qmark(id){document.getElementById(id).innerHTML=`<text x="0" y="0" font-family="Caveat" font-size="1" fill="none"></text>`}
-circle('k2',560,190,-3);circle('k3',300,80,2);arrow('a3',20,120,175,60,45);circle('k4',470,96,-1.5);
-circle('k7',380,84,-2);
+circle('k2',670,110,-2);circle('k3',170,62,2);arrow('a3',20,120,200,62,45);circle("k4",470,122,-1);circle('k6',520,88,1);circle('k7',290,60,-2);circle('k7b',230,58,-1);
 </script>
 </body></html>
