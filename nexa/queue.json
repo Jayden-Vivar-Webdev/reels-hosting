@@ -71,5 +71,23 @@
   "status": "posted",
   "note": "v1 Chatterbox/cramped replaced; v2 Brian + safe zones; v3 captions centred at x=540 with stable word reveal (capcheck + synccheck pass). v3 awaiting approval. Approved by Jayden and posted 2026-11-20 12:03 AEDT.",
   "media_id": "18077031464757414"
+ },
+ {
+  "slug": "website-roast-1",
+  "format": "reel",
+  "topic": "Website Roast ep.1: made-up 'Dave's Pool Care' site roasted: autoplay music (most browsers block autoplay with sound), 11-link menu, light grey text on busy photo, handshake stock photo, 'Submit' button; fixes for each",
+  "hook": "This website made me close the tab in three seconds. Let's roast it.",
+  "style": "Nexa brand (off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold), mock browser UIs of a deliberately dated made-up site (Rock Salt logo, Times nav), red stamps, centred word-by-word captions",
+  "voice": "Chatterbox built-in female voice (no ElevenLabs key in this scheduled run)",
+  "media": [
+   "nexa/videos/website-roast-1/website-roast-1.mp4"
+  ],
+  "caption": "This website made me close the tab in 3 seconds 😬 Made-up business, very real problems.\n\nWhich of these 5 have you seen in the wild? Tell me below 👇 and save this for your next website update.\n\nFollow @nexaweb_dev for more roasts and website tips from Nexa Web Development.\n\n#webdesign #websitedesign #websitetips #smallbusinesstips #uxdesign #webdeveloper #australianbusiness #websiteroast",
+  "created": "2026-11-20 17:50 AEDT",
+  "post_on": "2026-11-20",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval",
+  "note": "5:17 pm slot. Fallback voice because ElevenLabs key is supplied per chat. capcheck + synccheck pass."
  }
 ]
