@@ -274,7 +274,7 @@ SC.bigtext = (c, p, lt, d) => {
   bg(c, '#070909', '#000');
   const k = ease(lt/0.5), sc = 1.25 - .25*k + lt*0.02;
   c.save(); c.translate(540, 940); c.scale(sc, sc);
-  if (p.hand){ c.save(); c.shadowColor = 'rgba(160,0,0,.8)'; c.shadowBlur = 40; text(c, p.text, 0, 0, 104, 'Salt', `rgba(205,30,24,${k})`); c.restore(); }
+  if (p.hand){ c.save(); c.shadowColor = 'rgba(160,0,0,.8)'; c.shadowBlur = 40; const ls = p.text.split('|'); ls.forEach((l,i)=>text(c, l, 0, (i-(ls.length-1)/2)*150, 88, 'Salt', `rgba(205,30,24,${k})`)); c.restore(); }
   else { c.save(); c.shadowColor = '#ff2a20'; c.shadowBlur = 60; text(c, p.text, 0, 0, 520, 'VT', `rgba(255,50,40,${k})`); c.restore(); }
   c.restore();
 };
@@ -1423,6 +1423,169 @@ SC.stairwell = (c, p, lt, d) => {
   if (p.follow){ c.save(); c.globalAlpha = ease((lt - d + 1.8)/0.5); c.fillStyle='rgba(0,0,0,.75)'; c.fillRect(270, 1390, 540, 170); c.strokeStyle = '#d82a20'; c.lineWidth = 8; c.strokeRect(300, 1415, 480, 120); text(c, 'FOLLOW', 540, 1477, 84, 'Anton', '#ff3b30'); c.restore(); }
 };
 
+
+// ---------- attic-plate story scenes ----------
+function plate(c, x, y, s, food){
+  c.save(); c.translate(x, y); c.scale(s, s);
+  c.fillStyle = 'rgba(0,0,0,.35)'; c.beginPath(); c.ellipse(6, 14, 150, 52, 0, 0, 7); c.fill();
+  c.fillStyle = '#e9ebe6'; c.beginPath(); c.ellipse(0, 0, 150, 52, 0, 0, 7); c.fill();
+  c.fillStyle = '#d3d6d0'; c.beginPath(); c.ellipse(0, 2, 105, 34, 0, 0, 7); c.fill();
+  if (food){
+    c.fillStyle = '#c9762f'; c.beginPath(); c.ellipse(-20, -6, 70, 22, 0, 0, 7); c.fill();
+    c.fillStyle = '#e8b04a'; for (const [a,b] of [[-50,-10],[-20,-14],[10,-8],[-35,0],[0,0],[25,-12]]){ c.beginPath(); c.ellipse(a, b, 16, 6, .4, 0, 7); c.fill(); }
+    c.fillStyle = '#6b8f3a'; c.beginPath(); c.ellipse(55, 4, 26, 12, 0, 0, 7); c.fill();
+    c.fillStyle = '#8a4a2a'; c.beginPath(); c.ellipse(-70, 8, 22, 10, 0, 0, 7); c.fill();
+  } else {
+    // shiny, licked clean: long wet streaks
+    c.strokeStyle = 'rgba(255,255,255,.9)'; c.lineWidth = 5; c.lineCap = 'round';
+    for (const [a,b,l] of [[-70,-6,60],[-30,8,80],[20,-10,70],[50,6,40]]){ c.beginPath(); c.moveTo(a, b); c.quadraticCurveTo(a + l/2, b - 8, a + l, b); c.stroke(); }
+    c.strokeStyle = 'rgba(160,120,80,.35)'; c.lineWidth = 3; for (const [a,b] of [[-60,10],[0,-14],[40,12]]){ c.beginPath(); c.moveTo(a, b); c.lineTo(a + 30, b - 2); c.stroke(); }
+  }
+  c.restore();
+}
+function kitchen(c, night){
+  bg(c, night ? '#2b3138' : '#6e7a80', night ? '#0d1012' : '#2b3034');
+  // back wall tiles
+  c.fillStyle = night ? '#323a40' : '#9aa6aa'; c.fillRect(0, 380, W, 620);
+  c.strokeStyle = 'rgba(0,0,0,.18)'; c.lineWidth = 2; for (let y=400;y<1000;y+=50){ c.beginPath(); c.moveTo(0,y); c.lineTo(W,y); c.stroke(); }
+  // window with moon/day
+  c.fillStyle = night ? '#0c1626' : '#cfe3ef'; c.fillRect(600, 430, 300, 260); c.strokeStyle = '#d9dcd6'; c.lineWidth = 16; c.strokeRect(600, 430, 300, 260); c.beginPath(); c.moveTo(750, 430); c.lineTo(750, 690); c.stroke();
+  if (night){ c.fillStyle = 'rgba(230,235,210,.8)'; c.beginPath(); c.arc(820, 500, 26, 0, 7); c.fill(); }
+  // upper cabinets
+  c.fillStyle = night ? '#3e3a33' : '#8a7a62'; c.fillRect(40, 260, 500, 300); c.strokeStyle = 'rgba(0,0,0,.35)'; c.lineWidth = 6; c.strokeRect(40, 260, 250, 300); c.strokeRect(290, 260, 250, 300);
+  // fridge on the left
+  c.fillStyle = night ? '#9aa0a2' : '#e3e6e4'; c.fillRect(-20, 600, 230, 900); c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(-20, 900, 230, 6); c.fillRect(170, 680, 12, 160);
+  c.fillStyle = '#fff6b0'; c.save(); c.translate(80, 760); c.rotate(-.08); c.fillRect(-45, -50, 90, 100); c.restore();
+  // counter
+  c.fillStyle = night ? '#5b5a55' : '#bdb8ac'; c.fillRect(210, 1000, 900, 60);
+  c.fillStyle = night ? '#2f2b26' : '#6e604c'; c.fillRect(210, 1060, 900, 500);
+  c.strokeStyle = 'rgba(0,0,0,.4)'; c.lineWidth = 6; for (let x=210;x<1080;x+=220){ c.strokeRect(x+10, 1080, 200, 420); }
+  if (night){ const g = c.createRadialGradient(780, 560, 10, 700, 900, 700); g.addColorStop(0, 'rgba(150,170,200,.18)'); g.addColorStop(1, 'rgba(0,0,0,.35)'); c.fillStyle = g; c.fillRect(0,0,W,H); }
+}
+function tag(c, s, x, y, a=1, col='#ff5a3a'){ c.save(); c.globalAlpha = a; c.font = '54px VT'; const w = c.measureText(s).width + 50; c.fillStyle = 'rgba(0,0,0,.65)'; c.fillRect(x - w/2, y - 40, w, 80); text(c, s, x, y + 2, 54, 'VT', col); c.restore(); }
+function followBox(c, lt, d){ c.save(); c.globalAlpha = ease((lt - d + 1.8)/0.5); c.fillStyle='rgba(0,0,0,.75)'; c.fillRect(270, 1390, 540, 170); c.strokeStyle = '#d82a20'; c.lineWidth = 8; c.strokeRect(300, 1415, 480, 120); text(c, 'FOLLOW', 540, 1477, 84, 'Anton', '#ff3b30'); c.restore(); }
+SC.fridge = (c, p, lt, d) => {
+  bg(c, '#c9ccc8', '#7f8380');
+  c.fillStyle = 'rgba(0,0,0,.12)'; c.fillRect(0, 1180, W, 12);
+  c.fillStyle = '#b4b8b4'; c.fillRect(960, 300, 40, 700);
+  // magnets
+  for (const [x,y,col] of [[200,330,'#d8473a'],[860,1120,'#3a7bd8'],[150,1050,'#e6b32c']]){ c.fillStyle = col; c.beginPath(); c.arc(x, y, 34, 0, 7); c.fill(); }
+  // the note
+  const k = ease(lt/0.6);
+  c.save(); c.translate(540, 760); c.rotate(-0.04); c.scale(.96 + .04*k, .96 + .04*k);
+  c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(-352, -332, 720, 700);
+  c.fillStyle = '#f4efd8'; c.fillRect(-360, -340, 720, 700);
+  c.strokeStyle = 'rgba(80,120,190,.35)'; c.lineWidth = 3; for (let y=-240;y<340;y+=95){ c.beginPath(); c.moveTo(-330, y); c.lineTo(330, y); c.stroke(); }
+  c.fillStyle = '#d8473a'; c.beginPath(); c.arc(0, -330, 30, 0, 7); c.fill();
+  text(c, 'Leave a plate out', 0, -200, 86, 'Hand', '#1c1c2a');
+  text(c, 'every night.', 0, -105, 86, 'Hand', '#1c1c2a');
+  const red = ease((lt - d*0.62)/0.3);
+  text(c, 'He gets hungry.', 0, 0, 96, 'Hand', `rgb(${28 + 170*red},${28 - 8*red},${42 - 20*red})`);
+  c.strokeStyle = `rgba(200,30,24,${red})`; c.lineWidth = 6; c.beginPath(); c.moveTo(-250, 55); c.quadraticCurveTo(0, 75, 250, 50); c.stroke();
+  text(c, '— M. Doyle', 120, 190, 64, 'Hand', '#333');
+  c.restore();
+};
+SC.house = (c, p, lt, d) => {
+  bg(c, '#8aa0ae', '#cfd6d4');
+  c.fillStyle = '#5f7a4e'; c.fillRect(0, 1150, W, 800);
+  // house
+  c.fillStyle = '#d9d2c3'; c.fillRect(170, 700, 740, 470);
+  c.fillStyle = '#5a4034'; c.beginPath(); c.moveTo(120, 720); c.lineTo(540, 380); c.lineTo(960, 720); c.fill();
+  // attic vent, small dark triangle window
+  c.fillStyle = '#121212'; c.beginPath(); c.moveTo(480, 640); c.lineTo(540, 570); c.lineTo(600, 640); c.fill();
+  c.fillStyle = '#4b5a66'; c.fillRect(240, 800, 170, 160); c.fillRect(670, 800, 170, 160);
+  c.fillStyle = '#6a3b2a'; c.fillRect(480, 880, 120, 290);
+  c.strokeStyle = '#eee'; c.lineWidth = 8; c.strokeRect(240, 800, 170, 160); c.strokeRect(670, 800, 170, 160);
+  // SOLD sign
+  c.fillStyle = '#5a4a3a'; c.fillRect(870, 1080, 14, 220);
+  c.fillStyle = '#fff'; c.fillRect(760, 1060, 240, 140); c.fillStyle = '#c0281e'; c.fillRect(770, 1070, 220, 120); text(c, 'SOLD', 880, 1132, 80, 'Anton', '#fff');
+  // car pulling away with boxes
+  const k = ease(lt/(d*0.9)); const cx = 300 - 520*k;
+  c.fillStyle = '#3d4c5a'; c.beginPath(); c.roundRect(cx - 170, 1210, 340, 110, 30); c.fill(); c.beginPath(); c.roundRect(cx - 110, 1150, 210, 80, 24); c.fill();
+  c.fillStyle = '#b08a5a'; c.fillRect(cx - 80, 1165, 60, 50); c.fillRect(cx, 1170, 60, 45);
+  c.fillStyle = '#111'; c.beginPath(); c.arc(cx - 100, 1325, 34, 0, 7); c.arc(cx + 100, 1325, 34, 0, 7); c.fill();
+  tag(c, 'MRS DOYLE · MOVING OUT', 540, 300, ease((lt-.3)/.4));
+};
+SC.counter = (c, p, lt, d) => {
+  kitchen(c, !p.day);
+  if (p.plate) plate(c, 640, 990, 1.35, p.plate === 'food');
+  if (p.missing){ const a = .6 + .4*Math.sin(lt*7); c.save(); c.setLineDash([22,14]); c.strokeStyle = `rgba(255,50,40,${a})`; c.lineWidth = 8; c.beginPath(); c.ellipse(640, 990, 220, 80, 0, 0, 7); c.stroke(); c.restore(); }
+  if (p.tag) tag(c, p.tag, 540, 1180 - 0, ease((lt - (p.tagAt||0)*d)/.3));
+  if (p.tag2) tag(c, p.tag2, 540, 300, ease((lt - (p.tag2At||0)*d)/.3), '#d7fbe9');
+  if (p.follow) followBox(c, lt, d);
+};
+SC.bedDoor = (c, p, lt, d) => {
+  bg(c, '#151a20', '#050607'); c.save(); c.translate(0, -170);
+  // wall + door
+  c.fillStyle = '#1d232a'; c.fillRect(0, 300, W, 1100);
+  c.fillStyle = '#3a3128'; c.fillRect(300, 380, 480, 900); c.strokeStyle = '#2a231c'; c.lineWidth = 18; c.strokeRect(290, 370, 500, 920);
+  c.strokeStyle = 'rgba(0,0,0,.35)'; c.lineWidth = 6; c.strokeRect(350, 440, 380, 330); c.strokeRect(350, 830, 380, 380);
+  c.fillStyle = '#b89a55'; c.beginPath(); c.arc(720, 860, 16, 0, 7); c.fill();
+  // light gap under the door
+  c.fillStyle = 'rgba(230,200,140,.85)'; c.fillRect(300, 1268, 480, 14);
+  // shadow fingers in the gap, moving slowly back and forth
+  const s = Math.sin(lt*2.2);
+  c.fillStyle = '#050505'; for (let k=0;k<4;k++){ const x = 470 + k*34 + s*24 + (k===3 ? 6 : 0); c.fillRect(x, 1266, 20, 18); }
+  c.fillStyle = 'rgba(0,0,0,.6)'; c.fillRect(440 + s*24, 1282, 180, 70);
+  // floor
+  c.fillStyle = '#20180f'; c.fillRect(0, 1282, W, 640);
+  // bedside clock
+  c.restore(); c.fillStyle = '#0a0a0a'; c.fillRect(60, 330, 220, 110); text(c, '3:00', 170, 386, 84, 'VT', '#ff3b30');
+  c.fillStyle = 'rgba(0,0,0,.12)'; c.fillRect(0,0,W,H);
+};
+SC.hatch = (c, p, lt, d) => {
+  bg(c, '#2a2a26', '#0b0b0a');
+  // corridor perspective
+  c.fillStyle = '#3d3b34'; c.beginPath(); c.moveTo(0, 200); c.lineTo(360, 560); c.lineTo(360, 1220); c.lineTo(0, 1700); c.fill();
+  c.fillStyle = '#35332d'; c.beginPath(); c.moveTo(W, 200); c.lineTo(720, 560); c.lineTo(720, 1220); c.lineTo(W, 1700); c.fill();
+  c.fillStyle = '#4a463d'; c.beginPath(); c.moveTo(0, 200); c.lineTo(W, 200); c.lineTo(720, 560); c.lineTo(360, 560); c.fill(); // ceiling
+  c.fillStyle = '#2a2018'; c.beginPath(); c.moveTo(0, 1700); c.lineTo(360, 1220); c.lineTo(720, 1220); c.lineTo(W, 1700); c.lineTo(W, H); c.lineTo(0, H); c.fill();
+  c.fillStyle = '#0d0c0b'; c.fillRect(360, 560, 360, 660); // far end dark
+  // hatch in the ceiling: black square + hanging door + ladder
+  c.fillStyle = '#000'; c.beginPath(); c.moveTo(380, 290); c.lineTo(700, 290); c.lineTo(660, 420); c.lineTo(420, 420); c.fill();
+  c.fillStyle = '#6a5a44'; c.beginPath(); c.moveTo(420, 420); c.lineTo(660, 420); c.lineTo(640, 640); c.lineTo(440, 640); c.fill();
+  c.strokeStyle = '#8a7656'; c.lineWidth = 16; c.beginPath(); c.moveTo(470, 420); c.lineTo(420, 1300); c.moveTo(610, 420); c.lineTo(660, 1300); c.stroke();
+  c.lineWidth = 12; for (let k=1;k<9;k++){ const y = 420 + k*100, sp = 70 + k*5.6; c.beginPath(); c.moveTo(540 - sp, y); c.lineTo(540 + sp, y); c.stroke(); }
+  if (p.light){ const g = c.createRadialGradient(540, 360, 10, 540, 360, 260); g.addColorStop(0, 'rgba(255,255,255,.5)'); g.addColorStop(1, 'rgba(255,255,255,0)'); c.fillStyle = g; c.fillRect(0,0,W,H); }
+  // door frame foreground (bedroom door opening)
+  if (!p.light){ const op = ease(lt/0.8); c.fillStyle = '#1a140f'; c.fillRect(0, 0, 120 + 200*(1-op), H); c.fillRect(W - 120, 0, 120, H); }
+  c.fillStyle = 'rgba(0,0,0,.2)'; c.fillRect(0,0,W,H);
+  if (p.tag) tag(c, p.tag, 540, 1180, ease((lt-.4)/.3));
+};
+function atticBase(c, day){
+  bg(c, day ? '#4a4038' : '#1c1814', day ? '#1d1915' : '#070605');
+  c.strokeStyle = day ? '#6b5640' : '#3a2e22'; c.lineWidth = 34;
+  for (let k=-3;k<=3;k++){ c.beginPath(); c.moveTo(540, 120); c.lineTo(540 + k*330, 1300); c.stroke(); }
+  c.fillStyle = day ? '#5a4836' : '#2a2119'; c.fillRect(0, 1180, W, 740);
+  c.strokeStyle = 'rgba(0,0,0,.35)'; c.lineWidth = 4; for (let y=1200;y<H;y+=70){ c.beginPath(); c.moveTo(0,y); c.lineTo(W,y); c.stroke(); }
+  // boxes on the right
+  for (const [x,y,w,h] of [[760,880,260,320],[640,1010,180,190],[860,700,180,190]]){ c.fillStyle = day ? '#a07c50' : '#6e5434'; c.fillRect(x, y, w, h); c.fillStyle = 'rgba(0,0,0,.2)'; c.fillRect(x, y + h*0.45, w, 14); }
+  if (day){ const g = c.createLinearGradient(380, 120, 700, 1200); g.addColorStop(0, 'rgba(255,240,200,.35)'); g.addColorStop(1, 'rgba(255,240,200,0)'); c.fillStyle = g; c.beginPath(); c.moveTo(500, 140); c.lineTo(580, 140); c.lineTo(800, 1200); c.lineTo(300, 1200); c.fill(); c.fillStyle = '#fff4cc'; c.beginPath(); c.moveTo(500, 200); c.lineTo(540, 150); c.lineTo(580, 200); c.fill(); }
+}
+function plateStacks(c){
+  const r = R(77);
+  for (const [x, n] of [[130, 9],[260, 13],[390, 7],[520, 11],[230, 5]]){
+    const base = x === 230 ? 1150 : 1040;
+    for (let k=0;k<n;k++){ const y = base - k*22, dx = (r()-.5)*10;
+      c.fillStyle = '#c9ccc6'; c.beginPath(); c.ellipse(x + dx, y + 8, 70, 18, 0, 0, 7); c.fill();
+      c.fillStyle = '#eceee9'; c.beginPath(); c.ellipse(x + dx, y, 70, 18, 0, 0, 7); c.fill();
+      c.strokeStyle = 'rgba(255,255,255,.9)'; c.lineWidth = 3; c.beginPath(); c.moveTo(x + dx - 30, y - 2); c.lineTo(x + dx + 10, y - 6); c.stroke(); }
+  }
+}
+SC.attic = (c, p, lt, d) => {
+  atticBase(c, p.day);
+  if (p.plates) plateStacks(c);
+  if (p.fingers){ const a = clamp((lt - (p.fingersAt||0)*d)/0.4, 0, 1); c.save(); c.globalAlpha = a; c.fillStyle = '#d6cdbf'; for (let k=0;k<4;k++){ c.beginPath(); c.roundRect(790 + k*44, 850 + (k==0||k==3?8:0), 34, 78, 15); c.fill(); } c.fillStyle = 'rgba(60,40,30,.55)'; for (let k=0;k<4;k++) c.fillRect(796 + k*44, 856 + (k==0||k==3?8:0), 22, 12); c.fillStyle='#000'; c.beginPath(); c.ellipse(880, 840, 120, 26, 0, Math.PI, 0); c.fill(); c.restore(); }
+  if (!p.day){
+    // phone light: darkness everywhere except a moving cone
+    const lx = (p.lx ?? 330) + 60*Math.sin(lt*.9) + 8*Math.sin(lt*13), ly = (p.ly ?? 1060) + 30*Math.sin(lt*.7);
+    const g = c.createRadialGradient(lx, ly, 40, lx, ly, p.rad || 520); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(.6, 'rgba(0,0,0,.3)'); g.addColorStop(1, 'rgba(0,0,0,.78)');
+    c.fillStyle = g; c.fillRect(0,0,W,H);
+    const g2 = c.createRadialGradient(lx, ly, 10, lx, ly, 260); g2.addColorStop(0, 'rgba(255,255,240,.25)'); g2.addColorStop(1, 'rgba(255,255,240,0)'); c.fillStyle = g2; c.fillRect(0,0,W,H);
+  }
+  if (p.tag) tag(c, p.tag, 540, 330, ease((lt - (p.tagAt||0)*d)/.3), p.day ? '#d7fbe9' : '#ff5a3a');
+};
+
 // ---------- HUD, captions, post ----------
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
@@ -1473,7 +1636,7 @@ window.render = (t) => {
   X.setTransform(1,0,0,1,0,0); X.fillStyle = '#000'; X.fillRect(0,0,W,H);
   X.save(); X.translate(W/2, H/2); X.scale(push, push); X.translate(-W/2, -H/2);
   // CCTV tint
-  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='photo' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
+  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='photo' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
   X.drawImage(S, 0, 0);
   X.filter = 'none';
   X.restore();
