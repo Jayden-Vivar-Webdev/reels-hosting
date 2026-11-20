@@ -59,7 +59,7 @@
   "topic": "3 website myths: homepage sliders (Notre Dame 2013 data: ~1% click, ~9 in 10 clicks on slide 1), instant full-screen pop-ups (Google mobile intrusive interstitials, since Jan 2017), desktop-first design (most web traffic is mobile)",
   "hook": "That fancy slider on your homepage? Almost nobody clicks it.",
   "style": "Nexa brand: off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold, mock browser/phone UIs, word-by-word captions with indigo key-word boxes, red MYTH stamp",
-  "voice": "Chatterbox built-in female voice (ElevenLabs key not available in unattended run), atempo 1.05",
+  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
   "media": [
    "nexa/videos/website-myths-3/website-myths-3.mp4"
   ],
@@ -68,6 +68,7 @@
   "post_on": "2026-11-20",
   "approved": false,
   "posted": false,
-  "status": "awaiting approval"
+  "status": "awaiting approval",
+  "note": "v1 (Chatterbox voice, cramped layout) replaced: Jayden asked for Brian + full use of the IG safe area. v2 awaiting approval."
  }
 ]
