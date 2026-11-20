@@ -22,5 +22,17 @@
   "media_id": "18077031464757414",
   "date": "2026-11-20",
   "time": "12:03 AEDT"
+ },
+ {
+  "slug": "internet-stories-ep3-domains",
+  "format": "reel",
+  "topic": "Internet Stories ep.3: lost domains. google.com bought for $12 via Google Domains by a former Google employee (Sept 2015, owned ~1 min, $6,006.13 reward spells 'Google', doubled when donated to charity) + Microsoft forgot to renew passport.com (Dec 1999, Hotmail partly broken, a programmer paid the $35 fee). Lesson: turn on auto-renew.",
+  "hook": "Someone bought google.com. For $12.",
+  "style": "v2 dark motion graphics (src/scene_dark.html)",
+  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
+  "caption": "Someone bought google.com for $12. 🤯\nAnd Microsoft once forgot to renew a domain that Hotmail needed to work.\n\nDo you know when your domain renews? Check today, then tell me below 👇 Save this so you don't forget.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #domainname #webdesign #websitetips #smallbusinessaustralia #techhistory #google #digitalmarketing",
+  "media_id": "18093641684243030",
+  "date": "2026-11-20",
+  "time": "21:11 AEDT"
  }
 ]
