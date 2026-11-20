@@ -108,5 +108,28 @@
   "status": "posted",
   "note": "8:17 pm slot. Fallback voice: ElevenLabs key is supplied per chat. capcheck + synccheck pass; transcript complete. v1 (cream ep.2 style) -> Jayden asked for darker professional motion graphics; v2 dark awaiting approval. v3: re-voiced with Brian (55 s); capcheck + synccheck pass, awaiting approval. Approved by Jayden and posted 2026-11-20 21:11 AEDT. v2 approved and posted 2026-11-20 22:14 AEDT (media 18134619034826987). Old v1 post 18093641684243030 to be deleted by Jayden in the app (Windsor has no delete).",
   "media_id": "18134619034826987"
+ },
+ {
+  "slug": "google-free-wins-5",
+  "format": "carousel",
+  "topic": "5 free ways to show up on Google: page titles that say 'Home', unclaimed Google Business Profile, not asking for reviews (text review link), missing meta descriptions (Google pulls random text), no sitemap in Search Console",
+  "hook": "5 free ways to show up on Google",
+  "style": "same as website-costing-customers-6-signs v6: off-white, Inter bold, indigo numbers, realistic made-up mockups (Harlow Electrical, Penrith) of search results / Maps listing / SMS / Search Console-style panel, freehand indigo marker circles, plain 'Fix:' line, CC0 cover photo with navy fade, score checklist CTA",
+  "media": [
+   "nexa/images/google-free-wins-5/01.jpg",
+   "nexa/images/google-free-wins-5/02.jpg",
+   "nexa/images/google-free-wins-5/03.jpg",
+   "nexa/images/google-free-wins-5/04.jpg",
+   "nexa/images/google-free-wins-5/05.jpg",
+   "nexa/images/google-free-wins-5/06.jpg",
+   "nexa/images/google-free-wins-5/07.jpg"
+  ],
+  "caption": "5 free ways to show up on Google. No ads, no agency, no tech skills 👇\n\nHow many has your business already done? Tell me your score below, and save this for your next quiet afternoon.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#seo #localseo #googlebusinessprofile #smallbusinessaustralia #smallbusinesstips #websitetips #webdesign #digitalmarketing",
+  "created": "2026-11-21 08:40 AEDT",
+  "post_on": "2026-11-21",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval",
+  "note": "8:17 am carousel slot. Made-up business. Facts: GBP free (google.com/business); review link shareable from profile; Google may use meta description for snippet; Search Console free sitemap submit."
  }
 ]
