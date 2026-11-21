@@ -19,6 +19,6 @@ for p, lines in T.items():
     for i,(vid,text) in enumerate(lines):
         a,_=sf.read(f"el/{p}_{i}.wav",dtype="float32"); a=trim(a,0.006); a=a/(np.abs(a).max()+1e-9)*0.9
         starts.append(round(t,3)); out.append(a); t+=len(a)/sr
-        gap=float(PA.get(p,{}).get(str(i),0.28)); out.append(np.zeros(int(sr*gap))); t+=gap
+        gap=float(PA.get(p,{}).get(str(i),0.18)); out.append(np.zeros(int(sr*gap))); t+=gap
     out.append(np.zeros(int(sr*1.2))); y=np.concatenate(out); sf.write(f"{p}_vo.wav",y,sr)
     json.dump({"starts":starts,"dur":len(y)/sr},open(f"{p}_lines.json","w")); print(p,round(len(y)/sr,1))

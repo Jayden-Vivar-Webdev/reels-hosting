@@ -12,8 +12,7 @@ PLAN = {"p1": [
  ("doorcam", {"near": 1.0, "smile": 1, "evil": True, "talk": True, "glitch": True, "push": True}, ["heartbeat", "glitch"], "02:04:58 AM", CAM),
  ("doorcam", {"walk": True}, ["static"], "02:05:09 AM", CAM),
  ("doorcam", {"empty": True, "dawn": True, "tag": "4 HOURS LATER", "tagAt": 0}, [], "06:04:30 AM", CAM),
- ("texts", {"msgs": [{"t": "Can't sleep love.\nTalk on Sunday? x", "at": -1, "time": "2:04 AM"}], "banner": "Someone's at my door love", "buzz": True}, ["buzz"], "06:05:02 AM", "MY PHONE"),
- ("texts", {"msgs": [{"t": "Can't sleep love.\nTalk on Sunday? x", "at": -1, "time": "2:04 AM"}, {"t": "Someone's at my door love", "at": .02, "time": "6:05 AM"}, {"t": "It sounds just like you", "at": .42, "hl": True}], "hush": True, "at": 1.55}, ["stinger"], "06:05:09 AM", "MY PHONE"),
+ ("texts", {"msgs": [{"t": "Can't sleep love.\nTalk on Sunday? x", "at": -1, "time": "2:04 AM"}, {"t": "Someone's at my door love", "at": .0, "time": "6:05 AM"}, {"t": "It sounds just like you", "at": .42, "hl": True}], "hush": True, "at": 1.4}, ["stinger"], "06:05:09 AM", "MY PHONE"),
  ("call", {"mode": "calling", "count": 20}, ["ringout"], "06:06:40 AM", "MY PHONE"),
  ("drive", {"follow": True}, ["engine"], "06:09:12 AM", "DASHCAM"),
 ]}

@@ -143,5 +143,6 @@ playwright via `npm i -g playwright`, google-chrome). Then copy `pipeline/` to a
 - Paths: vo.py/mix.py/hsfx.py were written for `/root/reel`; run from the work dir and fix paths if needed.
 
 ## Voice & look rules
+**Owner (2026-11-21):** Kokoro has no emotional depth. Use ElevenLabs eleven_v3 with horror-style voices and audio tags ([whispers], [low], [shaky], [voice breaking], [desperate]): narrator 'Jack – Deep Dark Horror Narrator' (BVPhWQykET1TSvfGzrUr); older female character 'Lily' (pFZP5JQG7iQjIQuC4Bku), whispered when creepy. **Never use Australian voices.** Needs an API key from Jayden each session (never save it); see pipeline/examples/lock-the-door/vo11.py. Without a key, fall back to Kokoro and say so.
 Narrator: first person, calm and low, never jokey. Captions mirror the narration word by word.
 Key words in red: numbers, "never", the monster/object, the twist word, "follow".
