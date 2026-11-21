@@ -1,0 +1,102 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:'DM Sans','Inter',sans-serif;color:#150C2B;background:#FAF9F6}
+#stage{position:absolute;inset:0}
+.I{color:#6557E8}
+.lab{position:absolute;left:0;right:0;top:285px;text-align:center;font-weight:800;font-size:34px;letter-spacing:8px;color:#6557E8}
+.h{font-weight:800;letter-spacing:-.045em;line-height:1;color:#150C2B}
+.box{display:inline-block;background:#6557E8;color:#fff;padding:0 .14em .06em;border-radius:.12em}
+.lav{display:inline-block;background:#B9A6FF;color:#150C2B;padding:0 .14em .06em;border-radius:.12em}
+.card{background:#fff;border-radius:34px;box-shadow:0 30px 60px rgba(21,12,43,.13);border:2px solid rgba(21,12,43,.07)}
+.chip{display:inline-block;background:#150C2B;color:#fff;border-radius:999px;padding:18px 40px;font-weight:800;font-size:44px;white-space:nowrap}
+.stamp{display:inline-block;border:8px solid #E5484D;color:#E5484D;border-radius:20px;padding:4px 30px 10px;font-weight:800;font-size:90px;letter-spacing:3px;background:rgba(250,249,246,.92);white-space:nowrap}
+.bar{height:20px;border-radius:10px;background:#ECEAF3}
+.dv{font-family:'Times New Roman','DejaVu Serif',serif}
+#cap{position:absolute;left:150px;width:780px;top:1385px;text-align:center;font-weight:800;font-size:82px;letter-spacing:-.04em;line-height:1.14}
+#cap span{display:inline-block;margin:0 .1em}
+#cap span.k{background:#6557E8;color:#fff;padding:0 .12em .05em;border-radius:.12em}
+#tag{position:absolute;left:870px;top:214px;font-weight:800;font-size:44px;letter-spacing:-2px}
+#ser{position:absolute;left:90px;top:228px;font-weight:700;font-size:28px;letter-spacing:4px;color:rgba(21,12,43,.45)}
+</style></head><body>
+<div id="stage"></div>
+<div id="ser">AI FOR BUSINESS</div>
+<div id="tag">nexa<span class="I">.</span></div>
+<div id="cap"></div>
+<script>
+const DATA=/*DATA*/null;
+const S=document.getElementById('stage'),C=document.getElementById('cap');
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const spring=x=>{x=clamp(x);return 1-Math.exp(-7*x)*Math.cos(8*x)};
+function at(p,d,html,x,y,o={}){const s=spring((p-d)*3.4),ty=(1-s)*(o.dy??60);
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(${o.c===false?0:'-50%'},${ty}px) scale(${0.9+0.1*s}) rotate(${(o.r||0)*(1-s)+(o.rr||0)}deg);opacity:${clamp(s*2.5)};${o.css||''}">${html}</div>`}
+function browser(w,h,inner,url='ridgewayplumbing.com.au'){return `<div class="card" style="position:relative;width:${w}px;height:${h}px;overflow:hidden"><div style="height:64px;display:flex;align-items:center;gap:12px;padding:0 26px;border-bottom:2px solid #EEECF4;background:#fff"><s style="width:16px;height:16px;border-radius:50%;background:#E5484D"></s><s style="width:16px;height:16px;border-radius:50%;background:#ECEAF3"></s><s style="width:16px;height:16px;border-radius:50%;background:#ECEAF3"></s><span style="margin-left:18px;font-size:23px;color:#8F8AA3;background:#F4F3F8;border-radius:12px;padding:6px 22px">${url}</span></div>${inner}</div>`}
+function cursor(x,y,click=0){return `<div style="position:absolute;left:${x}px;top:${y}px;z-index:9;transform:scale(${1-0.15*click})"><svg width="60" height="72" viewBox="0 0 30 36"><path d="M2 2 L2 28 L9 21 L14 33 L19 31 L14 19 L24 19 Z" fill="#150C2B" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/></svg></div>`}
+
+function lab(t){return `<div class="lab">${t}</div>`}
+const typed=(s,p)=>s.slice(0,Math.round(clamp(p)*s.length));
+const caret=t=>`<span style="opacity:${Math.sin(t*12)>0?1:0};color:#6557E8">|</span>`;
+function chatWin(w,inner){return `<div class="card" style="width:${w}px;overflow:hidden"><div style="height:74px;display:flex;align-items:center;gap:16px;padding:0 30px;border-bottom:2px solid #EEECF4"><div style="width:42px;height:42px;border-radius:12px;background:#150C2B;color:#B9A6FF;font-size:26px;display:flex;align-items:center;justify-content:center">✦</div><b style="font-size:30px">AI chat</b></div><div style="padding:30px 34px">${inner}</div></div>`}
+const ub=(h,o='')=>`<div style="display:flex;justify-content:flex-end;margin:10px 0"><div style="background:#6557E8;color:#fff;font-weight:600;font-size:40px;padding:22px 30px;border-radius:30px 30px 8px 30px;max-width:640px;line-height:1.25;${o}">${h}</div></div>`;
+const ab=(h,o='')=>`<div style="display:flex;margin:10px 0"><div style="background:#F4F3F8;color:#150C2B;font-weight:500;font-size:38px;padding:24px 30px;border-radius:30px 30px 30px 8px;max-width:680px;line-height:1.3;${o}">${h}</div></div>`;
+function inputBox(h){return `<div style="margin-top:22px;border:3px solid #E4E1EE;border-radius:24px;padding:20px 26px;font-size:36px;font-weight:500;color:#150C2B;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:96px"><span>${h}</span><span style="flex:none;width:58px;height:58px;border-radius:50%;background:#150C2B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px">↑</span></div>`}
+const GEN='Welcome to our website, where passion meets excellence. We are dedicated to delivering top-quality solutions.';
+function genSite(w,h,name,col,font,emoji,u){return browser(w,h,`<div style="display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:2px solid #EEECF4"><b style="font-family:${font};color:${col};font-size:${w/18}px;white-space:nowrap">${name}</b><span style="font-size:${w/22}px">${emoji}</span></div><div style="padding:${w/22}px"><div style="font-weight:800;letter-spacing:-.03em;font-size:${w/13}px;line-height:1.05">Where passion meets excellence.</div><div style="margin-top:14px;height:12px;width:80%;border-radius:6px;background:#ECEAF3"></div><div style="margin-top:10px;height:12px;width:60%;border-radius:6px;background:#ECEAF3"></div><div style="margin-top:18px;display:inline-block;background:${col};color:#fff;font-weight:700;font-size:${w/24}px;padding:10px 20px;border-radius:10px">Learn more</div></div>`,u)}
+function goodSite(w,h,p){return browser(w,h,`<div style="display:flex;align-items:center;justify-content:space-between;padding:24px 34px;border-bottom:2px solid #EEECF4"><b style="font-size:40px;letter-spacing:-1px;color:#0E5A8A">Ridgeway<span style="color:#150C2B"> Plumbing</span></b><span style="font-weight:700;font-size:28px;color:#0E5A8A">📞 Call now</span></div><div style="position:relative;height:${h-140}px;background:linear-gradient(160deg,#0E5A8A,#082F4D);padding:56px 50px;color:#fff;overflow:hidden"><div style="position:absolute;right:-40px;bottom:-30px;font-size:300px;opacity:.15">🔧</div><div style="font-weight:800;letter-spacing:-.04em;font-size:84px;line-height:1.02;opacity:${clamp(p*5)}">Burst pipe at midnight?</div><div style="font-weight:800;letter-spacing:-.04em;font-size:84px;line-height:1.02;color:#8FD3FF;margin-top:6px;opacity:${clamp((p-.25)*5)}">Fixed today.</div><div style="font-size:34px;font-weight:500;margin-top:26px;opacity:${clamp((p-.45)*5)}">Upfront prices. Families across Penrith.</div><div style="display:inline-block;margin-top:34px;background:#fff;color:#0E5A8A;font-weight:800;font-size:36px;padding:20px 36px;border-radius:18px;opacity:${clamp((p-.55)*5)}">Get help now →</div></div>`)}
+const SC=[
+ // 0 hook: generic site, robot detector
+ (p,t)=>at(p,0,genSite(880,620,'Ridgeway Plumbing','#0E5A8A','DM Sans','🔧','ridgewayplumbing.com.au'),540,330,{r:-2})
+  +at(p,.25,`<div style="width:210px;height:210px;border-radius:50%;background:#150C2B;color:#fff;font-size:120px;display:flex;align-items:center;justify-content:center;transform:rotate(${8*Math.sin(t*6)}deg)">🤖</div>`,860,720,{r:12})
+  +at(p,.5,'<div class="stamp">SOUNDS LIKE AI</div>',500,1000,{r:-25,rr:-6,css:'z-index:5'}),
+ // 1 prompt typed
+ (p,t)=>lab('THE PROBLEM')+at(p,0,chatWin(880,`<div style="height:330px"></div>`+inputBox(typed('write my homepage',(p-.25)*2.2)+(p<.75?caret(t):''))),540,350,{r:-1})
+  +(p>.75?at(p,.75,ub('write my homepage'),540,560,{dy:30}):''),
+ // 2 AI generic answer
+ (p,t)=>at(p,0,chatWin(880,ub('write my homepage')+ab(typed(GEN,(p-.15)*1.6)+(p<.8?caret(t):''),'min-height:330px')+inputBox('<span style="color:#B3AEC4">Message</span>')),540,330,{r:1})
+  +at(p,.75,'<div class="chip" style="background:#E5484D">🥱 generic</div>',780,1080,{r:4}),
+ // 3 fits every business
+ (p,t)=>{const s=[['Ridgeway Plumbing','#0E5A8A','DM Sans','🔧','ridgeway.com.au'],['The Corner Cafe','#9A4A1F','Georgia,serif','☕','cornercafe.com.au'],['Bright Smile Dental','#1E9E8F','DM Sans','🦷','brightsmile.com.au'],['Ironside Gym','#D2352B','Impact,sans-serif','🏋️','ironsidegym.com.au']];
+  return lab('FITS EVERY BUSINESS')+s.map((x,i)=>at(p,i*.1,genSite(430,330,...x),300+480*(i%2),350+360*Math.floor(i/2),{r:i%2?3:-3,rr:i%2?1.5:-1.5})).join('')
+  +at(p,.6,'<div class="stamp" style="font-size:84px">SELLS NOBODY</div>',540,1090,{r:-20,rr:-5,css:'z-index:5'})},
+ // 4 fix one: who + where
+ (p,t)=>lab('FIX 01')+at(p,0,'<div class="card" style="width:400px;height:400px;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-size:170px">👨‍👩‍👧</div><div class="h" style="font-size:64px;margin-top:10px">who?</div></div>',305,370,{r:-4,rr:-2})
+  +at(p,.35,'<div class="card" style="width:400px;height:400px;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-size:170px">📍</div><div class="h" style="font-size:64px;margin-top:10px">where?</div></div>',775,370,{r:4,rr:2})
+  +at(p,.6,'<div class="chip" style="background:#6557E8;font-size:50px">be specific</div>',540,940,{r:-2}),
+ // 5 the specific prompt
+ (p,t)=>{const s='Write my homepage. I\'m an emergency plumber for families in Penrith.';const n=Math.round(clamp((p-.05)*1.5)*s.length);let h=s.slice(0,n).replace('emergency plumber','<span class="lav">emergency plumber</span>').replace('families','<span class="lav">families</span>').replace('Penrith','<span class="lav">Penrith</span>');
+  return lab('FIX 01')+at(p,0,chatWin(880,`<div style="height:120px"></div>`+inputBox(`<span style="line-height:1.45">${h}${p<.75?caret(t):''}</span>`)),540,350,{r:-1})
+  +at(p,.7,'<div class="chip" style="background:#6557E8">✓ who + what + where</div>',540,960,{r:2})},
+ // 6 fix two: reviews
+ (p,t)=>{const R=['"Turned up in 40 minutes and left the place spotless."','"Told us the price before he started. No surprises."'];
+  return lab('FIX 02')+R.map((r,i)=>at(p,i*.15,`<div class="card" style="width:760px;padding:30px 40px"><div style="color:#F5A524;font-size:40px;letter-spacing:4px">★★★★★</div><div style="font-size:40px;font-weight:600;line-height:1.3;margin-top:8px">${r}</div></div>`,540+(i?30:-30),350+i*290,{r:i?2:-2})).join('')
+  +at(p,.55,'<div class="chip" style="background:#6557E8">📋 paste into the chat</div>',540,960,{r:-2})
+  +at(p,.1,'<div style="font-weight:700;font-size:26px;letter-spacing:3px;color:rgba(21,12,43,.4)">EXAMPLE REVIEWS</div>',540,1090,{dy:10})},
+ // 7 fix three: worries
+ (p,t)=>{const W=['💸 Will it cost a fortune?','⏰ How fast can you come?','🧽 Will you make a mess?'];let h='';W.forEach((x,i)=>{const s=spring((p-.3-i*.12)*3.4);h+=`<div style="font-weight:700;font-size:44px;margin:16px 0;opacity:${clamp(s*2.5)};transform:translateX(${(1-s)*-40}px)">${x}</div>`});
+  return lab('FIX 03')+at(p,0,chatWin(880,ub('What would a nervous customer worry about?')+`<div style="background:#F4F3F8;border-radius:30px 30px 30px 8px;padding:20px 34px;margin-top:10px">${h}</div>`),540,350,{r:1})
+  +at(p,.75,'<div class="chip" style="background:#6557E8">then answer each one</div>',540,1080,{r:-2})},
+ // 8 the good result
+ (p,t)=>lab('NOW YOU GET THIS')+at(p,0,goodSite(880,700,(p-.2)*1.4),540,350,{r:-1})
+  +at(p,.8,'<div class="chip" style="background:#3C8A4A">✓ sounds like a real business</div>',540,1110,{r:2}),
+ // 9 same AI
+ (p,t)=>at(p,0,`<div style="width:250px;height:250px;border-radius:70px;background:#150C2B;color:#B9A6FF;font-size:150px;display:flex;align-items:center;justify-content:center;transform:rotate(${4*Math.sin(t*3)}deg)">✦</div>`,540,330)
+  +at(p,.15,'<div class="card" style="width:400px;padding:30px;text-align:center"><div style="font-weight:700;font-size:26px;letter-spacing:3px;color:#E5484D">BEFORE</div><div style="font-size:36px;font-weight:600;margin-top:12px">"write my homepage"</div></div>',305,700,{r:-3})
+  +at(p,.4,'<div class="card" style="width:400px;padding:30px;text-align:center"><div style="font-weight:700;font-size:26px;letter-spacing:3px;color:#3C8A4A">AFTER</div><div style="font-size:30px;font-weight:600;margin-top:12px;line-height:1.35">who + where<br>real reviews<br>customer worries</div></div>',775,700,{r:3}),
+ // 10 CTA
+ (p,t)=>{const it=['who you help + where','your real reviews','answer their worries'];let h='';it.forEach((x,i)=>{const s=spring(p*3.6-i*.3);h+=`<div style="display:flex;align-items:center;gap:22px;margin:16px 0;font-weight:800;font-size:50px;opacity:${clamp(s*2)};transform:translateX(${(1-s)*-50}px)"><span style="width:56px;height:56px;border-radius:14px;background:#6557E8;color:#fff;font-size:38px;display:flex;align-items:center;justify-content:center;flex:none">✓</span>${x}</div>`});
+  return lab('SAVE THIS PROMPT RECIPE')+at(p,0,`<div class="card" style="width:820px;padding:40px 60px">${h}</div>`,540,350)+at(p,.3,'<div class="chip" style="font-size:46px;background:#6557E8">↗ send to a friend</div>',540,820,{r:2})+at(p,.55,'<div class="chip" style="font-size:52px;padding:26px 56px">+ Follow <span style="color:#B9A6FF">@nexaweb_dev</span></div>',540,990,{r:-2})},
+];
+function lineAt(t){let i=0;for(let k=0;k<DATA.lines.length;k++)if(t>=DATA.lines[k].start-0.05)i=k;return i}
+window.render=function(t){
+ const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
+ const end=nx?nx.start:DATA.total,d=end-L.start,lt=t-L.start+0.05,p=clamp(lt/d);
+ const out=nx?clamp((t-(end-0.14))/0.14):0, inn=ease(lt/0.25);
+ S.innerHTML=`<div style="position:absolute;inset:0;transform-origin:520px 330px;transform:scale(1.1)"><div style="position:absolute;inset:0;opacity:${inn*(1-out)};transform:translateY(${-out*40}px);filter:blur(${(1-inn)*8+out*8}px)">${SC[i](p,t)}</div></div>`;
+ const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25);
+ if(!ch){C.innerHTML='';return}
+ const nc=ch.words.map(w=>w.w).join(' ').length;C.style.fontSize=(nc>26?70:82)+'px';
+ C.innerHTML=ch.words.map(w=>{const a=t-(w.start-0.03),on=a>=0,pop=on?0.85+0.15*ease(a/0.12):1;return `<span class="${w.k?'k':''}" style="opacity:${on?1:0};transform:scale(${pop})">${w.w}</span>`}).join(' ');
+};
+</script></body></html>

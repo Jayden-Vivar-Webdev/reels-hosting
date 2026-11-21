@@ -132,5 +132,23 @@
   "status": "posted",
   "note": "8:17 am carousel slot. Made-up business. Facts: GBP free (google.com/business); review link shareable from profile; Google may use meta description for snippet; Search Console free sitemap submit. Approved by Jayden and posted 2026-11-21 08:44 AEDT.",
   "media_id": "18119362121136454"
+ },
+ {
+  "slug": "ai-copy-fix",
+  "format": "reel",
+  "topic": "AI for Business tip: generic AI website copy ('Welcome to our website, where passion meets excellence') and the 3-part prompt fix: who you help + where, paste real reviews, answer a nervous customer's worries. Made-up example business Ridgeway Plumbing, Penrith.",
+  "hook": "If your website sounds like AI wrote it, your customers can tell.",
+  "style": "Nexa light brand (same as website-roast-1): off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold, generic 'AI chat' window mockups (no ChatGPT branding), made-up business sites, red stamps, centred word-by-word captions; series tag 'AI FOR BUSINESS'",
+  "voice": "Chatterbox built-in female voice (no ElevenLabs key in this scheduled run), atempo 1.05",
+  "media": [
+   "nexa/videos/ai-copy-fix/ai-copy-fix.mp4"
+  ],
+  "caption": "Your website sounds like AI wrote it? Your customers can tell 🤖\nSame AI, better instructions. Here's the 3 step prompt recipe 👇\n\nWhich fix is your site missing? Tell me below, and save this for the next time you write website copy.\n\nFollow @nexaweb_dev for more AI and website tips from Nexa Web Development.\n\n#aiforbusiness #chatgpttips #websitecopy #copywriting #smallbusinessaustralia #smallbusinesstips #webdesign #digitalmarketing",
+  "created": "2026-11-21 11:55 AEDT",
+  "post_on": "2026-11-21",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval",
+  "note": "11:17 am reel slot. 37.9 s. No factual claims (opinion/tip only). capcheck 0 problems, synccheck 112/112 words, transcript complete."
  }
 ]
