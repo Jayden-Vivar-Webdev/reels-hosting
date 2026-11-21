@@ -6,7 +6,8 @@ def load(path):
     if a.ndim > 1: a = a.mean(1)
     if sr != SR: a = resample_poly(a, SR, sr).astype(np.float32)
     return a
-FX = {n: load(f"sfx/{n}.wav") for n in ["drone","static","radio","rclick","stinger","hit","heartbeat","paper","escalator","powerdown","door","swell","car","glitch","knock","knock2","thump","engine","slide","flash","rain","oldsong","drip","ding","hum","scratch","creak","buzz","doorbell","lock","ringout","breath","wh","gasp"]}
+import os as _os
+FX = {n: load(f"sfx/{n}.wav") for n in ["drone","static","radio","rclick","stinger","hit","heartbeat","paper","escalator","powerdown","door","swell","car","glitch","knock","knock2","thump","engine","slide","flash","rain","oldsong","drip","ding","hum","scratch","creak","buzz","doorbell","lock","ringout","breath","wh","gasp"] if _os.path.exists(f"sfx/{n}.wav")}
 GAIN = {"static":0.22,"radio":0.35,"rclick":0.4,"stinger":0.55,"hit":0.4,"heartbeat":0.5,"paper":0.3,"escalator":0.16,"powerdown":0.35,"door":0.55,"swell":0.18,"car":0.3,"glitch":0.2,"knock":0.8,"knock2":0.8,"thump":0.85,"engine":0.12,"slide":0.45,"flash":0.35,"rain":0.14,"oldsong":0.16,"drip":0.3,"ding":0.35,"hum":0.08,"scratch":0.5,"creak":0.4,"buzz":0.45,"doorbell":0.4,"lock":0.5,"ringout":0.2,"breath":0.25,"wh":0.22,"gasp":0.45}
 rng = np.random.default_rng(1)
 ir = (rng.standard_normal(int(SR*1.2)) * np.exp(-np.arange(int(SR*1.2))/SR/0.35)).astype(np.float32)
