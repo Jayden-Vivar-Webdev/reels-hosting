@@ -150,5 +150,29 @@
   "posted": false,
   "status": "awaiting approval",
   "note": "11:17 am reel slot. 37.9 s. No factual claims (opinion/tip only). capcheck 0 problems, synccheck 112/112 words, transcript complete."
+ },
+ {
+  "slug": "ai-prompts-5",
+  "format": "carousel",
+  "topic": "5 AI prompts that save a small business hours: reply to a bad review, rough notes into a quote email, chase an unpaid invoice, write a website FAQ, a month of post ideas; plus 'read it before you send it' rule (made-up $450 vs $4,500 example) and don't paste private info",
+  "hook": "5 AI prompts that save a small business hours",
+  "style": "same as google-free-wins-5: off-white, Inter bold, indigo numbers, generic unbranded AI chat window mockups (desktop + phone), lavender [bracket] placeholders, freehand indigo marker underlines/circle, 'Why it works:' line, CC0 cover photo with navy fade, numbered list CTA",
+  "media": [
+   "nexa/images/ai-prompts-5/01.jpg",
+   "nexa/images/ai-prompts-5/02.jpg",
+   "nexa/images/ai-prompts-5/03.jpg",
+   "nexa/images/ai-prompts-5/04.jpg",
+   "nexa/images/ai-prompts-5/05.jpg",
+   "nexa/images/ai-prompts-5/06.jpg",
+   "nexa/images/ai-prompts-5/07.jpg",
+   "nexa/images/ai-prompts-5/08.jpg"
+  ],
+  "caption": "5 AI prompts that save a small business hours every week 🤖\nCopy them, fill in the [brackets], done.\n\nWhich one are you trying first? Comment the number 👇 and save this for the next time you need one.\n\nFollow @nexaweb_dev for more AI and website tips from Nexa Web Development.\n\n#aiforbusiness #aitools #smallbusinessaustralia #smallbusinesstips #chatgpttips #productivity #businesstips #digitalmarketing",
+  "created": "2026-11-21 13:40 AEDT",
+  "post_on": "2026-11-21",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval",
+  "note": "1:17 pm carousel slot. Tips/opinion only, no stats. Made-up names (Mark, Sarah, Tom)."
  }
 ]
