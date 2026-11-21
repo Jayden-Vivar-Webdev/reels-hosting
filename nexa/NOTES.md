@@ -32,4 +32,4 @@
   Caption text word order must match the spoken `say` order exactly.
 - 2026-11-21 (Jayden): the light off-white carousel (ai-prompts-5 v1) was "very bland". v2 direction: navy #150C2B slides,
   CC0 photo across the top fading into navy, big outlined lavender number, DM Sans ExtraBold headline with lavender key words,
-  white UI card overlapping the photo (nexa/images/ai-prompts-5/src/slides.html). Pending his verdict.
+  white UI card overlapping the photo (nexa/images/ai-prompts-5/src/slides.html). v2 approved and posted.
