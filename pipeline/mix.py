@@ -44,6 +44,9 @@ for p in json.load(open("script.json")):
             elif f == "stinger" and s["p"].get("at"): add(f, s["start"] + s["p"]["at"])
             elif f == "door": add(f, s["start"] + 0.6, 0.4)
             else: add(f, s["start"])
+    import os
+    if os.path.exists("sfx/music.wav"):
+        mu = load("sfx/music.wav"); mu = np.tile(mu, n//len(mu)+1)[:n]; bed += mu * float(os.environ.get("MUSIC", "0.16"))
     mix += bed * mask
     mix = np.tanh(mix * 1.1)
     sf.write(f"{p}_mix.wav", np.stack([mix, mix], 1), SR)
