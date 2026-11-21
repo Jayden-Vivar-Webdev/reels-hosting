@@ -1,0 +1,13 @@
+[
+ {"text": "Your website could be broken right now, and nobody would tell you."},
+ {"text": "Here are 4 quick checks. Two minutes, on your phone."},
+ {"text": "Check one. Type site: then your web address into Google.", "say": "Check one. Type site, colon, then your web address into Google."},
+ {"text": "Nothing shows up? Then Google doesn't know your site exists."},
+ {"text": "Check two. Look at the address bar. Does it say Not secure?"},
+ {"text": "That means no security certificate. Lots of hosts include one free."},
+ {"text": "Check three. Paste your web address into PageSpeed Insights. It's free, from Google."},
+ {"text": "Look at the mobile score. Red, under 50, means slow.", "say": "Look at the mobile score. Red, under fifty, means slow."},
+ {"text": "Check four. Fill in your own contact form, and see if the email actually arrives."},
+ {"text": "Broken forms fail silently. You just stop getting enquiries."},
+ {"text": "How many did your site pass? Save this, and follow for more."}
+]

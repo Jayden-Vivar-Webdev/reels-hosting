@@ -175,5 +175,23 @@
   "status": "posted",
   "note": "1:17 pm carousel slot. Tips/opinion only, no stats. Made-up names. v1 (light, bland) -> Jayden asked for more visually appealing; v2 dark photo style awaiting approval. Approved by Jayden and posted 2026-11-21 13:51 AEDT.",
   "media_id": "18173167537474972"
+ },
+ {
+  "slug": "website-checkup-4",
+  "format": "reel",
+  "topic": "Website Checkup: 4 two-minute checks on your phone: site: search in Google (0 results = Google doesn't know your site), 'Not secure' in the address bar (no SSL certificate; many hosts include one free), PageSpeed Insights mobile score (red = under 50 = slow), send a test through your own contact form (broken forms fail silently). Made-up business Kestrel Physio, Wollongong.",
+  "hook": "Your website could be broken right now, and nobody would tell you.",
+  "style": "Nexa light brand (same as ai-copy-fix / website-roast-1): off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold, made-up site mockups, red stamps, centred word-by-word captions; series tag 'WEBSITE CHECKUP'",
+  "voice": "Chatterbox built-in female voice (no ElevenLabs key in this scheduled run), atempo 1.05",
+  "media": [
+   "nexa/videos/website-checkup-4/website-checkup-4.mp4"
+  ],
+  "caption": "Your website could be broken right now, and nobody would tell you 😬\n4 checks, 2 minutes, all on your phone.\n\nHow many did your site pass? Comment your score 👇 and save this for later.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#websitetips #webdesign #smallbusinessaustralia #smallbusinesstips #seo #pagespeed #websitecheck #digitalmarketing",
+  "created": "2026-11-21 17:40 AEDT",
+  "post_on": "2026-11-21",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval",
+  "note": "5:17 pm reel slot. 40.7 s. Facts: Chrome labels HTTP pages 'Not secure' (since Chrome 68, 2018); PageSpeed Insights is free from Google, 0-49 red / 50-89 orange / 90+ green; site: operator shows pages Google knows about. capcheck 0 problems; per-line transcript of final mp4 has every word."
  }
 ]

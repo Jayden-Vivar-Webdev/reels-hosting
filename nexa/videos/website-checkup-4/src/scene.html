@@ -1,0 +1,103 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:'DM Sans','Inter',sans-serif;color:#150C2B;background:#FAF9F6}
+#stage{position:absolute;inset:0}
+.I{color:#6557E8}
+.lab{position:absolute;left:0;right:0;top:285px;text-align:center;font-weight:800;font-size:34px;letter-spacing:8px;color:#6557E8}
+.h{font-weight:800;letter-spacing:-.045em;line-height:1;color:#150C2B}
+.box{display:inline-block;background:#6557E8;color:#fff;padding:0 .14em .06em;border-radius:.12em}
+.lav{display:inline-block;background:#B9A6FF;color:#150C2B;padding:0 .14em .06em;border-radius:.12em}
+.card{background:#fff;border-radius:34px;box-shadow:0 30px 60px rgba(21,12,43,.13);border:2px solid rgba(21,12,43,.07)}
+.chip{display:inline-block;background:#150C2B;color:#fff;border-radius:999px;padding:18px 40px;font-weight:800;font-size:44px;white-space:nowrap}
+.stamp{display:inline-block;border:8px solid #E5484D;color:#E5484D;border-radius:20px;padding:4px 30px 10px;font-weight:800;font-size:90px;letter-spacing:3px;background:rgba(250,249,246,.92);white-space:nowrap}
+.bar{height:20px;border-radius:10px;background:#ECEAF3}
+.dv{font-family:'Times New Roman','DejaVu Serif',serif}
+#cap{position:absolute;left:150px;width:780px;top:1385px;text-align:center;font-weight:800;font-size:82px;letter-spacing:-.04em;line-height:1.14}
+#cap span{display:inline-block;margin:0 .1em}
+#cap span.k{background:#6557E8;color:#fff;padding:0 .12em .05em;border-radius:.12em}
+#tag{position:absolute;left:870px;top:214px;font-weight:800;font-size:44px;letter-spacing:-2px}
+#ser{position:absolute;left:90px;top:228px;font-weight:700;font-size:28px;letter-spacing:4px;color:rgba(21,12,43,.45)}
+</style></head><body>
+<div id="stage"></div>
+<div id="ser">WEBSITE CHECKUP</div>
+<div id="tag">nexa<span class="I">.</span></div>
+<div id="cap"></div>
+<script>
+const DATA=/*DATA*/null;
+const S=document.getElementById('stage'),C=document.getElementById('cap');
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const spring=x=>{x=clamp(x);return 1-Math.exp(-7*x)*Math.cos(8*x)};
+function at(p,d,html,x,y,o={}){const s=spring((p-d)*3.4),ty=(1-s)*(o.dy??60);
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(${o.c===false?0:'-50%'},${ty}px) scale(${0.9+0.1*s}) rotate(${(o.r||0)*(1-s)+(o.rr||0)}deg);opacity:${clamp(s*2.5)};${o.css||''}">${html}</div>`}
+function browser(w,h,inner,url='kestrelphysio.com.au'){return `<div class="card" style="position:relative;width:${w}px;height:${h}px;overflow:hidden"><div style="height:64px;display:flex;align-items:center;gap:12px;padding:0 26px;border-bottom:2px solid #EEECF4;background:#fff"><s style="width:16px;height:16px;border-radius:50%;background:#E5484D"></s><s style="width:16px;height:16px;border-radius:50%;background:#ECEAF3"></s><s style="width:16px;height:16px;border-radius:50%;background:#ECEAF3"></s><span style="margin-left:18px;font-size:23px;color:#8F8AA3;background:#F4F3F8;border-radius:12px;padding:6px 22px">${url}</span></div>${inner}</div>`}
+function cursor(x,y,click=0){return `<div style="position:absolute;left:${x}px;top:${y}px;z-index:9;transform:scale(${1-0.15*click})"><svg width="60" height="72" viewBox="0 0 30 36"><path d="M2 2 L2 28 L9 21 L14 33 L19 31 L14 19 L24 19 Z" fill="#150C2B" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/></svg></div>`}
+
+function lab(t){return `<div class="lab">${t}</div>`}
+const typed=(s,p)=>s.slice(0,Math.round(clamp(p)*s.length));
+const caret=t=>`<span style="opacity:${Math.sin(t*12)>0?1:0};color:#6557E8">|</span>`;
+const U='kestrelphysio.com.au';
+function phone(w,h,inner,bar=''){return `<div style="width:${w}px;height:${h}px;border-radius:70px;background:#150C2B;padding:18px;box-shadow:0 40px 80px rgba(21,12,43,.25)"><div style="position:relative;width:100%;height:100%;border-radius:54px;background:#fff;overflow:hidden">${bar}${inner}</div></div>`}
+function site(w,p=1){return `<div style="display:flex;align-items:center;justify-content:space-between;padding:22px 30px;border-bottom:2px solid #EEECF4"><b style="font-size:${w/17}px;letter-spacing:-1px;color:#1F6F5C">Kestrel<span style="color:#150C2B"> Physio</span></b><span style="font-size:${w/20}px">☰</span></div><div style="height:${w*.5}px;background:linear-gradient(150deg,#2E8C74,#14463A);padding:${w/16}px;color:#fff"><div style="font-weight:800;letter-spacing:-.04em;font-size:${w/10}px;line-height:1.02">Move without pain.</div><div style="font-size:${w/26}px;margin-top:14px;opacity:.85">Physio in Wollongong. Same-week appointments.</div><div style="display:inline-block;margin-top:22px;background:#fff;color:#1F6F5C;font-weight:800;font-size:${w/24}px;padding:14px 26px;border-radius:14px">Book now</div></div><div style="padding:${w/18}px"><div class="bar" style="width:80%"></div><div class="bar" style="width:62%;margin-top:14px"></div><div class="bar" style="width:70%;margin-top:14px"></div></div>`}
+function addr(w,txt,warn){return `<div style="display:flex;align-items:center;gap:14px;background:#F1F0F5;border-radius:999px;padding:16px 28px;font-size:${w/24}px;font-weight:600;color:#150C2B;white-space:nowrap">${warn?'<span style="color:#E5484D;font-weight:800">⚠ Not secure</span><span style="color:#C8C4D6">|</span>':'<span>🔒</span>'}<span>${txt}</span></div>`}
+function search(w,q){return `<div class="card" style="width:${w}px;padding:28px 34px;display:flex;align-items:center;gap:22px;border-radius:999px"><span style="font-size:44px">🔍</span><span style="font-size:44px;font-weight:600;flex:1;white-space:nowrap;overflow:hidden">${q}</span></div>`}
+function gauge(v,p){const a=clamp(p)*v,c=v<50?'#E5484D':v<90?'#F5A524':'#3C8A4A',R=150,L=2*Math.PI*R;return `<div style="position:relative;width:380px;height:380px"><svg width="380" height="380" viewBox="0 0 380 380"><circle cx="190" cy="190" r="${R}" fill="${c}18" stroke="#ECEAF3" stroke-width="26"/><circle cx="190" cy="190" r="${R}" fill="none" stroke="${c}" stroke-width="26" stroke-linecap="round" stroke-dasharray="${L*a/100} ${L}" transform="rotate(-90 190 190)"/></svg><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:150px;letter-spacing:-6px;color:${c}">${Math.round(a)}</div></div>`}
+const field=(l,v,p)=>`<div style="margin-bottom:22px"><div style="font-size:26px;font-weight:700;color:#8F8AA3;margin-bottom:8px">${l}</div><div style="border:3px solid #E4E1EE;border-radius:16px;padding:16px 22px;font-size:34px;font-weight:600;min-height:72px">${typed(v,p)}</div></div>`;
+const SC=[
+ // 0 hook: site on phone glitching, broken stamp
+ (p,t)=>{const g=p>.35?Math.sin(t*40)*6*(Math.sin(t*7)>0.3?1:0):0;
+  return at(p,0,phone(560,900,`<div style="transform:translateX(${g}px);filter:${p>.35&&Math.sin(t*7)>0.3?'hue-rotate(90deg) saturate(1.6)':'none'}">${site(524)}</div>`),540,300,{r:-3})
+  +at(p,.35,'<div class="stamp">BROKEN?</div>',560,760,{r:-25,rr:-7,css:'z-index:5'})
+  +at(p,.6,'<div style="width:190px;height:190px;border-radius:50%;background:#150C2B;color:#fff;font-size:100px;display:flex;align-items:center;justify-content:center">🔕</div>',850,1060,{r:14})},
+ // 1 four checks, two minutes
+ (p,t)=>{const N=['🔍','🔒','⚡','✉️'];let s=N.map((e,i)=>at(p,.08+i*.1,`<div class="card" style="width:190px;height:230px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px"><div style="font-weight:800;font-size:34px;color:#6557E8">0${i+1}</div><div style="font-size:90px">${e}</div></div>`,195+i*230,420,{r:(i%2?3:-3)})).join('');
+  return lab('4 QUICK CHECKS')+s+at(p,.55,`<div class="chip" style="font-size:56px;padding:24px 52px">⏱ 2 minutes</div>`,540,800,{r:-2})+at(p,.7,`<div class="chip" style="background:#6557E8;font-size:46px">📱 on your phone</div>`,540,960,{r:2})},
+ // 2 check one: site: search
+ (p,t)=>{const q='site:'+U;const n=Math.round(clamp((p-.15)*1.7)*q.length);let h=q.slice(0,n);h=h.replace('site:','<span class="lav">site:</span>');
+  return lab('CHECK 01')+at(p,0,search(900,h+(p<.8?caret(t):'')),540,420,{r:-1})
+  +at(p,.6,`<div class="card" style="width:760px;padding:30px 40px;font-size:36px;font-weight:600;line-height:1.4"><div style="font-size:26px;letter-spacing:3px;font-weight:700;color:#8F8AA3">TYPE THIS</div><div><span class="lav">site:</span> + your web address</div></div>`,540,700,{r:2})},
+ // 3 no results
+ (p,t)=>lab('CHECK 01')+at(p,0,search(900,'<span class="lav">site:</span>'+U),540,360,{dy:20})
+  +at(p,.12,`<div class="card" style="width:900px;padding:50px 50px;text-align:center"><div style="font-size:110px">🫥</div><div class="h" style="font-size:58px;margin-top:10px">0 results</div><div style="font-size:34px;color:#8F8AA3;margin-top:14px;font-weight:500">Your search did not match any pages.</div></div>`,540,560,{r:1})
+  +at(p,.55,'<div class="stamp">INVISIBLE</div>',540,1000,{r:-20,rr:-5,css:'z-index:5'}),
+ // 4 check two: not secure
+ (p,t)=>lab('CHECK 02')+at(p,0,browser(820,560,site(820),'⚠ Not secure  |  '+U),540,350,{r:-2})
+  +at(p,.3,`<div class="card" style="display:flex;align-items:center;gap:22px;padding:26px 38px;border-radius:999px;font-size:40px;font-weight:700;white-space:nowrap"><span style="color:#E5484D;font-weight:800">⚠ Not secure</span><span style="color:#C8C4D6">|</span><span>${U}</span></div>`,540,860,{r:1})
+  +at(p,.6,`<div style="width:320px;height:130px;border:10px solid #E5484D;border-radius:50%;transform:rotate(-4deg)"></div>`,268,846,{r:-20,css:'z-index:6'})
+  +at(p,.75,'<div class="chip" style="background:#E5484D">customers see this</div>',540,1060,{r:-2}),
+ // 5 SSL free
+ (p,t)=>lab('THE FIX')+at(p,0,`<div style="width:300px;height:300px;border-radius:80px;background:#3C8A4A;color:#fff;font-size:170px;display:flex;align-items:center;justify-content:center">🔒</div>`,540,350)
+  +at(p,.25,addr(880,U,false),540,720,{r:-1})
+  +at(p,.5,'<div class="chip" style="background:#6557E8;font-size:46px">SSL certificate</div>',540,880,{r:-2})
+  +at(p,.7,'<div class="chip" style="font-size:46px">often free with your host</div>',540,1030,{r:2}),
+ // 6 check three: pagespeed
+ (p,t)=>lab('CHECK 03')+at(p,0,`<div class="card" style="width:900px;padding:44px 50px"><div style="display:flex;align-items:center;gap:20px"><div style="width:70px;height:70px;border-radius:20px;background:#150C2B;color:#B9A6FF;font-size:44px;display:flex;align-items:center;justify-content:center">⚡</div><b style="font-size:46px;letter-spacing:-1px">PageSpeed Insights</b></div><div style="display:flex;gap:18px;margin-top:34px"><div style="flex:1;border:3px solid #E4E1EE;border-radius:18px;padding:20px 24px;font-size:36px;font-weight:600;white-space:nowrap;overflow:hidden">${typed('https://'+U,(p-.15)*2)||'<span style="color:#B3AEC4">Enter a web page URL</span>'}</div><div style="background:#6557E8;color:#fff;border-radius:18px;padding:20px 30px;font-size:36px;font-weight:800;transform:scale(${p>.7&&p<.78?.92:1})">Analyze</div></div></div>`,540,400,{r:-1})
+  +at(p,.45,'<div class="chip" style="background:#3C8A4A">✓ free, from Google</div>',540,800,{r:2})+(p>.62?cursor(870,560,p>.7&&p<.78?1:0):''),
+ // 7 mobile score red
+ (p,t)=>lab('CHECK 03')+at(p,0,`<div class="card" style="width:900px;padding:40px;display:flex;flex-direction:column;align-items:center"><div style="display:flex;gap:16px;margin-bottom:26px"><span class="chip" style="font-size:36px;padding:12px 30px">📱 Mobile</span><span class="chip" style="font-size:36px;padding:12px 30px;background:#ECEAF3;color:#8F8AA3">🖥 Desktop</span></div>${gauge(34,(p-.1)*2.2)}<div style="display:flex;gap:30px;margin-top:30px;font-size:32px;font-weight:700"><span style="color:#E5484D">● 0 to 49</span><span style="color:#F5A524">● 50 to 89</span><span style="color:#3C8A4A">● 90+</span></div></div>`,540,330,{r:1})
+  +at(p,.7,'<div class="stamp" style="font-size:84px">SLOW</div>',860,640,{r:-20,rr:-8,css:'z-index:5'}),
+ // 8 check four: contact form
+ (p,t)=>lab('CHECK 04')+at(p,0,`<div class="card" style="width:860px;padding:40px 46px"><div class="h" style="font-size:52px;margin-bottom:26px">Book an appointment</div>${field('Name','Test from me',(p-.1)*4)}${field('Email','you@'+U,(p-.3)*4)}${field('Message','Just testing the form!',(p-.5)*4)}<div style="background:#1F6F5C;color:#fff;border-radius:18px;padding:22px;text-align:center;font-size:38px;font-weight:800;transform:scale(${p>.78&&p<.85?.95:1})">Send</div></div>`,540,330,{r:-1})
+  +(p>.7?cursor(600,925,p>.78&&p<.85?1:0):'')
+  +at(p,.88,'<div class="chip" style="background:#6557E8">📬 did it arrive?</div>',760,1150,{r:3}),
+ // 9 silent fail
+ (p,t)=>lab('SILENT FAIL')+at(p,0,phone(560,820,`<div style="padding:60px 40px 0"><div class="h" style="font-size:54px">Inbox</div><div style="margin-top:120px;text-align:center"><div style="font-size:130px;opacity:.5">📭</div><div style="font-size:36px;font-weight:700;color:#8F8AA3;margin-top:20px">No new enquiries</div><div style="font-size:28px;color:#B3AEC4;margin-top:10px">Last one: 3 weeks ago</div></div></div>`),540,350,{r:2})
+  +at(p,.45,'<div class="stamp">NO ERROR</div>',560,1000,{r:-20,rr:-6,css:'z-index:5'}),
+ // 10 CTA
+ (p,t)=>{const it=['🔍 site: search','🔒 Not secure?','⚡ mobile speed','✉️ test your form'];let h='';it.forEach((x,i)=>{const s=spring(p*3.6-i*.25);h+=`<div style="display:flex;align-items:center;gap:22px;margin:14px 0;font-weight:800;font-size:48px;opacity:${clamp(s*2)};transform:translateX(${(1-s)*-50}px)"><span style="width:56px;height:56px;border-radius:14px;border:5px solid #6557E8;flex:none"></span>${x}</div>`});
+  return lab('YOUR SCORE: ?/4')+at(p,0,`<div class="card" style="width:820px;padding:40px 60px">${h}</div>`,540,350)+at(p,.35,'<div class="chip" style="font-size:46px;background:#6557E8">🔖 save this</div>',540,870,{r:2})+at(p,.55,'<div class="chip" style="font-size:52px;padding:26px 56px">+ Follow <span style="color:#B9A6FF">@nexaweb_dev</span></div>',540,1020,{r:-2})},
+];
+function lineAt(t){let i=0;for(let k=0;k<DATA.lines.length;k++)if(t>=DATA.lines[k].start-0.05)i=k;return i}
+window.render=function(t){
+ const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
+ const end=nx?nx.start:DATA.total,d=end-L.start,lt=t-L.start+0.05,p=clamp(lt/d);
+ const out=nx?clamp((t-(end-0.14))/0.14):0, inn=ease(lt/0.25);
+ S.innerHTML=`<div style="position:absolute;inset:0;transform-origin:520px 330px;transform:scale(1.1)"><div style="position:absolute;inset:0;opacity:${inn*(1-out)};transform:translateY(${-out*40}px);filter:blur(${(1-inn)*8+out*8}px)">${SC[i](p,t)}</div></div>`;
+ const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25);
+ if(!ch){C.innerHTML='';return}
+ const nc=ch.words.map(w=>w.w).join(' ').length;C.style.fontSize=(nc>26?70:82)+'px';
+ C.innerHTML=ch.words.map(w=>{const a=t-(w.start-0.03),on=a>=0,pop=on?0.85+0.15*ease(a/0.12):1;return `<span class="${w.k?'k':''}" style="opacity:${on?1:0};transform:scale(${pop})">${w.w}</span>`}).join(' ');
+};
+</script></body></html>
