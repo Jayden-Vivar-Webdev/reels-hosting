@@ -1,216 +1,240 @@
 [
- {
-  "slug": "internet-stories-ep2",
-  "format": "reel",
-  "topic": "Internet Stories ep.2: the first banner ad (AT&T on HotWired, Oct 27 1994, ~44% CTR; click led to an online art-museum tour)",
-  "media": [
-   "nexa/videos/internet-stories-ep2/ep2.mp4"
-  ],
-  "created": "2026-11-19 20:50 AEDT",
-  "post_on": "2026-11-19",
-  "approved": false,
-  "posted": false,
-  "note": "Jayden rejected 2026-11-19: wanted a different story, a different visual style, and Brian's ElevenLabs voice. Don't reuse.",
-  "status": "rejected"
- },
- {
-  "slug": "internet-stories-ep2-chatbot",
-  "format": "reel",
-  "topic": "Internet Stories ep.2: AI chatbots speaking for businesses — Chevy dealer bot agrees to sell a Tahoe for $1 (Dec 2023) + Air Canada held liable for its chatbot (Feb 2024, C$812)",
-  "style": "warm cream/peach dot-grid, 'DID YOU KNOW' orange label, huge tight Inter Display Black headlines, orange highlight boxes, italic Lora accents, soft white cards + dark terminal windows, own pixel-robot mascot (style per Jayden's reference reel; no Claude icon)",
-  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
-  "media": [
-   "nexa/videos/internet-stories-ep2-chatbot/ep2.mp4"
-  ],
-  "created": "2026-11-19 22:30 AEDT",
-  "post_on": "2026-11-19",
-  "approved": true,
-  "posted": true,
-  "note": "approved by Jayden and posted 2026-11-19 23:50 AEDT",
-  "media_id": "18051328793821436"
- },
- {
-  "slug": "website-costing-customers-6-signs",
-  "format": "carousel",
-  "topic": "6 signs your website is quietly costing you customers (unclear headline, non-tappable phone number, long contact form, slow load, no clear CTA, out-of-date content)",
-  "hook": "6 things quietly killing your website",
-  "style": "v5 (less-AI style): off-white #FAF9F6, plain Inter bold headlines with indigo #6557E8 numbers, casual short copy, realistic browser/phone screenshots with CC0 photos, slightly tilted, freehand indigo marker circles/arrow (no handwriting font), plain 'Fix:' sentence, no labels/boxes/badges. Cover = full-bleed photo with navy fade. v6: mockups rebuilt as realistic made-up small-business sites (Brightline Plumbing, The Corner Cafe, Northside Accounting, Greenleaf Landscapes, Ember & Oak, Willow & Co) with real Chrome/iOS browser chrome, blurred URLs, per-business fonts/colours.",
-  "media": [
-   "nexa/images/website-costing-customers-6-signs/01.jpg",
-   "nexa/images/website-costing-customers-6-signs/02.jpg",
-   "nexa/images/website-costing-customers-6-signs/03.jpg",
-   "nexa/images/website-costing-customers-6-signs/04.jpg",
-   "nexa/images/website-costing-customers-6-signs/05.jpg",
-   "nexa/images/website-costing-customers-6-signs/06.jpg",
-   "nexa/images/website-costing-customers-6-signs/07.jpg",
-   "nexa/images/website-costing-customers-6-signs/08.jpg"
-  ],
-  "caption": "6 things quietly killing your website. Most take 5 minutes to fix 👇\n\nHow many did your site fail? Tell me your score in the comments, and save this for when you next update your site.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #smallbusinesstips #conversionrate #ux #digitalmarketing #websitedesign",
-  "created": "2026-11-20 08:30 AEDT",
-  "post_on": "2026-11-20",
-  "approved": false,
-  "posted": false,
-  "status": "awaiting approval",
-  "note": "v1 (cream/orange) rejected: too AI. v2 (flat paper + orange marker) liked but asked: more visual, brand colours not orange. v3 awaiting approval. v3 liked; asked for images, visually appealing but not overloaded. v4 awaiting approval. Jayden asked how to look less AI; no own screenshots/photos available, so v5 drops the template elements. v5 awaiting approval. Asked to make the mockups look like actual sites. v6 awaiting approval."
- },
- {
-  "slug": "website-myths-3",
-  "format": "reel",
-  "topic": "3 website myths: homepage sliders (Notre Dame 2013 data: ~1% click, ~9 in 10 clicks on slide 1), instant full-screen pop-ups (Google mobile intrusive interstitials, since Jan 2017), desktop-first design (most web traffic is mobile)",
-  "hook": "That fancy slider on your homepage? Almost nobody clicks it.",
-  "style": "Nexa brand: off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold, mock browser/phone UIs, word-by-word captions with indigo key-word boxes, red MYTH stamp",
-  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
-  "media": [
-   "nexa/videos/website-myths-3/website-myths-3.mp4"
-  ],
-  "caption": "That fancy slider on your homepage? Almost nobody clicks it. 🎠\nPlus 2 more website myths quietly costing you customers.\n\nWhich one is your site guilty of? Be honest 👇 Save this for your next website update.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #ux #seo #mobilefirst #digitalmarketing #websitedesign",
-  "created": "2026-11-20 11:55 AEDT",
-  "post_on": "2026-11-20",
-  "approved": true,
-  "posted": true,
-  "status": "posted",
-  "note": "v1 Chatterbox/cramped replaced; v2 Brian + safe zones; v3 captions centred at x=540 with stable word reveal (capcheck + synccheck pass). v3 awaiting approval. Approved by Jayden and posted 2026-11-20 12:03 AEDT.",
-  "media_id": "18077031464757414"
- },
- {
-  "slug": "website-roast-1",
-  "format": "reel",
-  "topic": "Website Roast ep.1: made-up 'Dave's Pool Care' site roasted: autoplay music (most browsers block autoplay with sound), 11-link menu, light grey text on busy photo, handshake stock photo, 'Submit' button; fixes for each",
-  "hook": "This website made me close the tab in three seconds. Let's roast it.",
-  "style": "Nexa brand (off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold), mock browser UIs of a deliberately dated made-up site (Rock Salt logo, Times nav), red stamps, centred word-by-word captions",
-  "voice": "Chatterbox built-in female voice (no ElevenLabs key in this scheduled run)",
-  "media": [
-   "nexa/videos/website-roast-1/website-roast-1.mp4"
-  ],
-  "caption": "This website made me close the tab in 3 seconds 😬 Made-up business, very real problems.\n\nWhich of these 5 have you seen in the wild? Tell me below 👇 and save this for your next website update.\n\nFollow @nexaweb_dev for more roasts and website tips from Nexa Web Development.\n\n#webdesign #websitedesign #websitetips #smallbusinesstips #uxdesign #webdeveloper #australianbusiness #websiteroast",
-  "created": "2026-11-20 17:50 AEDT",
-  "post_on": "2026-11-20",
-  "approved": false,
-  "posted": false,
-  "status": "awaiting approval",
-  "note": "5:17 pm slot. Fallback voice because ElevenLabs key is supplied per chat. capcheck + synccheck pass."
- },
- {
-  "slug": "internet-stories-ep3-domains",
-  "format": "reel",
-  "topic": "Internet Stories ep.3: lost domains. google.com bought for $12 via Google Domains by a former Google employee (Sept 2015, owned ~1 min, $6,006.13 reward spells 'Google', doubled when donated to charity) + Microsoft forgot to renew passport.com (Dec 1999, Hotmail partly broken, a programmer paid the $35 fee). Lesson: turn on auto-renew.",
-  "hook": "Someone bought google.com. For $12.",
-  "style": "v2 dark motion graphics (Jayden asked 2026-11-20 for darker, professional, impressive motion graphics): deep navy/violet bg #0A0616-#1B1036 with drifting indigo glow orbs, scrolling perspective grid floor, floating particles, glass cards with light sweeps, 3D flip-up entrances with blur, pulse rings, counters, glitch on 'cancelled', DM Sans 800, indigo #6557E8 gradient key-word boxes, lavender #B9A6FF accents, progress bar. src/scene_dark.html",
-  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
-  "media": [
-   "nexa/videos/internet-stories-ep3-domains/ep3-v2.mp4"
-  ],
-  "caption": "Someone bought google.com for $12. 🤯\nAnd Microsoft once forgot to renew a domain that Hotmail needed to work.\n\nDo you know when your domain renews? Check today, then tell me below 👇 Save this so you don't forget.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #domainname #webdesign #websitetips #smallbusinessaustralia #techhistory #google #digitalmarketing",
-  "created": "2026-11-20 20:42 AEDT",
-  "post_on": "2026-11-20",
-  "approved": true,
-  "posted": true,
-  "status": "posted",
-  "note": "8:17 pm slot. Fallback voice: ElevenLabs key is supplied per chat. capcheck + synccheck pass; transcript complete. v1 (cream ep.2 style) -> Jayden asked for darker professional motion graphics; v2 dark awaiting approval. v3: re-voiced with Brian (55 s); capcheck + synccheck pass, awaiting approval. Approved by Jayden and posted 2026-11-20 21:11 AEDT. v2 approved and posted 2026-11-20 22:14 AEDT (media 18134619034826987). Old v1 post 18093641684243030 to be deleted by Jayden in the app (Windsor has no delete).",
-  "media_id": "18134619034826987"
- },
- {
-  "slug": "google-free-wins-5",
-  "format": "carousel",
-  "topic": "5 free ways to show up on Google: page titles that say 'Home', unclaimed Google Business Profile, not asking for reviews (text review link), missing meta descriptions (Google pulls random text), no sitemap in Search Console",
-  "hook": "5 free ways to show up on Google",
-  "style": "same as website-costing-customers-6-signs v6: off-white, Inter bold, indigo numbers, realistic made-up mockups (Harlow Electrical, Penrith) of search results / Maps listing / SMS / Search Console-style panel, freehand indigo marker circles, plain 'Fix:' line, CC0 cover photo with navy fade, score checklist CTA",
-  "media": [
-   "nexa/images/google-free-wins-5/01.jpg",
-   "nexa/images/google-free-wins-5/02.jpg",
-   "nexa/images/google-free-wins-5/03.jpg",
-   "nexa/images/google-free-wins-5/04.jpg",
-   "nexa/images/google-free-wins-5/05.jpg",
-   "nexa/images/google-free-wins-5/06.jpg",
-   "nexa/images/google-free-wins-5/07.jpg"
-  ],
-  "caption": "5 free ways to show up on Google. No ads, no agency, no tech skills 👇\n\nHow many has your business already done? Tell me your score below, and save this for your next quiet afternoon.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#seo #localseo #googlebusinessprofile #smallbusinessaustralia #smallbusinesstips #websitetips #webdesign #digitalmarketing",
-  "created": "2026-11-21 08:40 AEDT",
-  "post_on": "2026-11-21",
-  "approved": true,
-  "posted": true,
-  "status": "posted",
-  "note": "8:17 am carousel slot. Made-up business. Facts: GBP free (google.com/business); review link shareable from profile; Google may use meta description for snippet; Search Console free sitemap submit. Approved by Jayden and posted 2026-11-21 08:44 AEDT.",
-  "media_id": "18119362121136454"
- },
- {
-  "slug": "ai-copy-fix",
-  "format": "reel",
-  "topic": "AI for Business tip: generic AI website copy ('Welcome to our website, where passion meets excellence') and the 3-part prompt fix: who you help + where, paste real reviews, answer a nervous customer's worries. Made-up example business Ridgeway Plumbing, Penrith.",
-  "hook": "If your website sounds like AI wrote it, your customers can tell.",
-  "style": "Nexa light brand (same as website-roast-1): off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold, generic 'AI chat' window mockups (no ChatGPT branding), made-up business sites, red stamps, centred word-by-word captions; series tag 'AI FOR BUSINESS'",
-  "voice": "Chatterbox built-in female voice (no ElevenLabs key in this scheduled run), atempo 1.05",
-  "media": [
-   "nexa/videos/ai-copy-fix/ai-copy-fix.mp4"
-  ],
-  "caption": "Your website sounds like AI wrote it? Your customers can tell 🤖\nSame AI, better instructions. Here's the 3 step prompt recipe 👇\n\nWhich fix is your site missing? Tell me below, and save this for the next time you write website copy.\n\nFollow @nexaweb_dev for more AI and website tips from Nexa Web Development.\n\n#aiforbusiness #chatgpttips #websitecopy #copywriting #smallbusinessaustralia #smallbusinesstips #webdesign #digitalmarketing",
-  "created": "2026-11-21 11:55 AEDT",
-  "post_on": "2026-11-21",
-  "approved": false,
-  "posted": false,
-  "status": "awaiting approval",
-  "note": "11:17 am reel slot. 37.9 s. No factual claims (opinion/tip only). capcheck 0 problems, synccheck 112/112 words, transcript complete."
- },
- {
-  "slug": "ai-prompts-5",
-  "format": "carousel",
-  "topic": "5 AI prompts that save a small business hours: reply to a bad review, rough notes into a quote email, chase an unpaid invoice, write a website FAQ, a month of post ideas; plus 'read it before you send it' rule (made-up $450 vs $4,500 example) and don't paste private info",
-  "hook": "5 AI prompts that save a small business hours",
-  "style": "v2 (Jayden: v1 too bland): deep navy #150C2B slides with soft indigo glow, CC0 photo across top 640px fading into navy, huge outlined lavender number (01-05), DM Sans ExtraBold white headline with lavender key words, white AI chat card (unbranded) overlapping photo, lavender [bracket] placeholders, indigo marker underlines, 'Why it works:' in lavender, progress dots. Cover: full-bleed photo + two tilted chat cards. CTA: list rows with photo thumbnails. src/slides.html (v1 kept as src/slides_v1.html)",
-  "media": [
-   "nexa/images/ai-prompts-5/01.jpg",
-   "nexa/images/ai-prompts-5/02.jpg",
-   "nexa/images/ai-prompts-5/03.jpg",
-   "nexa/images/ai-prompts-5/04.jpg",
-   "nexa/images/ai-prompts-5/05.jpg",
-   "nexa/images/ai-prompts-5/06.jpg",
-   "nexa/images/ai-prompts-5/07.jpg",
-   "nexa/images/ai-prompts-5/08.jpg"
-  ],
-  "caption": "5 AI prompts that save a small business hours every week 🤖\nCopy them, fill in the [brackets], done.\n\nWhich one are you trying first? Comment the number 👇 and save this for the next time you need one.\n\nFollow @nexaweb_dev for more AI and website tips from Nexa Web Development.\n\n#aiforbusiness #aitools #smallbusinessaustralia #smallbusinesstips #chatgpttips #productivity #businesstips #digitalmarketing",
-  "created": "2026-11-21 13:40 AEDT",
-  "post_on": "2026-11-21",
-  "approved": true,
-  "posted": true,
-  "status": "posted",
-  "note": "1:17 pm carousel slot. Tips/opinion only, no stats. Made-up names. v1 (light, bland) -> Jayden asked for more visually appealing; v2 dark photo style awaiting approval. Approved by Jayden and posted 2026-11-21 13:51 AEDT.",
-  "media_id": "18173167537474972"
- },
- {
-  "slug": "website-checkup-4",
-  "format": "reel",
-  "topic": "Website Checkup: 4 two-minute checks on your phone: site: search in Google (0 results = Google doesn't know your site), 'Not secure' in the address bar (no SSL certificate; many hosts include one free), PageSpeed Insights mobile score (red = under 50 = slow), send a test through your own contact form (broken forms fail silently). Made-up business Kestrel Physio, Wollongong.",
-  "hook": "Your website could be broken right now, and nobody would tell you.",
-  "style": "Nexa light brand (same as ai-copy-fix / website-roast-1): off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold, made-up site mockups, red stamps, centred word-by-word captions; series tag 'WEBSITE CHECKUP'",
-  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12, mid-line pauses shortened (join2.py)",
-  "media": [
-   "nexa/videos/website-checkup-4/website-checkup-4.mp4"
-  ],
-  "caption": "Your website could be broken right now, and nobody would tell you 😬\n4 checks, 2 minutes, all on your phone.\n\nHow many did your site pass? Comment your score 👇 and save this for later.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#websitetips #webdesign #smallbusinessaustralia #smallbusinesstips #seo #pagespeed #websitecheck #digitalmarketing",
-  "created": "2026-11-21 17:40 AEDT",
-  "post_on": "2026-11-21",
-  "approved": false,
-  "posted": false,
-  "status": "awaiting approval",
-  "note": "5:17 pm reel slot. 40.7 s. Facts: Chrome labels HTTP pages 'Not secure' (since Chrome 68, 2018); PageSpeed Insights is free from Google, 0-49 red / 50-89 orange / 90+ green; site: operator shows pages Google knows about. capcheck 0 problems; per-line transcript of final mp4 has every word. v2: re-voiced with Brian at Jayden's request (44.4 s); capcheck 0 problems, synccheck 118/124 mean +0.010s, per-line transcript complete. v2 awaiting approval."
- },
- {
-  "slug": "internet-stories-ep4-cadabra",
-  "format": "reel",
-  "topic": "Internet Stories ep.4: Amazon's original name Cadabra (incorporated July 1994) sounded like 'cadaver' to his lawyer over the phone; Bezos registered relentless.com (still redirects to Amazon); picked Amazon from the dictionary (biggest river, starts with A for alphabetical lists). Lesson: phone test your business name/domain.",
-  "hook": "Amazon's first name sounded like a dead body.",
-  "style": "ep.3 dark motion graphics (scene_dark.html): navy/violet glow, perspective grid, glass cards, DM Sans 800, indigo key-word boxes",
-  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12, mid-line pauses shortened (join2.py)",
-  "media": [
-   "nexa/videos/internet-stories-ep4-cadabra/ep4.mp4"
-  ],
-  "caption": "Amazon's first name sounded like a dead body. 💀\nThen a phone call changed everything (and one old domain still works today).\n\nWould your business name pass the phone test? Say it out loud and tell me below 👇 Save this before you buy your next domain.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #amazon #branding #businessname #domainname #techhistory #smallbusinessaustralia #webdesign",
-  "created": "2026-11-21 20:55 AEDT",
-  "post_on": "2026-11-21",
-  "approved": true,
-  "posted": true,
-  "status": "posted",
-  "note": "8:17 pm reel slot. 43 s. Facts: Britannica (2023), Mental Floss (2022), Business Insider: Cadabra Inc July 1994; lawyer (Todd Tarbert) heard 'cadaver' on the phone; relentless.com registered and still redirects to Amazon; Amazon from dictionary, largest river, starts with A for alphabetical listings. capcheck 0 problems; synccheck mean +0.012s, none >0.2s; transcript complete (tail checked separately). v2: re-voiced with Brian at Jayden's request (46.9 s); capcheck 0 problems, synccheck 134/136 mean +0.012s, per-segment transcript complete. v2 awaiting approval. Approved by Jayden and posted 2026-11-21 22:22 AEDT.",
-  "media_id": "18404841655206542"
- }
+  {
+    "slug": "internet-stories-ep2",
+    "format": "reel",
+    "topic": "Internet Stories ep.2: the first banner ad (AT&T on HotWired, Oct 27 1994, ~44% CTR; click led to an online art-museum tour)",
+    "media": [
+      "nexa/videos/internet-stories-ep2/ep2.mp4"
+    ],
+    "created": "2026-11-19 20:50 AEDT",
+    "post_on": "2026-11-19",
+    "approved": false,
+    "posted": false,
+    "note": "Jayden rejected 2026-11-19: wanted a different story, a different visual style, and Brian's ElevenLabs voice. Don't reuse.",
+    "status": "rejected"
+  },
+  {
+    "slug": "internet-stories-ep2-chatbot",
+    "format": "reel",
+    "topic": "Internet Stories ep.2: AI chatbots speaking for businesses — Chevy dealer bot agrees to sell a Tahoe for $1 (Dec 2023) + Air Canada held liable for its chatbot (Feb 2024, C$812)",
+    "style": "warm cream/peach dot-grid, 'DID YOU KNOW' orange label, huge tight Inter Display Black headlines, orange highlight boxes, italic Lora accents, soft white cards + dark terminal windows, own pixel-robot mascot (style per Jayden's reference reel; no Claude icon)",
+    "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
+    "media": [
+      "nexa/videos/internet-stories-ep2-chatbot/ep2.mp4"
+    ],
+    "created": "2026-11-19 22:30 AEDT",
+    "post_on": "2026-11-19",
+    "approved": true,
+    "posted": true,
+    "note": "approved by Jayden and posted 2026-11-19 23:50 AEDT",
+    "media_id": "18051328793821436"
+  },
+  {
+    "slug": "website-costing-customers-6-signs",
+    "format": "carousel",
+    "topic": "6 signs your website is quietly costing you customers (unclear headline, non-tappable phone number, long contact form, slow load, no clear CTA, out-of-date content)",
+    "hook": "6 things quietly killing your website",
+    "style": "v5 (less-AI style): off-white #FAF9F6, plain Inter bold headlines with indigo #6557E8 numbers, casual short copy, realistic browser/phone screenshots with CC0 photos, slightly tilted, freehand indigo marker circles/arrow (no handwriting font), plain 'Fix:' sentence, no labels/boxes/badges. Cover = full-bleed photo with navy fade. v6: mockups rebuilt as realistic made-up small-business sites (Brightline Plumbing, The Corner Cafe, Northside Accounting, Greenleaf Landscapes, Ember & Oak, Willow & Co) with real Chrome/iOS browser chrome, blurred URLs, per-business fonts/colours.",
+    "media": [
+      "nexa/images/website-costing-customers-6-signs/01.jpg",
+      "nexa/images/website-costing-customers-6-signs/02.jpg",
+      "nexa/images/website-costing-customers-6-signs/03.jpg",
+      "nexa/images/website-costing-customers-6-signs/04.jpg",
+      "nexa/images/website-costing-customers-6-signs/05.jpg",
+      "nexa/images/website-costing-customers-6-signs/06.jpg",
+      "nexa/images/website-costing-customers-6-signs/07.jpg",
+      "nexa/images/website-costing-customers-6-signs/08.jpg"
+    ],
+    "caption": "6 things quietly killing your website. Most take 5 minutes to fix 👇\n\nHow many did your site fail? Tell me your score in the comments, and save this for when you next update your site.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #smallbusinesstips #conversionrate #ux #digitalmarketing #websitedesign",
+    "created": "2026-11-20 08:30 AEDT",
+    "post_on": "2026-11-20",
+    "approved": false,
+    "posted": false,
+    "status": "awaiting approval",
+    "note": "v1 (cream/orange) rejected: too AI. v2 (flat paper + orange marker) liked but asked: more visual, brand colours not orange. v3 awaiting approval. v3 liked; asked for images, visually appealing but not overloaded. v4 awaiting approval. Jayden asked how to look less AI; no own screenshots/photos available, so v5 drops the template elements. v5 awaiting approval. Asked to make the mockups look like actual sites. v6 awaiting approval."
+  },
+  {
+    "slug": "website-myths-3",
+    "format": "reel",
+    "topic": "3 website myths: homepage sliders (Notre Dame 2013 data: ~1% click, ~9 in 10 clicks on slide 1), instant full-screen pop-ups (Google mobile intrusive interstitials, since Jan 2017), desktop-first design (most web traffic is mobile)",
+    "hook": "That fancy slider on your homepage? Almost nobody clicks it.",
+    "style": "Nexa brand: off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold, mock browser/phone UIs, word-by-word captions with indigo key-word boxes, red MYTH stamp",
+    "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
+    "media": [
+      "nexa/videos/website-myths-3/website-myths-3.mp4"
+    ],
+    "caption": "That fancy slider on your homepage? Almost nobody clicks it. 🎠\nPlus 2 more website myths quietly costing you customers.\n\nWhich one is your site guilty of? Be honest 👇 Save this for your next website update.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #ux #seo #mobilefirst #digitalmarketing #websitedesign",
+    "created": "2026-11-20 11:55 AEDT",
+    "post_on": "2026-11-20",
+    "approved": true,
+    "posted": true,
+    "status": "posted",
+    "note": "v1 Chatterbox/cramped replaced; v2 Brian + safe zones; v3 captions centred at x=540 with stable word reveal (capcheck + synccheck pass). v3 awaiting approval. Approved by Jayden and posted 2026-11-20 12:03 AEDT.",
+    "media_id": "18077031464757414"
+  },
+  {
+    "slug": "website-roast-1",
+    "format": "reel",
+    "topic": "Website Roast ep.1: made-up 'Dave's Pool Care' site roasted: autoplay music (most browsers block autoplay with sound), 11-link menu, light grey text on busy photo, handshake stock photo, 'Submit' button; fixes for each",
+    "hook": "This website made me close the tab in three seconds. Let's roast it.",
+    "style": "Nexa brand (off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold), mock browser UIs of a deliberately dated made-up site (Rock Salt logo, Times nav), red stamps, centred word-by-word captions",
+    "voice": "Chatterbox built-in female voice (no ElevenLabs key in this scheduled run)",
+    "media": [
+      "nexa/videos/website-roast-1/website-roast-1.mp4"
+    ],
+    "caption": "This website made me close the tab in 3 seconds 😬 Made-up business, very real problems.\n\nWhich of these 5 have you seen in the wild? Tell me below 👇 and save this for your next website update.\n\nFollow @nexaweb_dev for more roasts and website tips from Nexa Web Development.\n\n#webdesign #websitedesign #websitetips #smallbusinesstips #uxdesign #webdeveloper #australianbusiness #websiteroast",
+    "created": "2026-11-20 17:50 AEDT",
+    "post_on": "2026-11-20",
+    "approved": false,
+    "posted": false,
+    "status": "awaiting approval",
+    "note": "5:17 pm slot. Fallback voice because ElevenLabs key is supplied per chat. capcheck + synccheck pass."
+  },
+  {
+    "slug": "internet-stories-ep3-domains",
+    "format": "reel",
+    "topic": "Internet Stories ep.3: lost domains. google.com bought for $12 via Google Domains by a former Google employee (Sept 2015, owned ~1 min, $6,006.13 reward spells 'Google', doubled when donated to charity) + Microsoft forgot to renew passport.com (Dec 1999, Hotmail partly broken, a programmer paid the $35 fee). Lesson: turn on auto-renew.",
+    "hook": "Someone bought google.com. For $12.",
+    "style": "v2 dark motion graphics (Jayden asked 2026-11-20 for darker, professional, impressive motion graphics): deep navy/violet bg #0A0616-#1B1036 with drifting indigo glow orbs, scrolling perspective grid floor, floating particles, glass cards with light sweeps, 3D flip-up entrances with blur, pulse rings, counters, glitch on 'cancelled', DM Sans 800, indigo #6557E8 gradient key-word boxes, lavender #B9A6FF accents, progress bar. src/scene_dark.html",
+    "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
+    "media": [
+      "nexa/videos/internet-stories-ep3-domains/ep3-v2.mp4"
+    ],
+    "caption": "Someone bought google.com for $12. 🤯\nAnd Microsoft once forgot to renew a domain that Hotmail needed to work.\n\nDo you know when your domain renews? Check today, then tell me below 👇 Save this so you don't forget.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #domainname #webdesign #websitetips #smallbusinessaustralia #techhistory #google #digitalmarketing",
+    "created": "2026-11-20 20:42 AEDT",
+    "post_on": "2026-11-20",
+    "approved": true,
+    "posted": true,
+    "status": "posted",
+    "note": "8:17 pm slot. Fallback voice: ElevenLabs key is supplied per chat. capcheck + synccheck pass; transcript complete. v1 (cream ep.2 style) -> Jayden asked for darker professional motion graphics; v2 dark awaiting approval. v3: re-voiced with Brian (55 s); capcheck + synccheck pass, awaiting approval. Approved by Jayden and posted 2026-11-20 21:11 AEDT. v2 approved and posted 2026-11-20 22:14 AEDT (media 18134619034826987). Old v1 post 18093641684243030 to be deleted by Jayden in the app (Windsor has no delete).",
+    "media_id": "18134619034826987"
+  },
+  {
+    "slug": "google-free-wins-5",
+    "format": "carousel",
+    "topic": "5 free ways to show up on Google: page titles that say 'Home', unclaimed Google Business Profile, not asking for reviews (text review link), missing meta descriptions (Google pulls random text), no sitemap in Search Console",
+    "hook": "5 free ways to show up on Google",
+    "style": "same as website-costing-customers-6-signs v6: off-white, Inter bold, indigo numbers, realistic made-up mockups (Harlow Electrical, Penrith) of search results / Maps listing / SMS / Search Console-style panel, freehand indigo marker circles, plain 'Fix:' line, CC0 cover photo with navy fade, score checklist CTA",
+    "media": [
+      "nexa/images/google-free-wins-5/01.jpg",
+      "nexa/images/google-free-wins-5/02.jpg",
+      "nexa/images/google-free-wins-5/03.jpg",
+      "nexa/images/google-free-wins-5/04.jpg",
+      "nexa/images/google-free-wins-5/05.jpg",
+      "nexa/images/google-free-wins-5/06.jpg",
+      "nexa/images/google-free-wins-5/07.jpg"
+    ],
+    "caption": "5 free ways to show up on Google. No ads, no agency, no tech skills 👇\n\nHow many has your business already done? Tell me your score below, and save this for your next quiet afternoon.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#seo #localseo #googlebusinessprofile #smallbusinessaustralia #smallbusinesstips #websitetips #webdesign #digitalmarketing",
+    "created": "2026-11-21 08:40 AEDT",
+    "post_on": "2026-11-21",
+    "approved": true,
+    "posted": true,
+    "status": "posted",
+    "note": "8:17 am carousel slot. Made-up business. Facts: GBP free (google.com/business); review link shareable from profile; Google may use meta description for snippet; Search Console free sitemap submit. Approved by Jayden and posted 2026-11-21 08:44 AEDT.",
+    "media_id": "18119362121136454"
+  },
+  {
+    "slug": "ai-copy-fix",
+    "format": "reel",
+    "topic": "AI for Business tip: generic AI website copy ('Welcome to our website, where passion meets excellence') and the 3-part prompt fix: who you help + where, paste real reviews, answer a nervous customer's worries. Made-up example business Ridgeway Plumbing, Penrith.",
+    "hook": "If your website sounds like AI wrote it, your customers can tell.",
+    "style": "Nexa light brand (same as website-roast-1): off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold, generic 'AI chat' window mockups (no ChatGPT branding), made-up business sites, red stamps, centred word-by-word captions; series tag 'AI FOR BUSINESS'",
+    "voice": "Chatterbox built-in female voice (no ElevenLabs key in this scheduled run), atempo 1.05",
+    "media": [
+      "nexa/videos/ai-copy-fix/ai-copy-fix.mp4"
+    ],
+    "caption": "Your website sounds like AI wrote it? Your customers can tell 🤖\nSame AI, better instructions. Here's the 3 step prompt recipe 👇\n\nWhich fix is your site missing? Tell me below, and save this for the next time you write website copy.\n\nFollow @nexaweb_dev for more AI and website tips from Nexa Web Development.\n\n#aiforbusiness #chatgpttips #websitecopy #copywriting #smallbusinessaustralia #smallbusinesstips #webdesign #digitalmarketing",
+    "created": "2026-11-21 11:55 AEDT",
+    "post_on": "2026-11-21",
+    "approved": false,
+    "posted": false,
+    "status": "awaiting approval",
+    "note": "11:17 am reel slot. 37.9 s. No factual claims (opinion/tip only). capcheck 0 problems, synccheck 112/112 words, transcript complete."
+  },
+  {
+    "slug": "ai-prompts-5",
+    "format": "carousel",
+    "topic": "5 AI prompts that save a small business hours: reply to a bad review, rough notes into a quote email, chase an unpaid invoice, write a website FAQ, a month of post ideas; plus 'read it before you send it' rule (made-up $450 vs $4,500 example) and don't paste private info",
+    "hook": "5 AI prompts that save a small business hours",
+    "style": "v2 (Jayden: v1 too bland): deep navy #150C2B slides with soft indigo glow, CC0 photo across top 640px fading into navy, huge outlined lavender number (01-05), DM Sans ExtraBold white headline with lavender key words, white AI chat card (unbranded) overlapping photo, lavender [bracket] placeholders, indigo marker underlines, 'Why it works:' in lavender, progress dots. Cover: full-bleed photo + two tilted chat cards. CTA: list rows with photo thumbnails. src/slides.html (v1 kept as src/slides_v1.html)",
+    "media": [
+      "nexa/images/ai-prompts-5/01.jpg",
+      "nexa/images/ai-prompts-5/02.jpg",
+      "nexa/images/ai-prompts-5/03.jpg",
+      "nexa/images/ai-prompts-5/04.jpg",
+      "nexa/images/ai-prompts-5/05.jpg",
+      "nexa/images/ai-prompts-5/06.jpg",
+      "nexa/images/ai-prompts-5/07.jpg",
+      "nexa/images/ai-prompts-5/08.jpg"
+    ],
+    "caption": "5 AI prompts that save a small business hours every week 🤖\nCopy them, fill in the [brackets], done.\n\nWhich one are you trying first? Comment the number 👇 and save this for the next time you need one.\n\nFollow @nexaweb_dev for more AI and website tips from Nexa Web Development.\n\n#aiforbusiness #aitools #smallbusinessaustralia #smallbusinesstips #chatgpttips #productivity #businesstips #digitalmarketing",
+    "created": "2026-11-21 13:40 AEDT",
+    "post_on": "2026-11-21",
+    "approved": true,
+    "posted": true,
+    "status": "posted",
+    "note": "1:17 pm carousel slot. Tips/opinion only, no stats. Made-up names. v1 (light, bland) -> Jayden asked for more visually appealing; v2 dark photo style awaiting approval. Approved by Jayden and posted 2026-11-21 13:51 AEDT.",
+    "media_id": "18173167537474972"
+  },
+  {
+    "slug": "website-checkup-4",
+    "format": "reel",
+    "topic": "Website Checkup: 4 two-minute checks on your phone: site: search in Google (0 results = Google doesn't know your site), 'Not secure' in the address bar (no SSL certificate; many hosts include one free), PageSpeed Insights mobile score (red = under 50 = slow), send a test through your own contact form (broken forms fail silently). Made-up business Kestrel Physio, Wollongong.",
+    "hook": "Your website could be broken right now, and nobody would tell you.",
+    "style": "Nexa light brand (same as ai-copy-fix / website-roast-1): off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold, made-up site mockups, red stamps, centred word-by-word captions; series tag 'WEBSITE CHECKUP'",
+    "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12, mid-line pauses shortened (join2.py)",
+    "media": [
+      "nexa/videos/website-checkup-4/website-checkup-4.mp4"
+    ],
+    "caption": "Your website could be broken right now, and nobody would tell you 😬\n4 checks, 2 minutes, all on your phone.\n\nHow many did your site pass? Comment your score 👇 and save this for later.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#websitetips #webdesign #smallbusinessaustralia #smallbusinesstips #seo #pagespeed #websitecheck #digitalmarketing",
+    "created": "2026-11-21 17:40 AEDT",
+    "post_on": "2026-11-21",
+    "approved": false,
+    "posted": false,
+    "status": "awaiting approval",
+    "note": "5:17 pm reel slot. 40.7 s. Facts: Chrome labels HTTP pages 'Not secure' (since Chrome 68, 2018); PageSpeed Insights is free from Google, 0-49 red / 50-89 orange / 90+ green; site: operator shows pages Google knows about. capcheck 0 problems; per-line transcript of final mp4 has every word. v2: re-voiced with Brian at Jayden's request (44.4 s); capcheck 0 problems, synccheck 118/124 mean +0.010s, per-line transcript complete. v2 awaiting approval."
+  },
+  {
+    "slug": "internet-stories-ep4-cadabra",
+    "format": "reel",
+    "topic": "Internet Stories ep.4: Amazon's original name Cadabra (incorporated July 1994) sounded like 'cadaver' to his lawyer over the phone; Bezos registered relentless.com (still redirects to Amazon); picked Amazon from the dictionary (biggest river, starts with A for alphabetical lists). Lesson: phone test your business name/domain.",
+    "hook": "Amazon's first name sounded like a dead body.",
+    "style": "ep.3 dark motion graphics (scene_dark.html): navy/violet glow, perspective grid, glass cards, DM Sans 800, indigo key-word boxes",
+    "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12, mid-line pauses shortened (join2.py)",
+    "media": [
+      "nexa/videos/internet-stories-ep4-cadabra/ep4.mp4"
+    ],
+    "caption": "Amazon's first name sounded like a dead body. 💀\nThen a phone call changed everything (and one old domain still works today).\n\nWould your business name pass the phone test? Say it out loud and tell me below 👇 Save this before you buy your next domain.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #amazon #branding #businessname #domainname #techhistory #smallbusinessaustralia #webdesign",
+    "created": "2026-11-21 20:55 AEDT",
+    "post_on": "2026-11-21",
+    "approved": true,
+    "posted": true,
+    "status": "posted",
+    "note": "8:17 pm reel slot. 43 s. Facts: Britannica (2023), Mental Floss (2022), Business Insider: Cadabra Inc July 1994; lawyer (Todd Tarbert) heard 'cadaver' on the phone; relentless.com registered and still redirects to Amazon; Amazon from dictionary, largest river, starts with A for alphabetical listings. capcheck 0 problems; synccheck mean +0.012s, none >0.2s; transcript complete (tail checked separately). v2: re-voiced with Brian at Jayden's request (46.9 s); capcheck 0 problems, synccheck 134/136 mean +0.012s, per-segment transcript complete. v2 awaiting approval. Approved by Jayden and posted 2026-11-21 22:22 AEDT.",
+    "media_id": "18404841655206542"
+  },
+  {
+    "slug": "website-questions-6",
+    "format": "carousel",
+    "topic": "6 questions to ask before you pay for a website: whose name is the domain in, will I get all the logins, what does it cost every year (free hosting then $79/month made-up quote), can I change it myself, can I see it on my phone, is it set up for Google (titles, GBP, Search Console sitemap, redirects from old pages)",
+    "hook": "Ask these 6 questions before you pay for a website",
+    "style": "ai-prompts-5 v2 approved style: navy slides, CC0 photo top fading to navy, outlined lavender numbers, DM Sans ExtraBold headlines with lavender key words, white UI cards (domain details, handover checklist, quote, CMS editor, phone mock, launch checklist), indigo marker scribbles. Made-up business Harbourside Joinery.",
+    "media": [
+      "nexa/images/website-questions-6/01.jpg",
+      "nexa/images/website-questions-6/02.jpg",
+      "nexa/images/website-questions-6/03.jpg",
+      "nexa/images/website-questions-6/04.jpg",
+      "nexa/images/website-questions-6/05.jpg",
+      "nexa/images/website-questions-6/06.jpg",
+      "nexa/images/website-questions-6/07.jpg",
+      "nexa/images/website-questions-6/08.jpg"
+    ],
+    "caption": "6 questions to ask before you pay anyone for a website. Number 1 is the big one.\n\nSave this for when you need a site, and send it to a mate who's getting one built.\n\nWhich one would you have forgotten to ask? Comment the number 👇\n\nWe build websites at Nexa Web Development, and we think every client should own the keys. Follow @nexaweb_dev for more.\n\n#webdesign #smallbusiness #smallbusinessaustralia #websitetips #webdevelopment #businesstips #australianbusiness #digitalmarketing",
+    "created": "2026-11-22 08:40 AEDT",
+    "post_on": "2026-11-22",
+    "approved": false,
+    "posted": false,
+    "status": "awaiting approval",
+    "note": "8:17 am carousel slot. Advice/opinion only, no stats. Made-up quote figures ($79 x 12 = $948 checked). No dashes."
+  }
 ]
