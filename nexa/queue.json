@@ -193,5 +193,23 @@
   "posted": false,
   "status": "awaiting approval",
   "note": "5:17 pm reel slot. 40.7 s. Facts: Chrome labels HTTP pages 'Not secure' (since Chrome 68, 2018); PageSpeed Insights is free from Google, 0-49 red / 50-89 orange / 90+ green; site: operator shows pages Google knows about. capcheck 0 problems; per-line transcript of final mp4 has every word. v2: re-voiced with Brian at Jayden's request (44.4 s); capcheck 0 problems, synccheck 118/124 mean +0.010s, per-line transcript complete. v2 awaiting approval."
+ },
+ {
+  "slug": "internet-stories-ep4-cadabra",
+  "format": "reel",
+  "topic": "Internet Stories ep.4: Amazon's original name Cadabra (incorporated July 1994) sounded like 'cadaver' to his lawyer over the phone; Bezos registered relentless.com (still redirects to Amazon); picked Amazon from the dictionary (biggest river, starts with A for alphabetical lists). Lesson: phone test your business name/domain.",
+  "hook": "Amazon's first name sounded like a dead body.",
+  "style": "ep.3 dark motion graphics (scene_dark.html): navy/violet glow, perspective grid, glass cards, DM Sans 800, indigo key-word boxes",
+  "voice": "Chatterbox built-in female voice (no ElevenLabs key in this scheduled run), atempo 1.05",
+  "media": [
+   "nexa/videos/internet-stories-ep4-cadabra/ep4.mp4"
+  ],
+  "caption": "Amazon's first name sounded like a dead body. 💀\nThen a phone call changed everything (and one old domain still works today).\n\nWould your business name pass the phone test? Say it out loud and tell me below 👇 Save this before you buy your next domain.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #amazon #branding #businessname #domainname #techhistory #smallbusinessaustralia #webdesign",
+  "created": "2026-11-21 20:55 AEDT",
+  "post_on": "2026-11-21",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval",
+  "note": "8:17 pm reel slot. 43 s. Facts: Britannica (2023), Mental Floss (2022), Business Insider: Cadabra Inc July 1994; lawyer (Todd Tarbert) heard 'cadaver' on the phone; relentless.com registered and still redirects to Amazon; Amazon from dictionary, largest river, starts with A for alphabetical listings. capcheck 0 problems; synccheck mean +0.012s, none >0.2s; transcript complete (tail checked separately)."
  }
 ]
