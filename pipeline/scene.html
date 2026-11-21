@@ -1787,22 +1787,23 @@ SC.texts = (c, p, lt, d) => {
   const buzz = p.buzz ? Math.sin(lt*70)*(lt%0.8<0.35 && lt < 1.6 ? 6 : 0) : 0;
   c.save(); phoneShell(c, 540 + buzz, 780, .88);
   c.fillStyle = '#e4e6ea'; c.fillRect(-275, -420, 550, 130);
-  c.fillStyle = '#c98aa6'; c.beginPath(); c.arc(0, -385, 34, 0, 7); c.fill(); text(c, 'M', 0, -383, 40, 'Anton', '#fff');
-  text(c, 'Mum ♥', 0, -325, 36, 'Anton', '#222');
+  c.fillStyle = p.col || '#c98aa6'; c.beginPath(); c.arc(0, -385, 34, 0, 7); c.fill(); text(c, p.init || 'M', 0, -383, 40, 'Anton', '#fff');
+  text(c, p.name || 'Mum ♥', 0, -325, 36, 'Anton', '#222');
   let y = -250;
   (p.msgs || []).forEach(m => {
     const a = m.at < 0 ? 1 : ease((lt - m.at*d)/0.25); if (a <= 0) return;
     c.save(); c.globalAlpha = a;
     if (m.time){ text(c, m.time, 0, y + 6, 26, 'Anton', '#8a929c'); y += 30; }
-    c.font = '44px Anton'; const lines = m.t.split('\n'); const w = Math.max(...lines.map(l => c.measureText(l).width)) + 56, h = lines.length*56 + 36;
-    c.fillStyle = m.hl ? '#ffd9d6' : '#e2e5ea'; c.beginPath(); c.roundRect(-250, y, w, h, 28); c.fill();
+    c.font = '44px Anton'; const lines = (m.typing ? '•  •  •' : m.t).split('\n'); const w = Math.max(...lines.map(l => c.measureText(l).width)) + 56, h = lines.length*56 + 36;
+    const bx = m.me ? 250 - w : -250;
+    c.fillStyle = m.me ? '#2f7cf6' : m.hl ? '#ffd9d6' : '#e2e5ea'; c.beginPath(); c.roundRect(bx, y, w, h, 28); c.fill();
     if (m.hl){ c.strokeStyle = `rgba(230,40,30,${.6+.4*Math.sin(lt*8)})`; c.lineWidth = 6; c.stroke(); }
-    lines.forEach((l, j) => text(c, l, -222, y + 46 + j*56, 44, 'Anton', m.hl ? '#a3140c' : '#111', 'left'));
+    lines.forEach((l, j) => text(c, l, bx + 28, y + 46 + j*56, 44, 'Anton', m.me ? '#fff' : m.hl ? '#a3140c' : m.typing ? `rgba(60,60,60,${.4+.6*Math.abs(Math.sin(lt*4))})` : '#111', 'left'));
     y += h + 30; c.restore();
   });
   c.restore();
   if (p.banner){ const a = ease(lt/.3); c.save(); c.globalAlpha = a; c.fillStyle = 'rgba(30,34,40,.96)'; c.beginPath(); c.roundRect(130, 290 + 30*(1-a), 820, 160, 30); c.fill();
-    text(c, 'Mum ♥  ·  now', 180, 345 + 30*(1-a), 40, 'Anton', '#fff', 'left'); text(c, p.banner, 180, 405 + 30*(1-a), 40, 'Anton', '#ff8a7a', 'left'); c.restore(); }
+    text(c, (p.name || 'Mum ♥') + '  ·  now', 180, 345 + 30*(1-a), 40, 'Anton', '#fff', 'left'); text(c, p.banner, 180, 405 + 30*(1-a), 40, 'Anton', '#ff8a7a', 'left'); c.restore(); }
 };
 SC.call = (c, p, lt, d) => {
   bg(c,'#14191f','#05070a');
@@ -1860,6 +1861,146 @@ SC.drive = (c, p, lt, d) => {
   if (p.follow) followBox(c, lt, d);
 };
 
+
+// ---------- Don't turn on the lights (flatmate texts; "aren't you glad you didn't turn on the light" legend, twisted) ----------
+function phoneOnCouch(c, x, y, lit, lt){
+  c.save(); c.translate(x, y); c.rotate(-0.12);
+  c.fillStyle = '#0c0e11'; c.beginPath(); c.roundRect(-70, -34, 140, 68, 12); c.fill();
+  if (lit){ c.fillStyle = '#9cc4ff'; c.beginPath(); c.roundRect(-62, -27, 124, 54, 8); c.fill();
+    c.restore(); const g = c.createRadialGradient(x, y, 5, x, y, 330); g.addColorStop(0,'rgba(150,190,255,.55)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(x-340, y-340, 680, 680); return; }
+  c.fillStyle = '#1b1f26'; c.beginPath(); c.roundRect(-62, -27, 124, 54, 8); c.fill(); c.restore();
+}
+function couch(c, y0, col, dent){
+  // three-seat couch, front view
+  c.fillStyle = col[0]; c.beginPath(); c.roundRect(110, y0 - 330, 860, 300, 40); c.fill();           // back
+  c.fillStyle = col[1]; c.beginPath(); c.roundRect(60, y0 - 160, 130, 300, 36); c.fill(); c.beginPath(); c.roundRect(890, y0 - 160, 130, 300, 36); c.fill(); // arms
+  for (let i=0;i<3;i++){
+    const x = 190 + i*233, sag = dent === i ? 34 : 0;
+    c.fillStyle = col[2]; c.beginPath(); c.moveTo(x+6, y0 - 40); c.quadraticCurveTo(x + 116, y0 - 70 + sag*2, x + 227, y0 - 40); c.lineTo(x + 227, y0 + 60); c.lineTo(x + 6, y0 + 60); c.closePath(); c.fill();
+    if (sag){ const g = c.createRadialGradient(x + 116, y0 - 20, 10, x + 116, y0 - 20, 120); g.addColorStop(0,'rgba(0,0,0,.45)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(x, y0 - 120, 233, 200); }
+  }
+  c.fillStyle = col[3]; c.fillRect(110, y0 + 60, 860, 90);
+  c.fillStyle = '#0a0a0a'; c.fillRect(140, y0 + 150, 26, 40); c.fillRect(914, y0 + 150, 26, 40);
+}
+SC.lounge = (c, p, lt, d) => {
+  const day = p.morning, dark = p.night;
+  bg(c, day ? '#5b5e5c' : dark ? '#0c1014' : '#3a3026', day ? '#2a2b2a' : dark ? '#040506' : '#15110d');
+  // window behind the couch
+  c.fillStyle = day ? '#c9d3d8' : '#0b1118'; c.fillRect(300, 230, 480, 420);
+  if (day){ const g = c.createLinearGradient(300,230,780,650); g.addColorStop(0,'rgba(255,255,255,.6)'); g.addColorStop(1,'rgba(255,255,255,0)'); c.fillStyle=g; c.fillRect(300,230,480,420); }
+  c.strokeStyle = day ? '#8d8a84' : '#20262c'; c.lineWidth = 14; c.strokeRect(300, 230, 480, 420); c.beginPath(); c.moveTo(540,230); c.lineTo(540,650); c.stroke();
+  // floor + rug
+  c.fillStyle = day ? '#3b342c' : dark ? '#07080a' : '#211a13'; c.fillRect(0, 1200, W, 720);
+  c.fillStyle = day ? '#5a4a3c' : dark ? '#0d0f12' : '#3a2b20'; c.beginPath(); c.ellipse(540, 1330, 470, 90, 0, 0, 7); c.fill();
+  // lamp (evening only)
+  if (!day && !dark){ c.fillStyle = '#2b241c'; c.fillRect(1000, 620, 12, 560); c.fillStyle = '#e8c98a'; c.beginPath(); c.moveTo(950, 640); c.lineTo(1060, 640); c.lineTo(1035, 540); c.lineTo(975, 540); c.fill();
+    const g = c.createRadialGradient(1005, 620, 10, 1005, 700, 650); g.addColorStop(0,'rgba(255,205,130,.5)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+  const col = day ? ['#6a6f78','#5c616a','#7a808a','#4d5159'] : dark ? ['#13161b','#101318','#181c22','#0d0f13'] : ['#4c5260','#434856','#5a606e','#383c47'];
+  couch(c, 1090, col, p.dent ? 2 : -1);
+  phoneOnCouch(c, 470, 1050, !!p.glow, lt);
+  if (p.eyes){ const a = ease((lt - d*.35)/1.2) * (.55 + .2*Math.sin(lt*2)); c.fillStyle = `rgba(225,232,220,${a})`; c.beginPath(); c.ellipse(700, 840, 13, 6, 0, 0, 7); c.ellipse(760, 840, 13, 6, 0, 0, 7); c.fill(); }
+  if (p.dent){ const a = ease((lt - .4)/.6); c.save(); c.globalAlpha = a; c.strokeStyle = '#ff3b30'; c.lineWidth = 8; c.setLineDash([22,14]); c.beginPath(); c.ellipse(772, 1030, 150, 80, 0, 0, 7); c.stroke(); c.restore(); }
+  if (p.tag) tag(c, p.tag, p.tagX || 470, p.tagY || 930, ease((lt - (p.tagAt||.3))/.3), p.tagCol || '#d7fbe9');
+};
+SC.lightSwitch = (c, p, lt, d) => {
+  bg(c, '#1a1c1f', '#070809');
+  const g = c.createRadialGradient(540, 860, 20, 540, 860, 520); g.addColorStop(0,'rgba(170,185,205,.22)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H);
+  // door frame edge
+  c.fillStyle = '#121315'; c.fillRect(0, 0, 150, H);
+  // switch plate
+  c.fillStyle = '#d9d6cf'; c.beginPath(); c.roundRect(440, 640, 200, 320, 22); c.fill();
+  c.fillStyle = '#bdb9b1'; c.beginPath(); c.roundRect(495, 720, 90, 160, 14); c.fill();
+  c.fillStyle = '#efece6'; c.beginPath(); c.roundRect(505, 730, 70, 70, 10); c.fill();
+  text(c, 'OFF', 540, 1010, 50, 'VT', '#ff5a3a');
+  // hand reaches in, stops, pulls back
+  const ph = lt/d; const k = ph < .45 ? ease(ph/.45) : 1 - ease((ph - .65)/.3) * .9;
+  c.save(); c.translate(1180 - 560*k, 820); c.rotate(-0.15);
+  c.fillStyle = '#b48a70'; c.beginPath(); c.moveTo(0, -55); c.lineTo(420, -70); c.lineTo(440, 80); c.lineTo(0, 70); c.fill();
+  c.beginPath(); c.roundRect(-130, -50, 150, 34, 17); c.fill(); for (let i=1;i<4;i++){ c.beginPath(); c.roundRect(-70, -50 + i*30, 90, 28, 14); c.fill(); }
+  c.fillStyle = '#25292e'; c.fillRect(420, -120, 160, 250);
+  c.restore();
+  c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(0,0,W,H);
+};
+SC.flatHall = (c, p, lt, d) => {
+  bg(c, '#262b31', '#0d0f12');
+  // one-point perspective corridor (moonlit)
+  c.fillStyle = '#20252b'; c.beginPath(); c.moveTo(0,0); c.lineTo(W,0); c.lineTo(690,640); c.lineTo(390,640); c.fill(); // ceiling
+  c.fillStyle = '#3a414a'; c.beginPath(); c.moveTo(0,0); c.lineTo(390,640); c.lineTo(390,1000); c.lineTo(0,1920); c.fill();   // left wall
+  c.fillStyle = '#343a42'; c.beginPath(); c.moveTo(W,0); c.lineTo(690,640); c.lineTo(690,1000); c.lineTo(W,1920); c.fill();  // right wall
+  c.fillStyle = '#2a2520'; c.beginPath(); c.moveTo(0,1920); c.lineTo(390,1000); c.lineTo(690,1000); c.lineTo(W,1920); c.fill(); // floorboards
+  c.strokeStyle = 'rgba(0,0,0,.35)'; c.lineWidth = 3; for (let i=1;i<8;i++){ const x = 390 + i*300/8; c.beginPath(); c.moveTo(x,1000); c.lineTo(x + (x-540)*5.6, 1920); c.stroke(); }
+  c.fillStyle = '#4a5560'; c.fillRect(390, 640, 300, 360); // far end window light
+  { const g = c.createRadialGradient(540, 760, 10, 540, 800, 520); g.addColorStop(0,'rgba(170,195,225,.35)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+  c.fillStyle = '#5f6d7a'; c.fillRect(470, 690, 140, 180); c.strokeStyle = '#2a3036'; c.lineWidth = 8; c.strokeRect(470, 690, 140, 180);
+  // door on the right wall (Josh's room, shut)
+  c.fillStyle = '#2b2622'; c.beginPath(); c.moveTo(800, 520); c.lineTo(940, 380); c.lineTo(940, 1420); c.lineTo(800, 1160); c.fill();
+  c.fillStyle = '#a08a5a'; c.beginPath(); c.arc(820, 880, 9, 0, 7); c.fill();
+  // lounge doorway on the left wall, with phone glow spilling out
+  c.fillStyle = '#6b6156'; c.beginPath(); c.moveTo(100, 400); c.lineTo(320, 590); c.lineTo(320, 1110); c.lineTo(100, 1400); c.fill();
+  c.fillStyle = '#030304'; c.beginPath(); c.moveTo(120, 420); c.lineTo(300, 600); c.lineTo(300, 1100); c.lineTo(120, 1380); c.fill();
+  text(c, 'LOUNGE', 210, 360, 40, 'VT', 'rgba(215,251,233,.0)');
+  const pulse = p.glow ? .55 + .15*Math.sin(lt*1.7) : 0;
+  if (p.glow){ const g = c.createRadialGradient(210, 1120, 10, 210, 1120, 330); g.addColorStop(0,`rgba(140,180,255,${pulse})`); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0, 700, 600, 900); }
+  // the shape in the doorway is only implied: slow "breathing" darkness swell
+  if (p.closer){ const b = .5 + .5*Math.sin(lt*2.2); c.fillStyle = `rgba(0,0,0,${.35 + .25*b})`; c.beginPath(); c.ellipse(210, 820, 70 + 8*b, 120 + 10*b, 0, 0, 7); c.fill(); }
+  // narrator's phone screen light at bottom
+  const g2 = c.createRadialGradient(540, 1700, 10, 540, 1700, 500); g2.addColorStop(0,'rgba(120,150,190,.25)'); g2.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g2; c.fillRect(0,1100,W,820);
+  if (p.tag) tag(c, p.tag, 520, 470, ease((lt - (p.tagAt||.3))/.3), p.tagCol || '#d7fbe9');
+};
+function joshFig(c, x, y, s, pale, yawn){
+  c.save(); c.translate(x, y); c.scale(s, s);
+  // hoodie body
+  c.fillStyle = '#3d4a5e'; c.beginPath(); c.moveTo(-210, 760); c.quadraticCurveTo(-220, 180, 0, 160); c.quadraticCurveTo(220, 180, 210, 760); c.fill();
+  c.fillStyle = '#334055'; c.beginPath(); c.ellipse(0, 175, 120, 40, 0, 0, 7); c.fill();
+  // head
+  c.fillStyle = pale ? '#cfcfc6' : '#c79a7c'; c.beginPath(); c.ellipse(0, 20, 92, 116, 0, 0, 7); c.fill();
+  c.fillStyle = '#2b1d14'; c.beginPath(); c.ellipse(0, -60, 98, 62, 0, Math.PI, 0); c.fill(); c.fillRect(-98, -66, 196, 26);
+  // eyes / mouth
+  c.fillStyle = '#1a1210';
+  if (yawn){ c.fillRect(-48, 6, 30, 5); c.fillRect(18, 6, 30, 5); c.beginPath(); c.ellipse(0, 70, 24, 32*yawn, 0, 0, 7); c.fill(); }
+  else { c.beginPath(); c.ellipse(-33, 8, 11, pale ? 11 : 7, 0, 0, 7); c.ellipse(33, 8, 11, pale ? 11 : 7, 0, 0, 7); c.fill(); c.fillRect(-20, 72, 40, 6); }
+  // yawning arm
+  if (yawn){ c.fillStyle = '#3d4a5e'; c.save(); c.translate(150, 230); c.rotate(-2.4 + .2*yawn); c.fillRect(-30, 0, 60, 300); c.restore(); }
+  c.restore();
+}
+SC.josh = (c, p, lt, d) => {
+  bg(c, '#6a6a66', '#2c2c2a');
+  const g = c.createLinearGradient(1080, 200, 300, 1200); g.addColorStop(0,'rgba(255,240,210,.35)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H);
+  // bedroom door frame
+  c.fillStyle = '#2a2826'; c.fillRect(250, 380, 580, 1000); c.fillStyle = '#d8d3c8'; c.fillRect(230, 360, 30, 1040); c.fillRect(820, 360, 30, 1040); c.fillRect(230, 350, 620, 30);
+  c.fillStyle = '#4a4440'; c.fillRect(0, 1380, W, 540);
+  const yawn = p.yawn ? Math.max(0, Math.sin(clamp(lt/(d*.7),0,1)*Math.PI)) : 0;
+  joshFig(c, 540, 620, 1.0, !!p.pale, p.yawn ? Math.max(yawn, .05) : 0);
+  if (p.pale){ c.fillStyle = 'rgba(160,190,200,.12)'; c.fillRect(0,0,W,H); }
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt||.2))/.3), p.tagCol || '#d7fbe9');
+};
+SC.covers = (c, p, lt, d) => {
+  // POV under the blanket: dark fabric, a thin gap at the top showing the dark room
+  bg(c, '#0b0c10', '#050507');
+  c.fillStyle = '#020203'; c.beginPath(); c.moveTo(140, 300); c.quadraticCurveTo(540, 250 + 10*Math.sin(lt*1.3), 940, 300); c.quadraticCurveTo(540, 380, 140, 300); c.fill();
+  // the gap: faint doorway outline in the room beyond
+  c.save(); c.beginPath(); c.moveTo(140, 300); c.quadraticCurveTo(540, 250, 940, 300); c.quadraticCurveTo(540, 380, 140, 300); c.clip();
+  c.fillStyle = '#10141a'; c.fillRect(140, 240, 800, 160); c.fillStyle = '#05070a'; c.fillRect(600, 250, 120, 150); c.restore();
+  // blanket folds lit by the phone
+  const r = R(17);
+  for (let i=0;i<9;i++){ const x = r()*W, y = 380 + r()*1300; const g = c.createRadialGradient(x, y, 10, x, y, 260 + r()*200); g.addColorStop(0, 'rgba(60,70,95,.35)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0,0,W,H); }
+  // phone in hands
+  c.save(); c.translate(540, 900 + 4*Math.sin(lt*9)*(lt<1?1:0)); c.scale(.62,.62);
+  const gl = c.createRadialGradient(0, 0, 50, 0, 0, 900); gl.addColorStop(0,'rgba(150,180,255,.35)'); gl.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = gl; c.fillRect(-900,-900,1800,1800);
+  c.fillStyle = '#0b0d10'; c.beginPath(); c.roundRect(-300, -520, 600, 1040, 60); c.fill();
+  c.fillStyle = '#f2f3f5'; c.beginPath(); c.roundRect(-275, -495, 550, 990, 44); c.fill();
+  c.fillStyle = '#e4e6ea'; c.fillRect(-275, -420, 550, 130); text(c, 'Josh (flatmate)', 0, -355, 40, 'Anton', '#222');
+  c.font = '44px Anton'; c.fillStyle = '#ffd9d6'; c.beginPath(); c.roundRect(-250, -230, 480, 160, 28); c.fill();
+  c.strokeStyle = `rgba(230,40,30,${.6+.4*Math.sin(lt*8)})`; c.lineWidth = 6; c.stroke();
+  text(c, "Don't turn on the light.", -222, -184, 44, 'Anton', '#a3140c', 'left'); text(c, "I'm in your room now.", -222, -128, 44, 'Anton', '#a3140c', 'left');
+  text(c, 'Read 2:01 AM', 220, -40, 28, 'Anton', '#8a929c', 'right');
+  c.restore();
+  // fingers
+  c.fillStyle = '#6f5446'; for (let i=0;i<3;i++){ c.beginPath(); c.roundRect(310, 900 + i*60, 70, 44, 20); c.fill(); c.beginPath(); c.roundRect(700, 900 + i*60, 70, 44, 20); c.fill(); }
+  // something presses the blanket from outside (implied, near the end)
+  if (lt > d*.55){ const a = ease((lt - d*.55)/1.2); const g = c.createRadialGradient(830, 430, 10, 830, 430, 220); g.addColorStop(0, `rgba(0,0,0,${.85*a})`); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(500, 150, 600, 600); }
+  if (p.follow) followBox(c, lt, d);
+};
 // ---------- HUD, captions, post ----------
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
@@ -1910,7 +2051,7 @@ window.render = (t) => {
   X.setTransform(1,0,0,1,0,0); X.fillStyle = '#000'; X.fillRect(0,0,W,H);
   X.save(); X.translate(W/2, H/2); X.scale(push, push); X.translate(-W/2, -H/2);
   // CCTV tint
-  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='texts' || sc.scene==='call' || sc.scene==='photo' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
+  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='texts' || sc.scene==='josh' || sc.scene==='covers' || sc.scene==='call' || sc.scene==='photo' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
   X.drawImage(S, 0, 0);
   X.filter = 'none';
   X.restore();
