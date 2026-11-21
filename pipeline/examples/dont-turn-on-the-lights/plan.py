@@ -17,7 +17,7 @@ PLAN = {"p1": [
  ("joshNight", {}, ["door"], "02:33:21 AM", "LIAM'S ROOM"),
  ("joshNight", {"shout": True, "push": True}, [], "02:33:23 AM", "LIAM'S ROOM"),
  ("grab", {"push": True}, ["thump"], "02:33:26 AM", "LIAM'S ROOM"),
- ("bedroom", {"dark": True, "fever": 1, "choke": True, "push": True}, [], "02:33:29 AM", "LIAM'S ROOM"),
+ ("bedroom", {"dark": True, "fever": 1, "choke": True, "push": True, "hush": True}, [], "02:33:29 AM", "LIAM'S ROOM"),
  ("possessed", {"hush": True}, [], "02:33:31 AM", "LIAM'S ROOM"),
  ("possessed", {"mouth": True, "glitch": True, "push": True}, ["stinger", "glitch"], "02:33:34 AM", "LIAM'S ROOM"),
  ("flatExt", {"tag": "FLAT 2B"}, [], "11:52:10 PM", "STREET CAM · 3 WEEKS LATER"),
