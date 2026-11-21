@@ -1725,6 +1725,141 @@ SC.face = (c, p, lt, d) => {
   if (p.tag) tag(c, p.tag, 540, 330, ease((lt - (p.tagAt||0)*d)/.3));
 };
 
+// ---------- lock-the-door story (doorbell-cam mimic) ----------
+function mumFig(c, x, y, s, o={}){
+  person(c, x, y, s, {coat: '#c98aa6', legs: '#b07a92', gown: true, hairC: '#c4bdb3', face: o.back ? 'back' : 'front', smile: o.smile || 0, wide: true, skin: '#d9c6b6', a: o.a});
+  if (!o.back){ // dressing-gown collar + belt + hands
+    c.save(); c.translate(x, y); c.scale(s, s); c.globalAlpha *= (o.a ?? 1);
+    c.fillStyle = '#e7b9cc'; c.beginPath(); c.moveTo(-50, 100); c.lineTo(0, 210); c.lineTo(50, 100); c.lineTo(30, 100); c.lineTo(0, 170); c.lineTo(-30, 100); c.fill();
+    c.fillStyle = '#d9c6b6'; c.beginPath(); c.ellipse(-80, 360, 16, 22, 0, 0, 7); c.ellipse(80, 360, 16, 22, 0, 0, 7); c.fill();
+    c.fillStyle = '#c4bdb3'; c.beginPath(); c.ellipse(-44, 40, 15, 44, .1, 0, 7); c.ellipse(44, 40, 15, 44, -.1, 0, 7); c.ellipse(0, -4, 54, 24, 0, Math.PI, 0); c.fill();
+    if (o.evil){ c.fillStyle = '#000'; c.beginPath(); c.ellipse(-17, 34, 12, 12, 0, 0, 7); c.ellipse(17, 34, 12, 12, 0, 0, 7); c.fill(); }
+    c.restore();
+  }
+}
+function porchBase(c, dawn){
+  bg(c, dawn ? '#4a5560' : '#1c2428', dawn ? '#1d2328' : '#080b0c');
+  // houses across the street
+  c.fillStyle = dawn ? '#2b3238' : '#0e1315';
+  for (const [hx, hw, hh] of [[-40, 300, 220], [300, 340, 260], [700, 420, 230]]){ c.fillRect(hx, 620 - hh, hw, hh); c.beginPath(); c.moveTo(hx - 20, 620 - hh); c.lineTo(hx + hw/2, 620 - hh - 90); c.lineTo(hx + hw + 20, 620 - hh); c.fill(); }
+  if (!dawn){ c.fillStyle = 'rgba(255,210,140,.55)'; c.fillRect(380, 470, 50, 60); }
+  // street
+  c.fillStyle = dawn ? '#3a4148' : '#14191c'; c.fillRect(0, 620, W, 200);
+  c.fillStyle = 'rgba(230,220,160,.45)'; for (let x=20; x<W; x+=160) c.fillRect(x, 715, 80, 8);
+  // street lamp
+  c.fillStyle = '#2a2f33'; c.fillRect(880, 330, 12, 300); c.fillStyle = dawn ? '#9aa' : '#ffd9a0'; c.fillRect(860, 320, 52, 16);
+  if (!dawn){ const g = c.createRadialGradient(886, 650, 10, 886, 650, 280); g.addColorStop(0,'rgba(255,200,120,.35)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+  // highway sign at the end of the street
+  c.fillStyle = '#2a2f33'; c.fillRect(140, 470, 8, 160); c.fillStyle = '#1f6b3a'; c.fillRect(70, 430, 160, 70); text(c, 'HWY →', 150, 467, 40, 'Anton', '#e8f2ea');
+  // front path + porch floor
+  c.fillStyle = dawn ? '#5a524b' : '#3b3531'; c.beginPath(); c.moveTo(-200, 1750); c.quadraticCurveTo(540, 760, 1280, 1750); c.fill();
+  c.fillStyle = dawn ? '#6b625a' : '#4a433d'; c.beginPath(); c.moveTo(430, 820); c.lineTo(650, 820); c.lineTo(760, 1150); c.lineTo(320, 1150); c.fill();
+  if (!dawn){ const g = c.createRadialGradient(540, 1150, 20, 540, 1150, 620); g.addColorStop(0,'rgba(255,220,160,.55)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+  c.fillStyle = '#4a3a2c'; c.beginPath(); c.roundRect(360, 1230, 360, 130, 14); c.fill();
+  text(c, 'HOME', 540, 1297, 50, 'Type', 'rgba(20,14,10,.8)');
+}
+function fisheye(c){ const g = c.createRadialGradient(540, 960, 520, 540, 960, 1000); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,.8)'); c.fillStyle = g; c.fillRect(0,0,W,H); }
+SC.doorcam = (c, p, lt, d) => {
+  porchBase(c, p.dawn);
+  if (p.walk){
+    const k = ease(lt/d) ;
+    const x = 520 - 330*k, y = 560 - 40*k, s = .55 - .35*k;
+    mumFig(c, x, y, s, {back: true});
+    tag(c, 'WALKING TOWARD THE HIGHWAY', 540, 330, ease((lt - .3)/.3));
+  } else if (!p.empty){
+    const n = p.near + 0.06*ease(lt/d);
+    const s = 1.25 + 1.2*n, y = 600 - 230*n;
+    const sh = p.evil ? Math.sin(lt*31)*3 : 0;
+    mumFig(c, 540 + sh, y, s, {smile: p.smile, evil: p.evil && lt > 0.25*d});
+  }
+  if (p.talk){ const on = Math.sin(lt*9) > -.2; c.save(); c.fillStyle = 'rgba(0,0,0,.6)'; c.beginPath(); c.roundRect(60, 1440, 370, 80, 16); c.fill(); text(c, (on ? '◉ ' : '○ ') + 'VISITOR TALKING', 245, 1482, 40, 'VT', '#ff6a5a'); c.restore(); }
+  fisheye(c);
+  if (p.tag) tag(c, p.tag, 540, 330, ease((lt - (p.tagAt||0)*d)/.3), p.dawn ? '#d7fbe9' : '#ff5a3a');
+};
+function phoneShell(c, x, y, sc){
+  c.translate(x, y); c.scale(sc, sc);
+  c.fillStyle = '#0b0d10'; c.beginPath(); c.roundRect(-300, -520, 600, 1040, 60); c.fill();
+  c.fillStyle = '#f2f3f5'; c.beginPath(); c.roundRect(-275, -495, 550, 990, 44); c.fill();
+}
+SC.texts = (c, p, lt, d) => {
+  bg(c,'#16202b','#06090d');
+  const g = c.createRadialGradient(540, 820, 50, 540, 820, 700); g.addColorStop(0,'rgba(140,180,230,.3)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H);
+  const buzz = p.buzz ? Math.sin(lt*70)*(lt%0.8<0.35 && lt < 1.6 ? 6 : 0) : 0;
+  c.save(); phoneShell(c, 540 + buzz, 780, .88);
+  c.fillStyle = '#e4e6ea'; c.fillRect(-275, -420, 550, 130);
+  c.fillStyle = '#c98aa6'; c.beginPath(); c.arc(0, -385, 34, 0, 7); c.fill(); text(c, 'M', 0, -383, 40, 'Anton', '#fff');
+  text(c, 'Mum ♥', 0, -325, 36, 'Anton', '#222');
+  let y = -250;
+  (p.msgs || []).forEach(m => {
+    const a = m.at < 0 ? 1 : ease((lt - m.at*d)/0.25); if (a <= 0) return;
+    c.save(); c.globalAlpha = a;
+    if (m.time){ text(c, m.time, 0, y + 6, 26, 'Anton', '#8a929c'); y += 30; }
+    c.font = '44px Anton'; const lines = m.t.split('\n'); const w = Math.max(...lines.map(l => c.measureText(l).width)) + 56, h = lines.length*56 + 36;
+    c.fillStyle = m.hl ? '#ffd9d6' : '#e2e5ea'; c.beginPath(); c.roundRect(-250, y, w, h, 28); c.fill();
+    if (m.hl){ c.strokeStyle = `rgba(230,40,30,${.6+.4*Math.sin(lt*8)})`; c.lineWidth = 6; c.stroke(); }
+    lines.forEach((l, j) => text(c, l, -222, y + 46 + j*56, 44, 'Anton', m.hl ? '#a3140c' : '#111', 'left'));
+    y += h + 30; c.restore();
+  });
+  c.restore();
+  if (p.banner){ const a = ease(lt/.3); c.save(); c.globalAlpha = a; c.fillStyle = 'rgba(30,34,40,.96)'; c.beginPath(); c.roundRect(130, 290 + 30*(1-a), 820, 160, 30); c.fill();
+    text(c, 'Mum ♥  ·  now', 180, 345 + 30*(1-a), 40, 'Anton', '#fff', 'left'); text(c, p.banner, 180, 405 + 30*(1-a), 40, 'Anton', '#ff8a7a', 'left'); c.restore(); }
+};
+SC.call = (c, p, lt, d) => {
+  bg(c,'#14191f','#05070a');
+  c.save(); phoneShell(c, 540, 780, .88);
+  const gg = c.createLinearGradient(0, -495, 0, 495); gg.addColorStop(0, p.mode === 'calling' ? '#3a1414' : '#2b3a4a'); gg.addColorStop(1, '#0b0e12');
+  c.fillStyle = gg; c.beginPath(); c.roundRect(-275, -495, 550, 990, 44); c.fill();
+  c.fillStyle = '#c98aa6'; c.beginPath(); c.arc(0, -250, 90, 0, 7); c.fill(); text(c, 'M', 0, -246, 100, 'Anton', '#fff');
+  text(c, 'Mum ♥', 0, -100, 70, 'Anton', '#fff');
+  if (p.mode === 'incoming'){
+    text(c, 'incoming call · Sunday', 0, -30, 34, 'Anton', '#b9c4cf');
+    const pulse = 1 + .08*Math.sin(lt*7);
+    c.fillStyle = '#2ecc55'; c.beginPath(); c.arc(140, 330, 60*pulse, 0, 7); c.fill(); text(c, '✆', 140, 333, 60, 'Anton', '#fff');
+    c.fillStyle = '#e0453a'; c.beginPath(); c.arc(-140, 330, 60, 0, 7); c.fill();
+  } else if (p.mode === 'ended'){
+    text(c, 'Call ended · 48:37', 0, -30, 36, 'Anton', '#b9c4cf');
+    if (p.quote){ const a = ease((lt - .2)/.4); c.save(); c.globalAlpha = a; c.rotate(-.05); c.fillStyle = '#fff6c8'; c.fillRect(-230, 90, 460, 200);
+      text(c, '"Lock the door,', 0, 150, 58, 'Hand', '#222'); text(c, 'love."', 0, 225, 58, 'Hand', '#b3140c'); c.restore(); }
+  } else {
+    const n = Math.min(p.count, 1 + Math.floor(lt / (d/p.count)));
+    text(c, 'No answer', 0, -30, 44, 'Anton', '#ff6a5a');
+    text(c, `Call attempt ${n}`, 0, 40, 40, 'Anton', '#d8dde3');
+    const pulse = .5 + .5*Math.sin(lt*6);
+    c.fillStyle = `rgba(224,69,58,${.6 + .4*pulse})`; c.beginPath(); c.arc(0, 330, 64, 0, 7); c.fill(); text(c, '✆', 0, 333, 60, 'Anton', '#fff');
+  }
+  c.restore();
+};
+SC.lockHand = (c, p, lt, d) => {
+  bg(c, '#2a2019', '#0c0907');
+  // door panel
+  c.fillStyle = '#5a4130'; c.fillRect(140, 200, 800, 1500);
+  c.strokeStyle = 'rgba(0,0,0,.35)'; c.lineWidth = 10; c.strokeRect(220, 300, 640, 420); c.strokeRect(220, 1300, 640, 380);
+  // peephole with porch light
+  c.fillStyle = '#c9a85a'; c.beginPath(); c.arc(540, 420, 34, 0, 7); c.fill(); c.fillStyle = '#ffe2a8'; c.beginPath(); c.arc(540, 420, 14, 0, 7); c.fill();
+  // deadbolt plate + thumb turn
+  c.fillStyle = '#c9a85a'; c.beginPath(); c.roundRect(470, 820, 140, 240, 24); c.fill();
+  c.fillStyle = '#a98a45'; c.beginPath(); c.arc(540, 900, 46, 0, 7); c.fill();
+  const turn = p.turn ? ease(lt/d) * 1.2 : 0;
+  c.save(); c.translate(540, 900); c.rotate(turn); c.fillStyle = '#d9bb6a'; c.beginPath(); c.roundRect(-18, -62, 36, 124, 14); c.fill(); c.restore();
+  c.fillStyle = '#a98a45'; c.beginPath(); c.arc(540, 1010, 22, 0, 7); c.fill();
+  text(c, 'LOCKED', 540, 770, 44, 'VT', '#ff5a3a');
+  // hand reaching in from right
+  const k = ease(lt/(d*.5));
+  c.save(); c.translate(1150 - 520*k, 920);
+  c.fillStyle = '#c99c80'; c.beginPath(); c.moveTo(0, -60); c.lineTo(300, -80); c.lineTo(320, 90); c.lineTo(0, 80); c.fill();
+  for (let i=0;i<4;i++){ c.beginPath(); c.roundRect(-110, -55 + i*32, 130, 28, 14); c.fill(); }
+  c.fillStyle = '#2b3138'; c.fillRect(300, -110, 120, 230);
+  c.restore();
+  // phone glow from below on last third
+  if (lt > d*.6){ const a = ease((lt - d*.6)/.2); const g = c.createRadialGradient(540, 1500, 20, 540, 1500, 600); g.addColorStop(0, `rgba(150,190,255,${.45*a})`); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+};
+SC.drive = (c, p, lt, d) => {
+  SC.road(c, {}, lt, d);
+  c.fillStyle = 'rgba(255,170,110,.10)'; c.fillRect(0, 0, W, 900);
+  tag(c, "MUM'S HOUSE · 4 HRS", 540, 640, ease((lt-.2)/.3), '#d7fbe9');
+  if (p.follow) followBox(c, lt, d);
+};
+
 // ---------- HUD, captions, post ----------
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
@@ -1775,7 +1910,7 @@ window.render = (t) => {
   X.setTransform(1,0,0,1,0,0); X.fillStyle = '#000'; X.fillRect(0,0,W,H);
   X.save(); X.translate(W/2, H/2); X.scale(push, push); X.translate(-W/2, -H/2);
   // CCTV tint
-  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='photo' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
+  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='texts' || sc.scene==='call' || sc.scene==='photo' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
   X.drawImage(S, 0, 0);
   X.filter = 'none';
   X.restore();
