@@ -1,144 +1,144 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
-:root{--ind:#6557E8;--ink:#1d1b22}
+:root{--ind:#6557E8;--lav:#B9A6FF;--navy:#150C2B}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;color:var(--ink);background:#999}
-.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:#FAF9F6}
-.t{position:absolute;left:80px;right:80px;font-weight:700;font-size:66px;line-height:1.08;letter-spacing:-.025em}
-.t .n{color:var(--ind)}
-.p{position:absolute;left:80px;right:80px;font-size:36px;line-height:1.38;color:#3d3a44}
-.fx{position:absolute;left:80px;right:80px;font-size:34px;line-height:1.38;color:#3d3a44}
-.fx b{font-weight:700;color:var(--ink)}
-.handle{position:absolute;left:80px;bottom:52px;font-size:26px;color:#a6a2ad;font-weight:500}
-.cnt{position:absolute;right:80px;bottom:52px;font-size:26px;color:#a6a2ad;font-weight:500}
-.shot{position:absolute;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.10),0 20px 44px rgba(0,0,0,.13)}
-.tabs{height:42px;background:#DFE3E8;display:flex;align-items:flex-end;padding-left:84px;position:relative}
-.tabs:before{content:"";position:absolute;left:18px;top:15px;width:12px;height:12px;border-radius:50%;background:#FF5F57;box-shadow:19px 0 0 #FEBC2E,38px 0 0 #28C840}
-.tab{height:34px;background:#fff;border-radius:10px 10px 0 0;width:260px;display:flex;align-items:center;gap:9px;padding:0 14px;font:500 15px Roboto,sans-serif;color:#333;white-space:nowrap;overflow:hidden}
-.fav{width:16px;height:16px;border-radius:50%;flex:none;background:#2b2b33}
-.tool{height:44px;background:#fff;display:flex;align-items:center;gap:16px;padding:0 16px;border-bottom:1px solid #e9e9ec;font:18px Roboto;color:#777}
-.omni{flex:1;height:32px;border-radius:16px;background:#F1F3F4;display:flex;align-items:center;padding:0 14px;gap:10px}
-.lock{width:11px;height:13px;border:2px solid #666;border-radius:2px;position:relative;margin-top:4px}.lock:before{content:"";position:absolute;left:0;top:-8px;width:7px;height:8px;border:2px solid #666;border-bottom:none;border-radius:5px 5px 0 0}
-.blur{filter:blur(4.5px);font:15px Roboto;color:#333}
-svg.sc{position:absolute;overflow:visible;pointer-events:none}
-.sb{height:50px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font:600 21px Inter;color:#111;background:#fff}
-.bat{width:34px;height:16px;border:2px solid #111;border-radius:5px;position:relative;display:inline-block}.bat:after{content:"";position:absolute;inset:2px 8px 2px 2px;background:#111;border-radius:2px}
-/* generic AI chat */
-.chat{padding:30px 40px 0;font-family:Inter;display:flex;flex-direction:column;gap:22px}
-.um{align-self:flex-end;max-width:780px;background:#F0EFF4;color:#1f1d24;font-size:29px;line-height:1.5;padding:22px 28px;border-radius:24px 24px 6px 24px}
-.um i{font-style:normal;background:#E4DEFF;color:#4A3DC4;border-radius:6px;padding:0 5px}
-.am{display:flex;gap:14px;align-items:flex-start;font-size:24px;line-height:1.55;color:#44414b;position:relative}
-.av{width:34px;height:34px;border-radius:50%;background:#2b2b33;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font:700 12px Inter;letter-spacing:.02em}
-.fade{-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 100%)}
-.inp{position:absolute;left:40px;right:40px;bottom:22px;height:54px;border-radius:27px;border:1px solid #e1e0e6;display:flex;align-items:center;padding:0 24px;font:18px Inter;color:#a09da8;background:#fff}
-.inp:after{content:"";position:absolute;right:10px;top:9px;width:34px;height:34px;border-radius:50%;background:#2b2b33}
-.phone .chat{padding:22px 20px 0}.phone .um{font-size:23px;padding:16px 20px;max-width:380px}.phone .am{font-size:19px}
-.phone .inp{left:16px;right:16px;height:46px;font-size:16px}.phone .inp:after{width:28px;height:28px;top:8px}
+body{font-family:'Inter',sans-serif;background:#444}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--navy);color:#fff}
+.s:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(700px 520px at 85% 72%,rgba(101,87,232,.30),transparent 70%),radial-gradient(500px 400px at 0% 100%,rgba(185,166,255,.10),transparent 70%)}
+.ph{position:absolute;left:0;right:0;top:0;height:640px;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,43,.15) 0%,rgba(21,12,43,.35) 45%,#150C2B 98%)}
+.num{position:absolute;left:62px;top:150px;font:800 260px/1 'DM Sans';letter-spacing:-.06em;color:transparent;-webkit-text-stroke:3px rgba(185,166,255,.85);z-index:2}
+.h{position:absolute;left:80px;right:80px;top:420px;font:800 74px/1.02 'DM Sans';letter-spacing:-.035em;z-index:3}
+.h em{font-style:normal;color:var(--lav)}
+.sub{position:absolute;left:80px;right:80px;top:600px;font-size:32px;line-height:1.35;color:#C9C2E6;z-index:3}
+.card{position:absolute;left:80px;right:80px;background:#fff;color:#1f1d24;border-radius:30px;z-index:4;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06)}
+.bar{height:60px;display:flex;align-items:center;gap:12px;padding:0 28px;border-bottom:1px solid #eeedf2;font:600 19px Inter;color:#55525d}
+.bar .d{width:12px;height:12px;border-radius:50%;background:#e2e0e8;box-shadow:20px 0 0 #e2e0e8,40px 0 0 #e2e0e8;margin-right:46px}
+.um{margin:26px 28px 0 auto;max-width:800px;background:#F1EFF7;font-size:29px;line-height:1.48;padding:22px 28px;border-radius:26px 26px 8px 26px}
+.um i{font-style:normal;background:#E1DAFF;color:#4A3DC4;border-radius:7px;padding:0 6px}
+.am{display:flex;gap:14px;padding:20px 28px 0;font-size:22px;line-height:1.5;color:#55525d;-webkit-mask-image:linear-gradient(180deg,#000 35%,transparent 100%);height:84px;overflow:hidden}
+.av{width:34px;height:34px;border-radius:50%;background:var(--ind);flex:none;color:#fff;font:700 12px Inter;display:flex;align-items:center;justify-content:center}
+.inp{margin:8px 28px 24px;height:54px;border-radius:27px;border:1px solid #e4e2ea;display:flex;align-items:center;padding:0 24px;font:19px Inter;color:#a5a2ad;position:relative}
+.inp:after{content:"\2191";position:absolute;right:8px;top:7px;width:38px;height:38px;border-radius:50%;background:var(--ind);color:#fff;font:700 20px Inter;display:flex;align-items:center;justify-content:center}
+.why{position:absolute;left:80px;right:80px;font-size:32px;line-height:1.4;color:#D9D3F2;z-index:3}
+.why b{color:var(--lav);font-weight:700}
+.ft{position:absolute;left:80px;right:80px;bottom:46px;display:flex;justify-content:space-between;align-items:center;font:500 25px Inter;color:#8C84AD;z-index:3}
+.dots{display:flex;gap:9px}.dots span{width:10px;height:10px;border-radius:5px;background:#3A2F5E}.dots span.on{width:34px;background:var(--lav)}
+svg.sc{position:absolute;overflow:visible;pointer-events:none;z-index:6}
 </style></head><body>
 
 <!-- 1 cover -->
 <div class="s" id="s1">
- <img src="img/hook.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%">
- <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,43,.05) 25%,rgba(21,12,43,.88) 68%)"></div>
- <div class="t" style="top:770px;color:#fff;font-size:86px">5 AI prompts that save a small business hours</div>
- <div class="p" style="top:1100px;color:#E9E4FF;font-size:40px">copy them, fill in the [brackets]. swipe &#8594;</div>
- <div class="handle" style="color:#cfc8e8">@nexaweb_dev</div>
+ <div class="ph" style="height:1350px"><img src="img/p5.jpg" style="object-position:60% 50%"></div>
+ <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,43,.25) 0%,rgba(21,12,43,.55) 35%,rgba(21,12,43,.96) 62%)"></div>
+ <div class="card" style="left:300px;right:70px;top:120px;transform:rotate(4deg);box-shadow:0 30px 70px rgba(0,0,0,.5)">
+  <div class="bar"><span class="d"></span>New chat</div>
+  <div class="um" style="font-size:25px;margin-bottom:26px">Write a polite but firm reminder for invoice <i>[number]</i>, now <i>[X]</i> days overdue...</div></div>
+ <div class="card" style="left:90px;right:330px;top:390px;transform:rotate(-5deg);z-index:5">
+  <div class="bar"><span class="d"></span>New chat</div>
+  <div class="um" style="font-size:25px;margin-bottom:26px">Here's a 1 star review: <i>[paste]</i>. Write a calm reply. Under 60 words.</div></div>
+ <div class="h" style="top:770px;font-size:104px;z-index:6">5 AI prompts that save you <em>hours</em> every week</div>
+ <div class="sub" style="top:1125px;font-size:36px;color:#E4DEFF;z-index:6">Copy them. Fill in the <span style="color:var(--lav)">[brackets]</span>. Swipe &#8594;</div>
+ <div class="ft" style="z-index:6"><span>@nexaweb_dev</span><span class="dots" data-on="1"></span></div>
 </div>
 
-<!-- 2 bad review -->
+<!-- 2 review -->
 <div class="s" id="s2">
- <div class="t" style="top:110px"><span class="n">1.</span> Replying to a bad review</div>
- <div class="p" style="top:260px">An angry reply looks worse than the review. Let AI write the calm first draft.</div>
- <div class="shot dk" data-t="New chat" data-u="ai assistant" style="left:80px;top:460px;width:920px;height:560px;transform:rotate(-1deg)">
-  <div class="chat">
-   <div class="um">Here's a 1 star review of my business: <i>[paste review]</i>. Write a short, calm reply. Thank them, own what we got wrong and offer to sort it out by phone. <span class="mk" data-r="-2">No excuses. Under 60 words.</span></div>
-   <div class="am fade"><span class="av">AI</span><div>Hi Mark, thanks for taking the time to tell us. You're right, we should have called when we were running late, and that's on us. We'd like to make it right...</div></div>
-  </div><div class="inp">Message</div></div>
- <div class="fx" style="top:1085px"><b>Why it works:</b> the word limit stops it rambling. Read it, make it sound like you, then post.</div>
- <div class="handle">@nexaweb_dev</div><div class="cnt">2/8</div>
+ <div class="ph"><img src="img/p2.jpg" style="object-position:30% 40%"></div><div class="num">01</div>
+ <div class="h">Replying to a <em>bad review</em></div>
+ <div class="sub" style="top:510px">An angry reply looks worse than the review.</div>
+ <div class="card" style="top:600px;transform:rotate(-1.2deg)">
+  <div class="bar"><span class="d"></span>New chat</div>
+  <div class="um">Here's a 1 star review of my business: <i>[paste review]</i>. Write a short, calm reply. Thank them, own what we got wrong and offer to sort it out by phone. <span class="mk">No excuses. Under 60 words.</span></div>
+  <div class="am"><span class="av">AI</span><div>Hi Mark, thanks for telling us. You're right, we should have called when we were running late, and that's on us...</div></div>
+  <div class="inp">Message</div></div>
+ <div class="why" style="top:1135px"><b>Why it works:</b> the word limit stops it rambling. Tweak it so it sounds like you, then post.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="2"></span></div>
 </div>
 
-<!-- 3 quote email (phone) -->
+<!-- 3 quote -->
 <div class="s" id="s3">
- <div class="t" style="top:110px"><span class="n">2.</span> Turning rough notes into a quote</div>
- <div class="p" style="top:330px;right:540px">Scribbled job notes in. A tidy quote email out.<br><br>Takes a minute instead of half your evening.</div>
- <div class="shot phone" style="left:580px;top:300px;width:420px;height:660px;border-radius:40px;transform:rotate(1.2deg)">
-  <div class="sb"><span>7:48</span><span style="display:flex;gap:8px;align-items:center;font-size:15px">&#9679;&#9679;&#9679;&#9679; <span class="bat"></span></span></div>
-  <div style="text-align:center;font:600 17px Inter;color:#222;padding:4px 0 12px;border-bottom:1px solid #eee">New chat</div>
-  <div class="chat">
-   <div class="um">Turn these notes into a friendly quote email for <i>[customer name]</i>: <i>[paste notes]</i>. Show the price, what's included and when we can start. <span class="mk" data-r="2">Plain Australian English</span>, no jargon.</div>
-   <div class="am fade"><span class="av">AI</span><div>Hi Sarah, thanks for having us out on Tuesday. Here's the quote for the...</div></div>
-  </div><div class="inp">Message</div></div>
- <div class="fx" style="top:1050px"><b>Why it works:</b> it only uses your notes, so the details are yours. Check the price before you hit send.</div>
- <div class="handle">@nexaweb_dev</div><div class="cnt">3/8</div>
+ <div class="ph"><img src="img/p3.jpg" style="object-position:50% 40%"></div><div class="num">02</div>
+ <div class="h">Turning notes into <em>quotes</em></div>
+ <div class="sub" style="top:510px">Takes a minute, not half your evening.</div>
+ <div class="card" style="top:600px;transform:rotate(1deg)">
+  <div class="bar"><span class="d"></span>New chat</div>
+  <div class="um">Turn these notes into a friendly quote email for <i>[customer name]</i>: <i>[paste notes]</i>. Show the price, what's included and when we can start. <span class="mk">Plain Australian English</span>, no jargon.</div>
+  <div class="am"><span class="av">AI</span><div>Hi Sarah, thanks for having us out on Tuesday. Here's your quote for the...</div></div>
+  <div class="inp">Message</div></div>
+ <div class="why" style="top:1135px"><b>Why it works:</b> it only uses your notes, so the details are yours. Check the price before you send.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="3"></span></div>
 </div>
 
 <!-- 4 invoice -->
 <div class="s" id="s4">
- <div class="t" style="top:110px"><span class="n">3.</span> Chasing an unpaid invoice</div>
- <div class="p" style="top:260px">The email nobody likes writing. Polite and clear gets paid. Vague gets ignored.</div>
- <div class="shot dk" data-t="New chat" data-u="ai assistant" style="left:80px;top:460px;width:920px;height:550px;transform:rotate(.9deg)">
-  <div class="chat">
-   <div class="um">Write a <span class="mk" data-r="-1">polite but firm</span> reminder for invoice <i>[number]</i>, <i>[amount]</i>, now <i>[X]</i> days overdue. Friendly first line, a clear new due date and my payment link: <i>[link]</i>. Under 80 words.</div>
-   <div class="am fade"><span class="av">AI</span><div>Hi Tom, hope the new deck is getting plenty of use! Just a quick reminder that invoice 1042 for...</div></div>
-  </div><div class="inp">Message</div></div>
- <div class="fx" style="top:1075px"><b>Why it works:</b> "polite but firm" sets the tone, and the link makes paying a one tap job.</div>
- <div class="handle">@nexaweb_dev</div><div class="cnt">4/8</div>
+ <div class="ph"><img src="img/p4.jpg" style="object-position:50% 50%"></div><div class="num">03</div>
+ <div class="h">Chasing an <em>unpaid invoice</em></div>
+ <div class="sub" style="top:510px">The email nobody likes writing.</div>
+ <div class="card" style="top:600px;transform:rotate(-.9deg)">
+  <div class="bar"><span class="d"></span>New chat</div>
+  <div class="um">Write a <span class="mk">polite but firm</span> reminder for invoice <i>[number]</i>, <i>[amount]</i>, now <i>[X]</i> days overdue. Friendly first line, a clear new due date and my payment link: <i>[link]</i>. Under 80 words.</div>
+  <div class="am"><span class="av">AI</span><div>Hi Tom, hope the new deck is getting plenty of use! Just a quick reminder that invoice 1042...</div></div>
+  <div class="inp">Message</div></div>
+ <div class="why" style="top:1135px"><b>Why it works:</b> "polite but firm" sets the tone, and the link makes paying a one tap job.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="4"></span></div>
 </div>
 
-<!-- 5 FAQ (phone, left) -->
+<!-- 5 faq -->
 <div class="s" id="s5">
- <div class="t" style="top:110px"><span class="n">4.</span> Writing your website FAQ</div>
- <div class="shot phone" style="left:80px;top:300px;width:420px;height:680px;border-radius:40px;transform:rotate(-1.2deg)">
-  <div class="sb"><span>12:05</span><span style="display:flex;gap:8px;align-items:center;font-size:15px">&#9679;&#9679;&#9679;&#9679; <span class="bat"></span></span></div>
-  <div style="text-align:center;font:600 17px Inter;color:#222;padding:4px 0 12px;border-bottom:1px solid #eee">New chat</div>
-  <div class="chat">
-   <div class="um">Here are questions customers asked me this month: <i>[paste]</i>. Write an FAQ for my website with short, plain answers. <span class="mk" data-r="-2">Flag anything you're unsure about</span> so I can fill it in.</div>
-   <div class="am fade"><span class="av">AI</span><div>Do you charge a call out fee? Yes, it's [check: your fee] and it...</div></div>
-  </div><div class="inp">Message</div></div>
- <div class="p" style="top:330px;left:580px">You answer the same questions every week.<br><br>Put the answers on your site once and let it do the talking.</div>
- <div class="fx" style="top:1060px"><b>Why it works:</b> asking it to flag gaps stops it guessing your prices or policies.</div>
- <div class="handle">@nexaweb_dev</div><div class="cnt">5/8</div>
+ <div class="ph"><img src="img/p5.jpg" style="object-position:50% 45%"></div><div class="num">04</div>
+ <div class="h">Writing your <em>website FAQ</em></div>
+ <div class="sub" style="top:510px">You answer the same questions every week.</div>
+ <div class="card" style="top:600px;transform:rotate(1.1deg)">
+  <div class="bar"><span class="d"></span>New chat</div>
+  <div class="um">Here are questions customers asked me this month: <i>[paste]</i>. Write an FAQ for my website with short, plain answers. <span class="mk">Flag anything you're unsure about</span> so I can fill it in.</div>
+  <div class="am"><span class="av">AI</span><div>Do you charge a call out fee? Yes, it's [check: your fee] and it covers...</div></div>
+  <div class="inp">Message</div></div>
+ <div class="why" style="top:1135px"><b>Why it works:</b> asking it to flag gaps stops it guessing your prices or policies.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="5"></span></div>
 </div>
 
-<!-- 6 post ideas -->
+<!-- 6 posts -->
 <div class="s" id="s6">
- <div class="t" style="top:110px"><span class="n">5.</span> Never running out of post ideas</div>
- <div class="p" style="top:330px">Staring at a blank caption box? Get a month of ideas in one go.</div>
- <div class="shot dk" data-t="New chat" data-u="ai assistant" style="left:80px;top:480px;width:920px;height:540px;transform:rotate(-.8deg)">
-  <div class="chat">
-   <div class="um">I run a <i>[type of business]</i> in <i>[suburb]</i>. Give me 12 social post ideas for this month. Mix behind the scenes, before and afters, and common questions. <span class="mk" data-r="2">Nothing salesy.</span></div>
-   <div class="am fade"><span class="av">AI</span><div>1. A 10 second clip of the van being packed at 6am. 2. "The question we get asked most" with your answer...</div></div>
-  </div><div class="inp">Message</div></div>
- <div class="fx" style="top:1080px"><b>Why it works:</b> you still take the photos. AI just gets you past the blank page.</div>
- <div class="handle">@nexaweb_dev</div><div class="cnt">6/8</div>
+ <div class="ph"><img src="img/p6.jpg" style="object-position:50% 55%"></div><div class="num">05</div>
+ <div class="h">A month of <em>post ideas</em></div>
+ <div class="sub" style="top:510px">No more staring at a blank caption box.</div>
+ <div class="card" style="top:600px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span>New chat</div>
+  <div class="um">I run a <i>[type of business]</i> in <i>[suburb]</i>. Give me 12 social post ideas for this month. Mix behind the scenes, before and afters, and common questions. <span class="mk">Nothing salesy.</span></div>
+  <div class="am"><span class="av">AI</span><div>1. A 10 second clip of the van being packed at 6am. 2. "The question we get asked most"...</div></div>
+  <div class="inp">Message</div></div>
+ <div class="why" style="top:1135px"><b>Why it works:</b> you still take the photos. AI just gets you past the blank page.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="6"></span></div>
 </div>
 
-<!-- 7 the rule -->
+<!-- 7 rule -->
 <div class="s" id="s7">
- <div class="t" style="top:110px">The one rule: read it before you send it</div>
- <div class="p" style="top:330px">AI sounds just as confident when it's wrong. Your notes said $450.</div>
- <div class="shot" style="left:80px;top:470px;width:920px;height:480px;transform:rotate(.8deg);font-family:Inter">
-  <div style="padding:26px 36px;border-bottom:1px solid #eee;font-size:22px;color:#5f5c66;line-height:1.8">
-   <div><span style="color:#9a97a2">To:</span> sarah.k@email.com</div><div><span style="color:#9a97a2">Subject:</span> Your quote for the bathroom lights</div></div>
-  <div style="padding:24px 36px;font-size:26px;line-height:1.55;color:#2a2830">Hi Sarah,<br><br>Thanks for having us out on Tuesday. To supply and install the 6 new downlights, the total comes to <span class="mk" data-c="1" data-r="-3" style="font-weight:600">$4,500 inc GST</span>.<br>We can start as early as next Monday...</div>
-  <div style="position:absolute;right:30px;bottom:24px;background:#1a73e8;color:#fff;font:500 17px Roboto;padding:11px 26px;border-radius:20px">Send</div>
- </div>
- <div class="fx" style="top:1040px">And never paste in private stuff like passwords, card numbers or a customer's personal details.</div>
- <div class="handle">@nexaweb_dev</div><div class="cnt">7/8</div>
+ <div class="ph"><img src="img/p7.jpg" style="object-position:50% 50%"></div>
+ <div class="h" style="top:330px;font-size:80px">The one rule: <em>read it</em> before you send it</div>
+ <div class="sub" style="top:530px">AI sounds just as confident when it's wrong.</div>
+ <div class="card" style="top:640px;transform:rotate(1deg)">
+  <div style="padding:24px 34px;border-bottom:1px solid #eeedf2;font-size:23px;color:#6b6873;line-height:1.75"><div><span style="color:#a5a2ad">To:</span> sarah.k@email.com</div><div><span style="color:#a5a2ad">Subject:</span> Your quote for the bathroom lights</div></div>
+  <div style="padding:24px 34px 30px;font-size:27px;line-height:1.55">Hi Sarah,<br>Thanks for having us out on Tuesday. To supply and install the 6 new downlights, the total comes to <span class="mk" data-c="1" style="font-weight:700">$4,500 inc GST</span>.<br>We can start next Monday...</div>
+  <div style="position:absolute;right:30px;bottom:26px;background:var(--ind);color:#fff;font:600 19px Inter;padding:11px 28px;border-radius:22px">Send</div></div>
+ <div style="position:absolute;left:300px;top:1050px;font:700 34px 'DM Sans';color:var(--lav);transform:rotate(-2deg);z-index:6">your notes said $450</div>
+ <svg class="sc" id="arr" style="left:560px;top:600px" width="200" height="200"></svg>
+ <div class="why" style="top:1150px">And never paste in private stuff like passwords, card numbers or a customer's personal details.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="7"></span></div>
 </div>
 
 <!-- 8 cta -->
 <div class="s" id="s8">
- <div class="t" style="top:100px;font-size:76px">Which one are you trying first?</div>
- <div id="list" style="position:absolute;left:80px;right:80px;top:330px"></div>
- <div style="position:absolute;left:80px;top:1010px;font-size:36px;line-height:1.45;color:#3d3a44">Comment the number 👇<br>Save this for the next time you need one.<br>Follow <b style="color:var(--ind)">@nexaweb_dev</b> for more like this.</div>
+ <div class="h" style="top:110px;font-size:84px">Which one are you <em>trying first?</em></div>
+ <div id="list" style="position:absolute;left:80px;right:80px;top:330px;z-index:3;display:flex;flex-direction:column;gap:14px"></div>
+ <div style="position:absolute;left:80px;right:80px;top:1000px;font-size:36px;line-height:1.5;color:#D9D3F2;z-index:3">Comment the number &#128071;<br>Save this for the next time you need one.<br>Follow <b style="color:var(--lav)">@nexaweb_dev</b> for more like this.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="8"></span></div>
 </div>
 
 <script>
-document.querySelectorAll('.dk').forEach(el=>{
- el.insertAdjacentHTML('afterbegin',`<div class="tabs"><div class="tab"><span class="fav"></span><span>${el.dataset.t}</span><span style="margin-left:auto;color:#888">×</span></div></div><div class="tool"><span>&#8592;</span><span>&#8594;</span><span>&#8635;</span><div class="omni"><span class="lock"></span><span class="blur">${el.dataset.u}</span></div></div>`)});
-const items=['Reply to a bad review','Notes into a quote email','Chase an unpaid invoice','Write your website FAQ','A month of post ideas'];
-document.getElementById('list').innerHTML=items.map((l,i)=>`<div style="display:flex;align-items:center;gap:26px;padding:26px 0;border-bottom:2px solid #ebe9ef;font-size:44px;font-weight:600;letter-spacing:-.01em"><span style="color:#6557E8;font-weight:700;width:46px">${i+1}.</span>${l}</div>`).join('');
+document.querySelectorAll('.dots').forEach(d=>{const on=+d.dataset.on;d.innerHTML=[...Array(8)].map((_,i)=>`<span class="${i+1===on?'on':''}"></span>`).join('')});
+const items=[['Reply to a bad review','p2'],['Notes into a quote email','p3'],['Chase an unpaid invoice','p4'],['Write your website FAQ','p5'],['A month of post ideas','p6']];
+document.getElementById('list').innerHTML=items.map(([l,p],i)=>`<div style="display:flex;align-items:center;gap:24px;padding:12px 24px 12px 12px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(185,166,255,.18)"><img src="img/${p}.jpg" style="width:82px;height:82px;border-radius:16px;object-fit:cover"><span style="font:800 44px 'DM Sans';color:var(--lav);width:62px">0${i+1}</span><span style="font:600 38px Inter;letter-spacing:-.01em">${l}</span></div>`).join('');
 let seed=23;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};const C='#6557E8';
 function P(p){return p.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ')}
 function circle(svg,w,h,rot=0){let out='';
@@ -148,9 +148,15 @@ function circle(svg,w,h,rot=0){let out='';
  svg.innerHTML=`<g transform="rotate(${rot} ${w/2} ${h/2})">${out}</g>`}
 function under(svg,w,h){let out='';for(let pass=0;pass<2;pass++){const pts=[];const n=24;for(let i=0;i<=n;i++){const t=i/n;pts.push([4+t*(w-8),h/2+(pass?5:0)+Math.sin(t*3+pass)*2+(rnd()-.5)*2.2])}
  out+=`<path d="${P(pts)}" stroke="${C}" stroke-width="${pass?4:6}" fill="none" stroke-linecap="round" opacity="${pass?.7:.95}"/>`}svg.innerHTML=out}
-// circle each .mk span (handles wrapped lines by using the union rect)
-document.querySelectorAll('.mk').forEach(m=>{const s=m.closest('.s');const sr=s.getBoundingClientRect();const rs=[...m.getClientRects()];
- rs.forEach(r=>{if(!m.dataset.c){const w=r.width+8,h=16;const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','sc');svg.setAttribute('width',w);svg.setAttribute('height',h);svg.style.left=(r.left-sr.left-4)+'px';svg.style.top=(r.bottom-sr.top-6)+'px';s.appendChild(svg);under(svg,w,h);return}const pad=18,w=r.width+pad*2+10,h=r.height+pad*1.6;const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','sc');
-  svg.setAttribute('width',w);svg.setAttribute('height',h);svg.style.left=(r.left-sr.left-pad-5)+'px';svg.style.top=(r.top-sr.top-pad*.8)+'px';s.appendChild(svg);circle(svg,w,h,+m.dataset.r||0)})});
+const mk=()=>{const v=document.createElementNS('http://www.w3.org/2000/svg','svg');v.setAttribute('class','sc');return v};
+document.querySelectorAll('.mk').forEach(m=>{const s=m.closest('.s');const sr=s.getBoundingClientRect();
+ if(m.dataset.c){const r=m.getBoundingClientRect();const w=r.width+50,h=r.height+34;const v=mk();v.setAttribute('width',w);v.setAttribute('height',h);v.style.left=(r.left-sr.left-25)+'px';v.style.top=(r.top-sr.top-17)+'px';s.appendChild(v);circle(v,w,h,-3);return}
+ [...m.getClientRects()].forEach(r=>{const w=r.width+8,h=16;const v=mk();v.setAttribute('width',w);v.setAttribute('height',h);v.style.left=(r.left-sr.left-4)+'px';v.style.top=(r.bottom-sr.top-6)+'px';s.appendChild(v);under(v,w,h)})});
+// arrow slide 7 from note to price
+(function(){const s=document.getElementById('s7'),sr=s.getBoundingClientRect(),t=s.querySelector('.mk').getBoundingClientRect(),v=document.getElementById('arr');
+ const x1=300+330-560,y1=1045-600,x2=t.left-sr.left+t.width/2-560-20,y2=t.bottom-sr.top-600+22;const mx=(x1+x2)/2+70,my=(y1+y2)/2;const pts=[];
+ for(let i=0;i<=30;i++){const q=i/30;pts.push([(1-q)*(1-q)*x1+2*(1-q)*q*mx+q*q*x2,(1-q)*(1-q)*y1+2*(1-q)*q*my+q*q*y2])}
+ const a=Math.atan2(y2-pts[27][1],x2-pts[27][0]);const h1=[x2-26*Math.cos(a-.5),y2-26*Math.sin(a-.5)],h2=[x2-26*Math.cos(a+.5),y2-26*Math.sin(a+.5)];
+ v.innerHTML=`<path d="${P(pts)} M${h1[0]} ${h1[1]} L${x2} ${y2} L${h2[0]} ${h2[1]}" stroke="#B9A6FF" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`})();
 </script>
 </body></html>

@@ -156,7 +156,7 @@
   "format": "carousel",
   "topic": "5 AI prompts that save a small business hours: reply to a bad review, rough notes into a quote email, chase an unpaid invoice, write a website FAQ, a month of post ideas; plus 'read it before you send it' rule (made-up $450 vs $4,500 example) and don't paste private info",
   "hook": "5 AI prompts that save a small business hours",
-  "style": "same as google-free-wins-5: off-white, Inter bold, indigo numbers, generic unbranded AI chat window mockups (desktop + phone), lavender [bracket] placeholders, freehand indigo marker underlines/circle, 'Why it works:' line, CC0 cover photo with navy fade, numbered list CTA",
+  "style": "v2 (Jayden: v1 too bland): deep navy #150C2B slides with soft indigo glow, CC0 photo across top 640px fading into navy, huge outlined lavender number (01-05), DM Sans ExtraBold white headline with lavender key words, white AI chat card (unbranded) overlapping photo, lavender [bracket] placeholders, indigo marker underlines, 'Why it works:' in lavender, progress dots. Cover: full-bleed photo + two tilted chat cards. CTA: list rows with photo thumbnails. src/slides.html (v1 kept as src/slides_v1.html)",
   "media": [
    "nexa/images/ai-prompts-5/01.jpg",
    "nexa/images/ai-prompts-5/02.jpg",
@@ -173,6 +173,6 @@
   "approved": false,
   "posted": false,
   "status": "awaiting approval",
-  "note": "1:17 pm carousel slot. Tips/opinion only, no stats. Made-up names (Mark, Sarah, Tom)."
+  "note": "1:17 pm carousel slot. Tips/opinion only, no stats. Made-up names. v1 (light, bland) -> Jayden asked for more visually appealing; v2 dark photo style awaiting approval."
  }
 ]

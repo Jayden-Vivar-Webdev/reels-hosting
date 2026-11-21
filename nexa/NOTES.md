@@ -30,3 +30,6 @@
   Also: ElevenLabs v3 inserts long mid-sentence pauses ("domain ... shop"). Shorten silences >0.26 s inside lines to 0.2 s
   (nexa/videos/internet-stories-ep3-domains/src-v2/join2.py) and LISTEN for flow, not just word completeness.
   Caption text word order must match the spoken `say` order exactly.
+- 2026-11-21 (Jayden): the light off-white carousel (ai-prompts-5 v1) was "very bland". v2 direction: navy #150C2B slides,
+  CC0 photo across the top fading into navy, big outlined lavender number, DM Sans ExtraBold headline with lavender key words,
+  white UI card overlapping the photo (nexa/images/ai-prompts-5/src/slides.html). Pending his verdict.
