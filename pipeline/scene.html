@@ -2001,6 +2001,108 @@ SC.covers = (c, p, lt, d) => {
   if (lt > d*.55){ const a = ease((lt - d*.55)/1.2); const g = c.createRadialGradient(830, 430, 10, 830, 430, 220); g.addColorStop(0, `rgba(0,0,0,${.85*a})`); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(500, 150, 600, 600); }
   if (p.follow) followBox(c, lt, d);
 };
+
+// ---------- v2 (third person): peek, fever, grab, possessed ----------
+SC.peek = (c, p, lt, d) => {
+  // POV from under the covers: the blanket edge lifts, revealing the empty dark bedroom
+  bg(c, '#1a222b', '#080b0e');
+  c.fillStyle = '#232c36'; c.fillRect(0, 300, W, 900);                 // far wall
+  c.fillStyle = '#0d1116'; c.fillRect(0, 1200, W, 720);                // floor
+  c.fillStyle = '#05070a'; c.fillRect(640, 560, 230, 640);             // open doorway, black
+  c.strokeStyle = '#3a4552'; c.lineWidth = 12; c.strokeRect(640, 560, 230, 640);
+  c.fillStyle = '#0e1620'; c.fillRect(150, 480, 300, 330); c.strokeStyle = '#3d4b5a'; c.strokeRect(150, 480, 300, 330); // window
+  { const g = c.createRadialGradient(300, 640, 5, 300, 640, 260); g.addColorStop(0,'rgba(190,205,225,.45)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,300,700,800); }
+  c.fillStyle = '#2a221c'; c.fillRect(120, 1000, 260, 220);           // drawers
+  // blanket edge: starts covering everything, lifts to reveal
+  const k = ease((lt - .2)/(d*.45)), top = 1920 - k*1150;
+  c.fillStyle = '#1c2230'; c.beginPath(); c.moveTo(0, top + 60); c.quadraticCurveTo(540, top - 40 - 20*Math.sin(lt*2), W, top + 60); c.lineTo(W, H); c.lineTo(0, H); c.fill();
+  c.fillStyle = '#2b3345'; c.beginPath(); c.moveTo(0, top + 60); c.quadraticCurveTo(540, top - 40 - 20*Math.sin(lt*2), W, top + 60); c.lineTo(W, top + 90); c.quadraticCurveTo(540, top - 10, 0, top + 90); c.fill();
+  if (p.tag) tag(c, p.tag, 755, 470, ease((lt - d*.7)/.3), '#d7fbe9');
+};
+const _bedroom = SC.bedroom;
+SC.bedroom = (c, p, lt, d) => {
+  _bedroom(c, p, lt, d);
+  if (p.fever){
+    const f = p.fever, pulse = .5 + .5*Math.sin(lt*(3 + 3*f));
+    const g = c.createRadialGradient(330, 905, 20, 330, 905, 700); g.addColorStop(0, `rgba(255,70,30,${(.25 + .2*pulse)*f})`); g.addColorStop(1, 'rgba(120,0,0,0)'); c.fillStyle = g; c.fillRect(0,0,W,H);
+    c.fillStyle = `rgba(150,20,10,${.12*f})`; c.fillRect(0,0,W,H);
+    // heat shimmer: wavy lines rising from the bed
+    c.strokeStyle = `rgba(255,150,110,${.25*f})`; c.lineWidth = 3;
+    for (let k=0;k<7;k++){ const x0 = 220 + k*90; c.beginPath(); for (let y=900; y>420; y-=20){ const x = x0 + Math.sin(y*.03 + lt*4 + k)*14; y===900 ? c.moveTo(x,y) : c.lineTo(x,y); } c.stroke(); }
+    // sweat beads
+    c.fillStyle = 'rgba(230,240,255,.8)'; for (let k=0;k<4;k++){ const yy = 880 + ((lt*40 + k*23) % 60); c.beginPath(); c.arc(300 + k*18, yy, 4, 0, 7); c.fill(); }
+  }
+  if (p.words){
+    const ws = ['right here', 'shhh', 'stay still', "it's warm", 'right here', 'he can\'t hear you', 'right here'];
+    ws.forEach((w, i) => { const q = ((lt*.35 + i/ws.length) % 1); const a = Math.sin(q*Math.PI) * .75;
+      c.save(); c.globalAlpha = a; c.translate(200 + ((i*317) % 700), 760 - q*330); c.rotate(((i%3)-1)*.08);
+      text(c, w, 0, 0, 52 + (i%3)*10, 'Salt', '#ffd2c8'); c.restore(); });
+  }
+  if (p.shake){ /* handled by camera push+glitch */ }
+  if (p.choke){ const a = .5 + .5*Math.sin(lt*9); c.fillStyle = `rgba(0,0,0,${.25 + .25*a})`; c.fillRect(0,0,W,H); }
+};
+SC.joshNight = (c, p, lt, d) => {
+  bg(c, '#151719', '#060708');
+  // light from the hallway behind him
+  const open = ease(lt/.25);
+  c.fillStyle = '#0b0c0d'; c.fillRect(250, 380, 580, 1000);
+  c.fillStyle = `rgba(255,230,180,${.55*open})`; c.fillRect(250, 380, 580*open, 1000);
+  c.fillStyle = '#3a3632'; c.fillRect(230, 360, 30, 1040); c.fillRect(820, 360, 30, 1040); c.fillRect(230, 350, 620, 30);
+  c.fillStyle = '#101112'; c.fillRect(0, 1380, W, 540);
+  // Josh: backlit silhouette, panicked
+  c.save(); c.globalAlpha = open; joshFig(c, 540 + (p.shout ? Math.sin(lt*30)*4 : 0), 620, 1.0, true, 0);
+  c.fillStyle = 'rgba(0,0,0,.45)'; c.fillRect(300, 480, 480, 900);
+  if (p.shout){ c.fillStyle = '#120c0a'; c.beginPath(); c.ellipse(540, 692, 26, 30 + 8*Math.abs(Math.sin(lt*9)), 0, 0, 7); c.fill(); }
+  c.restore();
+};
+SC.grab = (c, p, lt, d) => {
+  bg(c, '#1b1d22', '#07080a');
+  { const g = c.createRadialGradient(540, 900, 20, 540, 900, 620); g.addColorStop(0,'rgba(255,215,170,.25)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+  // Josh's hoodie sleeve across the frame
+  c.fillStyle = '#3d4a5e'; c.beginPath(); c.roundRect(-40, 780, 1160, 220, 90); c.fill();
+  c.fillStyle = '#334055'; for (let k=0;k<5;k++){ c.fillRect(120 + k*190, 800, 6, 180); }
+  // Liam's pale hand clamps down
+  const k = ease(lt/.35), sq = .5 + .5*Math.sin(lt*14);
+  c.save(); c.translate(560, 560 + 230*k);
+  c.fillStyle = '#d9c9bd'; c.beginPath(); c.roundRect(-70, -420, 140, 380, 50); c.fill();          // forearm from above
+  c.beginPath(); c.ellipse(0, 0, 120, 95, 0, 0, 7); c.fill();                                       // palm
+  for (let i=0;i<4;i++){ c.beginPath(); c.roundRect(-105 + i*58, 40, 46, 170 - Math.abs(i-1.5)*18 + sq*6, 22); c.fill(); }
+  c.fillStyle = 'rgba(150,40,40,.35)'; for (let i=0;i<4;i++){ c.beginPath(); c.ellipse(-82 + i*58, 205 - Math.abs(i-1.5)*18, 18, 8, 0, 0, 7); c.fill(); }
+  c.restore();
+};
+SC.possessed = (c, p, lt, d) => {
+  bg(c, '#2c3440', '#0e1116');
+  // moonlit window behind him
+  c.fillStyle = '#9fb1c4'; c.fillRect(330, 380, 420, 520); c.strokeStyle = '#2a323c'; c.lineWidth = 16; c.strokeRect(330, 380, 420, 520); c.beginPath(); c.moveTo(540,380); c.lineTo(540,900); c.stroke();
+  { const g = c.createRadialGradient(540, 640, 30, 540, 700, 700); g.addColorStop(0,'rgba(200,215,235,.35)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H); }
+  c.fillStyle = 'rgba(140,10,10,.14)'; c.fillRect(0,0,W,H);
+  // Liam sitting up in bed: a silhouette against the window, with pale eyes
+  c.fillStyle = '#4b5f78'; c.fillRect(100, 1180, 880, 260); c.fillStyle = '#c9cfd6'; c.fillRect(100, 1160, 880, 30);
+  shadowFig(c, 540, 760, 1.15, 1, lt > .3);
+  if (p.mouth){ const a = .5 + .5*Math.abs(Math.sin(lt*6)); c.fillStyle = `rgba(150,0,0,${a})`; c.beginPath(); c.ellipse(540, 830, 22, 14 + 10*a, 0, 0, 7); c.fill(); }
+  if (p.black && lt > d - 1.6){ c.fillStyle = '#000'; c.fillRect(0,0,W,H); followBox(c, lt, d); }
+};
+
+SC.flatExt = (c, p, lt, d) => {
+  bg(c, '#121820', '#05070a');
+  // small block of flats at night
+  c.fillStyle = '#2a2f36'; c.fillRect(160, 420, 760, 900);
+  c.fillStyle = '#20252b'; c.fillRect(140, 400, 800, 40);
+  const lit = [[1,1,0],[1,0,1],[0,1,1]];
+  for (let r=0;r<3;r++) for (let k=0;k<3;k++){
+    const x = 230 + k*240, y = 500 + r*260, on = lit[r][k] && !(r===1 && k===1);
+    c.fillStyle = on ? '#e9c57e' : '#07090c'; c.fillRect(x, y, 150, 170);
+    c.strokeStyle = '#3d444d'; c.lineWidth = 8; c.strokeRect(x, y, 150, 170);
+  }
+  // the flat: dark window, outlined
+  const a = .5 + .5*Math.sin(lt*3); c.strokeStyle = `rgba(255,59,48,${.5 + .5*a})`; c.lineWidth = 8; c.strokeRect(458, 748, 164, 184);
+  c.fillStyle = '#0d1014'; c.fillRect(0, 1320, W, 600);
+  // FOR LEASE sign
+  if (p.lease){ const k = ease((lt - .3)/.4); c.save(); c.globalAlpha = k; c.fillStyle = '#5a4a3a'; c.fillRect(800, 1180, 14, 300);
+    c.fillStyle = '#e8e2d4'; c.fillRect(690, 1080, 240, 140); text(c, 'FOR LEASE', 810, 1130, 46, 'Anton', '#b3140c'); text(c, 'AGAIN', 810, 1185, 38, 'Anton', '#222'); c.restore(); }
+  if (p.tag) tag(c, p.tag, 540, 330, ease((lt - .2)/.3), '#d7fbe9');
+  if (p.black && lt > d - 1.8){ c.fillStyle = '#000'; c.fillRect(0,0,W,H); followBox(c, lt, d + 0.6); }
+};
 // ---------- HUD, captions, post ----------
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
