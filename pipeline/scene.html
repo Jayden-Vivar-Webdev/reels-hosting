@@ -3171,6 +3171,202 @@ SC.verdict = (c, p, lt, d) => {
 };
 
 // ---------- HUD, captions, post ----------
+// ===== The Bell (new house, bell above the bedroom door, string into the basement dirt) =====
+function brassBell(c, x, y, s, ang){
+  c.save(); c.translate(x, y); c.rotate(ang); c.scale(s, s);
+  c.strokeStyle = '#2b2b2b'; c.lineWidth = 6; c.beginPath(); c.moveTo(0, -40); c.lineTo(0, 0); c.stroke();          // hanger
+  const g = c.createLinearGradient(-60, 0, 60, 0); g.addColorStop(0, '#6b4f1f'); g.addColorStop(.35, '#e7c46a'); g.addColorStop(.55, '#f6dc8e'); g.addColorStop(1, '#5a4218');
+  c.fillStyle = g; c.beginPath(); c.moveTo(-22, 0); c.quadraticCurveTo(-30, 50, -62, 92); c.lineTo(62, 92); c.quadraticCurveTo(30, 50, 22, 0); c.quadraticCurveTo(0, -14, -22, 0); c.fill();
+  c.fillStyle = '#4a3410'; c.beginPath(); c.ellipse(0, 92, 62, 10, 0, 0, 7); c.fill();
+  c.fillStyle = '#2a1d08'; c.beginPath(); c.arc(0, 104, 11, 0, 7); c.fill();                                       // clapper
+  c.restore();
+}
+function bellHome(c, o, lt){
+  bg(c, '#232b36', '#0b0e12');
+  // lamp glow from the left so the room reads
+  { const g = c.createRadialGradient(150, 980, 10, 150, 980, 760); g.addColorStop(0, 'rgba(255,196,120,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 0, W, H); }
+  // floorboards
+  c.fillStyle = '#3a2a1e'; c.fillRect(0, 1150, W, 200); c.strokeStyle = 'rgba(0,0,0,.4)'; c.lineWidth = 3;
+  for (let i = 0; i < 6; i++){ c.beginPath(); c.moveTo(0, 1165 + i*30); c.lineTo(W, 1165 + i*30); c.stroke(); }
+  // door frame + door (ajar, black hallway)
+  c.fillStyle = '#e4dccb'; c.fillRect(330, 560, 420, 595);
+  c.fillStyle = '#05070a'; c.fillRect(352, 580, 376, 575);
+  c.fillStyle = '#8a6a4c'; c.beginPath(); c.moveTo(352, 580); c.lineTo(600, 600); c.lineTo(600, 1140); c.lineTo(352, 1155); c.fill();   // door leaf open inward
+  c.fillStyle = '#c9a24a'; c.beginPath(); c.arc(575, 880, 9, 0, 7); c.fill();
+  // bracket
+  c.strokeStyle = '#1b1b1b'; c.lineWidth = 9; c.beginPath(); c.moveTo(540, 500); c.lineTo(540, 470); c.quadraticCurveTo(540, 440, 570, 440); c.stroke();
+  c.fillStyle = '#1b1b1b'; c.fillRect(515, 492, 50, 14);
+  // bed corner foreground (left)
+  c.fillStyle = '#4a5566'; c.beginPath(); c.roundRect(-60, 1060, 330, 260, 30); c.fill(); c.fillStyle = '#dfe3e8'; c.beginPath(); c.roundRect(-30, 1030, 220, 70, 30); c.fill();
+}
+SC.bellroom = (c, p, lt, d) => {
+  bellHome(c, p, lt);
+  const ringing = p.ring && lt > (p.ringAt||0)*d;
+  const rr = ringing ? (lt - (p.ringAt||0)*d) : 0;
+  const ang = ringing ? Math.sin(rr*13) * (p.hard ? .42 : .28) * Math.min(1, rr*3) : 0;
+  const bx = 570 + 0, by = 445;
+  // string from bell lever down the door frame into a hole in the floor
+  const cutY = p.cut != null && lt > p.cut*d ? 860 : null;
+  const tug = ringing ? Math.sin(rr*13) * 10 : 0;
+  c.strokeStyle = '#efe6c8'; c.lineWidth = 4; c.beginPath(); c.moveTo(bx + 20, by + 60);
+  if (cutY){ c.quadraticCurveTo(800, 620, 790, cutY - 40); c.stroke();               // top piece hangs
+    c.beginPath(); c.moveTo(790, cutY + 30); c.lineTo(790 + 6, 1150); c.stroke(); }
+  else { c.quadraticCurveTo(800 + tug, 620, 790, 760 + tug); c.lineTo(790, 1150); c.stroke(); }
+  c.fillStyle = '#000'; c.beginPath(); c.ellipse(790, 1152, 16, 6, 0, 0, 7); c.fill();
+  brassBell(c, bx, by + 20, 1.05, ang);
+  if (ringing && Math.abs(ang) > .05){ c.strokeStyle = `rgba(255,220,140,${.5*Math.abs(ang)/.4})`; c.lineWidth = 5; for (const k of [1, 2]){ c.beginPath(); c.arc(bx, by + 80, 90 + k*40, -2.6, -2.0); c.stroke(); c.beginPath(); c.arc(bx, by + 80, 90 + k*40, -1.15, -.55); c.stroke(); } }
+  // red arrow on the string for the first beat
+  if (p.arrow){ const a = ease((lt - .2)/.4); c.save(); c.globalAlpha = a; c.strokeStyle = '#ff3b30'; c.lineWidth = 8; c.setLineDash([20, 12]); c.beginPath(); c.moveTo(790, 760); c.lineTo(790, 1140); c.stroke(); c.setLineDash([]);
+    c.fillStyle = '#ff3b30'; c.beginPath(); c.moveTo(760, 1100); c.lineTo(820, 1100); c.lineTo(790, 1150); c.fill(); c.restore(); }
+  // scissors snipping
+  if (p.cut != null){ const k = clamp((lt - (p.cut*d - .5))/.5, 0, 1), sh = lt > p.cut*d ? .05 : .45*(1-k) + .05;
+    c.save(); c.translate(790, 860); c.rotate(-.3);
+    c.fillStyle = '#c8ccd2'; for (const sgn of [1, -1]){ c.save(); c.rotate(sgn*sh); c.beginPath(); c.moveTo(0, 0); c.lineTo(-170, -10*sgn); c.lineTo(-170, 6*sgn); c.closePath(); c.fill(); c.restore(); }
+    c.strokeStyle = '#c0392b'; c.lineWidth = 12; for (const sgn of [1, -1]){ c.beginPath(); c.ellipse(55, 26*sgn, 34, 22, 0, 0, 7); c.stroke(); }
+    c.restore(); }
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt||0)*d)/.3), p.tagCol || '#d7fbe9');
+  if (p.tag2) tag(c, p.tag2, 540, 1250, ease((lt - (p.tag2At||0)*d)/.3), p.tag2Col || '#ff5a3a');
+};
+function basementBase(c, o){
+  bg(c, '#2f302d', '#0c0c0b');
+  const lit = o.dark ? .6 : 1;
+  // joists
+  c.fillStyle = '#3d2c1e'; c.fillRect(0, 300, W, 40); for (let x = 30; x < W; x += 170){ c.fillStyle = '#2c1f15'; c.fillRect(x, 300, 50, 110); }
+  // block wall lines
+  c.strokeStyle = 'rgba(0,0,0,.25)'; c.lineWidth = 3; for (let y = 470; y < 1050; y += 70){ c.beginPath(); c.moveTo(0, y); c.lineTo(W, y); c.stroke(); for (let x = (y/70 % 2) * 90; x < W; x += 180){ c.beginPath(); c.moveTo(x, y); c.lineTo(x, y + 70); c.stroke(); } }
+  // concrete floor
+  c.fillStyle = '#55524b'; c.fillRect(0, 1040, W, 300);
+  // stairs on the left
+  c.fillStyle = '#4b3726'; for (let i = 0; i < 7; i++){ c.fillRect(0, 440 + i*90, 260 - i*20, 26); c.fillStyle = i % 2 ? '#4b3726' : '#5a432f'; }
+  c.fillStyle = '#2a1e14'; c.beginPath(); c.moveTo(260, 420); c.lineTo(140, 1040); c.lineTo(160, 1040); c.lineTo(280, 420); c.fill();
+  // dirt patch
+  c.fillStyle = '#3b2a1a'; c.beginPath(); c.ellipse(640, 1175, 230, 62, 0, 0, 7); c.fill();
+  const r = R(9); c.fillStyle = 'rgba(20,12,6,.6)'; for (let i = 0; i < 60; i++){ c.beginPath(); c.arc(640 + (r()-.5)*400, 1175 + (r()-.5)*90, 2 + r()*5, 0, 7); c.fill(); }
+  // bulb
+  c.strokeStyle = '#111'; c.lineWidth = 3; c.beginPath(); c.moveTo(430, 340); c.lineTo(430, 430); c.stroke();
+  c.fillStyle = `rgba(255,236,170,${lit})`; c.beginPath(); c.arc(430, 445, 20, 0, 7); c.fill();
+  const g = c.createRadialGradient(430, 450, 10, 430, 450, 900); g.addColorStop(0, `rgba(255,220,150,${.45*lit})`); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 0, W, H);
+  if (o.dark){ c.fillStyle = 'rgba(0,0,0,.2)'; c.fillRect(0, 0, W, H); }
+}
+SC.basement = (c, p, lt, d) => {
+  basementBase(c, p);
+  const tug = p.tug ? Math.max(0, Math.sin(lt*6)) * 26 : 0;
+  // hole in the ceiling
+  c.fillStyle = '#000'; c.beginPath(); c.ellipse(640, 342, 12, 5, 0, 0, 7); c.fill();
+  c.strokeStyle = '#efe6c8'; c.lineWidth = 4;
+  if (p.cut){ c.beginPath(); c.moveTo(640, 342); c.lineTo(642, 520); c.stroke(); c.fillStyle = '#efe6c8'; c.beginPath(); c.arc(642, 522, 4, 0, 7); c.fill();
+    // the dirt is broken open where the string went in
+    c.fillStyle = '#000'; c.beginPath(); c.ellipse(640, 1170, 60, 18, 0, 0, 7); c.fill();
+    const r2 = R(5); c.fillStyle = '#3b2a1a'; for (let i = 0; i < 26; i++){ c.beginPath(); c.arc(640 + (r2()-.5)*200, 1150 + (r2()-.5)*30, 4 + r2()*8, 0, 7); c.fill(); }
+  } else { c.beginPath(); c.moveTo(640, 342); c.lineTo(640, 1175 + tug*.3); c.stroke();
+    if (p.tug){ c.strokeStyle = `rgba(255,59,48,${.4 + .4*Math.sin(lt*6)})`; c.lineWidth = 6; c.beginPath(); c.ellipse(640, 1175, 60, 16, 0, 0, 7); c.stroke(); }
+    c.fillStyle = '#2a1c10'; c.beginPath(); c.ellipse(640, 1176, 14, 5, 0, 0, 7); c.fill(); }
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt||0)*d)/.3), p.tagCol || '#d7fbe9');
+  if (p.tag2) tag(c, p.tag2, 640, 1270, ease((lt - (p.tag2At||0)*d)/.3), p.tag2Col || '#ff5a3a');
+};
+SC.wnote = (c, p, lt, d) => {
+  bg(c, '#4a3524', '#1d140c');
+  c.strokeStyle = 'rgba(0,0,0,.25)'; c.lineWidth = 4; for (let y = 320; y < 1400; y += 120){ c.beginPath(); c.moveTo(0, y); c.lineTo(W, y + 20); c.stroke(); }
+  c.save(); c.translate(540, 760); c.rotate(-.04 + Math.sin(lt)*.004);
+  c.fillStyle = '#f1ead2'; c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 30; c.fillRect(-360, -360, 720, 720); c.shadowBlur = 0;
+  c.strokeStyle = 'rgba(80,120,170,.35)'; c.lineWidth = 2; for (let y = -280; y < 340; y += 70){ c.beginPath(); c.moveTo(-340, y); c.lineTo(340, y); c.stroke(); }
+  const ln = [['Keep the bell.', .05], ['It helps me', .3], ['sleep.', .45], ['- Walter', .6]];
+  ln.forEach(([s, at], i) => { const a = ease((lt - at*d)/.35); c.globalAlpha = a; text(c, s, i === 3 ? 120 : 0, -220 + i*150, i === 3 ? 84 : 104, 'Hand', '#1d2433'); });
+  c.globalAlpha = 1;
+  if (lt > .62*d){ const a = ease((lt - .62*d)/.3); c.strokeStyle = `rgba(220,30,25,${a})`; c.lineWidth = 8; c.beginPath(); c.ellipse(0, 80, 150, 70, -.05, 0, 7*a); c.stroke(); }
+  c.restore();
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - .1)/.3), '#d7fbe9');
+};
+SC.grave = (c, p, lt, d) => {
+  bg(c, '#1c2633', '#06080c');
+  c.fillStyle = 'rgba(230,235,220,.9)'; c.beginPath(); c.arc(860, 420, 60, 0, 7); c.fill();
+  { const g = c.createRadialGradient(860, 420, 40, 860, 420, 420); g.addColorStop(0, 'rgba(200,215,230,.3)'); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 0, W, H); }
+  // ground line + soil cross-section
+  c.fillStyle = '#26301f'; c.fillRect(0, 820, W, 30);
+  c.fillStyle = '#3a2a1c'; c.fillRect(0, 850, W, 480);
+  const r = R(3); c.fillStyle = 'rgba(0,0,0,.25)'; for (let i = 0; i < 120; i++){ c.beginPath(); c.arc(r()*W, 860 + r()*460, 2 + r()*5, 0, 7); c.fill(); }
+  // headstone
+  c.fillStyle = '#8d918f'; c.beginPath(); c.moveTo(260, 830); c.lineTo(260, 560); c.arc(380, 560, 120, Math.PI, 0); c.lineTo(500, 830); c.fill();
+  text(c, 'R.I.P.', 380, 600, 56, 'Type', '#3b3e3d'); text(c, '1851', 380, 690, 52, 'Type', '#3b3e3d');
+  // bell post
+  c.fillStyle = '#4b3521'; c.fillRect(700, 560, 18, 270); c.fillRect(700, 560, 110, 14);
+  const ring = p.ring && lt > p.ring*d; const ang = ring ? Math.sin((lt - p.ring*d)*14) * .35 : 0;
+  // string from bell down through the soil into the coffin
+  c.strokeStyle = '#efe6c8'; c.lineWidth = 4; c.beginPath(); c.moveTo(790, 640); c.lineTo(790, 820); c.lineTo(640, 1130); c.stroke();
+  brassBell(c, 790, 590, .62, ang);
+  // coffin outline underground
+  c.fillStyle = '#5a3c22'; c.strokeStyle = '#2a1a0c'; c.lineWidth = 6; c.beginPath(); c.moveTo(200, 1120); c.lineTo(260, 1080); c.lineTo(880, 1080); c.lineTo(900, 1150); c.lineTo(880, 1220); c.lineTo(260, 1220); c.closePath(); c.fill(); c.stroke();
+  c.fillStyle = '#efe6c8'; c.beginPath(); c.arc(640, 1130, 7, 0, 7); c.fill();
+  if (ring){ c.strokeStyle = 'rgba(255,220,140,.6)'; c.lineWidth = 5; for (const k of [1, 2]){ c.beginPath(); c.arc(790, 640, 60 + k*34, -2.6, -2.0); c.stroke(); c.beginPath(); c.arc(790, 640, 60 + k*34, -1.15, -.55); c.stroke(); } }
+  tag(c, 'CREEPY FACT · 1800s', 540, 300, ease((lt - .05)/.3), '#ffd36b');
+  if (lt > .55*d) tag(c, '"SAFETY COFFIN"', 540, 1270, ease((lt - .55*d)/.3), '#d7fbe9');
+};
+function streetMorning(c){
+  bg(c, '#8b9aa6', '#c9cfcc');
+  c.fillStyle = '#b9b2a2'; c.fillRect(0, 560, W, 420); // house wall
+  c.fillStyle = '#3f4a55'; c.fillRect(90, 640, 200, 180); c.strokeStyle = '#eee'; c.lineWidth = 8; c.strokeRect(90, 640, 200, 180);
+  c.fillStyle = '#6d5440'; for (let x = 0; x < W; x += 60) c.fillRect(x, 840, 46, 180);  // fence
+  c.fillStyle = '#5e6a5a'; c.fillRect(0, 1020, W, 320); // lawn/path
+}
+SC.frank = (c, p, lt, d) => {
+  streetMorning(c);
+  if (!p.close){
+    // wheelie bin with the cut string hanging over the lip
+    c.fillStyle = '#2f4a32'; c.beginPath(); c.moveTo(120, 760); c.lineTo(380, 760); c.lineTo(360, 1220); c.lineTo(140, 1220); c.fill();
+    c.fillStyle = '#243a27'; c.save(); c.translate(120, 760); c.rotate(-.5); c.fillRect(-10, -40, 290, 40); c.restore();
+    c.strokeStyle = '#efe6c8'; c.lineWidth = 5; c.beginPath(); c.moveTo(250, 760); c.bezierCurveTo(300, 730, 340, 800, 330, 900); c.bezierCurveTo(325, 980, 380, 1010, 360, 1060); c.stroke();
+    if (lt > .25*d){ const a = ease((lt - .25*d)/.3); c.save(); c.globalAlpha = a; c.strokeStyle = '#ff3b30'; c.lineWidth = 7; c.setLineDash([18, 12]); c.beginPath(); c.ellipse(310, 880, 90, 150, 0, 0, 7); c.stroke(); c.restore(); }
+    oldMan(c, 720, 760, 1.25, {pale: lt > .5*d, wide: lt > .5*d, lt});
+  } else {
+    oldMan(c, 540, 720, 2.1, {pale: true, wide: true, talk: p.talk, lt});
+  }
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt||0)*d)/.3), p.tagCol || '#d7fbe9');
+  if (p.tag2) tag(c, p.tag2, 540, 1250, ease((lt - (p.tag2At||0)*d)/.3), p.tag2Col || '#ff5a3a');
+};
+SC.bstairs = (c, p, lt, d) => {
+  // looking down the basement stairs from the hallway
+  bg(c, '#1a1d22', '#050607');
+  c.fillStyle = '#d6cfbf'; c.fillRect(250, 330, 580, 960);                          // door frame
+  { const g0 = c.createLinearGradient(0, 360, 0, 1290); g0.addColorStop(0, '#221d17'); g0.addColorStop(1, '#3a3026'); c.fillStyle = g0; c.fillRect(280, 360, 520, 930); }
+  // steps going down (lit faintly by the hallway light behind me)
+  for (let i = 0; i < 8; i++){ const y = 1240 - i*95, w = 500 - i*38, x = 540 - w/2; const b = .85 - i*.08;
+    c.fillStyle = `rgba(120,95,70,${Math.max(b, .05)})`; c.fillRect(x, y, w, 26); c.fillStyle = `rgba(70,55,40,${Math.max(b - .2, .03)})`; c.fillRect(x, y + 26, w, 60); }
+  { const g = c.createLinearGradient(0, 1290, 0, 360); g.addColorStop(0, 'rgba(255,210,150,.18)'); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(280, 360, 520, 930); }
+  // a shadow climbing: rises step by step
+  const steps = Math.floor(clamp(lt/(d*.95), 0, 1) * 4);
+  const sy = 720 + steps * 75; // head of the shadow gets closer (lower on screen = nearer)
+  c.save(); c.globalAlpha = .96; c.fillStyle = '#020202';
+  c.beginPath(); c.ellipse(540, sy - 260 + 0, 40 + steps*8, 50 + steps*10, 0, 0, 7); c.fill();
+  c.beginPath(); c.moveTo(480 - steps*12, sy - 210); c.lineTo(600 + steps*12, sy - 210); c.lineTo(640 + steps*20, sy + 120); c.lineTo(440 - steps*20, sy + 120); c.fill(); c.restore();
+  // string end on the top step
+  c.strokeStyle = '#efe6c8'; c.lineWidth = 4; c.beginPath(); c.moveTo(420, 1250); c.bezierCurveTo(470, 1230, 520, 1270, 600, 1245); c.stroke();
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt||0)*d)/.3), p.tagCol || '#ff5a3a');
+};
+SC.carhouse = (c, p, lt, d) => {
+  bg(c, '#121a26', '#04060a');
+  c.fillStyle = '#0a0d12'; c.fillRect(0, 1000, W, 400);                            // road
+  // two-storey house
+  c.fillStyle = '#2a2f38'; c.fillRect(220, 520, 640, 480);
+  c.fillStyle = '#1b1f26'; c.beginPath(); c.moveTo(180, 540); c.lineTo(540, 330); c.lineTo(900, 540); c.fill();
+  c.fillStyle = '#0d0f13'; c.fillRect(480, 830, 120, 170); c.fillRect(290, 820, 140, 110); c.fillRect(650, 820, 140, 110);   // door + downstairs windows dark
+  const off = p.offAt != null && lt > p.offAt*d; const on = p.offAt == null || !off;
+  // upstairs left window = bedroom
+  if (on){ const fl = p.offAt != null && lt > p.offAt*d - .5 ? (Math.sin(lt*50) > 0 ? 1 : .35) : 1;
+    c.fillStyle = `rgba(255,205,120,${.95*fl})`; c.fillRect(290, 600, 150, 130);
+    const g = c.createRadialGradient(365, 665, 10, 365, 665, 260); g.addColorStop(0, `rgba(255,190,100,${.35*fl})`); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 300, W, 700);
+    // tiny bell silhouette above the door inside the room
+    c.fillStyle = '#4a3a1a'; c.beginPath(); c.moveTo(395, 625); c.lineTo(385, 650); c.lineTo(405, 650); c.fill();
+  } else { c.fillStyle = '#05060a'; c.fillRect(290, 600, 150, 130);
+    if (p.figure){ const a = clamp((lt - p.offAt*d - .8)/1.2, 0, 1) * .45; c.fillStyle = `rgba(170,180,190,${a})`; c.beginPath(); c.ellipse(365, 640, 18, 22, 0, 0, 7); c.fill(); c.fillRect(345, 660, 40, 70); } }
+  c.strokeStyle = '#3a404a'; c.lineWidth = 6; c.strokeRect(290, 600, 150, 130); c.strokeRect(650, 600, 150, 130);
+  c.fillStyle = '#05060a'; c.fillRect(650, 600, 150, 130);
+  windshield(c);
+  c.strokeStyle = '#06070a'; c.lineWidth = 46; c.beginPath(); c.arc(330, 1720, 300, Math.PI*1.08, Math.PI*1.92); c.stroke();
+  if (p.tag) tag(c, p.tag, 540, 420, ease((lt - (p.tagAt||0)*d)/.3), p.tagCol || '#d7fbe9');
+  if (p.arrow && on){ const a = ease((lt - .3)/.3); c.save(); c.globalAlpha = a; c.strokeStyle = '#ff3b30'; c.lineWidth = 7; c.setLineDash([18, 12]); c.strokeRect(272, 582, 186, 166); c.restore(); tag(c, 'MY BEDROOM', 365, 790, a, '#ffd36b'); }
+  if (p.follow) followBox(c, lt, d);
+};
+
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
   X.fillStyle = 'rgba(0,0,0,.35)'; X.fillRect(0, 110, W, 120);
@@ -3220,7 +3416,7 @@ window.render = (t) => {
   X.setTransform(1,0,0,1,0,0); X.fillStyle = '#000'; X.fillRect(0,0,W,H);
   X.save(); if (D.fit){ const f = Object.assign({cy: 740, s: 1.06}, D.fit, sc.p.fit || {}); X.translate(540, D.stageY || 760); X.scale(f.s, f.s); X.translate(-540, -f.cy); } else if (D.zoom){ X.translate(540, D.zoomY || 250); X.scale(D.zoom, D.zoom); X.translate(-540, -(D.zoomY || 250)); } X.translate(W/2, H/2); X.scale(push, push); X.translate(-W/2, -H/2);
   // CCTV tint
-  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='texts' || sc.scene==='josh' || sc.scene==='covers' || sc.scene==='call' || sc.scene==='photo' || sc.scene==='camroll' || sc.scene==='listing' || sc.scene==='chat' || (sc.scene==='benface' && sc.p.car) || sc.scene==='app' || sc.scene==='plan' || sc.scene==='rulenote' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='dna' || sc.scene==='tree' || sc.scene==='desk' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
+  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='texts' || sc.scene==='josh' || sc.scene==='covers' || sc.scene==='call' || sc.scene==='photo' || sc.scene==='camroll' || sc.scene==='listing' || sc.scene==='wnote' || sc.scene==='chat' || (sc.scene==='benface' && sc.p.car) || sc.scene==='app' || sc.scene==='plan' || sc.scene==='rulenote' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='dna' || sc.scene==='tree' || sc.scene==='desk' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
   X.drawImage(S, 0, 0);
   X.filter = 'none';
   X.restore();
