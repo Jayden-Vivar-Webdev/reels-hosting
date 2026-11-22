@@ -2587,6 +2587,147 @@ SC.cabin = (c, p, lt, d) => {
   if (p.tag) tag(c, p.tag, 540, 1010, ease((lt - .3)/.3), '#d7fbe9');
 };
 
+// ---------- Smart speaker story (speaker / voice history / floor plan) ----------
+function speakerDev(c, x, y, s, ring, lt){
+  c.save(); c.translate(x, y); c.scale(s, s);
+  if (ring > 0){ const g = c.createRadialGradient(0, -150, 10, 0, -150, 420); g.addColorStop(0, `rgba(60,200,255,${.45*ring})`); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(-450, -600, 900, 900); }
+  // fabric cylinder
+  const g = c.createLinearGradient(-90, 0, 90, 0); g.addColorStop(0,'#16191d'); g.addColorStop(.45,'#3a3f46'); g.addColorStop(1,'#101215'); c.fillStyle = g;
+  c.beginPath(); c.moveTo(-90, -150); c.lineTo(-90, 120); c.ellipse(0, 120, 90, 24, 0, Math.PI, 0, true); c.lineTo(90, -150); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(0,0,0,.25)'; c.lineWidth = 2; for (let k=-120; k<110; k+=14){ c.beginPath(); c.moveTo(-90, k); c.lineTo(90, k); c.stroke(); }
+  // top + light ring
+  c.fillStyle = '#22262b'; c.beginPath(); c.ellipse(0, -150, 90, 24, 0, 0, 7); c.fill();
+  c.lineWidth = 9; c.strokeStyle = ring > 0 ? `rgba(80,215,255,${.35 + .65*ring})` : '#1a1d21';
+  if (ring > 0){ c.shadowColor = '#3fd0ff'; c.shadowBlur = 30; }
+  c.beginPath(); c.ellipse(0, -150, 84, 21, 0, 0, 7); c.stroke(); c.shadowBlur = 0;
+  c.restore();
+}
+function talkRing(lt, on){ return on ? .55 + .45*Math.abs(Math.sin(lt*9) * Math.sin(lt*3.3)) : .18; }
+function bubble(c, s, x, y, a, col='#bff0ff', size=56){
+  if (a <= 0) return; c.save(); c.globalAlpha = a; c.font = size + 'px Anton'; const w = c.measureText(s).width + 70;
+  c.fillStyle = 'rgba(5,20,30,.85)'; c.beginPath(); c.roundRect(x - w/2, y - 60, w, 120, 30); c.fill();
+  c.strokeStyle = 'rgba(80,215,255,.9)'; c.lineWidth = 5; c.stroke();
+  text(c, s, x, y + 4, size, 'Anton', col); c.restore();
+}
+function sleeperBed(c, a){ // head on the left pillow, quilt mound
+  c.save(); c.globalAlpha = a;
+  c.fillStyle = '#a89a8c'; c.beginPath(); c.ellipse(310, 705, 52, 40, -.2, 0, 7); c.fill();
+  c.fillStyle = '#1b1714'; c.beginPath(); c.ellipse(292, 688, 54, 34, -.2, Math.PI*.9, Math.PI*2.05); c.fill();
+  c.fillStyle = '#2a1a1a'; c.fillRect(318, 702, 22, 4);
+  c.fillStyle = '#58687c'; c.beginPath(); c.moveTo(330, 820); c.quadraticCurveTo(420, 700, 620, 730); c.quadraticCurveTo(820, 740, 900, 820); c.fill();
+  c.restore();
+}
+SC.spk = (c, p, lt, d) => {
+  if (p.room === 'lounge'){
+    SC.lounge(c, {night: true, glow: true}, lt, d);
+    // Daniel sitting on the couch, face lit by his phone
+    person(c, 470, 700, .8, {face: 'front', coat: '#1f252d', skin: '#8f9fb3', wide: true});
+    c.save(); c.beginPath(); c.rect(0, 1000, W, 400); c.clip(); couch(c, 1090, ['#13161b','#101318','#181c22','#0d0f13'], -1); c.restore();
+    phoneOnCouch(c, 470, 1010, true, lt);
+    const g = c.createRadialGradient(470, 700, 10, 470, 720, 260); g.addColorStop(0,'rgba(140,180,255,.35)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0,0,W,H);
+    // side table + speaker + lamp (lamp on)
+    c.fillStyle = '#1a1512'; c.fillRect(860, 960, 200, 260);
+    c.fillStyle = '#2b241c'; c.fillRect(1000, 600, 12, 360); c.fillStyle = p.lamp ? '#e8c98a' : '#2a2620'; c.beginPath(); c.moveTo(950, 620); c.lineTo(1060, 620); c.lineTo(1035, 520); c.lineTo(975, 520); c.fill();
+    if (p.lamp){ const lg = c.createRadialGradient(1005, 600, 10, 1005, 700, 700); lg.addColorStop(0,'rgba(255,205,130,.55)'); lg.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = lg; c.fillRect(0,0,W,H); }
+    speakerDev(c, 905, 930, .7, talkRing(lt, true), lt);
+    if (p.reply) bubble(c, p.reply, 540, 420, ease((lt - .15)/.3));
+    if (p.follow) followBox(c, lt, d);
+    return;
+  }
+  cabinRoom(c, true);
+  if (p.sleeper !== false) sleeperBed(c, 1);
+  // bedroom door, back right, ajar
+  if (p.ajar){ c.fillStyle = '#030303'; c.fillRect(960, 480, 120, 440); const a = ease((lt - .2)/1.2); c.fillStyle = `rgba(20,22,26,${1-a*.6})`; c.fillRect(960 + 100*a, 480, 120, 440); }
+  // nightstand foreground with the speaker
+  c.fillStyle = '#221a14'; c.fillRect(640, 1000, 420, 260); c.fillStyle = '#2e241b'; c.fillRect(620, 980, 460, 34);
+  const on = p.talk || p.laugh;
+  speakerDev(c, 850, 920, 1.25, talkRing(lt, on), lt);
+  if (p.laugh){ ['HA','HA','HA','HA'].forEach((h, i) => { const q = (lt*.55 + i*.25) % 1; c.save(); c.globalAlpha = Math.sin(q*Math.PI); text(c, h, 760 + ((i*97)%200), 700 - q*320, 70 + (i%2)*16, 'Anton', '#8fe3ff'); c.restore(); }); }
+  if (p.reply) bubble(c, p.reply, 540, 420, ease((lt - .15)/.3));
+  if (p.tag) tag(c, p.tag, 540, 330, ease((lt - (p.tagAt||.2))/.3), p.tagCol || '#d7fbe9');
+};
+SC.app = (c, p, lt, d) => {
+  bg(c, '#0c0f13', '#050608');
+  c.save(); appShell(c, 540, 760, .9);
+  c.fillStyle = '#0f2a3a'; c.fillRect(-305, -535, 610, 170);
+  text(c, 'HOME', 0, -478, 40, 'VT', '#8fe3ff'); text(c, 'Voice history', 0, -415, 54, 'Anton', '#ffffff');
+  const scroll = p.scroll ? -ease((lt - .2)/(d*.7)) * p.scroll : 0;
+  c.save(); c.beginPath(); c.rect(-305, -360, 610, 890); c.clip();
+  let y = -340 + scroll;
+  (p.items || []).forEach(m => {
+    const a = m.at === undefined ? 1 : ease((lt - m.at*d)/.25);
+    if (a > 0){ c.save(); c.globalAlpha = a;
+      if (m.day){ text(c, m.day, -270, y + 30, 34, 'Anton', '#7b8794', 'left'); y += 60; c.restore(); return; }
+      const hl = m.hl && lt >= (m.hlAt||0)*d;
+      c.fillStyle = hl ? '#ffe3df' : '#f0f2f5'; c.beginPath(); c.roundRect(-280, y, 560, 150, 24); c.fill();
+      if (hl){ c.strokeStyle = `rgba(230,40,30,${.6+.4*Math.sin(lt*8)})`; c.lineWidth = 6; c.stroke(); }
+      // play button
+      c.fillStyle = m.play && lt > (m.playAt||0)*d ? '#e0281e' : '#1a8fd0'; c.beginPath(); c.arc(-215, y + 75, 38, 0, 7); c.fill();
+      c.fillStyle = '#fff'; c.beginPath(); c.moveTo(-226, y + 55); c.lineTo(-196, y + 75); c.lineTo(-226, y + 95); c.fill();
+      text(c, m.t, -155, y + 48, 32, 'Anton', '#6a7480', 'left');
+      text(c, m.q, -155, y + 102, m.q.length > 22 ? 38 : 46, 'Anton', hl ? '#a3140c' : '#111', 'left');
+      if (m.play && lt > (m.playAt||0)*d){ // waveform
+        for (let k=0;k<22;k++){ const h = 6 + 26*Math.abs(Math.sin(lt*11 + k*1.7)*Math.sin(k*.6)); c.fillStyle = '#e0281e'; c.fillRect(110 + k*7, y + 40 - h/2, 4, h); } }
+      c.restore(); }
+    y += 175;
+  });
+  c.restore(); c.restore();
+  if (p.big){ const a = ease((lt - (p.bigAt||.2)*d)/.25); bubble(c, p.big, 540, 1180, a, '#ff5a4a', 80); }
+};
+const PLR = {bed: [140, 330, 470, 400, 'BEDROOM'], hall: [610, 330, 330, 820, 'HALLWAY'], lounge: [140, 730, 470, 420, 'LOUNGE'], kitchen: [140, 1150, 800, 0, '']};
+SC.plan = (c, p, lt, d) => {
+  bg(c, '#0b1e30', '#050f1a');
+  c.strokeStyle = 'rgba(160,200,240,.08)'; c.lineWidth = 2;
+  for (let x=0;x<W;x+=40){ c.beginPath(); c.moveTo(x,240); c.lineTo(x,1260); c.stroke(); }
+  for (let y=240;y<1260;y+=40){ c.beginPath(); c.moveTo(0,y); c.lineTo(W,y); c.stroke(); }
+  text(c, "DANIEL'S HOUSE", 540, 280, 46, 'VT', '#8fe3ff');
+  const rooms = {bed: [140, 330, 470, 400], hall: [610, 330, 330, 820], lounge: [140, 730, 470, 420]};
+  const names = {bed: 'BEDROOM', hall: 'HALLWAY', lounge: 'LOUNGE'};
+  const lit = {}; (p.lit || []).forEach(([r, at]) => { const a = ease((lt - at*d)/.12); lit[r] = Math.max(lit[r]||0, a); });
+  if (p.path){ // Daniel's dot walks a path and lights each room on entry
+    const k = clamp((lt - .2)/(d*.75), 0, 1), seg = k*(p.path.length - 1), i = Math.min(Math.floor(seg), p.path.length - 2), f = seg - i;
+    const ctr = r => [rooms[r][0] + rooms[r][2]/2, rooms[r][1] + rooms[r][3]/2];
+    const A = ctr(p.path[i]), B = ctr(p.path[i+1]); const x = A[0] + (B[0]-A[0])*f, y = A[1] + (B[1]-A[1])*f;
+    for (const r in rooms){ const [rx, ry, rw, rh] = rooms[r]; if (x > rx && x < rx + rw && y > ry && y < ry + rh) lit[r] = 1; }
+    p._dot = [x, y];
+  }
+  for (const r in rooms){ const [x, y, w, h] = rooms[r]; const a = lit[r] || 0;
+    c.fillStyle = `rgba(255,205,120,${.75*a})`; c.fillRect(x, y, w, h);
+    if (a > 0){ c.save(); c.globalCompositeOperation = 'lighter'; const g = c.createRadialGradient(x + w/2, y + h/2, 10, x + w/2, y + h/2, Math.max(w, h)*.7); g.addColorStop(0, `rgba(255,190,90,${.35*a})`); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(x - 100, y - 100, w + 200, h + 200); c.restore(); }
+    text(c, names[r], x + w/2, y + 60, 46, 'VT', a > .5 ? '#3a2400' : '#dbe9f7'); }
+  c.strokeStyle = '#e6f0fa'; c.lineWidth = 12; c.strokeRect(140, 330, 800, 820);
+  c.beginPath(); c.moveTo(610, 330); c.lineTo(610, 640); c.moveTo(610, 780); c.lineTo(610, 960); c.moveTo(140, 730); c.lineTo(610, 730); c.stroke();
+  // back door on the hallway's far wall + camera icon
+  c.fillStyle = '#ff5a3a'; c.fillRect(700, 1138, 150, 24); text(c, 'BACK DOOR', 775, 1200, 36, 'VT', '#ffb0a0');
+  c.fillStyle = '#dbe9f7'; c.fillRect(890, 360, 34, 22); c.beginPath(); c.moveTo(890, 371); c.lineTo(868, 360); c.lineTo(868, 384); c.fill();
+  // speaker dot (bedroom) or lounge
+  const sp = p.spk === 'lounge' ? [560, 1100] : [560, 690];
+  c.save(); c.shadowColor = '#3fd0ff'; c.shadowBlur = 20; c.fillStyle = '#3fd0ff'; c.beginPath(); c.arc(sp[0], sp[1], 14, 0, 7); c.fill(); c.restore();
+  const dot = p._dot || (p.dot ? [rooms[p.dot][0] + rooms[p.dot][2]/2, rooms[p.dot][1] + rooms[p.dot][3]/2 + 30] : null);
+  if (dot){ c.save(); c.shadowColor = '#6dff9e'; c.shadowBlur = 25; c.fillStyle = '#6dff9e'; c.beginPath(); c.arc(dot[0], dot[1], 26, 0, 7); c.fill(); c.restore(); text(c, 'DANIEL', dot[0], dot[1] + 60, 40, 'VT', '#6dff9e'); }
+  if (p.tag) tag(c, p.tag, 540, 1230, ease((lt - (p.tagAt||.3)*d)/.3), p.tagCol || '#ff5a3a');
+};
+SC.hallcam = (c, p, lt, d) => {
+  SC.flatHall(c, {}, lt, d);
+  const off = lt > (p.off || .5)*d;
+  if (off){ c.fillStyle = '#000'; c.fillRect(0,0,W,H); text(c, 'CAMERA OFF', 540, 700, 110, 'VT', '#ff3b30'); text(c, 'HALLWAY · turned off by voice', 540, 800, 46, 'VT', '#d7fbe9'); }
+  else tag(c, 'HALLWAY CAM', 540, 330, 1, '#d7fbe9');
+};
+SC.backdoor = (c, p, lt, d) => {
+  bg(c, '#1c2026', '#08090b');
+  c.fillStyle = '#2a2f36'; c.fillRect(0, 240, W, 1000);
+  c.fillStyle = '#4a3a2c'; c.fillRect(280, 290, 520, 950); c.strokeStyle = '#1a140f'; c.lineWidth = 16; c.strokeRect(280, 290, 520, 950);
+  c.strokeStyle = 'rgba(0,0,0,.35)'; c.lineWidth = 6; c.strokeRect(340, 360, 400, 360); c.strokeRect(340, 790, 400, 380);
+  c.fillStyle = '#5a6672'; c.fillRect(360, 380, 360, 320);  // glass panel, night
+  const k = lt > (p.at || .35)*d;
+  // keypad lock
+  c.fillStyle = '#111418'; c.beginPath(); c.roundRect(640, 700, 110, 220, 18); c.fill();
+  for (let r=0;r<3;r++) for (let q=0;q<2;q++){ c.fillStyle = '#2a3038'; c.beginPath(); c.arc(672 + q*46, 760 + r*44, 14, 0, 7); c.fill(); }
+  c.save(); c.shadowColor = k ? '#2bff7a' : '#ff2a20'; c.shadowBlur = 30; c.fillStyle = k ? '#2bff7a' : '#ff2a20'; c.beginPath(); c.arc(695, 890, 12, 0, 7); c.fill(); c.restore();
+  c.fillStyle = '#b8b0a0'; c.fillRect(600, 940, 90, 22);
+  tag(c, k ? 'UNLOCKED' : 'LOCKED', 540, 1060, 1, k ? '#2bff7a' : '#ff5a3a');
+};
+
 // ---------- HUD, captions, post ----------
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
@@ -2637,7 +2778,7 @@ window.render = (t) => {
   X.setTransform(1,0,0,1,0,0); X.fillStyle = '#000'; X.fillRect(0,0,W,H);
   X.save(); if (D.fit){ const f = Object.assign({cy: 740, s: 1.06}, D.fit, sc.p.fit || {}); X.translate(540, D.stageY || 760); X.scale(f.s, f.s); X.translate(-540, -f.cy); } else if (D.zoom){ X.translate(540, D.zoomY || 250); X.scale(D.zoom, D.zoom); X.translate(-540, -(D.zoomY || 250)); } X.translate(W/2, H/2); X.scale(push, push); X.translate(-W/2, -H/2);
   // CCTV tint
-  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='texts' || sc.scene==='josh' || sc.scene==='covers' || sc.scene==='call' || sc.scene==='photo' || sc.scene==='camroll' || sc.scene==='listing' || sc.scene==='chat' || sc.scene==='rulenote' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
+  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='texts' || sc.scene==='josh' || sc.scene==='covers' || sc.scene==='call' || sc.scene==='photo' || sc.scene==='camroll' || sc.scene==='listing' || sc.scene==='chat' || sc.scene==='app' || sc.scene==='plan' || sc.scene==='rulenote' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
   X.drawImage(S, 0, 0);
   X.filter = 'none';
   X.restore();
