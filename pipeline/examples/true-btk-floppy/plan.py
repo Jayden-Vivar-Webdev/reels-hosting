@@ -11,7 +11,7 @@ PLAN = {"p1": [
  ("news", {"zoom": True, "ringAt": .0, "hush": True}, [], "06:30:04 AM", "CASE FILE · NEWSPAPER"),
  ("floppy", {"mail": True, "tag": "FEBRUARY 2005"}, ["slide"], "10:15:22 AM", "CASE FILE · EVIDENCE"),
  ("props", {"hl": [0, 1]}, ["rclick"], "02:47:51 PM", "CASE FILE · FORENSICS"),
- ("church", {"tag": "CHURCH COUNCIL PRESIDENT"}, ["hum"], "07:30:10 PM", "CASE FILE · PARK CITY"),
+ ("church", {}, ["hum"], "07:30:10 PM", "CASE FILE · PARK CITY"),
  ("street", {}, ["heartbeat"], "11:58:40 PM", "CASE FILE · PARK CITY"),
  ("truecard", {"hush": True}, [], "12:00:00 AM", "CASE FILE"),
  ("truecard", {"name": True}, ["stinger"], "12:00:00 AM", "CASE FILE · FEB 25 2005"),

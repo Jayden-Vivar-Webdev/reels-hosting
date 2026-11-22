@@ -48,6 +48,7 @@ for p in S:
     for a, b in zip(caps, caps[1:]):
         if b["start"] - a["end"] < 0.15: a["end"] = b["start"]
     data = {"badge": BADGE.get(p, ""), "scenes": scenes, "caps": caps, "dur": dur}
+    if __import__("os").path.exists("layout.json"): data.update(json.load(open("layout.json")))
     json.dump(data, open(f"{p}_data.json", "w"))
     html = open("scene.html").read().replace("<script>\nconst D", f"<script>window.DATA={json.dumps(data)};</script>\n<script>\nconst D", 1)
     open(f"{p}.html", "w").write(html)
