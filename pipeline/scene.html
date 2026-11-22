@@ -2424,6 +2424,169 @@ SC.cell = (c, p, lt, d) => {
   if (p.black && lt > d - 1.6){ c.fillStyle = '#000'; c.fillRect(0,0,W,H); followBox(c, lt, d + 0.2); }
 };
 
+// ---------- Glint (Airbnb hidden camera) scenes ----------
+function pines(c, y, col, seed, n=14){ const r = R(seed); c.fillStyle = col; for (let i=0;i<n;i++){ const x = r()*W, h = 140 + r()*200, w = 50 + r()*40; c.beginPath(); c.moveTo(x, y - h); c.lineTo(x - w, y); c.lineTo(x + w, y); c.fill(); } }
+function cabinArt(c, x, y, s, night, lt=0, doorOpen=false){
+  c.save(); c.translate(x, y); c.scale(s, s);
+  c.fillStyle = night ? '#2a1d14' : '#6b4a30'; c.fillRect(-220, -170, 440, 200);                       // log walls
+  c.strokeStyle = night ? 'rgba(0,0,0,.45)' : 'rgba(40,24,12,.5)'; c.lineWidth = 4; for (let k=-150;k<30;k+=28){ c.beginPath(); c.moveTo(-220, k); c.lineTo(220, k); c.stroke(); }
+  c.fillStyle = night ? '#140f0c' : '#3b2a1e'; c.beginPath(); c.moveTo(-260, -165); c.lineTo(0, -330); c.lineTo(260, -165); c.fill();  // roof
+  c.fillStyle = night ? '#1a1410' : '#4a3a30'; c.fillRect(120, -300, 46, 100);                                  // chimney
+  const lit = night ? 'rgba(255,196,110,.95)' : '#9fc3d8';
+  c.fillStyle = lit; c.fillRect(-170, -120, 110, 90); c.fillRect(70, -120, 110, 90);                             // windows
+  c.strokeStyle = night ? '#0d0907' : '#2b1d12'; c.lineWidth = 8; c.strokeRect(-170, -120, 110, 90); c.strokeRect(70, -120, 110, 90);
+  c.fillStyle = doorOpen ? 'rgba(255,200,120,.95)' : (night ? '#120c08' : '#3a2416'); c.fillRect(-36, -110, 72, 140);   // door
+  if (night){ const g = c.createRadialGradient(0, 40, 10, 0, 40, 260); g.addColorStop(0, doorOpen ? 'rgba(255,190,100,.35)' : 'rgba(255,190,100,.15)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(-300, -120, 600, 300); }
+  c.restore();
+}
+function lakeScene(c, x0, y0, w, h, night, lt, doorOpen){
+  c.save(); c.beginPath(); c.rect(x0, y0, w, h); c.clip();
+  const sky = c.createLinearGradient(0, y0, 0, y0 + h*.55); sky.addColorStop(0, night ? '#0b1422' : '#e9a273'); sky.addColorStop(1, night ? '#1d2a3c' : '#f3cf9a'); c.fillStyle = sky; c.fillRect(x0, y0, w, h);
+  if (night){ c.fillStyle = '#dfe6ee'; c.beginPath(); c.arc(x0 + w*.78, y0 + h*.16, h*.06, 0, 7); c.fill(); }
+  const hy = y0 + h*.55;
+  c.save(); c.translate(x0, 0); c.scale(w/W, 1); pines(c, hy, night ? '#081018' : '#2c3a2c', 5, 18); c.restore();
+  const lk = c.createLinearGradient(0, hy, 0, y0 + h); lk.addColorStop(0, night ? '#162436' : '#c88b62'); lk.addColorStop(1, night ? '#05080d' : '#4a5a66'); c.fillStyle = lk; c.fillRect(x0, hy, w, h);
+  c.strokeStyle = night ? 'rgba(200,220,240,.12)' : 'rgba(255,240,210,.35)'; c.lineWidth = 2; for (let k=0;k<6;k++){ const yy = hy + 20 + k*(h*.07); c.beginPath(); c.moveTo(x0 + w*.15 + Math.sin(lt + k)*10, yy); c.lineTo(x0 + w*.85, yy); c.stroke(); }
+  c.fillStyle = night ? '#0a0f0a' : '#3d4a2c'; c.beginPath(); c.ellipse(x0 + w*.32, hy + 8, w*.4, h*.07, 0, 0, 7); c.fill();   // shore
+  cabinArt(c, x0 + w*.32, hy + 2, w/1500, night, lt, doorOpen);
+  c.restore();
+}
+function stars(c, x, y, s, n=5){ for (let i=0;i<n;i++) text(c, '★', x + i*s*1.05, y, s, 'Anton', '#ffb400', 'left'); }
+function appShell(c, cx, cy, sc){ c.translate(cx, cy); c.scale(sc, sc); c.fillStyle = '#07080a'; c.beginPath(); c.roundRect(-330, -560, 660, 1120, 64); c.fill(); c.fillStyle = '#ffffff'; c.beginPath(); c.roundRect(-305, -535, 610, 1070, 48); c.fill(); }
+SC.listing = (c, p, lt, d) => {
+  bg(c, '#1b2129', '#07090c');
+  const g = c.createRadialGradient(540, 640, 40, 540, 640, 640); g.addColorStop(0,'rgba(255,190,140,.25)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0,0,W,H);
+  c.save(); appShell(c, 540, 610, .66);
+  const scroll = p.mode === 'reviews' ? 520*ease((lt - .1)/.7) : 0;
+  c.save(); c.beginPath(); c.roundRect(-305, -535, 610, 1070, 48); c.clip(); c.translate(0, -scroll);
+  lakeScene(c, -305, -535, 610, 470, false, lt, false);
+  c.fillStyle = 'rgba(0,0,0,.55)'; c.beginPath(); c.roundRect(-280, -510, 150, 50, 25); c.fill(); text(c, '‹  STAYS', -205, -484, 30, 'Anton', '#fff');
+  text(c, 'Lakeside Cabin', -270, -10, 54, 'Anton', '#16181c', 'left');
+  text(c, 'Self check-in · Host lives nearby', -270, 45, 28, 'Anton', '#7a808a', 'left');
+  stars(c, -270, 105, 40); text(c, '5.0', -50, 107, 40, 'Anton', '#16181c', 'left');
+  const pa = p.mode === 'top' ? ease((lt - d*.25)/.3) : 1;
+  c.save(); c.globalAlpha = pa; c.fillStyle = '#ff385c'; c.beginPath(); c.roundRect(60, 70, 220, 74, 18); c.fill(); text(c, '$40 / night', 170, 109, 40, 'Anton', '#fff'); c.restore();
+  // reviews
+  text(c, 'Reviews', -270, 230, 46, 'Anton', '#16181c', 'left');
+  const RV = [['Sam', 'Great host. Always watching out for you.'], ['Priya', 'Great host. Always watching out for you!'], ['Tom', 'Great host. Always watching out for you.']];
+  RV.forEach(([n, t], i) => {
+    const y = 290 + i*190; c.fillStyle = '#f1f2f4'; c.beginPath(); c.roundRect(-280, y, 560, 160, 22); c.fill();
+    if (p.mode === 'reviews'){ const a = ease((lt - .9 - i*.35)/.3); c.strokeStyle = `rgba(230,40,30,${a})`; c.lineWidth = 6; c.stroke(); }
+    c.fillStyle = ['#6d8fd8','#d88f6d','#7dbf8a'][i]; c.beginPath(); c.arc(-240, y + 40, 22, 0, 7); c.fill(); text(c, n[0], -240, y + 42, 26, 'Anton', '#fff');
+    text(c, n, -205, y + 42, 30, 'Anton', '#16181c', 'left'); stars(c, 120, y + 42, 26);
+    text(c, '"Great host. Always', -255, y + 92, 34, 'Anton', '#333', 'left'); text(c, 'watching out for you."', -255, y + 132, 34, 'Anton', p.mode === 'reviews' ? '#c8140c' : '#333', 'left');
+  });
+  c.restore(); c.restore();
+};
+SC.rulenote = (c, p, lt, d) => {
+  bg(c, '#c9ccc8', '#7f8380');
+  c.fillStyle = '#b4b8b4'; c.fillRect(940, 250, 40, 760);
+  for (const [x,y,col] of [[200,330,'#3a7bd8'],[860,940,'#e6b32c']]){ c.fillStyle = col; c.beginPath(); c.arc(x, y, 34, 0, 7); c.fill(); }
+  const k = ease(lt/0.6);
+  c.save(); c.translate(540, 640); c.rotate(.03); c.scale(.96 + .04*k, .96 + .04*k);
+  c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(-342, -302, 690, 620);
+  c.fillStyle = '#f4efd8'; c.fillRect(-350, -310, 690, 620);
+  c.fillStyle = 'rgba(220,220,200,.75)'; c.save(); c.rotate(-.08); c.fillRect(-90, -340, 180, 60); c.restore();   // tape
+  text(c, 'HOUSE RULE', 0, -200, 64, 'Anton', '#1c1c2a');
+  text(c, 'Please DON\'T touch', 0, -80, 80, 'Hand', '#1c1c2a');
+  const red = ease((lt - d*0.45)/0.3);
+  text(c, 'the smoke alarm.', 0, 20, 88, 'Hand', `rgb(${28 + 170*red},${28 - 8*red},${42 - 20*red})`);
+  c.strokeStyle = `rgba(200,30,24,${red})`; c.lineWidth = 6; c.beginPath(); c.moveTo(-250, 75); c.quadraticCurveTo(0, 95, 250, 70); c.stroke();
+  text(c, '— Mr Abbott (host)', 80, 200, 60, 'Hand', '#333');
+  c.restore();
+};
+// dark bedroom: ceiling with smoke alarm, wall, bed with a black gap underneath
+const ALX = 540, ALY = 400;   // smoke alarm position
+function cabinRoom(c, home){
+  bg(c, home ? '#2c333d' : '#3a2a1e', '#0c0806');
+  // ceiling
+  c.fillStyle = home ? '#3c434c' : '#4a3626'; c.beginPath(); c.moveTo(0, 240); c.lineTo(W, 240); c.lineTo(W, 470); c.lineTo(0, 470); c.fill();
+  if (!home){ c.strokeStyle = 'rgba(0,0,0,.35)'; c.lineWidth = 4; for (let x=-200; x<W+200; x+=110){ c.beginPath(); c.moveTo(x, 240); c.lineTo(x + (x-540)*.25, 470); c.stroke(); } }
+  // wall
+  c.fillStyle = home ? '#323a44' : '#5a4230'; c.fillRect(0, 470, W, 520);
+  c.strokeStyle = 'rgba(0,0,0,.3)'; c.lineWidth = 3;
+  if (!home){ for (let y=500; y<990; y+=46){ c.beginPath(); c.moveTo(0, y); c.lineTo(W, y); c.stroke(); } }
+  else { c.fillStyle = '#20262e'; c.fillRect(140, 540, 220, 160); c.fillStyle = '#4a5866'; c.fillRect(156, 556, 188, 128); }  // framed picture at home
+  c.fillStyle = 'rgba(0,0,0,.35)'; c.fillRect(0, 466, W, 8);
+  // window with moonlight (cabin) / curtain (home)
+  c.fillStyle = home ? '#1a2230' : '#1b2a3c'; c.fillRect(760, 540, 180, 220); c.strokeStyle = '#120c08'; c.lineWidth = 10; c.strokeRect(760, 540, 180, 220); c.beginPath(); c.moveTo(850, 540); c.lineTo(850, 760); c.stroke();
+  // bed
+  c.fillStyle = '#1e1712'; c.fillRect(150, 640, 40, 260); c.fillRect(890, 640, 40, 260);   // posts
+  c.fillStyle = '#1e1712'; c.fillRect(150, 640, 780, 70);                                      // headboard rail
+  c.fillStyle = home ? '#6c7a8c' : '#8c7a64'; c.beginPath(); c.roundRect(170, 700, 740, 120, 14); c.fill();   // mattress + quilt
+  c.fillStyle = home ? '#7f8ea0' : '#a8937a'; c.beginPath(); c.roundRect(200, 690, 220, 60, 22); c.fill(); c.beginPath(); c.roundRect(660, 690, 220, 60, 22); c.fill(); // pillows
+  c.fillStyle = home ? '#4f5c6c' : '#6e5a44'; c.fillRect(170, 790, 740, 40);   // quilt overhang
+  c.fillStyle = '#030303'; c.fillRect(190, 830, 700, 90);                          // the gap under the bed
+  c.fillStyle = '#1e1712'; c.fillRect(170, 828, 740, 10);
+  c.fillStyle = home ? '#262a30' : '#2a1f16'; c.fillRect(0, 920, W, 300);           // floor
+}
+function smokeAlarm(c, glint, tape, lt){
+  c.fillStyle = '#d8d8d2'; c.beginPath(); c.ellipse(ALX, ALY, 70, 26, 0, 0, 7); c.fill();
+  c.fillStyle = '#bdbdb6'; c.beginPath(); c.ellipse(ALX, ALY + 8, 58, 18, 0, 0, Math.PI); c.fill();
+  c.fillStyle = '#9a9a92'; for (let k=-2;k<=2;k++){ c.fillRect(ALX + k*18 - 3, ALY - 6, 6, 10); }
+  if (glint && !tape){ const pul = .6 + .4*Math.sin(lt*6); c.save(); c.shadowColor = '#ff2010'; c.shadowBlur = 30; c.fillStyle = `rgba(255,40,25,${pul})`; c.beginPath(); c.arc(ALX + 26, ALY + 10, 7, 0, 7); c.fill(); c.restore(); }
+  if (tape){ c.save(); c.translate(ALX + 26, ALY + 8); c.rotate(-.25); c.fillStyle = '#c9b48a'; c.fillRect(-60, -16, 120, 32); c.fillStyle = 'rgba(255,255,255,.18)'; c.fillRect(-60, -16, 120, 8); c.restore(); }
+}
+function eyes(c, x, y, a, open){ if (a <= 0) return; c.save(); c.globalAlpha = a; c.shadowColor = '#fff6c0'; c.shadowBlur = 26; c.fillStyle = '#fffbe0';
+  for (const dx of [-34, 34]){ c.beginPath(); c.ellipse(x + dx, y, 13, 9*open + .5, 0, 0, 7); c.fill(); } c.restore(); }
+SC.room = (c, p, lt, d) => {
+  cabinRoom(c, p.home);
+  smokeAlarm(c, p.glint, p.tape, lt);
+  // torchlight: everything dark except a beam spot
+  let tx = ALX, ty = ALY;
+  if (p.torch === 'sweep'){ const k = ease((lt - .4)/(d*.8)); tx = 260 + 520*k + 60*Math.sin(lt*2); ty = 760 - 320*k; }
+  else if (p.torch === 'alarm'){ tx = ALX + 10*Math.sin(lt*1.7); ty = ALY + 6*Math.cos(lt*1.3); }
+  else if (p.torch === 'down'){ const k = ease((lt - .2)/(d*.6)); tx = ALX + (520 - ALX)*k; ty = ALY + (875 - ALY)*k; }
+  else if (p.torch === 'bed'){ tx = 540 + 6*Math.sin(lt*3); ty = 875 + 4*Math.sin(lt*2.3); }
+  const dark = p.torch ? .72 : .4;
+  const g = c.createRadialGradient(tx, ty, 60, tx, ty, p.torch ? 520 : 900); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(.55, `rgba(0,0,0,${dark*.55})`); g.addColorStop(1, `rgba(0,0,0,${dark})`);
+  c.fillStyle = g; c.fillRect(0, 0, W, H);
+  if (p.torch){ const g2 = c.createRadialGradient(tx, ty, 0, tx, ty, 230); g2.addColorStop(0,'rgba(255,245,210,.3)'); g2.addColorStop(1,'rgba(255,245,210,0)'); c.fillStyle = g2; c.fillRect(0,0,W,H); }
+  // glint redrawn on top of the dark so it reads
+  if (p.glint && !p.tape){ const pul = .6 + .4*Math.sin(lt*6); c.save(); c.shadowColor = '#ff2010'; c.shadowBlur = 30; c.fillStyle = `rgba(255,40,25,${pul})`; c.beginPath(); c.arc(ALX + 26, ALY + 10, 7, 0, 7); c.fill(); c.restore(); }
+  if (p.ring){ const a = ease((lt - d*.3)/.3); c.save(); c.globalAlpha = a; c.strokeStyle = '#ff3b30'; c.lineWidth = 7; c.setLineDash([22,14]); c.beginPath(); c.arc(ALX + 20, ALY + 6, 110, 0, 7); c.stroke(); c.restore(); }
+  if (p.under){
+    const ea = ease((lt - (p.underAt ?? .3)*d)/.4);
+    let open = 1;
+    if (p.blink){ const bt = lt - p.blink*d; if (bt > 0 && bt < .35) open = Math.abs(Math.cos(bt/.35*Math.PI)); }
+    eyes(c, 540, 872, ea, open);
+  }
+  if (p.tag) tag(c, p.tag, 540, p.tagY || 1010, ease((lt - (p.tagAt ?? .3)*d)/.3), p.tagCol || '#ff5a3a');
+  if (p.black && lt > d - 1.6){ c.fillStyle = '#000'; c.fillRect(0,0,W,H); followBox(c, lt, d + 0.2); }
+};
+SC.chat = (c, p, lt, d) => {
+  bg(c,'#16202b','#06090d');
+  const g = c.createRadialGradient(540, 620, 50, 540, 620, 600); g.addColorStop(0,'rgba(140,180,230,.3)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle=g; c.fillRect(0,0,W,H);
+  const buzz = p.buzz ? Math.sin(lt*70)*(lt%0.8<0.35 && lt < 1.6 ? 6 : 0) : 0;
+  c.save(); appShell(c, 540 + buzz, 610, .66);
+  c.fillStyle = '#eceef1'; c.fillRect(-305, -470, 610, 150);
+  c.fillStyle = '#ff385c'; c.beginPath(); c.arc(0, -420, 40, 0, 7); c.fill(); text(c, 'A', 0, -418, 46, 'Anton', '#fff');
+  text(c, 'Mr Abbott · Host', 0, -350, 38, 'Anton', '#222');
+  let y = -270;
+  (p.msgs || []).forEach(m => {
+    const a = m.at < 0 ? 1 : ease((lt - m.at*d)/0.25); if (a <= 0) return;
+    c.save(); c.globalAlpha = a;
+    c.font = '52px Anton'; const lines = m.t.split('\n'); const w = Math.max(...lines.map(l => c.measureText(l).width)) + 60, h = lines.length*64 + 40;
+    const bx = m.me ? 280 - w : -280;
+    c.fillStyle = m.me ? '#2f7cf6' : m.hl ? '#ffd9d6' : '#e2e5ea'; c.beginPath(); c.roundRect(bx, y, w, h, 30); c.fill();
+    if (m.hl){ c.strokeStyle = `rgba(230,40,30,${.6+.4*Math.sin(lt*8)})`; c.lineWidth = 6; c.stroke(); }
+    lines.forEach((l, j) => text(c, l, bx + 30, y + 52 + j*64, 52, 'Anton', m.me ? '#fff' : m.hl ? '#a3140c' : '#111', 'left'));
+    y += h + 30; c.restore();
+  });
+  c.restore();
+  if (p.banner){ const a = ease(lt/.3); c.save(); c.globalAlpha = a; c.fillStyle = 'rgba(30,34,40,.96)'; c.beginPath(); c.roundRect(130, 290 + 30*(1-a), 820, 160, 30); c.fill();
+    text(c, 'Mr Abbott (Host)  ·  now', 180, 345 + 30*(1-a), 40, 'Anton', '#fff', 'left'); text(c, p.banner, 180, 405 + 30*(1-a), 40, 'Anton', '#ff8a7a', 'left'); c.restore(); }
+};
+SC.cabin = (c, p, lt, d) => {
+  lakeScene(c, 0, 240, W, 1000, true, lt, true);
+  c.fillStyle = '#05070a'; c.fillRect(0, 1240, W, 700);
+  // car speeding away: red tail lights shrinking down the track
+  const k = ease((lt - .2)/(d*.9));
+  const x = 640 + 260*k, y = 900 - 120*k, s = 1 - .7*k;
+  c.save(); c.shadowColor = '#ff2010'; c.shadowBlur = 30*s; c.fillStyle = '#ff2a1a'; c.fillRect(x - 60*s, y, 26*s, 14*s); c.fillRect(x + 34*s, y, 26*s, 14*s); c.restore();
+  if (p.tag) tag(c, p.tag, 540, 1010, ease((lt - .3)/.3), '#d7fbe9');
+};
+
 // ---------- HUD, captions, post ----------
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
@@ -2474,7 +2637,7 @@ window.render = (t) => {
   X.setTransform(1,0,0,1,0,0); X.fillStyle = '#000'; X.fillRect(0,0,W,H);
   X.save(); if (D.zoom){ X.translate(540, D.zoomY || 250); X.scale(D.zoom, D.zoom); X.translate(-540, -(D.zoomY || 250)); } X.translate(W/2, H/2); X.scale(push, push); X.translate(-W/2, -H/2);
   // CCTV tint
-  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='texts' || sc.scene==='josh' || sc.scene==='covers' || sc.scene==='call' || sc.scene==='photo' || sc.scene==='camroll' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
+  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='texts' || sc.scene==='josh' || sc.scene==='covers' || sc.scene==='call' || sc.scene==='photo' || sc.scene==='camroll' || sc.scene==='listing' || sc.scene==='chat' || sc.scene==='rulenote' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
   X.drawImage(S, 0, 0);
   X.filter = 'none';
   X.restore();
