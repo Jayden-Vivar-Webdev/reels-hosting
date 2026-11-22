@@ -276,5 +276,23 @@
     "posted": false,
     "rejected": true,
     "note": "2026-11-22 Jayden: not posting this one"
+  },
+  {
+    "slug": "internet-stories-ep5-excite",
+    "format": "reel",
+    "topic": "Internet Stories ep.5: Google's founders offered to sell Google to Excite in 1999 for $1M; Excite investor Vinod Khosla talked it down to $750,000; Excite CEO George Bell still said no. Reportedly Google was too good: it sent users off Excite's site too fast, and Excite earned from ads so wanted visitors to stay. Lesson: get website visitors the answer fast.",
+    "hook": "Google once tried to sell itself for under a million dollars. The buyer said no.",
+    "style": "ep.3/ep.4 dark motion graphics (scene_dark.html): navy/violet glow, perspective grid, glass cards, DM Sans 800, indigo key-word boxes; plain-text names (no logos)",
+    "voice": "Chatterbox built-in female voice, atempo 1.05 (no ElevenLabs key in this scheduled run)",
+    "media": [
+      "nexa/videos/internet-stories-ep5-excite/ep5.mp4"
+    ],
+    "caption": "Google once tried to sell itself for $750,000. The buyer said no. 🤯\nThe reason why is a lesson for every website.\n\nWould you have bought it? Yes or no below 👇 Save this for your next website update.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #google #techhistory #startupstory #webdesign #websitetips #smallbusinessaustralia #digitalmarketing",
+    "created": "2026-11-22 21:05 AEDT",
+    "post_on": "2026-11-22",
+    "approved": false,
+    "posted": false,
+    "status": "awaiting approval",
+    "note": "8:17 pm reel slot. Facts: Fortune (29 Sep 2010) and CNBC (2 Mar 2015): 1999 offer, $1M talked down to $750,000 by Khosla, CEO George Bell rejected; 'too good / sent users away too fast' reason reported by BGR/Business Insider (2014), so script says 'reportedly'. Bell (CNBC) said the sticking point was deal terms, not price. Alphabet worth trillions. capcheck 0 problems, synccheck 143/145 mean +0.020s, final transcript complete."
   }
 ]
