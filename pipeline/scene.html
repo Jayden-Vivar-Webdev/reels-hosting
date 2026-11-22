@@ -2407,9 +2407,9 @@ SC.truecard = (c, p, lt, d) => {
   bg(c, '#070909', '#000');
   const k = ease(lt/.5);
   if (p.name){
-    c.save(); c.globalAlpha = k; text(c, 'DENNIS RADER', 540, 520, 130, 'Anton', '#f1efe8'); c.restore();
-    const b = ease((lt - d*.5)/.4); c.save(); c.globalAlpha = b; c.shadowColor = '#ff2a20'; c.shadowBlur = 60; text(c, 'BTK', 540, 760, 300, 'Anton', '#ff3b30'); c.restore();
-    tag(c, 'ARRESTED · FEB 25, 2005', 540, 360, ease((lt - .6)/.3), '#d7fbe9');
+    c.save(); c.globalAlpha = k; text(c, p.n1 || 'DENNIS RADER', 540, 520, p.n1size || 130, 'Anton', '#f1efe8'); c.restore();
+    const b = ease((lt - d*.5)/.4); c.save(); c.globalAlpha = b; c.shadowColor = '#ff2a20'; c.shadowBlur = 60; (p.n2 || 'BTK').split('|').forEach((l, i, a) => text(c, l, 540, 760 + (i - (a.length-1)/2)*(p.n2size || 300)*.95, p.n2size || 300, 'Anton', '#ff3b30')); c.restore();
+    tag(c, p.when || 'ARRESTED · FEB 25, 2005', 540, 360, ease((lt - .6)/.3), '#d7fbe9');
   } else {
     c.save(); c.globalAlpha = k; c.shadowColor = 'rgba(160,0,0,.8)'; c.shadowBlur = 40; text(c, 'THIS IS A', 540, 620, 84, 'Salt', '#cd1e18'); text(c, 'TRUE STORY', 540, 770, 84, 'Salt', '#cd1e18'); c.restore();
   }
@@ -3031,6 +3031,145 @@ SC.desk = (c, p, lt, d) => {
   if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt||.2)*d)/.3), p.tagCol || '#d7fbe9');
 };
 
+// ---------- Golden State Killer (true crime) ----------
+function plateStack(c, x, y, n, shake){
+  for (let i=0;i<n;i++){ const dx = shake ? Math.sin(shake*40 + i)*2.5 : 0;
+    c.fillStyle = '#e9e6dc'; c.beginPath(); c.ellipse(x + dx, y - i*16, 120, 26, 0, 0, 7); c.fill();
+    c.strokeStyle = '#9d9a90'; c.lineWidth = 3; c.stroke(); c.strokeStyle = 'rgba(60,90,150,.6)'; c.beginPath(); c.ellipse(x + dx, y - i*16, 92, 18, 0, 0, 7); c.stroke(); }
+}
+SC.dishes = (c, p, lt, d) => {
+  bg(c, '#121418', '#040506');
+  c.fillStyle = '#16181c'; c.fillRect(0, 300, W, 760);
+  c.fillStyle = '#2a2420'; c.fillRect(0, 1060, W, 860);
+  // bed
+  c.fillStyle = '#3a3e48'; c.beginPath(); c.roundRect(60, 760, 960, 420, 30); c.fill();
+  c.fillStyle = '#d9d6cc'; c.beginPath(); c.roundRect(90, 790, 230, 120, 40); c.fill();          // pillow
+  // man face down (head left, back up)
+  c.fillStyle = '#2c2a28'; c.beginPath(); c.ellipse(210, 860, 70, 58, 0, 0, 7); c.fill();          // back of head, hair
+  c.fillStyle = '#7d8a9a'; c.beginPath(); c.moveTo(260, 830); c.quadraticCurveTo(560, 760, 900, 840); c.lineTo(900, 960); c.quadraticCurveTo(560, 990, 260, 930); c.fill();  // pyjama back
+  c.fillStyle = '#b39680'; c.beginPath(); c.ellipse(300, 965, 90, 22, -.1, 0, 7); c.fill(); c.beginPath(); c.ellipse(320, 990, 80, 20, .1, 0, 7); c.fill();   // hands behind back
+  const sh = p.rattle ? (lt % 1.3 < .25 ? lt : 0) : 0;
+  plateStack(c, 560, 810, p.n || 6, sh);
+  // torch beam from the foot of the bed
+  const g = c.createRadialGradient(560, 820, 20, 560, 820, 520); g.addColorStop(0,'rgba(255,250,225,.55)'); g.addColorStop(.5,'rgba(255,245,210,.18)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  c.fillStyle = g; c.beginPath(); c.moveTo(1080, 1500); c.lineTo(160, 560); c.lineTo(960, 520); c.closePath(); c.fill();
+  if (p.tag) tag(c, p.tag, 540, 330, ease((lt - (p.tagAt||.3)*d)/.3), p.tagCol || '#ff5a3a');
+};
+SC.torch = (c, p, lt, d) => {
+  bg(c, '#0b0c0f', '#020203');
+  c.fillStyle = '#121418'; c.fillRect(0, 1060, W, 860);
+  shadowFig(c, 600, 520, 1.25, 1, false);
+  // ski mask eye holes
+  c.fillStyle = 'rgba(200,190,170,.5)'; c.beginPath(); c.ellipse(570, 515, 14, 8, 0, 0, 7); c.ellipse(630, 515, 14, 8, 0, 0, 7); c.fill();
+  const fl = .9 + .1*Math.sin(lt*13);
+  const g = c.createRadialGradient(470, 760, 5, 470, 760, 640); g.addColorStop(0,`rgba(255,255,245,${fl})`); g.addColorStop(.08,`rgba(255,250,225,${.9*fl})`); g.addColorStop(.35,'rgba(255,240,200,.25)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  c.fillStyle = g; c.fillRect(0, 0, W, H);
+  for (let i=0;i<6;i++){ const a = i/6*Math.PI + lt*.2; c.strokeStyle = 'rgba(255,250,230,.12)'; c.lineWidth = 6; c.beginPath(); c.moveTo(470 - Math.cos(a)*500, 760 - Math.sin(a)*500); c.lineTo(470 + Math.cos(a)*500, 760 + Math.sin(a)*500); c.stroke(); }
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt||.3)*d)/.3), p.tagCol || '#ff5a3a');
+};
+SC.prowl = (c, p, lt, d) => {
+  SC.flatHall(c, {}, lt, d);
+  c.fillStyle = 'rgba(0,0,0,.35)'; c.fillRect(0,0,W,H);
+  const k = ease(lt/d); shadowFig(c, 540, 760 - 40*k, .45 + .25*k, .95, false);
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt||.3)*d)/.3), p.tagCol || '#d7fbe9');
+};
+function houseIcon(c, x, y, s, lit){ c.fillStyle = lit ? '#ff3b30' : '#2a3038'; c.beginPath(); c.moveTo(x - 30*s, y); c.lineTo(x, y - 26*s); c.lineTo(x + 30*s, y); c.lineTo(x + 30*s, y + 30*s); c.lineTo(x - 30*s, y + 30*s); c.closePath(); c.fill(); }
+SC.stat = (c, p, lt, d) => {
+  bg(c, '#070909', '#000');
+  const k = ease(lt/(d*.75)), n = Math.round(p.to*k);
+  c.save(); c.shadowColor = '#ff2a20'; c.shadowBlur = 50; text(c, String(n) + (p.plus && k > .98 ? '+' : ''), 540, 560, 260, 'VT', '#ff3b30'); c.restore();
+  text(c, p.label, 540, 720, 70, 'VT', '#d7fbe9');
+  if (p.sub) tag(c, p.sub, 540, 330, ease((lt - .1)/.3), '#d7fbe9');
+  if (p.houses){ const tot = 120; for (let i=0;i<tot;i++){ const x = 135 + (i%15)*58, y = 820 + Math.floor(i/15)*34; houseIcon(c, x, y, .42, i < n); } }
+  if (p.sub2) tag(c, p.sub2, 540, 900, ease((lt - d*.5)/.3), '#ff8a7a');
+};
+SC.dna = (c, p, lt, d) => {
+  bg(c, '#0e141c', '#04060a');
+  c.save(); c.translate(540, 760);
+  c.fillStyle = '#1b1f26'; c.beginPath(); c.roundRect(-430, -330, 860, 560, 26); c.fill();                       // laptop screen
+  c.fillStyle = '#eef2f5'; c.beginPath(); c.roundRect(-400, -300, 800, 500, 12); c.fill();
+  c.fillStyle = '#2d6a4f'; c.fillRect(-400, -300, 800, 70); text(c, 'FAMILY TREE · DNA MATCH', 0, -262, 40, 'Anton', '#fff');
+  // helix
+  for (let i=0;i<22;i++){ const y = -200 + i*16, ph = i*.55 + lt*2.5, a = Math.sin(ph)*90;
+    c.strokeStyle = 'rgba(40,60,80,.35)'; c.lineWidth = 3; c.beginPath(); c.moveTo(-200 - a, y); c.lineTo(-200 + a, y); c.stroke();
+    c.fillStyle = '#2d6a4f'; c.beginPath(); c.arc(-200 - a, y, 7, 0, 7); c.fill(); c.fillStyle = '#c0392b'; c.beginPath(); c.arc(-200 + a, y, 7, 0, 7); c.fill(); }
+  text(c, 'CRIME SCENE SAMPLE', 150, -170, 32, 'Anton', '#333');
+  text(c, 'SUSPECT: UNKNOWN', 150, -128, 26, 'Type', '#666');
+  const pr = clamp(lt/(d*.8), 0, 1); c.fillStyle = '#d0d6dc'; c.fillRect(-20, -60, 340, 34); c.fillStyle = '#2d6a4f'; c.fillRect(-20, -60, 340*pr, 34);
+  text(c, pr < 1 ? `UPLOADING ${Math.round(pr*100)}%` : 'UPLOADED', 150, 10, 32, 'Anton', pr < 1 ? '#333' : '#c0392b');
+  c.fillStyle = '#2a2e35'; c.beginPath(); c.moveTo(-500, 230); c.lineTo(500, 230); c.lineTo(560, 300); c.lineTo(-560, 300); c.fill();   // base
+  c.restore();
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt||.1)*d)/.3), '#d7fbe9');
+};
+SC.tree = (c, p, lt, d) => {
+  bg(c, '#0e141c', '#04060a');
+  const nodes = [[540, 360, 0], [300, 520, .1], [780, 520, .15], [180, 690, .25], [420, 690, .3], [660, 690, .35], [900, 690, .4], [300, 870, .5], [540, 870, .55], [780, 870, .62]];
+  const links = [[0,1],[0,2],[1,3],[1,4],[2,5],[2,6],[4,7],[5,8],[6,9]];
+  const vis = i => ease((lt - nodes[i][2]*d)/.3);
+  links.forEach(([a,b]) => { const v = Math.min(vis(a), vis(b)); if (v <= 0) return; c.strokeStyle = `rgba(160,190,210,${.6*v})`; c.lineWidth = 4; c.beginPath(); c.moveTo(nodes[a][0], nodes[a][1]); c.lineTo(nodes[b][0], nodes[b][1]); c.stroke(); });
+  nodes.forEach(([x, y], i) => { const v = vis(i); if (v <= 0) return; const hit = i === 8 && lt > .72*d, rel = i === 3;
+    c.save(); c.globalAlpha = v; c.fillStyle = hit ? '#ff3b30' : rel ? '#2d6a4f' : '#2a3442'; c.beginPath(); c.arc(x, y, hit ? 54 : 42, 0, 7); c.fill();
+    c.fillStyle = '#d7e2ea'; c.beginPath(); c.arc(x, y - 10, 13, 0, 7); c.fill(); c.beginPath(); c.ellipse(x, y + 20, 22, 14, 0, Math.PI, 0); c.fill();
+    if (rel) text(c, 'RELATIVE', x, y + 78, 32, 'VT', '#8fe0b5');
+    if (hit){ c.strokeStyle = `rgba(255,60,50,${.6 + .4*Math.sin(lt*8)})`; c.lineWidth = 6; c.beginPath(); c.arc(x, y, 74, 0, 7); c.stroke(); text(c, 'MALE · 72', x, y + 100, 44, 'VT', '#ff8a7a'); }
+    c.restore(); });
+  if (p.tag) tag(c, p.tag, 540, 230, ease((lt - .1)/.3), '#d7fbe9');
+};
+SC.suburb = (c, p, lt, d) => {
+  bg(c, p.day ? '#5c6b78' : '#18222e', p.day ? '#2a3138' : '#06080c');
+  c.fillStyle = p.day ? '#3c4a3a' : '#0d1218'; c.fillRect(0, 1060, W, 860);
+  c.fillStyle = '#20262d'; c.fillRect(0, 1120, W, 130);
+  const houses = [[60, '#3a3530'], [330, '#34383f'], [600, '#3b3a35'], [870, '#363a40']];
+  houses.forEach(([x, col], i) => { c.fillStyle = col; c.fillRect(x, 820, 200, 260); c.fillStyle = '#24262a'; c.beginPath(); c.moveTo(x - 20, 830); c.lineTo(x + 100, 720); c.lineTo(x + 220, 830); c.fill();
+    const lit = p.day ? false : (i === 1 || i === 3);
+    c.fillStyle = lit ? '#e8c57e' : '#0a0c10'; c.fillRect(x + 25, 880, 60, 60); c.fillRect(x + 115, 880, 60, 60); c.fillStyle = '#4a3020'; c.fillRect(x + 75, 980, 50, 100);
+    if (i === 1 && p.man){ c.fillStyle = '#1a1410'; c.beginPath(); c.arc(x + 145, 900, 14, 0, 7); c.fill(); c.fillRect(x + 128, 915, 34, 25); } });
+  // trees
+  c.fillStyle = p.day ? '#2c3a2a' : '#0a0f0c'; for (const tx of [290, 560, 830]){ c.beginPath(); c.arc(tx, 760, 60, 0, 7); c.fill(); c.fillRect(tx - 8, 760, 16, 320); }
+  if (p.his){ const a = ease((lt - (p.hisAt || .3)*d)/.4); if (a > 0){ c.save(); c.globalAlpha = a; c.strokeStyle = '#ff3b30'; c.lineWidth = 7; c.setLineDash([20,12]); c.strokeRect(305, 690, 250, 410); c.setLineDash([]); tag(c, 'HIS HOUSE', 430, 600, 1, '#ff8a7a'); c.restore(); } }
+  if (p.pins){ const a = ease((lt - .55*d)/.3); if (a > 0){ c.save(); c.globalAlpha = a; for (const [px, py] of [[180, 1185], [700, 1200], [960, 1180]]){ c.fillStyle = '#ff3b30'; c.beginPath(); c.arc(px, py - 40, 22, 0, 7); c.fill(); c.beginPath(); c.moveTo(px - 18, py - 30); c.lineTo(px, py); c.lineTo(px + 18, py - 30); c.fill(); } tag(c, '1976 ATTACKS NEARBY', 700, 470, 1, '#ff8a7a'); c.restore(); } }
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt||.05)*d)/.3), '#d7fbe9');
+  if (p.follow) followBox(c, lt, d);
+};
+SC.trash = (c, p, lt, d) => {
+  bg(c, '#1a1f24', '#07090b');
+  c.fillStyle = '#2a2e33'; c.fillRect(0, 1100, W, 820);
+  // wheelie bin
+  c.fillStyle = '#2f4a32'; c.beginPath(); c.moveTo(170, 520); c.lineTo(470, 520); c.lineTo(450, 1100); c.lineTo(190, 1100); c.fill();
+  c.fillStyle = '#243a27'; c.beginPath(); c.roundRect(150, 480, 340, 50, 10); c.fill();
+  c.fillStyle = '#111'; c.beginPath(); c.arc(210, 1110, 30, 0, 7); c.arc(430, 1110, 30, 0, 7); c.fill();
+  // evidence bag with tissue
+  const k = ease(lt/(d*.4));
+  c.save(); c.translate(730, 760 - 40*k); c.rotate(.05);
+  c.fillStyle = 'rgba(230,235,240,.25)'; c.beginPath(); c.roundRect(-170, -230, 340, 460, 14); c.fill(); c.strokeStyle = 'rgba(255,255,255,.5)'; c.lineWidth = 4; c.stroke();
+  c.fillStyle = '#c0392b'; c.fillRect(-170, -230, 340, 60); text(c, 'EVIDENCE', 0, -198, 40, 'Anton', '#fff');
+  c.fillStyle = '#f4f1ea'; c.beginPath(); c.moveTo(-90, 0); c.quadraticCurveTo(-40, -90, 20, -40); c.quadraticCurveTo(110, -70, 90, 30); c.quadraticCurveTo(120, 120, 10, 110); c.quadraticCurveTo(-110, 140, -90, 0); c.fill();
+  c.strokeStyle = 'rgba(150,150,140,.6)'; c.lineWidth = 3; c.beginPath(); c.moveTo(-40, 10); c.quadraticCurveTo(0, -20, 50, 20); c.stroke();
+  text(c, 'ITEM 1 · TISSUE', 0, 180, 30, 'Type', '#e8e8e8');
+  c.restore();
+  if (lt > (p.matchAt || .6)*d){ const a = ease((lt - (p.matchAt || .6)*d)/.2); c.save(); c.globalAlpha = a; c.translate(540, 1000); c.rotate(-.12); c.scale(1.6 - .6*a, 1.6 - .6*a); c.strokeStyle = '#ff2a20'; c.lineWidth = 10; c.strokeRect(-260, -80, 520, 160); text(c, 'DNA MATCH', 0, 4, 110, 'Anton', '#ff3b30'); c.restore(); }
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - .1)/.3), '#d7fbe9');
+};
+SC.shield = (c, p, lt, d) => {
+  bg(c, '#101418', '#040506');
+  const g = c.createRadialGradient(540, 700, 20, 540, 700, 600); g.addColorStop(0,'rgba(200,190,150,.25)'); g.addColorStop(1,'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0,0,W,H);
+  const k = ease(lt/(d*.5)); c.save(); c.translate(540, 720); c.scale(.9 + .1*k, .9 + .1*k);
+  c.fillStyle = '#c9a646'; c.beginPath(); c.moveTo(0, -300); c.quadraticCurveTo(160, -230, 250, -250); c.quadraticCurveTo(260, 60, 0, 300); c.quadraticCurveTo(-260, 60, -250, -250); c.quadraticCurveTo(-160, -230, 0, -300); c.fill();
+  c.strokeStyle = '#7d6420'; c.lineWidth = 12; c.stroke();
+  c.fillStyle = '#e8d28a'; c.beginPath(); for (let i=0;i<10;i++){ const r = i%2 ? 50 : 110, a = -Math.PI/2 + i*Math.PI/5; c.lineTo(Math.cos(a)*r, Math.sin(a)*r + 10); } c.fill();
+  c.fillStyle = '#20303f'; c.fillRect(-200, -200, 400, 70); text(c, 'POLICE', 0, -163, 58, 'Anton', '#e8d28a');
+  c.fillStyle = '#20303f'; c.fillRect(-150, 150, 300, 56); text(c, 'OFFICER', 0, 180, 44, 'Anton', '#e8d28a');
+  c.restore();
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt||.2)*d)/.3), p.tagCol || '#ff5a3a');
+};
+SC.verdict = (c, p, lt, d) => {
+  SC.cell(c, {}, -1, d);
+  c.fillStyle = '#0f1114'; c.fillRect(0, 480, W, 420);
+  const k = ease(lt/.5); c.save(); c.globalAlpha = k; c.shadowColor = '#ff2a20'; c.shadowBlur = 40; text(c, 'GUILTY', 540, 600, 170, 'Anton', '#ff3b30'); c.restore();
+  c.save(); c.globalAlpha = ease((lt - .4*d)/.4); text(c, '13 MURDERS · LIFE, NO PAROLE', 540, 790, 60, 'Anton', '#f1efe8'); c.restore();
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - .1)/.3), '#d7fbe9');
+};
+
 // ---------- HUD, captions, post ----------
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
@@ -3081,7 +3220,7 @@ window.render = (t) => {
   X.setTransform(1,0,0,1,0,0); X.fillStyle = '#000'; X.fillRect(0,0,W,H);
   X.save(); if (D.fit){ const f = Object.assign({cy: 740, s: 1.06}, D.fit, sc.p.fit || {}); X.translate(540, D.stageY || 760); X.scale(f.s, f.s); X.translate(-540, -f.cy); } else if (D.zoom){ X.translate(540, D.zoomY || 250); X.scale(D.zoom, D.zoom); X.translate(-540, -(D.zoomY || 250)); } X.translate(W/2, H/2); X.scale(push, push); X.translate(-W/2, -H/2);
   // CCTV tint
-  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='texts' || sc.scene==='josh' || sc.scene==='covers' || sc.scene==='call' || sc.scene==='photo' || sc.scene==='camroll' || sc.scene==='listing' || sc.scene==='chat' || (sc.scene==='benface' && sc.p.car) || sc.scene==='app' || sc.scene==='plan' || sc.scene==='rulenote' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='desk' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
+  X.filter = sc.scene==='sunrise' || sc.scene==='badge' || sc.scene==='wall' || sc.scene==='phone' || sc.scene==='texts' || sc.scene==='josh' || sc.scene==='covers' || sc.scene==='call' || sc.scene==='photo' || sc.scene==='camroll' || sc.scene==='listing' || sc.scene==='chat' || (sc.scene==='benface' && sc.p.car) || sc.scene==='app' || sc.scene==='plan' || sc.scene==='rulenote' || sc.scene==='flowers' || sc.scene==='notice' || sc.scene==='hospital' || sc.scene==='fridge' || sc.scene==='dna' || sc.scene==='tree' || sc.scene==='desk' || sc.scene==='house' || (sc.scene==='house' && sc.p.day) ? 'contrast(1.1) saturate(.5)' : 'grayscale(.15) contrast(1.15) brightness(1.05)';
   X.drawImage(S, 0, 0);
   X.filter = 'none';
   X.restore();
