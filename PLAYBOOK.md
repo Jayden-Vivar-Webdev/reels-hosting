@@ -148,6 +148,12 @@ captions sit mid-lower over the picture (y≈1180, max 860 px wide so they clear
 dark for Instagram's username/caption, and the FOLLOW box moves up. Keep scene tags/labels above scene-y ~1000, away from the
 caption band, and keep key props inside x 120–960 (the zoom crops the edges).
 
+**v4 stage layout (owner 2026-11-22, BTK reel: "full screen, everything is cramped"; reels double as YouTube Shorts):** prefer
+`layout.json` `{"fit": {"cy": 740, "s": 1.06}, "stageY": 760, "capY": 1400, "capW": 820, "fadeY": 1480, "followDY": -310}` — the scene is
+fitted into a stage at screen y≈230–1300 (no props cropped at the edges, nothing under the captions), captions sit alone at y≈1400, the
+bottom ~440 px stays clear for Instagram/Shorts UI. Per scene, add `"fit": {"cy": <scene-y to centre>, "s": <scale>}` in the plan so small
+content (title cards, big numbers) is scaled up to fill the stage. Check a contact sheet for edge crops before rendering.
+
 ## Voice & look rules
 **Owner (2026-11-21):** Kokoro has no emotional depth. Use ElevenLabs eleven_v3 with horror-style voices and audio tags ([whispers], [low], [shaky], [voice breaking], [desperate]): narrator 'Jack – Deep Dark Horror Narrator' (BVPhWQykET1TSvfGzrUr); older female character 'Lily' (pFZP5JQG7iQjIQuC4Bku), whispered when creepy. **Never use Australian voices.** **Owner (2026-11-21): no female voices — every voice must be male** (entity/whispers: Callum N2lVS1w4EtoT3dr4eOWO whispered, pitched ~7% down; Jack for narration; Will/Liam for young men). Put deliberate silences before and after the key lines (clue text, reveal, last words, final whisper); time pauses after per-line speed-up so they stay exact (see examples/dont-turn-on-the-lights/join.py). Needs an API key from Jayden each session (never save it); see pipeline/examples/lock-the-door/vo11.py. Without a key, fall back to Kokoro and say so.
 Narrator: first person, calm and low, never jokey. Captions mirror the narration word by word.
