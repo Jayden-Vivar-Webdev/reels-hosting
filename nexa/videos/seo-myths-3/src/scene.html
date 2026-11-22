@@ -1,0 +1,104 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:'DM Sans','Inter',sans-serif;color:#150C2B;background:#FAF9F6}
+#stage{position:absolute;inset:0}
+.I{color:#6557E8}
+.lab{position:absolute;left:0;right:0;top:285px;text-align:center;font-weight:800;font-size:34px;letter-spacing:8px;color:#6557E8}
+.h{font-weight:800;letter-spacing:-.045em;line-height:1;color:#150C2B}
+.box{display:inline-block;background:#6557E8;color:#fff;padding:0 .14em .06em;border-radius:.12em}
+.lav{display:inline-block;background:#B9A6FF;color:#150C2B;padding:0 .14em .06em;border-radius:.12em}
+.card{background:#fff;border-radius:34px;box-shadow:0 30px 60px rgba(21,12,43,.13);border:2px solid rgba(21,12,43,.07)}
+.navy{background:#150C2B;color:#fff;border-radius:34px;box-shadow:0 30px 60px rgba(21,12,43,.3)}
+.chip{display:inline-block;background:#150C2B;color:#fff;border-radius:999px;padding:18px 40px;font-weight:800;font-size:44px;white-space:nowrap}
+.stamp{display:inline-block;border:8px solid #E5484D;color:#E5484D;border-radius:20px;padding:4px 30px 10px;font-weight:800;font-size:96px;letter-spacing:4px}
+.bar{height:22px;border-radius:11px;background:#ECEAF3}
+#cap{position:absolute;left:150px;width:780px;top:1345px;text-align:center;font-weight:800;font-size:76px;letter-spacing:-.04em;line-height:1.14}
+#cap span{display:inline-block;margin:0 .1em}
+#cap span.k{background:#6557E8;color:#fff;padding:0 .12em .05em;border-radius:.12em}
+#tag{position:absolute;left:870px;top:214px;font-weight:800;font-size:44px;letter-spacing:-2px}
+#ser{position:absolute;left:90px;top:228px;font-weight:700;font-size:28px;letter-spacing:4px;color:rgba(21,12,43,.45)}
+</style></head><body>
+<div id="stage"></div>
+<div id="ser">SEO MYTHS</div>
+<div id="tag">nexa<span class="I">.</span></div>
+<div id="cap"></div>
+<script>
+const DATA=/*DATA*/null;
+const S=document.getElementById('stage'),C=document.getElementById('cap');
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const spring=x=>{x=clamp(x);return 1-Math.exp(-7*x)*Math.cos(8*x)};
+function at(p,d,html,x,y,o={}){const s=spring((p-d)*3.4),ty=(1-s)*(o.dy??60);
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(${o.c===false?0:'-50%'},${ty}px) scale(${0.9+0.1*s}) rotate(${(o.r||0)*(1-s)+(o.rr||0)}deg);opacity:${clamp(s*2.5)};${o.css||''}">${html}</div>`}
+
+function browser(w,h,inner,url='your-business.com.au'){return `<div class="card" style="position:relative;width:${w}px;height:${h}px;overflow:hidden"><div style="height:70px;display:flex;align-items:center;gap:12px;padding:0 28px;border-bottom:2px solid #EEECF4"><s style="width:16px;height:16px;border-radius:50%;background:#E5484D"></s><s style="width:16px;height:16px;border-radius:50%;background:#ECEAF3"></s><s style="width:16px;height:16px;border-radius:50%;background:#ECEAF3"></s><span style="margin-left:18px;font-size:24px;color:#8F8AA3;background:#F4F3F8;border-radius:12px;padding:6px 22px">${url}</span></div>${inner}</div>`}
+function cursor(x,y,click=0){return `<div style="position:absolute;left:${x}px;top:${y}px;transform:scale(${1-0.15*click})"><svg width="60" height="72" viewBox="0 0 30 36"><path d="M2 2 L2 28 L9 21 L14 33 L19 31 L14 19 L24 19 Z" fill="#150C2B" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/></svg></div>`}
+function mythHead(n,txt,p){return `<div class="lab">MYTH ${n}</div>`+at(p,0,`<div class="h" style="font-size:100px;text-align:center;width:900px">${txt}</div>`,540,330)}
+const stamp=(p,d,x,y,r)=>at(p,d,'<div class="stamp" style="background:#FAF9F6">MYTH</div>',x,y,{r:r*3,rr:r,css:'z-index:5'});
+const KW='plumber, best plumber, cheap plumber, plumber near me, emergency plumber, plumbing, plumbers';
+function code(p,typed=1,dead=0){const s=KW.slice(0,Math.floor(KW.length*clamp(typed)));
+ return `<div class="navy" style="width:900px;padding:44px 50px;font-family:'DejaVu Sans Mono',monospace;font-size:34px;line-height:1.5;position:relative">
+ <div style="color:#8F8AA3">&lt;head&gt;</div>
+ <div style="padding-left:40px;opacity:${1-0.6*dead}"><span style="color:#B9A6FF">&lt;meta</span> <span style="color:#7FD1B9">name</span>=<span style="color:#FFC46B">"keywords"</span><br><span style="color:#7FD1B9">content</span>=<span style="color:#FFC46B">"${s}${typed<1?'▍':''}"</span><span style="color:#B9A6FF">&gt;</span></div>
+ <div style="color:#8F8AA3">&lt;/head&gt;</div>
+ ${dead?`<div style="position:absolute;left:60px;right:60px;top:${150}px;height:10px;border-radius:5px;background:#E5484D;transform-origin:left;transform:scaleX(${ease(dead)})"></div>`:''}</div>`}
+function result(t,url,desc,o={}){return `<div style="padding:26px 34px;border-radius:22px;margin:14px 0;background:${o.bg||'#F6F5F9'};border:${o.bd||'3px solid transparent'}">
+ ${o.sp?'<div style="font-weight:800;font-size:24px;color:#150C2B;margin-bottom:6px">Sponsored</div>':''}<div style="font-size:24px;color:#3C8A4A;font-weight:600">${url}</div><div style="font-size:38px;font-weight:700;color:#4B3FC4;margin:6px 0">${t}</div><div style="font-size:26px;color:#6B6680">${desc}</div></div>`}
+function serp(inner,q='plumber brisbane'){return `<div class="card" style="width:880px;padding:34px 40px"><div style="height:70px;border-radius:35px;border:2px solid #E3E0EC;padding:14px 32px;font-size:32px;color:#6B6680;margin-bottom:10px">🔍 ${q}</div>${inner}</div>`}
+const SC=[
+ // 0 hook: meta keywords typed then struck
+ (p,t)=>at(p,0,code(p,(p-.02)/.4,p>.55?(p-.55)*4:0),540,360,{r:-2})
+  +at(p,.6,'<div class="h" style="font-size:80px;background:#FAF9F6;padding:16px 34px 26px;border-radius:30px;box-shadow:0 24px 50px rgba(21,12,43,.15);white-space:nowrap">ignored since <span class="box">2009</span></div>',540,900,{r:3}),
+ // 1 three myths
+ (p,t)=>at(p,0,'<div class="h" style="font-size:150px;white-space:nowrap"><span class="box">3</span> SEO</div>',540,330)+at(p,.08,'<div class="h" style="font-size:150px">myths</div>',540,500)
+  +['💸 paying Google','🏷️ meta keywords','🔁 keyword stuffing'].map((x,i)=>at(p,.25+i*.12,`<div class="card" style="padding:26px 44px;font-weight:800;font-size:54px;white-space:nowrap">${x}</div>`,540,720+i*150,{r:i%2?3:-3,rr:i%2?2:-2})).join(''),
+ // 2 myth one
+ (p,t)=>mythHead('01','you have to <span class="lav">pay Google</span> to show up',p)
+  +at(p,.2,`<div class="card" style="width:720px;padding:44px 54px"><div style="font-weight:700;font-size:28px;letter-spacing:4px;color:#8F8AA3">INVOICE</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:24px;font-weight:800;font-size:44px"><span>"Guaranteed #1"</span><span class="I">$999/mo</span></div><div class="bar" style="width:480px;margin-top:30px"></div><div class="bar" style="width:340px;margin-top:16px"></div></div>`,540,700,{r:2})
+  +stamp(p,.55,300,960,-8),
+ // 3 never takes money
+ (p,t)=>{const c=ease((p-.15)*2.2),b=p>.6;return '<div class="lab">NORMAL RESULTS</div>'+at(p,0,serp(result('Brisbane Plumbing Co.','brisbaneplumbing.example','Same-day call-outs across Brisbane.')+result('Northside Pipes','northsidepipes.example','Family-run, licensed plumbers.')),540,340)
+  +`<div style="position:absolute;left:${880-300*c}px;top:${360+300*c}px;width:130px;height:130px;border-radius:50%;background:#FFC46B;border:8px solid #E9A63B;font-weight:800;font-size:70px;text-align:center;line-height:112px;color:#8A5A10;transform:rotate(${c*-30}deg);opacity:${clamp(p*6)}">$</div>`
+  +(b?at(p,.6,'<div class="chip" style="background:#E5484D;font-size:50px">✕ can\'t buy these</div>',540,1060,{r:-3}):'')},
+ // 4 sponsored
+ (p,t)=>{const h=p>.5;return '<div class="lab">THE PAID SPOTS</div>'+at(p,0,serp(result('Book a Plumber Today','ad-plumber.example','Call now for a free quote.',{sp:1,bg:h?'#F3EFFF':'#F6F5F9',bd:h?'3px solid #6557E8':'3px solid transparent'})+result('Brisbane Plumbing Co.','brisbaneplumbing.example','Same-day call-outs across Brisbane.')),540,340)
+  +(h?at(p,.5,'<div class="chip" style="background:#6557E8;font-size:50px">paid = ad = "Sponsored"</div>',540,1060,{r:2}):'')},
+ // 5 myth two
+ (p,t)=>mythHead('02','meta keywords help you <span class="lav">rank</span>',p)+at(p,.2,code(p,1,0),540,700,{r:2})+stamp(p,.55,260,980,-8),
+ // 6 ignored
+ (p,t)=>{const d=clamp((p-.2)*2);return '<div class="lab">WHAT GOOGLE READS</div>'+at(p,0,code(p,1,d),540,360,{r:-1})
+  +at(p,.45,'<div class="chip" style="background:#E5484D;font-size:54px">does nothing</div>',540,880,{r:-3})},
+ // 7 clear page title
+ (p,t)=>{const g=p>.45;return '<div class="lab">WHAT COUNTS</div>'+at(p,0,`<div class="card" style="width:880px;padding:40px 44px"><div style="font-weight:700;font-size:28px;color:#8F8AA3;letter-spacing:3px;margin-bottom:14px">PAGE TITLE</div>
+  <div style="display:flex;align-items:center;gap:24px;font-size:52px;font-weight:800;padding:22px 30px;border-radius:20px;background:#F6F5F9;opacity:${g?.5:1}"><span style="color:#E5484D">✕</span><span style="${g?'text-decoration:line-through':''}">Home</span></div>
+  <div style="display:flex;align-items:center;gap:24px;font-size:52px;font-weight:800;padding:22px 30px;border-radius:20px;margin-top:20px;background:#F3EFFF;border:3px solid #6557E8;opacity:${clamp((p-.45)*5)}"><span class="I">✓</span><span>Plumber in Brisbane</span></div></div>`,540,360)
+  +at(p,.55,serp(result('Plumber in Brisbane | Northside Pipes','northsidepipes.example','Same-day call-outs. Licensed and insured.',{bg:'#F3EFFF'})),540,860,{r:2})},
+ // 8 myth three
+ (p,t)=>{const n=Math.floor(clamp((p-.2)/.6)*27);return mythHead('03','repeat it as many <span class="lav">times</span> as you can',p)
+  +at(p,.2,`<div class="card" style="padding:40px 70px;text-align:center"><div class="h" style="font-size:200px" class="I"><span class="I">${n}×</span></div><div style="font-weight:800;font-size:44px;color:#8F8AA3">"plumber" on one page</div></div>`,540,700,{r:-2})+stamp(p,.65,840,700,8)},
+ // 9 keyword stuffing
+ (p,t)=>{const words='Plumber Brisbane. Best plumber Brisbane. Cheap plumber Brisbane. Our plumber Brisbane team are the plumber Brisbane plumbers for plumber Brisbane jobs. Call a plumber Brisbane plumber.'.split(' ');
+  const hl=clamp((p-.05)/.35)*words.length;const txt=words.map((w,i)=>/plumb/i.test(w)&&i<hl?`<span style="background:#FFD3D4;color:#C2272D;border-radius:8px;padding:0 4px">${w}</span>`:w).join(' ');
+  return '<div class="lab">KEYWORD STUFFING</div>'+at(p,0,browser(880,640,`<div style="padding:40px 50px;font-size:42px;line-height:1.45;font-weight:600;color:#3B3550">${txt}</div>`),540,340,{r:-1})
+  +at(p,.5,'<div class="chip" style="background:#E5484D;font-size:50px">spam rules: ✕</div>',540,1030,{r:-3})
+  +at(p,.7,'<div class="chip" style="font-size:46px">↓ can hurt rankings</div>',540,1150,{r:2})},
+ // 10 fix
+ (p,t)=>'<div class="lab">THE FIX</div>'+at(p,0,browser(880,640,`<div style="padding:60px 56px"><div class="h" style="font-size:78px">Plumber in Brisbane</div><div style="font-size:40px;color:#6B6680;margin:28px 0 40px;font-weight:500;line-height:1.4">Family-run team on the northside. Same-day call-outs, fixed quotes.</div><div style="display:inline-block;background:#6557E8;color:#fff;font-weight:800;font-size:44px;padding:24px 52px;border-radius:22px">📞 Call now</div></div>`),540,350)
+  +at(p,.5,'<div class="chip" style="background:#6557E8">✓ written for people</div>',540,1060,{r:-2}),
+ // 11 CTA
+ (p,t)=>{const it=['💸 paying Google','🏷️ meta keywords','🔁 keyword stuffing'];let h='';it.forEach((x,i)=>{const s=spring(p*3.4-i*.35);h+=`<div style="display:flex;align-items:center;gap:22px;margin:18px 0;font-weight:800;font-size:54px;opacity:${clamp(s*2)};transform:translateX(${(1-s)*-50}px)"><span style="width:60px;height:60px;border-radius:16px;border:5px solid #6557E8;display:inline-block"></span>${x}</div>`});
+  return '<div class="lab">WHICH ONE DID YOU PAY FOR?</div>'+at(p,0,`<div class="card" style="width:820px;padding:44px 60px">${h}</div>`,540,340)+at(p,.5,'<div class="chip" style="font-size:52px;padding:26px 56px">+ Follow <span style="color:#B9A6FF">@nexaweb_dev</span></div>',540,860,{r:-2})},
+];
+function lineAt(t){let i=0;for(let k=0;k<DATA.lines.length;k++)if(t>=DATA.lines[k].start-0.05)i=k;return i}
+window.render=function(t){
+ const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
+ const end=nx?nx.start:DATA.total,d=end-L.start,lt=t-L.start+0.05,p=clamp(lt/d);
+ const out=nx?clamp((t-(end-0.14))/0.14):0, inn=ease(lt/0.25);
+ S.innerHTML=`<div style="position:absolute;inset:0;transform-origin:520px 330px;transform:scale(1.1)"><div style="position:absolute;inset:0;opacity:${inn*(1-out)};transform:translateY(${-out*40}px);filter:blur(${(1-inn)*8+out*8}px)">${SC[i](p,t)}</div></div>`;
+ const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25);
+ if(!ch){C.innerHTML='';return}
+ C.innerHTML=ch.words.map(w=>{const a=t-(w.start-0.03),on=a>=0,pop=on?0.85+0.15*ease(a/0.12):1;return `<span class="${w.k?'k':''}" style="opacity:${on?1:0};transform:scale(${pop})">${w.w}</span>`}).join(' ');
+};
+</script></body></html>

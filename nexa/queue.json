@@ -261,5 +261,18 @@
     "status": "posted",
     "note": "1:17 pm carousel slot. Tips only, no stats. Example file sizes (6.4 MB -> 240 KB) are illustrative. Facts: Google image SEO best practices (alt text used to understand images; WebP supported). No dashes. Approved by Jayden and posted 2026-11-22 13:26 AEDT.",
     "media_id": "18124212103922558"
+  },
+  {
+    "slug": "seo-myths-3",
+    "format": "reel",
+    "topic": "3 SEO myths small businesses still pay for: paying Google to rank (organic results can't be bought; ads are labelled Sponsored), meta keywords (Google said in Sept 2009 it doesn't use the keywords meta tag; clear page titles matter), keyword stuffing (against Google spam policies, can hurt rankings)",
+    "hook": "Paid someone to add meta keywords to your website? Google stopped using them in 2009.",
+    "style": "Nexa brand off-white/indigo/navy, mock UIs, safe-zone layout, centred captions (website-myths-3 template)",
+    "voice": "Kokoro am_michael (ElevenLabs key not available this run)",
+    "video": "nexa/videos/seo-myths-3/seo-myths-3.mp4",
+    "caption": "Paid someone to add \"meta keywords\" to your website? Google stopped using them in 2009.\nHere are 3 SEO myths small businesses still pay for.\n\nWhich one have you been sold? Tell me below 👇 Save this before you pay for SEO.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#seo #seotips #smallbusinessaustralia #websitetips #googlesearch #digitalmarketing #webdesign #smallbusinesstips",
+    "post_on": "2026-11-22",
+    "approved": false,
+    "posted": false
   }
 ]
