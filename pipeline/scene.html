@@ -3147,7 +3147,7 @@ SC.trash = (c, p, lt, d) => {
   c.strokeStyle = 'rgba(150,150,140,.6)'; c.lineWidth = 3; c.beginPath(); c.moveTo(-40, 10); c.quadraticCurveTo(0, -20, 50, 20); c.stroke();
   text(c, 'ITEM 1 · TISSUE', 0, 180, 30, 'Type', '#e8e8e8');
   c.restore();
-  if (lt > (p.matchAt || .6)*d){ const a = ease((lt - (p.matchAt || .6)*d)/.2); c.save(); c.globalAlpha = a; c.translate(540, 1000); c.rotate(-.12); c.scale(1.6 - .6*a, 1.6 - .6*a); c.strokeStyle = '#ff2a20'; c.lineWidth = 10; c.strokeRect(-260, -80, 520, 160); text(c, 'DNA MATCH', 0, 4, 110, 'Anton', '#ff3b30'); c.restore(); }
+  if (lt > (p.matchAt || .6)*d){ const a = ease((lt - (p.matchAt || .6)*d)/.2); c.save(); c.globalAlpha = a; c.translate(540, 1000); c.rotate(-.12); c.scale(1.6 - .6*a, 1.6 - .6*a); c.strokeStyle = '#ff2a20'; c.lineWidth = 10; c.strokeRect(-260, -80, 520, 160); text(c, 'DNA MATCH', 0, 4, 110, 'Anton', '#ff3b30'); c.restore(); tag(c, 'SAME DNA AS THE KILLER', 540, 1150, a, '#ff8a7a'); }
   if (p.tag) tag(c, p.tag, 540, 300, ease((lt - .1)/.3), '#d7fbe9');
 };
 SC.shield = (c, p, lt, d) => {
