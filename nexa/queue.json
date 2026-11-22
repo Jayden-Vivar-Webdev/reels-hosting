@@ -237,5 +237,28 @@
     "status": "posted",
     "note": "8:17 am carousel slot. Advice/opinion only, no stats. Made-up quote figures ($79 x 12 = $948 checked). No dashes. v2: slide 6 phone rebuilt as a realistic iPhone (frame, buttons, Dynamic Island, status bar, Safari bar) at Jayden's request; awaiting approval. Approved by Jayden and posted 2026-11-22 10:37 AEDT.",
     "media_id": "17925997752222540"
+  },
+  {
+    "slug": "website-photos-5",
+    "format": "carousel",
+    "topic": "5 website photo mistakes: stock photos instead of real ones, huge photos straight off the phone (resize + compress, WebP usually smaller than JPEG), stretched/squashed photos (crop, don't drag), no alt text (screen readers + Google uses it to understand images), best work hidden on a gallery page instead of the homepage. Made-up business Crumb & Co bakery, Marrickville.",
+    "hook": "Your website photos are losing you customers",
+    "style": "ai-prompts-5 / website-questions-6 approved navy style: CC0 photo top fading to navy, outlined lavender numbers, DM Sans ExtraBold headlines with lavender key words, white UI cards (before/after mini sites, media library, stretched vs cropped, image settings alt text, homepage product grid), indigo marker scribbles, checklist CTA.",
+    "media": [
+      "nexa/images/website-photos-5/01.jpg",
+      "nexa/images/website-photos-5/02.jpg",
+      "nexa/images/website-photos-5/03.jpg",
+      "nexa/images/website-photos-5/04.jpg",
+      "nexa/images/website-photos-5/05.jpg",
+      "nexa/images/website-photos-5/06.jpg",
+      "nexa/images/website-photos-5/07.jpg"
+    ],
+    "caption": "Your website photos might be losing you customers 📸\n5 quick fixes, and number 2 makes your site faster too.\n\nHow many does your site pass? Comment your score out of 5 👇 and save this for your next website update.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #smallbusinesstips #imageseo #pagespeed #websitedesign #digitalmarketing",
+    "created": "2026-11-22 13:45 AEDT",
+    "post_on": "2026-11-22",
+    "approved": false,
+    "posted": false,
+    "status": "awaiting approval",
+    "note": "1:17 pm carousel slot. Tips only, no stats. Example file sizes (6.4 MB -> 240 KB) are illustrative. Facts: Google image SEO best practices (alt text used to understand images; WebP supported). No dashes."
   }
 ]

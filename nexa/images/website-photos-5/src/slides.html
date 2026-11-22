@@ -1,0 +1,175 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--ind:#6557E8;--lav:#B9A6FF;--navy:#150C2B}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#444}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--navy);color:#fff}
+.s:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(700px 520px at 85% 72%,rgba(101,87,232,.30),transparent 70%),radial-gradient(500px 400px at 0% 100%,rgba(185,166,255,.10),transparent 70%)}
+.ph{position:absolute;left:0;right:0;top:0;height:640px;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,43,.15) 0%,rgba(21,12,43,.35) 45%,#150C2B 98%)}
+.num{position:absolute;left:62px;top:150px;font:800 260px/1 'DM Sans';letter-spacing:-.06em;color:transparent;-webkit-text-stroke:3px rgba(185,166,255,.85);z-index:2}
+.h{position:absolute;left:80px;right:80px;top:420px;font:800 74px/1.02 'DM Sans';letter-spacing:-.035em;z-index:3}
+.h em{font-style:normal;color:var(--lav)}
+.sub{position:absolute;left:80px;right:80px;top:510px;font-size:32px;line-height:1.35;color:#C9C2E6;z-index:3}
+.card{position:absolute;left:80px;right:80px;top:600px;background:#fff;color:#1f1d24;border-radius:30px;z-index:4;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06);overflow:hidden}
+.bar{height:60px;display:flex;align-items:center;gap:12px;padding:0 28px;border-bottom:1px solid #eeedf2;font:600 19px Inter;color:#55525d;background:#fbfbfd}
+.bar .d{width:12px;height:12px;border-radius:50%;background:#e2e0e8;box-shadow:20px 0 0 #e2e0e8,40px 0 0 #e2e0e8;margin-right:46px}
+.bar .url{flex:1;height:36px;border-radius:18px;background:#efeef3;display:flex;align-items:center;padding:0 18px;font:500 18px Inter;color:#7a7783}
+.bar .url b{filter:blur(4px);font-weight:500}
+.row{display:flex;justify-content:space-between;align-items:center;padding:27px 34px;border-bottom:1px solid #f0eff4;font-size:29px}
+.row .k{color:#8a8794;font-size:24px}
+.row .v{font-weight:600;text-align:right}
+.why{position:absolute;left:80px;right:80px;top:1135px;font-size:32px;line-height:1.4;color:#D9D3F2;z-index:3}
+.why b{color:var(--lav);font-weight:700}
+.ft{position:absolute;left:80px;right:80px;bottom:46px;display:flex;justify-content:space-between;align-items:center;font:500 25px Inter;color:#8C84AD;z-index:3}
+.dots{display:flex;gap:9px}.dots span{width:10px;height:10px;border-radius:5px;background:#3A2F5E}.dots span.on{width:34px;background:var(--lav)}
+.note{position:absolute;font:700 34px 'DM Sans';color:var(--lav);z-index:6}
+.chk{width:34px;height:34px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font:800 20px Inter;color:#fff;background:#2fb36d}
+.chk.no{background:#fff;border:2.5px solid #d6d3de;color:transparent}
+.li{display:flex;align-items:center;gap:22px;padding:25px 34px;border-bottom:1px solid #f0eff4;font-size:27px}
+.li small{display:block;font-size:20px;color:#8a8794;margin-top:3px}
+svg.sc{position:absolute;overflow:visible;pointer-events:none;z-index:6}
+
+.mini{border-radius:18px;overflow:hidden;border:1px solid #e9e7ee;background:#fff}
+.mini .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;font:700 17px 'DM Sans';color:#3b2a1e;border-bottom:1px solid #f0eee9}
+.mini .nav i{font:500 11px Inter;font-style:normal;color:#8a8794}
+.mini .hero{position:relative;height:230px;background-size:cover;background-position:center}
+.mini .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.55))}
+.mini .hero span{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;color:#fff;font:700 21px/1.15 Georgia}
+.mini .btn{margin:12px 16px 14px;display:inline-block;background:#3b2a1e;color:#fff;font:600 14px Inter;padding:9px 16px;border-radius:18px}
+.tag{position:absolute;font:800 20px Inter;letter-spacing:.06em;padding:7px 14px;border-radius:10px;color:#fff;z-index:5}
+.file{display:flex;align-items:center;gap:22px;padding:24px 30px}
+.file .th{width:120px;height:90px;border-radius:12px;background-size:cover;background-position:center;flex:none}
+.file .nm{font:600 27px Inter}
+.file .mt{font-size:22px;color:#8a8794;margin-top:4px}
+.file .sz{margin-left:auto;font:800 30px Inter}
+.fld{margin:0 30px;border:1.5px solid #e4e2ea;border-radius:14px;padding:15px 18px;font-size:25px;line-height:1.35}
+.lbl{padding:20px 30px 9px;font:600 19px Inter;color:#8a8794}
+</style></head><body>
+
+<!-- 1 cover -->
+<div class="s" id="s1">
+ <div class="ph" style="height:1350px"><img src="img/b2.jpg" style="object-position:55% 50%"></div>
+ <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,43,.15) 0%,rgba(21,12,43,.45) 35%,rgba(21,12,43,.96) 62%)"></div>
+ <div class="card" style="left:360px;right:80px;top:120px;transform:rotate(3.5deg);box-shadow:0 30px 70px rgba(0,0,0,.5)">
+  <div class="bar"><span class="d"></span><span class="url"><b>crumbandco</b>.com.au</span></div>
+  <div style="height:300px;background:url(img/b7.jpg) center/100% 100% no-repeat;transform-origin:left;position:relative;overflow:hidden"><div style="position:absolute;inset:0;background:url(img/b7.jpg) no-repeat;background-size:100% 260%;background-position:0 40%"></div></div>
+  <div style="padding:16px 26px 20px;display:flex;justify-content:space-between;font:500 19px Inter;color:#8a8794"><span>IMG_4821.jpg</span><span style="color:#d93a3a;font-weight:700">6.4 MB</span></div></div>
+ <div class="h" style="top:640px;font-size:100px;z-index:6">Your website photos are <em>losing you customers</em></div>
+ <div class="sub" style="top:1110px;font-size:36px;color:#E4DEFF;z-index:6">5 quick fixes. Save this. Swipe &#8594;</div>
+ <div class="ft" style="z-index:6"><span>@nexaweb_dev</span><span class="dots" data-on="1"></span></div>
+</div>
+
+<!-- 2 stock photo -->
+<div class="s" id="s2">
+ <div class="ph"><img src="img/p1.jpg" style="object-position:50% 40%"></div><div class="num">01</div>
+ <div class="h" style="top:385px">The <em>stock photo</em> everyone has seen</div>
+ <div style="position:absolute;left:80px;right:80px;top:600px;display:flex;gap:30px;z-index:4">
+  <div style="flex:1;position:relative;transform:rotate(-1.5deg)">
+   <div class="mini" style="box-shadow:0 24px 60px rgba(0,0,0,.45)"><div class="nav">Crumb &amp; Co<i>Home About Contact</i></div>
+    <div class="hero" style="background-image:url(img/stock.jpg)"><span>Quality solutions for all your needs</span></div><span class="btn">Learn more</span></div>
+   <div class="tag" style="left:-10px;top:-20px;background:#d93a3a">BEFORE</div></div>
+  <div style="flex:1;position:relative;transform:rotate(1.5deg)">
+   <div class="mini" style="box-shadow:0 24px 60px rgba(0,0,0,.45)"><div class="nav">Crumb &amp; Co<i>Bread Cakes Visit</i></div>
+    <div class="hero" style="background-image:url(img/b1.jpg)"><span>Sourdough baked at 4am in Marrickville</span></div><span class="btn">See today's bread</span></div>
+   <div class="tag" style="left:-10px;top:-20px;background:#2fb36d">AFTER</div></div>
+ </div>
+ <div class="note" style="left:96px;top:990px;transform:rotate(-2deg)">&#8593; a bakery with a laptop photo?</div>
+ <div class="why" style="top:1100px"><b>Fix:</b> use real photos of your work, your shop, your products. A phone photo in good light beats a stock photo.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="2"></span></div>
+</div>
+
+<!-- 3 huge files -->
+<div class="s" id="s3">
+ <div class="ph"><img src="img/b5.jpg" style="object-position:50% 50%"></div><div class="num">02</div>
+ <div class="h">Huge <em>phone photos</em></div>
+ <div class="sub">Giant files make the whole page slow.</div>
+ <div class="card" style="top:610px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span>Media library</div>
+  <div class="file" style="border-bottom:1px solid #f0eff4"><div class="th" style="background-image:url(img/b1.jpg)"></div><div><div class="nm">IMG_4821.jpg</div><div class="mt">4032 &#215; 3024 px</div></div><div class="sz" style="color:#d93a3a"><span class="mk" data-c="1">6.4 MB</span></div></div>
+  <div style="text-align:center;font:700 22px Inter;color:#8a8794;padding:12px 0">&#8595; resized and compressed &#8595;</div>
+  <div class="file" style="border-top:1px solid #f0eff4"><div class="th" style="background-image:url(img/b1.jpg)"></div><div><div class="nm">sourdough-marrickville.webp</div><div class="mt">1920 &#215; 1440 px</div></div><div class="sz" style="color:#2fb36d">240 KB</div></div></div>
+ <div class="note" style="left:560px;top:1070px;transform:rotate(-2deg)">same photo, way lighter</div>
+ <div class="why" style="top:1145px"><b>Fix:</b> resize to the size it shows on screen, then compress it. WebP files are usually smaller than JPEG.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="3"></span></div>
+</div>
+
+<!-- 4 stretched -->
+<div class="s" id="s4">
+ <div class="ph"><img src="img/b4.jpg" style="object-position:50% 50%"></div><div class="num">03</div>
+ <div class="h"><em>Stretched</em> photos</div>
+ <div class="sub">Customers notice. It just looks cheap.</div>
+ <div class="card" style="top:610px;transform:rotate(1deg)">
+  <div class="bar"><span class="d"></span><span class="url"><b>crumbandco</b>.com.au/cakes</span></div>
+  <div style="display:flex;gap:26px;padding:28px 30px 30px">
+   <div style="flex:1"><div style="height:250px;border-radius:14px;background:url(img/b3.jpg) no-repeat;background-size:100% 100%;transform:scaleX(1);overflow:hidden;position:relative"><div style="position:absolute;inset:0;background:url(img/b3.jpg) no-repeat;background-size:230% 100%;background-position:20% 0"></div></div>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:16px;font:600 23px Inter"><span class="chk" style="background:#d93a3a">&#10005;</span>Dragged to fit</div></div>
+   <div style="flex:1"><div style="height:250px;border-radius:14px;background:url(img/b3.jpg) center/cover"></div>
+    <div style="display:flex;align-items:center;gap:12px;margin-top:16px;font:600 23px Inter"><span class="chk">&#10003;</span>Cropped to fit</div></div>
+  </div></div>
+ <div class="note" style="left:100px;top:1050px;transform:rotate(-2deg)">&#8593; that cup is not that wide</div>
+ <div class="why" style="top:1130px"><b>Fix:</b> crop the photo to the shape of the space. Never drag a corner to make it fit.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="4"></span></div>
+</div>
+
+<!-- 5 alt text -->
+<div class="s" id="s5">
+ <div class="ph"><img src="img/p4.jpg" style="object-position:50% 45%"></div><div class="num">04</div>
+ <div class="h">No <em>alt text</em></div>
+ <div class="sub">The hidden description behind every photo.</div>
+ <div class="card" style="top:600px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span>Image settings</div>
+  <div class="file" style="padding-bottom:6px"><div class="th" style="background-image:url(img/b1.jpg)"></div><div><div class="nm">sourdough-marrickville.webp</div><div class="mt">Homepage hero</div></div></div>
+  <div class="lbl">Alt text <span style="color:#d93a3a">(empty)</span></div>
+  <div class="fld" style="color:#b3b0bb;font-style:italic">Describe this image...</div>
+  <div class="lbl">Alt text</div>
+  <div class="fld" style="border:2px solid var(--ind);box-shadow:0 0 0 5px rgba(101,87,232,.15);margin-bottom:28px">Fresh sourdough loaves on the counter at <span class="mk">Crumb &amp; Co, Marrickville</span></div></div>
+ <div class="why" style="top:1110px"><b>Fix:</b> one plain sentence per photo. Screen readers read it out, and Google uses it to understand the image.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="5"></span></div>
+</div>
+
+<!-- 6 hidden best stuff -->
+<div class="s" id="s6">
+ <div class="ph"><img src="img/b2.jpg" style="object-position:50% 50%"></div><div class="num">05</div>
+ <div class="h">Your best stuff is <em>hidden</em></div>
+ <div class="sub">Buried on a gallery page nobody opens.</div>
+ <div class="card" style="top:600px;transform:rotate(1deg)">
+  <div class="bar"><span class="d"></span><span class="url"><b>crumbandco</b>.com.au</span></div>
+  <div style="padding:24px 30px 6px;font:700 30px Georgia;color:#3b2a1e">Fresh out of the oven today</div>
+  <div style="display:flex;gap:16px;padding:16px 30px 28px">
+   <div style="flex:1"><div style="height:200px;border-radius:12px;background:url(img/b7.jpg) center/cover"></div><div style="font:600 21px Inter;margin-top:10px">Rye sourdough</div><div style="font-size:18px;color:#8a8794">$9.50</div></div>
+   <div style="flex:1"><div style="height:200px;border-radius:12px;background:url(img/b2.jpg) 60% 50%/cover"></div><div style="font:600 21px Inter;margin-top:10px">Butter croissants</div><div style="font-size:18px;color:#8a8794">$5.00</div></div>
+   <div style="flex:1"><div style="height:200px;border-radius:12px;background:url(img/b4.jpg) center/cover"></div><div style="font:600 21px Inter;margin-top:10px">Choc muffins</div><div style="font-size:18px;color:#8a8794">$4.50</div></div>
+  </div></div>
+ <div class="note" style="left:470px;top:1055px;transform:rotate(-2deg)">right on the homepage</div>
+ <div class="why" style="top:1130px"><b>Fix:</b> put 3 to 6 real photos of what you sell on your homepage, with a few words each.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="6"></span></div>
+</div>
+
+<!-- 7 cta -->
+<div class="s" id="s7">
+ <div class="h" style="top:110px;font-size:84px">How many does your site <em>pass?</em></div>
+ <div id="list" style="position:absolute;left:80px;right:80px;top:330px;z-index:3;display:flex;flex-direction:column;gap:16px"></div>
+ <div style="position:absolute;left:80px;right:80px;top:960px;font-size:36px;line-height:1.5;color:#D9D3F2;z-index:3">Comment your score out of 5 &#128071;<br>Save this for your next website update.<br>Follow <b style="color:var(--lav)">@nexaweb_dev</b> for more like this.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="7"></span></div>
+</div>
+
+<script>
+document.querySelectorAll('.dots').forEach(d=>{const on=+d.dataset.on;d.innerHTML=[...Array(7)].map((_,i)=>`<span class="${i+1===on?'on':''}"></span>`).join('')});
+const items=[['Real photos, not stock','b1'],['Resized and compressed','b5'],['Cropped, never stretched','b3'],['Alt text on every photo','p4'],['Best work on the homepage','b2']];
+document.getElementById('list').innerHTML=items.map(([l,p],i)=>`<div style="display:flex;align-items:center;gap:24px;padding:12px 24px 12px 12px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(185,166,255,.18)"><img src="img/${p}.jpg" style="width:82px;height:82px;border-radius:16px;object-fit:cover"><span style="font:800 40px 'DM Sans';color:var(--lav);width:58px">0${i+1}</span><span style="font:600 36px Inter;letter-spacing:-.01em;flex:1">${l}</span><span class="chk no" style="width:40px;height:40px;background:transparent;border-color:rgba(185,166,255,.5)">.</span></div>`).join('');
+let seed=29;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};const C='#6557E8';
+function P(p){return p.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ')}
+function circle(svg,w,h,rot=0){let out='';
+ for(let pass=0;pass<2;pass++){const pts=[];const st=-2.2+pass*.35,n=60,end=st+Math.PI*2*(1.08+pass*.04);
+  for(let i=0;i<=n;i++){const a=st+(end-st)*i/n;const k=1+(rnd()-.5)*.035+pass*.025;pts.push([w/2+Math.cos(a)*(w/2-10)*k,h/2+Math.sin(a)*(h/2-10)*k])}
+  out+=`<path d="${P(pts)}" stroke="${C}" stroke-width="${pass?4:6.5}" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="${pass?.75:.95}"/>`}
+ svg.innerHTML=`<g transform="rotate(${rot} ${w/2} ${h/2})">${out}</g>`}
+function under(svg,w,h){let out='';for(let pass=0;pass<2;pass++){const pts=[];const n=24;for(let i=0;i<=n;i++){const t=i/n;pts.push([4+t*(w-8),h/2+(pass?5:0)+Math.sin(t*3+pass)*2+(rnd()-.5)*2.2])}
+ out+=`<path d="${P(pts)}" stroke="${C}" stroke-width="${pass?4:6}" fill="none" stroke-linecap="round" opacity="${pass?.7:.95}"/>`}svg.innerHTML=out}
+const mk=()=>{const v=document.createElementNS('http://www.w3.org/2000/svg','svg');v.setAttribute('class','sc');return v};
+document.querySelectorAll('.mk').forEach(m=>{const s=m.closest('.s');const sr=s.getBoundingClientRect();
+ if(m.dataset.c){const r=m.getBoundingClientRect();const w=r.width+50,h=r.height+34;const v=mk();v.setAttribute('width',w);v.setAttribute('height',h);v.style.left=(r.left-sr.left-25)+'px';v.style.top=(r.top-sr.top-17)+'px';s.appendChild(v);circle(v,w,h,-3);return}
+ [...m.getClientRects()].forEach(r=>{const w=r.width+8,h=16;const v=mk();v.setAttribute('width',w);v.setAttribute('height',h);v.style.left=(r.left-sr.left-4)+'px';v.style.top=(r.bottom-sr.top-6)+'px';s.appendChild(v);under(v,w,h)})});
+</script>
+</body></html>
