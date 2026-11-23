@@ -8,804 +8,804 @@
   {
    "w": "2021,",
    "start": 0.62,
-   "end": 1.26
+   "end": 1.5
   },
   {
    "w": "Facebook",
-   "start": 1.26,
-   "end": 1.74
-  },
-  {
-   "w": "deleted",
-   "start": 1.74,
+   "start": 1.5,
    "end": 2.06
   },
   {
-   "w": "itself",
+   "w": "deleted",
    "start": 2.06,
-   "end": 2.38
+   "end": 2.46
+  },
+  {
+   "w": "itself",
+   "start": 2.46,
+   "end": 2.7
   },
   {
    "w": "from",
-   "start": 2.38,
-   "end": 2.54
+   "start": 2.7,
+   "end": 2.86
   },
   {
    "w": "the",
-   "start": 2.54,
-   "end": 2.62
+   "start": 2.86,
+   "end": 2.94
   },
   {
    "w": "internet.",
-   "start": 2.62,
-   "end": 3.26
-  },
-  {
-   "w": "By",
-   "start": 3.26,
+   "start": 2.94,
    "end": 3.42
   },
   {
-   "w": "accident.",
+   "w": "By",
    "start": 3.42,
-   "end": 4.196
+   "end": 3.66
+  },
+  {
+   "w": "accident.",
+   "start": 3.66,
+   "end": 4.591
   }
  ],
  [
   {
    "w": "October",
-   "start": 4.196,
-   "end": 4.756
+   "start": 4.591,
+   "end": 5.231
   },
   {
    "w": "4.",
-   "start": 4.756,
-   "end": 5.236
+   "start": 5.231,
+   "end": 5.711
   },
   {
    "w": "Facebook,",
-   "start": 5.236,
-   "end": 5.876
+   "start": 5.711,
+   "end": 6.351
   },
   {
    "w": "Instagram",
-   "start": 5.876,
-   "end": 6.436
+   "start": 6.351,
+   "end": 6.991
   },
   {
    "w": "and",
-   "start": 6.436,
-   "end": 6.596
+   "start": 6.991,
+   "end": 7.071
   },
   {
    "w": "WhatsApp",
-   "start": 6.596,
-   "end": 7.156
+   "start": 7.071,
+   "end": 7.711
   },
   {
    "w": "all",
-   "start": 7.156,
-   "end": 7.316
+   "start": 7.711,
+   "end": 7.871
   },
   {
    "w": "went",
-   "start": 7.316,
-   "end": 7.476
+   "start": 7.871,
+   "end": 8.111
   },
   {
    "w": "dark",
-   "start": 7.476,
-   "end": 7.796
+   "start": 8.111,
+   "end": 8.431
   },
   {
    "w": "at",
-   "start": 7.796,
-   "end": 7.876
+   "start": 8.431,
+   "end": 8.511
   },
   {
    "w": "once.",
-   "start": 7.876,
-   "end": 8.441
+   "start": 8.511,
+   "end": 9.112
   }
  ],
  [
   {
    "w": "The",
-   "start": 8.442,
-   "end": 8.682
+   "start": 9.111,
+   "end": 9.351
   },
   {
    "w": "cause?",
-   "start": 8.682,
-   "end": 9.242
+   "start": 9.351,
+   "end": 9.911
   },
   {
    "w": "One",
-   "start": 9.242,
-   "end": 9.482
+   "start": 9.911,
+   "end": 10.151
   },
   {
    "w": "command",
-   "start": 9.482,
-   "end": 9.882
+   "start": 10.151,
+   "end": 10.551
   },
   {
    "w": "during",
-   "start": 9.882,
-   "end": 10.122
+   "start": 10.551,
+   "end": 10.871
   },
   {
    "w": "routine",
-   "start": 10.122,
-   "end": 10.442
+   "start": 10.871,
+   "end": 11.191
   },
   {
    "w": "maintenance.",
-   "start": 10.442,
-   "end": 11.259
+   "start": 11.191,
+   "end": 11.827
   }
  ],
  [
   {
    "w": "It",
-   "start": 11.258,
-   "end": 11.418
+   "start": 11.828,
+   "end": 11.988
   },
   {
    "w": "was",
-   "start": 11.418,
-   "end": 11.578
+   "start": 11.988,
+   "end": 12.148
   },
   {
    "w": "meant",
-   "start": 11.578,
-   "end": 11.818
+   "start": 12.148,
+   "end": 12.308
   },
   {
    "w": "to",
-   "start": 11.818,
-   "end": 11.898
+   "start": 12.308,
+   "end": 12.388
   },
   {
    "w": "check",
-   "start": 11.898,
-   "end": 12.138
+   "start": 12.388,
+   "end": 12.628
   },
   {
    "w": "their",
-   "start": 12.138,
-   "end": 12.298
+   "start": 12.628,
+   "end": 12.788
   },
   {
    "w": "network.",
-   "start": 12.298,
-   "end": 13.018
+   "start": 12.788,
+   "end": 13.428
   },
   {
    "w": "Instead,",
-   "start": 13.018,
-   "end": 13.498
+   "start": 13.428,
+   "end": 13.748
   },
   {
    "w": "it",
-   "start": 13.498,
-   "end": 13.658
+   "start": 13.748,
+   "end": 13.988
   },
   {
    "w": "cut",
-   "start": 13.658,
-   "end": 13.978
+   "start": 13.988,
+   "end": 14.228
   },
   {
    "w": "every",
-   "start": 13.978,
-   "end": 14.218
+   "start": 14.228,
+   "end": 14.548
   },
   {
    "w": "link",
-   "start": 14.218,
-   "end": 14.538
+   "start": 14.548,
+   "end": 14.948
   },
   {
    "w": "between",
-   "start": 14.538,
-   "end": 14.778
+   "start": 14.948,
+   "end": 15.188
   },
   {
    "w": "their",
-   "start": 14.778,
-   "end": 14.938
+   "start": 15.188,
+   "end": 15.348
   },
   {
    "w": "data",
-   "start": 14.938,
-   "end": 15.258
+   "start": 15.348,
+   "end": 15.588
   },
   {
    "w": "centres.",
-   "start": 15.258,
-   "end": 16.086
+   "start": 15.588,
+   "end": 16.242
   }
  ],
  [
   {
    "w": "To",
-   "start": 16.086,
-   "end": 16.246
+   "start": 16.242,
+   "end": 16.482
   },
   {
    "w": "open",
-   "start": 16.246,
-   "end": 16.486
+   "start": 16.482,
+   "end": 16.722
   },
   {
    "w": "an",
-   "start": 16.486,
-   "end": 16.566
+   "start": 16.722,
+   "end": 16.882
   },
   {
    "w": "app",
-   "start": 16.566,
-   "end": 16.806
+   "start": 16.882,
+   "end": 17.122
   },
   {
    "w": "or",
-   "start": 16.806,
-   "end": 16.966
+   "start": 17.122,
+   "end": 17.282
   },
   {
    "w": "website,",
-   "start": 16.966,
-   "end": 17.446
+   "start": 17.282,
+   "end": 17.922
   },
   {
    "w": "your",
-   "start": 17.446,
-   "end": 17.606
+   "start": 17.922,
+   "end": 18.162
   },
   {
    "w": "phone",
-   "start": 17.606,
-   "end": 17.846
+   "start": 18.162,
+   "end": 18.482
   },
   {
    "w": "first",
-   "start": 17.846,
-   "end": 18.086
+   "start": 18.482,
+   "end": 18.722
   },
   {
    "w": "asks",
-   "start": 18.086,
-   "end": 18.406
+   "start": 18.722,
+   "end": 19.122
   },
   {
    "w": "the",
-   "start": 18.406,
-   "end": 18.486
+   "start": 19.122,
+   "end": 19.282
   },
   {
    "w": "internet's",
-   "start": 18.486,
-   "end": 18.966
+   "start": 19.282,
+   "end": 19.762
   },
   {
    "w": "phone",
-   "start": 18.966,
-   "end": 19.126
+   "start": 19.762,
+   "end": 20.002
   },
   {
    "w": "book",
-   "start": 19.126,
-   "end": 19.366
+   "start": 20.002,
+   "end": 20.402
   },
   {
    "w": "where",
-   "start": 19.366,
-   "end": 19.526
+   "start": 20.402,
+   "end": 20.562
   },
   {
    "w": "it",
-   "start": 19.526,
-   "end": 19.606
+   "start": 20.562,
+   "end": 20.722
   },
   {
    "w": "lives.",
-   "start": 19.606,
-   "end": 20.27
+   "start": 20.722,
+   "end": 21.305
   }
  ],
  [
   {
    "w": "Facebook's",
-   "start": 20.271,
-   "end": 20.751
+   "start": 21.305,
+   "end": 21.865
   },
   {
    "w": "phone",
-   "start": 20.751,
-   "end": 20.991
+   "start": 21.865,
+   "end": 22.105
   },
   {
    "w": "book",
-   "start": 20.991,
-   "end": 21.231
+   "start": 22.105,
+   "end": 22.425
   },
   {
    "w": "went",
-   "start": 21.231,
-   "end": 21.391
+   "start": 22.425,
+   "end": 22.745
   },
   {
    "w": "silent.",
-   "start": 21.391,
-   "end": 22.031
+   "start": 22.745,
+   "end": 23.305
   },
   {
    "w": "So",
-   "start": 22.031,
-   "end": 22.271
+   "start": 23.305,
+   "end": 23.465
   },
   {
    "w": "to",
-   "start": 22.271,
-   "end": 22.431
+   "start": 23.465,
+   "end": 23.625
   },
   {
    "w": "every",
-   "start": 22.431,
-   "end": 22.591
+   "start": 23.625,
+   "end": 23.865
   },
   {
    "w": "phone",
-   "start": 22.591,
-   "end": 22.831
+   "start": 23.865,
+   "end": 24.185
   },
   {
    "w": "on",
-   "start": 22.831,
-   "end": 22.991
+   "start": 24.185,
+   "end": 24.345
   },
   {
    "w": "Earth,",
-   "start": 22.991,
-   "end": 23.311
+   "start": 24.345,
+   "end": 24.825
   },
   {
    "w": "Facebook",
-   "start": 23.311,
-   "end": 23.871
+   "start": 24.825,
+   "end": 25.465
   },
   {
    "w": "simply",
-   "start": 23.871,
-   "end": 24.111
+   "start": 25.465,
+   "end": 25.865
   },
   {
    "w": "didn't",
-   "start": 24.111,
-   "end": 24.431
+   "start": 25.865,
+   "end": 26.265
   },
   {
    "w": "exist.",
-   "start": 24.431,
-   "end": 25.152
+   "start": 26.265,
+   "end": 26.97
   }
  ],
  [
   {
    "w": "Even",
-   "start": 25.152,
-   "end": 25.472
+   "start": 26.97,
+   "end": 27.29
   },
   {
    "w": "staff",
-   "start": 25.472,
-   "end": 25.872
+   "start": 27.29,
+   "end": 27.69
   },
   {
    "w": "got",
-   "start": 25.872,
-   "end": 26.032
+   "start": 27.69,
+   "end": 27.85
   },
   {
    "w": "stuck.",
-   "start": 26.032,
-   "end": 26.592
+   "start": 27.85,
+   "end": 28.33
   },
   {
    "w": "Reports",
-   "start": 26.592,
-   "end": 27.072
+   "start": 28.33,
+   "end": 28.73
   },
   {
    "w": "said",
-   "start": 27.072,
-   "end": 27.312
+   "start": 28.73,
+   "end": 28.97
   },
   {
    "w": "some",
-   "start": 27.312,
-   "end": 27.552
+   "start": 28.97,
+   "end": 29.21
   },
   {
    "w": "couldn't",
-   "start": 27.552,
-   "end": 27.872
+   "start": 29.21,
+   "end": 29.53
   },
   {
    "w": "get",
-   "start": 27.872,
-   "end": 28.032
+   "start": 29.53,
+   "end": 29.61
   },
   {
    "w": "into",
-   "start": 28.032,
-   "end": 28.192
+   "start": 29.61,
+   "end": 29.85
   },
   {
    "w": "buildings",
-   "start": 28.192,
-   "end": 28.512
+   "start": 29.85,
+   "end": 30.25
   },
   {
    "w": "with",
-   "start": 28.512,
-   "end": 28.592
+   "start": 30.25,
+   "end": 30.41
   },
   {
    "w": "their",
-   "start": 28.592,
-   "end": 28.752
+   "start": 30.41,
+   "end": 30.57
   },
   {
    "w": "badges.",
-   "start": 28.752,
-   "end": 29.663
+   "start": 30.57,
+   "end": 31.476
   }
  ],
  [
   {
    "w": "Engineers",
-   "start": 29.663,
-   "end": 30.223
+   "start": 31.476,
+   "end": 32.036
   },
   {
    "w": "had",
-   "start": 30.223,
-   "end": 30.383
+   "start": 32.036,
+   "end": 32.196
   },
   {
    "w": "to",
-   "start": 30.383,
-   "end": 30.463
+   "start": 32.196,
+   "end": 32.276
   },
   {
    "w": "go",
-   "start": 30.463,
-   "end": 30.543
+   "start": 32.276,
+   "end": 32.356
   },
   {
    "w": "to",
-   "start": 30.543,
-   "end": 30.623
+   "start": 32.356,
+   "end": 32.516
   },
   {
    "w": "the",
-   "start": 30.623,
-   "end": 30.783
+   "start": 32.516,
+   "end": 32.596
   },
   {
    "w": "data",
-   "start": 30.783,
-   "end": 31.023
+   "start": 32.596,
+   "end": 32.836
   },
   {
    "w": "centres",
-   "start": 31.023,
-   "end": 31.423
+   "start": 32.836,
+   "end": 33.316
   },
   {
    "w": "in",
-   "start": 31.423,
-   "end": 31.583
+   "start": 33.316,
+   "end": 33.556
   },
   {
    "w": "person",
-   "start": 31.583,
-   "end": 31.823
+   "start": 33.556,
+   "end": 33.876
   },
   {
    "w": "to",
-   "start": 31.823,
-   "end": 31.983
+   "start": 33.876,
+   "end": 34.116
   },
   {
    "w": "get",
-   "start": 31.983,
-   "end": 32.143
+   "start": 34.116,
+   "end": 34.276
   },
   {
    "w": "it",
-   "start": 32.143,
-   "end": 32.303
+   "start": 34.276,
+   "end": 34.436
   },
   {
    "w": "running",
-   "start": 32.303,
-   "end": 32.623
+   "start": 34.436,
+   "end": 34.836
   },
   {
    "w": "again.",
-   "start": 32.623,
-   "end": 33.189
+   "start": 34.836,
+   "end": 35.397
   }
  ],
  [
   {
    "w": "About",
-   "start": 33.189,
-   "end": 33.469
+   "start": 35.397,
+   "end": 35.757
   },
   {
    "w": "6",
-   "start": 33.469,
-   "end": 33.749
+   "start": 35.757,
+   "end": 36.117
   },
   {
    "w": "hours",
-   "start": 33.749,
-   "end": 33.989
+   "start": 36.117,
+   "end": 36.517
   },
   {
    "w": "later,",
-   "start": 33.989,
-   "end": 34.309
+   "start": 36.517,
+   "end": 36.917
   },
   {
    "w": "it",
-   "start": 34.309,
-   "end": 34.469
+   "start": 36.917,
+   "end": 37.077
   },
   {
    "w": "all",
-   "start": 34.469,
-   "end": 34.709
+   "start": 37.077,
+   "end": 37.317
   },
   {
    "w": "came",
-   "start": 34.709,
-   "end": 34.869
+   "start": 37.317,
+   "end": 37.477
   },
   {
    "w": "back.",
-   "start": 34.869,
-   "end": 35.422
+   "start": 37.477,
+   "end": 38.023
   }
  ],
  [
   {
    "w": "But",
-   "start": 35.422,
-   "end": 35.662
+   "start": 38.023,
+   "end": 38.263
   },
   {
    "w": "for",
-   "start": 35.662,
-   "end": 35.822
+   "start": 38.263,
+   "end": 38.423
   },
   {
    "w": "those",
-   "start": 35.822,
-   "end": 36.062
+   "start": 38.423,
+   "end": 38.623
   },
   {
    "w": "6",
-   "start": 36.062,
-   "end": 36.302
+   "start": 38.623,
+   "end": 38.823
   },
   {
    "w": "hours,",
-   "start": 36.302,
-   "end": 36.702
+   "start": 38.823,
+   "end": 39.383
   },
   {
    "w": "businesses",
-   "start": 36.702,
-   "end": 37.262
+   "start": 39.383,
+   "end": 40.023
   },
   {
    "w": "that",
-   "start": 37.262,
-   "end": 37.422
+   "start": 40.023,
+   "end": 40.183
   },
   {
    "w": "only",
-   "start": 37.422,
-   "end": 37.582
+   "start": 40.183,
+   "end": 40.423
   },
   {
    "w": "lived",
-   "start": 37.582,
-   "end": 37.822
+   "start": 40.423,
+   "end": 40.743
   },
   {
    "w": "on",
-   "start": 37.822,
-   "end": 37.982
+   "start": 40.743,
+   "end": 40.903
   },
   {
    "w": "Instagram",
-   "start": 37.982,
-   "end": 38.542
+   "start": 40.903,
+   "end": 41.543
   },
   {
    "w": "couldn't",
-   "start": 38.542,
-   "end": 38.862
+   "start": 41.543,
+   "end": 42.023
   },
   {
    "w": "be",
-   "start": 38.862,
-   "end": 39.022
+   "start": 42.023,
+   "end": 42.183
   },
   {
    "w": "found",
-   "start": 39.022,
-   "end": 39.262
+   "start": 42.183,
+   "end": 42.583
   },
   {
    "w": "at",
-   "start": 39.262,
-   "end": 39.422
+   "start": 42.583,
+   "end": 42.823
   },
   {
    "w": "all.",
-   "start": 39.422,
-   "end": 39.928
+   "start": 42.823,
+   "end": 43.336
   }
  ],
  [
   {
    "w": "The",
-   "start": 39.928,
-   "end": 40.168
+   "start": 43.337,
+   "end": 43.577
   },
   {
    "w": "lesson?",
-   "start": 40.168,
-   "end": 40.808
+   "start": 43.577,
+   "end": 44.137
   },
   {
    "w": "Social",
-   "start": 40.808,
-   "end": 41.128
+   "start": 44.137,
+   "end": 44.457
   },
   {
    "w": "media",
-   "start": 41.128,
-   "end": 41.528
+   "start": 44.457,
+   "end": 44.857
   },
   {
    "w": "is",
-   "start": 41.528,
-   "end": 41.688
+   "start": 44.857,
+   "end": 45.097
   },
   {
    "w": "rented",
-   "start": 41.688,
-   "end": 42.168
+   "start": 45.097,
+   "end": 45.657
   },
   {
    "w": "land.",
-   "start": 42.168,
-   "end": 42.568
+   "start": 45.657,
+   "end": 46.137
   },
   {
    "w": "Your",
-   "start": 42.568,
-   "end": 42.728
+   "start": 46.137,
+   "end": 46.297
   },
   {
    "w": "website",
-   "start": 42.728,
-   "end": 43.128
+   "start": 46.297,
+   "end": 46.937
   },
   {
    "w": "is",
-   "start": 43.128,
-   "end": 43.288
+   "start": 46.937,
+   "end": 47.177
   },
   {
    "w": "land",
-   "start": 43.288,
-   "end": 43.608
+   "start": 47.177,
+   "end": 47.577
   },
   {
    "w": "you",
-   "start": 43.608,
-   "end": 43.768
+   "start": 47.577,
+   "end": 47.737
   },
   {
    "w": "own.",
-   "start": 43.768,
-   "end": 44.268
+   "start": 47.737,
+   "end": 48.511
   }
  ],
  [
   {
    "w": "If",
-   "start": 44.268,
-   "end": 44.508
+   "start": 48.511,
+   "end": 48.751
   },
   {
    "w": "Instagram",
-   "start": 44.508,
-   "end": 44.908
+   "start": 48.751,
+   "end": 49.231
   },
   {
    "w": "went",
-   "start": 44.908,
-   "end": 45.068
+   "start": 49.231,
+   "end": 49.391
   },
   {
    "w": "down",
-   "start": 45.068,
-   "end": 45.228
+   "start": 49.391,
+   "end": 49.631
   },
   {
    "w": "tomorrow,",
-   "start": 45.228,
-   "end": 45.708
+   "start": 49.631,
+   "end": 50.271
   },
   {
    "w": "could",
-   "start": 45.708,
-   "end": 45.868
+   "start": 50.271,
+   "end": 50.431
   },
   {
    "w": "customers",
-   "start": 45.868,
-   "end": 46.268
+   "start": 50.431,
+   "end": 51.151
   },
   {
    "w": "still",
-   "start": 46.268,
-   "end": 46.508
+   "start": 51.151,
+   "end": 51.391
   },
   {
    "w": "find",
-   "start": 46.508,
-   "end": 46.668
+   "start": 51.391,
+   "end": 51.631
   },
   {
    "w": "you?",
-   "start": 46.668,
-   "end": 46.988
+   "start": 51.631,
+   "end": 52.031
   },
   {
    "w": "Follow",
-   "start": 46.988,
-   "end": 47.308
+   "start": 52.031,
+   "end": 52.431
   },
   {
    "w": "for",
-   "start": 47.308,
-   "end": 47.388
+   "start": 52.431,
+   "end": 52.591
   },
   {
    "w": "more",
-   "start": 47.388,
-   "end": 47.548
+   "start": 52.591,
+   "end": 52.831
   },
   {
    "w": "Internet",
-   "start": 47.548,
-   "end": 48.028
+   "start": 52.831,
+   "end": 53.391
   },
   {
    "w": "Stories.",
-   "start": 48.028,
-   "end": 49.028
+   "start": 53.391,
+   "end": 54.391
   }
  ]
 ]

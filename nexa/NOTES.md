@@ -33,3 +33,6 @@
 - 2026-11-21 (Jayden): the light off-white carousel (ai-prompts-5 v1) was "very bland". v2 direction: navy #150C2B slides,
   CC0 photo across the top fading into navy, big outlined lavender number, DM Sans ExtraBold headline with lavender key words,
   white UI card overlapping the photo (nexa/images/ai-prompts-5/src/slides.html). v2 approved and posted.
+- 2026-11-23 (Jayden): EVERY Nexa reel must use ElevenLabs Brian (nPczCjzI2devNBz1zQrb, eleven_v3), no Chatterbox/Kokoro fallback.
+  Use vo_el.py + join2.py (nexa/videos/internet-stories-ep7-outage/src). If no key is available, ask Jayden for one before voicing.
+  Never write the API key into the repo.
