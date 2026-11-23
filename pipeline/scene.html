@@ -3549,7 +3549,7 @@ SC.tvset = (c, p, lt, d) => {
   stool(c, 210, 880);
   person(c, 210, 520, .78, {face: 'front', coat: '#e8b54a', legs: '#5a3a2a', skin: '#d8b89a', hairC: '#d6b25a', smile: .4});
   // three bachelors (right)
-  const xs = [590, 760, 930];
+  const xs = [570, 725, 880];
   xs.forEach((x, i) => {
     stool(c, x, 880);
     const hl = p.hl === i && lt > (p.hlAt ?? 0)*d;
@@ -3558,7 +3558,7 @@ SC.tvset = (c, p, lt, d) => {
     c.fillStyle = '#1b0f14'; c.fillRect(x - 40, 1000, 80, 56); text(c, String(i + 1), x, 1030, 46, 'Anton', '#f6d84a');
   });
   if (p.qmark){ xs.forEach((x, i) => text(c, '?', x, 470, 90, 'Anton', `rgba(255,255,255,${ease((lt - .2 - i*.25)/.3)*.8})`)); }
-  if (p.won && lt > p.won*d){ const a = ease((lt - p.won*d)/.25); c.save(); c.globalAlpha = a; c.translate(xs[p.hl ?? 0], 420); c.rotate(-.08); c.fillStyle = '#f6d84a'; c.beginPath(); c.roundRect(-150, -50, 300, 100, 20); c.fill(); text(c, 'WINNER', 0, 4, 64, 'Anton', '#3a0606'); c.restore(); }
+  if (p.won && lt > p.won*d){ const a = ease((lt - p.won*d)/.25); c.save(); c.globalAlpha = a; c.translate(xs[p.hl ?? 0], 720); c.rotate(-.08); c.fillStyle = '#f6d84a'; c.beginPath(); c.roundRect(-150, -50, 300, 100, 20); c.fill(); text(c, 'WINNER', 0, 4, 64, 'Anton', '#3a0606'); c.restore(); }
   if (p.tag) tag(c, p.tag, 540, 380, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
   if (p.tag2) tag(c, p.tag2, 540, 1250, ease((lt - (p.tag2At || .3)*d)/.3), p.tag2Col || '#ff5a3a');
 };
@@ -3577,7 +3577,7 @@ SC.backstage = (c, p, lt, d) => {
   // Cheryl, near the camera; turning to leave
   const k = p.leave ? ease((lt - .3)/(d*.8)) : 0;
   person(c, 300 - 200*k, 700, 1.2, {face: p.leave ? 'back' : 'front', coat: '#e8b54a', legs: '#5a3a2a', skin: '#d8b89a', hairC: '#d6b25a', wide: !p.leave});
-  if (p.tag) tag(c, p.tag, 540, 260, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
   if (p.tag2) tag(c, p.tag2, 540, 1250, ease((lt - (p.tag2At || .3)*d)/.3), p.tag2Col || '#ff5a3a');
   if (p.follow) followBox(c, lt, d);
 };
@@ -3623,19 +3623,20 @@ SC.polaroids = (c, p, lt, d) => {
 };
 
 function hud(sc, t){
+  // HUD row; D.hudY moves it below Instagram's top bar (Reels/Friends header sits at ~y130-200)
+  const Y = D.hudY || 170, sz = D.hudY ? .86 : 1;
   const blink = Math.floor(t*1.6)%2===0;
-  X.fillStyle = 'rgba(0,0,0,.35)'; X.fillRect(0, 110, W, 120);
-  if (blink){ X.fillStyle = '#ff2d20'; X.beginPath(); X.arc(80, 170, 16, 0, 7); X.fill(); }
-  text(X, 'REC', 110, 172, 54, 'VT', '#ff3b30', 'left');
-  text(X, sc.cam, 230, 172, 46, 'VT', '#d7fbe9', 'left');
-  // clock ticks forward within scene
+  X.fillStyle = 'rgba(0,0,0,.35)'; X.fillRect(0, Y - 60*sz, W, 120*sz);
+  const L = D.hudY ? 70 : 0;   // inset from the edges so it never hides under rounded corners
+  if (blink){ X.fillStyle = '#ff2d20'; X.beginPath(); X.arc(80 + L, Y, 16*sz, 0, 7); X.fill(); }
+  text(X, 'REC', 110 + L, Y + 2, 54*sz, 'VT', '#ff3b30', 'left');
+  text(X, sc.cam, 230*sz + L + 10, Y + 2, 46*sz, 'VT', '#d7fbe9', 'left');
   let clk = sc.clock;
   const m = /^(\d\d):(\d\d):(\d\d) (AM|PM)$/.exec(clk);
   if (m){ let s = +m[3] + Math.floor(t - sc.start); let mm = +m[2] + Math.floor(s/60); s%=60; clk = `${m[1]}:${String(mm%60).padStart(2,'0')}:${String(s).padStart(2,'0')} ${m[4]}`; }
-  text(X, clk, W-60, 172, 50, 'VT', '#d7fbe9', 'right');
-  // part badge
-  if (D.badge) { X.fillStyle = 'rgba(160,20,15,.92)'; X.fillRect(390, 260, 300, 74);
-  text(X, D.badge, 540, 299, 46, 'Anton', '#fff'); }
+  text(X, clk, W - 60 - L, Y + 2, 50*sz, 'VT', '#d7fbe9', 'right');
+  if (D.badge) { X.fillStyle = 'rgba(160,20,15,.92)'; X.fillRect(390, Y + 90, 300, 74);
+  text(X, D.badge, 540, Y + 129, 46, 'Anton', '#fff'); }
 }
 function captions(t){
   const ch = D.caps.find(c => t >= c.start && t < c.end);
@@ -3683,7 +3684,7 @@ window.render = (t) => {
   X.globalAlpha = 0.13; X.globalCompositeOperation = 'overlay'; X.drawImage(GR[fr%8], 0, 0, W, H); X.globalCompositeOperation = 'source-over'; X.globalAlpha = 1;
   X.fillStyle = 'rgba(0,0,0,.16)'; for (let y=(fr%4); y<H; y+=4) X.fillRect(0, y, W, 1.5);
   vignette(X, .8);
-  if (D.zoom || D.fit){ const g = X.createLinearGradient(0, D.fadeY || 1430, 0, H); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,.85)'); X.fillStyle = g; X.fillRect(0, 1430, W, H-1430); }
+  if (D.zoom || D.fit){ const g = X.createLinearGradient(0, D.fadeY || 1430, 0, H); g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,'rgba(0,0,0,.85)'); X.fillStyle = g; X.fillRect(0, D.fadeY || 1430, W, H-(D.fadeY || 1430)); }
   hud(sc, t);
   captions(t);
 };

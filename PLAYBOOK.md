@@ -162,6 +162,13 @@ fitted into a stage at screen y≈230–1300 (no props cropped at the edges, not
 bottom ~440 px stays clear for Instagram/Shorts UI. Per scene, add `"fit": {"cy": <scene-y to centre>, "s": <scale>}` in the plan so small
 content (title cards, big numbers) is scaled up to fill the stage. Check a contact sheet for edge crops before rendering.
 
+
+**v5 safe-zone layout (owner 2026-11-23, screenshot: Instagram's 'Reels / Friends' header covered the REC/clock row):** always use
+`layout.json` `{"fit": {"cy": 760, "s": 1.05}, "stageY": 850, "hudY": 272, "capY": 1450, "capW": 800, "fadeY": 1505, "followDY": -360}`.
+Instagram covers roughly y 0–215 (status bar + header), y 1540–1920 (username/caption/audio) and x 975–1080 between y 1020–1700
+(like/comment/share buttons). Nothing important may sit there: the HUD row sits at y≈272, scene tags at scene-y ≥ 300, captions at
+y≈1450, FOLLOW box above the captions, key props inside screen x 110–960. Before rendering, draw those three zones on a few stills and check.
+
 ## Voice & look rules
 **Owner (2026-11-21):** Kokoro has no emotional depth. Use ElevenLabs eleven_v3 with horror-style voices and audio tags ([whispers], [low], [shaky], [voice breaking], [desperate]): narrator 'Jack – Deep Dark Horror Narrator' (BVPhWQykET1TSvfGzrUr); older female character 'Lily' (pFZP5JQG7iQjIQuC4Bku), whispered when creepy. **Never use Australian voices.** **Owner (2026-11-21): no female voices — every voice must be male** (entity/whispers: Callum N2lVS1w4EtoT3dr4eOWO whispered, pitched ~7% down; Jack for narration; Will/Liam for young men). Put deliberate silences before and after the key lines (clue text, reveal, last words, final whisper); time pauses after per-line speed-up so they stay exact (see examples/dont-turn-on-the-lights/join.py). Needs an API key from Jayden each session (never save it); see pipeline/examples/lock-the-door/vo11.py. Without a key, fall back to Kokoro and say so.
 Narrator: first person, calm and low, never jokey. Captions mirror the narration word by word.
