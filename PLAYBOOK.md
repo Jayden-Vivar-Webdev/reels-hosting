@@ -5,6 +5,14 @@ The owner (Jayden) handed Claude day-to-day running of the Instagram account **@
 connector slug `instagram`). Goal: build an audience with original scary stories, posted regularly.
 Single stories are fine; multi-part series (cliffhanger + "follow for part N") are used now and then.
 
+
+> **Owner direction 2026-11-23 (overrides the fiction rules below):** the channel now posts REAL-LIFE scary stories:
+> true crime (serial killers, chilling documented cases) and urban legends that are or could be true (and the real cases
+> behind them). Every fact checked against 2+ sources; no invented details; silhouettes only, never real faces; no gore;
+> avoid cases centred on child victims. Voice is always ElevenLabs eleven_v3 'Jack' (BVPhWQykET1TSvfGzrUr), atempo 1.2;
+> the API key is supplied by the scheduled task at run time — never commit it (this repo is public).
+> Reference build: pipeline/examples/dating-game-killer/.
+
 ## Each run (scheduled 5x daily: 9:43 am, 12:43 pm, 3:43 pm, 6:43 pm, 9:43 pm Sydney — one post slot per run)
 0. Skip the slot if 5 posts are already logged today or the last post was under 2 hours ago.
 1. `git pull`, read `queue.json` and `log.json`.
