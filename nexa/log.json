@@ -118,5 +118,23 @@
    "nexa/videos/internet-stories-ep7-outage/ep7.mp4"
   ],
   "voice": "ElevenLabs Brian, eleven_v3, join2.py (pause trim + atempo 1.12)"
+ },
+ {
+  "slug": "christmas-close-5",
+  "format": "carousel",
+  "topic": "Closing over Christmas? 5 website jobs first: holiday hours banner on the homepage, special hours in Google Business Profile (show in Search and Maps), out of office reply on the form inbox, check domain/hosting renewal date and that the card on file works, test your own contact form (check spam). Made-up business Little Fern Cafe, Geelong.",
+  "caption": "Closing over Christmas? Do these 5 website jobs before you switch off. 🎄\n\nWhich one have you not done yet? Comment the number 👇 and save this for your last week before the break.\n\nTips from the team at Nexa Web Development. (Little Fern Cafe is a made-up example.)\n\n#websitetips #smallbusinessaustralia #googlebusinessprofile #smallbusinesstips #christmasclosure #webdesign #australianbusiness #websitedesign",
+  "media_id": "18113507600579123",
+  "date": "2026-11-24",
+  "time": "10:05 AEDT",
+  "images": [
+   "nexa/images/christmas-close-5/01.jpg",
+   "nexa/images/christmas-close-5/02.jpg",
+   "nexa/images/christmas-close-5/03.jpg",
+   "nexa/images/christmas-close-5/04.jpg",
+   "nexa/images/christmas-close-5/05.jpg",
+   "nexa/images/christmas-close-5/06.jpg",
+   "nexa/images/christmas-close-5/07.jpg"
+  ]
  }
 ]
