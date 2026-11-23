@@ -372,5 +372,23 @@
   "posted": false,
   "status": "awaiting approval",
   "note": "5:17 pm reel slot. 50.5 s. capcheck 0 problems; synccheck 149/149 mean +0.012s, first word +0.30s; final transcript complete. Sources: TechCrunch 2009 (Viral Loop excerpt), Microsoft press release 31 Dec 1997, TechSpot, Wikipedia."
+ },
+ {
+  "slug": "internet-stories-ep7-outage",
+  "format": "reel",
+  "topic": "Internet Stories ep.7: the Oct 4 2021 Facebook outage. A command during routine maintenance (meant to check backbone capacity) cut every link between Facebook's data centres; its DNS servers withdrew their routes so the 'internet's phone book' had no answer and Facebook/Instagram/WhatsApp didn't exist to phones; staff reportedly couldn't get into buildings with badges (NYT via Wikipedia); engineers went to the data centres in person; ~6 hours. Lesson: social media is rented land, your website is land you own.",
+  "hook": "In 2021, Facebook deleted itself from the internet. By accident.",
+  "style": "dark purple Internet Stories style (same scene_dark.html as ep.5/ep.6), centred word-by-word captions",
+  "voice": "Chatterbox built-in voice (no ElevenLabs key in this scheduled run)",
+  "media": [
+   "nexa/videos/internet-stories-ep7-outage/ep7.mp4"
+  ],
+  "caption": "Facebook once deleted itself from the internet. By accident. 😳\n\nFor about 6 hours in 2021, Facebook, Instagram and WhatsApp vanished worldwide. If your business only lives on Instagram, that's 6 hours where customers can't find you.\n\nIf Instagram went down tomorrow, could customers still find you? Tell me in the comments 👇\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #techhistory #facebookdown #webdesign #smallbusinessaustralia #websitetips #digitalmarketing #socialmedia",
+  "created": "2026-11-23 21:05 AEDT",
+  "post_on": "2026-11-23",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval",
+  "note": "8:17 pm reel slot. 49.9 s. capcheck 0 problems; synccheck 152/157 mean +0.012s, none >0.2s; final transcript complete (all scripted words). Sources: Meta engineering blog 5 Oct 2021 (cause, onsite engineers, physical security), Wikipedia 2021 Facebook outage (15:39 UTC start, ~6-7 h, NYT badge report), NPR 5 Oct 2021 ('about six hours', businesses)."
  }
 ]
