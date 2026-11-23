@@ -3622,6 +3622,184 @@ SC.polaroids = (c, p, lt, d) => {
   if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
 };
 
+// ---------- True story: the woman in the closet (Japan, 2008) ----------
+function tatamiRoom(c){
+  bg(c, '#3b3a33', '#16150f');
+  c.fillStyle = '#5c584a'; c.fillRect(0, 300, W, 1000);                      // plaster wall
+  c.fillStyle = '#3a2c1e'; c.fillRect(0, 300, W, 18); c.fillRect(0, 1290, W, 20);   // wood rails
+  c.fillStyle = '#6d6a48'; c.fillRect(0, 1310, W, 300);                       // tatami
+  c.strokeStyle = 'rgba(30,25,10,.6)'; c.lineWidth = 6; c.beginPath(); c.moveTo(0, 1420); c.lineTo(W, 1420); c.moveTo(540, 1310); c.lineTo(540, 1420); c.stroke();
+}
+function closetFront(c, open=0, open2=0){
+  // two-level Japanese closet: top compartment + bottom compartment, each with two sliding paper doors
+  c.fillStyle = '#2a1f15'; c.fillRect(150, 360, 780, 930);                   // frame
+  c.fillStyle = '#050403'; c.fillRect(170, 380, 740, 410); c.fillRect(170, 830, 740, 440);   // dark insides
+  c.fillStyle = '#3a2c1e'; c.fillRect(170, 790, 740, 40);                    // middle shelf rail
+  const panel = (x, y, w, h) => {
+    c.fillStyle = '#d9d2bd'; c.fillRect(x, y, w, h);
+    c.strokeStyle = '#2a1f15'; c.lineWidth = 10; c.strokeRect(x, y, w, h);
+    c.strokeStyle = 'rgba(120,110,80,.35)'; c.lineWidth = 3; for (let k = 1; k < 4; k++){ c.beginPath(); c.moveTo(x + 20, y + k*h/4); c.lineTo(x + w - 20, y + k*h/4); c.stroke(); }
+    c.fillStyle = '#3a2c1e'; c.beginPath(); c.arc(x + (x < 540 ? w - 40 : 40), y + h/2, 18, 0, 7); c.fill();
+  };
+  // top: right door slides left over the left door by `open`
+  panel(170, 380, 370, 410); panel(540 - 370*open, 380, 370, 410);
+  panel(170, 830, 370, 440); panel(540 - 300*open2, 830, 370, 440);
+}
+function curled(c, x, y, s, a=1){
+  // a person curled up on her side: dark featureless silhouette, back to camera
+  c.save(); c.translate(x, y); c.scale(s, s); c.globalAlpha *= a; c.fillStyle = '#0d0c0b';
+  c.beginPath(); c.ellipse(-150, -30, 52, 46, 0, 0, 7); c.fill();                       // head
+  c.beginPath(); c.ellipse(-140, -60, 60, 36, -.2, Math.PI, 0); c.fill();               // hair
+  c.beginPath(); c.moveTo(-110, -60); c.quadraticCurveTo(10, -110, 110, -40); c.quadraticCurveTo(170, 0, 120, 30); c.lineTo(-100, 30); c.quadraticCurveTo(-120, -20, -110, -60); c.fill();  // back
+  c.beginPath(); c.moveTo(80, -20); c.quadraticCurveTo(200, -50, 220, 10); c.quadraticCurveTo(200, 40, 100, 30); c.fill();   // knees drawn up
+  c.restore();
+}
+function torch(c, x, y, r, k=1){ const g = c.createRadialGradient(x, y, 10, x, y, r); g.addColorStop(0, `rgba(255,248,215,${.55*k})`); g.addColorStop(.6, `rgba(255,240,200,${.18*k})`); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 0, W, H); }
+SC.closet = (c, p, lt, d) => {
+  tatamiRoom(c);
+  let o = p.open || 0;
+  if (p.slide) o = ease((lt - p.slide*d)/(d*.45))*.85;
+  if (p.crack) o = .05 + .09*ease((lt - d*.35)/(d*.5));
+  closetFront(c, o);
+  if (p.eyes && o > 0){ const a = ease((lt - d*.7)/.4); c.fillStyle = `rgba(230,230,210,${a*.9})`; c.beginPath(); c.ellipse(205 + 370*o - 20, 590, 7, 4, 0, 0, 7); c.ellipse(205 + 370*o - 46, 590, 7, 4, 0, 0, 7); c.fill(); }
+  if (p.torch) torch(c, 360 + 120*Math.sin(lt*1.3), 560, 520, p.torch);
+  else { c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(0, 0, W, H); }
+  if (p.box){ const a = .6 + .4*Math.sin(lt*7); c.save(); c.setLineDash([22, 14]); c.strokeStyle = `rgba(255,50,40,${a})`; c.lineWidth = 8; c.strokeRect(160, 370, 760, 430); c.restore(); }
+  if (p.tag) tag(c, p.tag, 540, 330, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
+  if (p.tag2) tag(c, p.tag2, 540, 1230, ease((lt - (p.tag2At || .3)*d)/.3), p.tag2Col || '#ff5a3a');
+  if (p.follow) followBox(c, lt, d);
+};
+SC.inside = (c, p, lt, d) => {
+  // looking into the top compartment by torchlight
+  bg(c, '#0a0908', '#000');
+  c.fillStyle = '#2a1f15'; c.fillRect(60, 420, 960, 640);
+  c.fillStyle = '#3a3026'; c.fillRect(90, 450, 900, 580);
+  c.fillStyle = '#4e4030'; c.beginPath(); c.moveTo(90, 1030); c.lineTo(990, 1030); c.lineTo(900, 880); c.lineTo(180, 880); c.fill();   // shelf floor
+  if (p.mattress){
+    c.fillStyle = '#8f8a7a'; c.beginPath(); c.roundRect(170, 860, 740, 120, 26); c.fill();
+    c.strokeStyle = 'rgba(40,36,30,.5)'; c.lineWidth = 4; for (let x = 260; x < 900; x += 110){ c.beginPath(); c.moveTo(x, 870); c.lineTo(x, 970); c.stroke(); }
+    c.fillStyle = '#a7a08c'; c.beginPath(); c.roundRect(200, 820, 200, 70, 30); c.fill();          // pillow
+    c.fillStyle = '#5a6670'; c.beginPath(); c.roundRect(560, 800, 300, 80, 18); c.fill();           // folded blanket
+  }
+  if (p.towel){ const a = ease((lt - d*.5)/.3); c.globalAlpha = a; c.fillStyle = '#c9d6dc'; c.fillRect(780, 470, 140, 200); c.fillStyle = '#3a2c1e'; c.fillRect(760, 460, 180, 14); c.globalAlpha = 1; }
+  torch(c, 520 + 40*Math.sin(lt*2), 800, 600, 1.2);
+  if (p.woman){ const a = ease((lt - (p.wAt ?? .15)*d)/.35); c.save(); c.shadowColor = 'rgba(255,240,200,.55)'; c.shadowBlur = 30; curled(c, 560, 900, 1.35, a); c.restore(); }
+  c.fillStyle = 'rgba(0,0,0,.35)'; c.fillRect(0, 0, W, 420); c.fillRect(0, 1060, W, H);
+  if (p.tag) tag(c, p.tag, 540, 330, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
+  if (p.tag2) tag(c, p.tag2, 540, 1180, ease((lt - (p.tag2At || .3)*d)/.3), p.tag2Col || '#ff5a3a');
+};
+SC.legend = (c, p, lt, d) => {
+  bg(c, '#24201a', '#0c0a08');
+  c.save(); c.translate(540, 760); c.rotate(-.03);
+  c.fillStyle = 'rgba(0,0,0,.5)'; c.fillRect(-372, -402, 760, 820);
+  c.fillStyle = '#d8c9a3'; c.fillRect(-380, -410, 760, 820);                  // manila folder
+  c.fillStyle = '#c7b68e'; c.fillRect(-380, -470, 300, 70);
+  text(c, 'CASE FILE', -230, -432, 44, 'Type', '#3a2c1e');
+  text(c, 'URBAN LEGEND:', 0, -260, 62, 'Type', '#2a2218');
+  text(c, '"SOMEONE IS LIVING', 0, -160, 58, 'Type', '#2a2218');
+  text(c, 'IN YOUR HOUSE"', 0, -90, 58, 'Type', '#2a2218');
+  const x1 = ease((lt - d*.3)/.25); if (x1 > 0){ c.strokeStyle = '#c0281e'; c.lineWidth = 10; c.beginPath(); c.moveTo(-300, -200); c.lineTo(-300 + 600*x1, -60); c.stroke(); }
+  const st = ease((lt - d*.45)/.2);
+  if (st > 0){ c.save(); c.globalAlpha = st; c.translate(0, 120); c.rotate(-.12); c.scale(1.4 - .4*st, 1.4 - .4*st); c.strokeStyle = '#c0281e'; c.lineWidth = 12; c.strokeRect(-280, -80, 560, 160); text(c, 'TRUE STORY', 0, 6, 110, 'Anton', '#c0281e'); c.restore(); }
+  const jp = ease((lt - d*.72)/.25); c.globalAlpha = jp; text(c, 'JAPAN · 2008', 0, 320, 70, 'Anton', '#2a2218'); c.globalAlpha = 1;
+  c.restore();
+};
+SC.fridgeOpen = (c, p, lt, d) => {
+  kitchen(c, true);
+  // open fridge, lit inside
+  c.fillStyle = '#e9ecea'; c.fillRect(300, 560, 440, 760);
+  c.fillStyle = '#f6f8f2'; c.fillRect(320, 580, 400, 720);
+  { const g = c.createRadialGradient(520, 640, 20, 520, 900, 600); g.addColorStop(0, 'rgba(255,255,240,.6)'); g.addColorStop(1, 'rgba(255,255,240,0)'); c.fillStyle = g; c.fillRect(0, 400, W, 1100); }
+  c.fillStyle = '#b9c0c0'; for (const y of [780, 990, 1170]) c.fillRect(320, y, 400, 10);
+  c.fillStyle = '#cfd6d4'; c.fillRect(740, 570, 70, 740);                    // door edge
+  const items = [[380, 720, 70, 60, '#d8473a'], [470, 700, 60, 80, '#e6b32c'], [560, 735, 120, 45, '#7aa35a'], [380, 930, 110, 60, '#f0e6c8'], [520, 900, 60, 90, '#3a7bd8'], [610, 940, 80, 50, '#c9845a'], [380, 1120, 140, 50, '#9a5a3a'], [560, 1100, 70, 70, '#e8e0d0']];
+  const gone = [1, 2, 4, 5, 6];
+  items.forEach(([x, y, w, h, col], i) => {
+    const gi = gone.indexOf(i); const a = gi < 0 ? 1 : 1 - ease((lt - d*(.25 + gi*.1))/.25);
+    if (a > 0){ c.globalAlpha = a; c.fillStyle = col; c.beginPath(); c.roundRect(x, y, w, h, 10); c.fill(); c.globalAlpha = 1; }
+    if (gi >= 0 && a < .5){ c.save(); c.setLineDash([12, 9]); c.strokeStyle = '#ff3b30'; c.lineWidth = 5; c.strokeRect(x - 6, y - 6, w + 12, h + 12); c.restore(); }
+  });
+  if (p.tag) tag(c, p.tag, 540, p.tagY || 400, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#ff5a3a');
+};
+SC.camsetup = (c, p, lt, d) => {
+  bg(c, '#3a3d40', '#151719');
+  c.fillStyle = '#4c5054'; c.fillRect(0, 300, W, 1050);
+  // ceiling camera
+  c.save(); c.translate(300, 470);
+  c.fillStyle = '#e6e8e6'; c.fillRect(-90, -40, 180, 30); c.beginPath(); c.arc(0, -10, 90, 0, Math.PI); c.fill();
+  c.fillStyle = '#16181a'; c.beginPath(); c.arc(0, 30, 44, 0, 7); c.fill(); c.fillStyle = '#4a6a90'; c.beginPath(); c.arc(-8, 22, 14, 0, 7); c.fill();
+  const on = Math.floor(lt*2)%2 === 0; c.fillStyle = on ? '#ff3b30' : '#5a1a18'; c.beginPath(); c.arc(55, 10, 9, 0, 7); c.fill();
+  c.restore();
+  // signal arcs
+  for (let k = 0; k < 3; k++){ const a = ease((lt*1.5 - k*.3)%1.2); c.strokeStyle = `rgba(215,251,233,${.8*(1 - a)})`; c.lineWidth = 8; c.beginPath(); c.arc(300 + 230*a, 600 + 260*a, 60 + 20*k, -.2, 1.6); c.stroke(); }
+  // phone
+  c.save(); c.translate(700, 950); c.rotate(.06);
+  c.fillStyle = '#0b0d10'; c.beginPath(); c.roundRect(-170, -300, 340, 600, 40); c.fill();
+  c.fillStyle = '#20262a'; c.beginPath(); c.roundRect(-150, -280, 300, 560, 28); c.fill();
+  c.fillStyle = '#3a4044'; c.fillRect(-130, -200, 260, 200); c.fillStyle = '#2a3034'; c.fillRect(-130, -40, 260, 40);
+  c.fillStyle = '#5c584a'; c.fillRect(-130, -200, 260, 120);
+  text(c, 'HOME CAM 1', 0, -240, 34, 'VT', '#d7fbe9'); text(c, '● LIVE', -60, 40, 34, 'VT', '#ff3b30');
+  c.fillStyle = '#3a4044'; c.fillRect(-130, 80, 120, 90); c.fillRect(10, 80, 120, 90);
+  c.restore();
+  if (p.tag) tag(c, p.tag, 540, 330, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
+};
+SC.phonecam = (c, p, lt, d) => {
+  bg(c, '#0c0e10', '#000');
+  c.save(); c.translate(540, 780);
+  c.fillStyle = '#0b0d10'; c.beginPath(); c.roundRect(-330, -470, 660, 940, 60); c.fill();
+  c.fillStyle = '#16191c'; c.beginPath(); c.roundRect(-305, -445, 610, 890, 44); c.fill();
+  text(c, 'HOME CAM 2 · HALLWAY', 0, -390, 38, 'VT', '#d7fbe9');
+  // camera feed: hallway
+  c.save(); c.beginPath(); c.rect(-280, -340, 560, 520); c.clip();
+  c.fillStyle = '#5a564a'; c.fillRect(-280, -340, 560, 520);
+  c.fillStyle = '#3a372f'; c.beginPath(); c.moveTo(-280, -340); c.lineTo(-90, -170); c.lineTo(-90, 60); c.lineTo(-280, 180); c.fill(); c.beginPath(); c.moveTo(280, -340); c.lineTo(90, -170); c.lineTo(90, 60); c.lineTo(280, 180); c.fill();
+  c.fillStyle = '#2b2922'; c.fillRect(-90, -170, 180, 230);
+  c.fillStyle = '#6d6a48'; c.beginPath(); c.moveTo(-280, 180); c.lineTo(-90, 60); c.lineTo(90, 60); c.lineTo(280, 180); c.fill();
+  // figure crossing the hall
+  const k = clamp((lt - d*.25)/(d*.6), 0, 1), fx = -160 + 300*k;
+  if (lt > d*.2){ c.fillStyle = '#0b0a09'; c.beginPath(); c.ellipse(fx, -90, 22, 26, 0, 0, 7); c.fill(); c.beginPath(); c.moveTo(fx - 32, -60); c.lineTo(fx + 32, -60); c.lineTo(fx + 26, 70); c.lineTo(fx - 26, 70); c.fill(); }
+  c.fillStyle = 'rgba(255,255,255,.05)'; for (let y = -340; y < 180; y += 6) c.fillRect(-280, y, 560, 2);
+  c.restore();
+  if (lt > d*.3){ const a = ease((lt - d*.3)/.2); c.globalAlpha = a; c.strokeStyle = '#ff3b30'; c.lineWidth = 5; c.strokeRect(fx - 50, -130, 100, 210); c.globalAlpha = 1; }
+  // alert banner
+  const b = ease((lt - d*.35)/.25); if (b > 0){ c.save(); c.translate(0, 290 - 40*(1 - b)); c.globalAlpha = b; c.fillStyle = '#e9ecef'; c.beginPath(); c.roundRect(-280, -70, 560, 140, 24); c.fill(); text(c, '⚠ MOTION DETECTED', 0, -22, 44, 'Anton', '#c0281e'); text(c, 'You are away from home', 0, 34, 36, 'Type', '#333'); c.restore(); }
+  c.restore();
+  if (p.tag) tag(c, p.tag, 540, 330, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
+};
+SC.locked = (c, p, lt, d) => {
+  bg(c, '#1a2230', '#070a10');
+  c.fillStyle = '#20262a'; c.fillRect(0, 1150, W, 400);
+  // Japanese single-storey house
+  c.fillStyle = '#8a8478'; c.fillRect(140, 700, 800, 450);
+  c.fillStyle = '#2c3238'; c.beginPath(); c.moveTo(80, 720); c.lineTo(220, 540); c.lineTo(860, 540); c.lineTo(1000, 720); c.fill();
+  // windows (closed)
+  for (const x of [190, 720]){ c.fillStyle = '#26303a'; c.fillRect(x, 800, 170, 150); c.strokeStyle = '#d9d2bd'; c.lineWidth = 8; c.strokeRect(x, 800, 170, 150); c.beginPath(); c.moveTo(x + 85, 800); c.lineTo(x + 85, 950); c.stroke(); }
+  // sliding front door
+  c.fillStyle = '#4a3a2a'; c.fillRect(450, 820, 180, 330); c.strokeStyle = '#2a1f15'; c.lineWidth = 6; c.strokeRect(450, 820, 90, 330); c.strokeRect(540, 820, 90, 330);
+  // police lights
+  const f = Math.floor(lt*5)%2; const g = c.createRadialGradient(f ? 120 : 960, 1200, 10, f ? 120 : 960, 1200, 700); g.addColorStop(0, f ? 'rgba(255,40,40,.45)' : 'rgba(60,110,255,.45)'); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 0, W, H);
+  // padlock icons
+  const lock = (x, y, a) => { if (a <= 0) return; c.save(); c.globalAlpha = a; c.translate(x, y); c.strokeStyle = '#ff3b30'; c.lineWidth = 12; c.beginPath(); c.arc(0, -24, 30, Math.PI, 0); c.stroke(); c.fillStyle = '#ff3b30'; c.beginPath(); c.roundRect(-46, -24, 92, 74, 10); c.fill(); c.restore(); };
+  lock(540, 990, ease((lt - d*.35)/.2)); lock(275, 875, ease((lt - d*.62)/.2)); lock(805, 875, ease((lt - d*.72)/.2));
+  if (p.tag) tag(c, p.tag, 540, 400, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
+  if (p.tag2) tag(c, p.tag2, 540, 1250, ease((lt - (p.tag2At || .3)*d)/.3), p.tag2Col || '#ff5a3a');
+};
+SC.arrest = (c, p, lt, d) => {
+  bg(c, '#24201a', '#0c0a08');
+  c.save(); c.translate(540, 760); c.rotate(.02);
+  c.fillStyle = 'rgba(0,0,0,.5)'; c.fillRect(-372, -402, 760, 820);
+  c.fillStyle = '#eee8d8'; c.fillRect(-380, -410, 760, 820);
+  text(c, 'POLICE REPORT', 0, -340, 56, 'Type', '#2a2218');
+  c.fillStyle = 'rgba(0,0,0,.2)'; c.fillRect(-320, -300, 640, 4);
+  curled(c, -210, -120, .55, .9);
+  text(c, 'FEMALE, 58', 0, -150, 48, 'Type', '#2a2218', 'left'); 
+  text(c, 'Statement:', -320, 20, 46, 'Type', '#2a2218', 'left');
+  const q = ease((lt - d*.1)/.3); c.globalAlpha = q; text(c, '"nowhere to live"', 0, 100, 64, 'Hand', '#1c1c2a'); c.globalAlpha = 1;
+  const st = ease((lt - d*.55)/.2);
+  if (st > 0){ c.save(); c.globalAlpha = st; c.translate(0, 260); c.rotate(-.1); c.scale(1.4 - .4*st, 1.4 - .4*st); c.strokeStyle = '#c0281e'; c.lineWidth = 12; c.strokeRect(-300, -75, 600, 150); text(c, 'ARRESTED', 0, -18, 72, 'Anton', '#c0281e'); text(c, 'TRESPASSING', 0, 40, 50, 'Anton', '#c0281e'); c.restore(); }
+  c.restore();
+};
+
 function hud(sc, t){
   // HUD row; D.hudY moves it below Instagram's top bar (Reels/Friends header sits at ~y130-200)
   const Y = D.hudY || 170, sz = D.hudY ? .86 : 1;
