@@ -332,5 +332,28 @@
     "posted": false,
     "status": "awaiting approval",
     "note": "11:17 am reel slot. 36.7 s. capcheck 0 problems; synccheck 115/119 mean +0.013s, none >0.2s; final transcript complete (all scripted words)."
+  },
+  {
+    "slug": "website-words-5",
+    "format": "carousel",
+    "topic": "Swap these 5 phrases on your website (copy before/after): 'Welcome to our website' -> say what you do and where; 'a wide range of services' -> list services by name; 'passionate about excellence' -> one specific detail; 'Click here' -> descriptive link text (Google link best practices); 'Submit' -> button says what they get. Made-up business Fernbrook Grooming, Ryde.",
+    "hook": "Swap these 5 phrases on your website",
+    "style": "approved navy style (trust-checks-5 / website-photos-5): CC0 dog photos top fading to navy, outlined lavender numbers, DM Sans ExtraBold headlines with lavender key words, white BEFORE/AFTER cards with made-up site mockups, indigo marker scribbles, checklist CTA.",
+    "media": [
+      "nexa/images/website-words-5/01.jpg",
+      "nexa/images/website-words-5/02.jpg",
+      "nexa/images/website-words-5/03.jpg",
+      "nexa/images/website-words-5/04.jpg",
+      "nexa/images/website-words-5/05.jpg",
+      "nexa/images/website-words-5/06.jpg",
+      "nexa/images/website-words-5/07.jpg"
+    ],
+    "caption": "Your website might be saying these 5 things right now. 👀\nCustomers skim straight past every one of them.\n\nWhich one is on your site? Comment the number 👇 and save this for your next website update.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#websitetips #webdesign #copywriting #smallbusinessaustralia #websitedesign #smallbusinesstips #conversionrate #digitalmarketing",
+    "created": "2026-11-23 13:25 AEDT",
+    "post_on": "2026-11-23",
+    "approved": false,
+    "posted": false,
+    "status": "awaiting approval",
+    "note": "1:17 pm slot. Tips/opinion only, no stats. Prices illustrative for a made-up business. Fact: Google Search Central 'Link best practices' recommends descriptive anchor text over generic 'click here'. No dashes."
   }
 ]
