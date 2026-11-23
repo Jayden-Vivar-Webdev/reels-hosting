@@ -3523,6 +3523,105 @@ SC.bedcam = (c, p, lt, d) => {
   if (p.tag2) tag(c, p.tag2, 540, 1240, ease((lt - (p.tag2At || .2)*d)/.3), p.tag2Col || '#ff5a3a');
 };
 
+// ---------- True crime: the Dating Game killer (TV set / backstage / camera / polaroids) ----------
+function shadowMan(c, x, y, s, o={}){
+  // featureless dark silhouette of a seated/standing man (never a real face)
+  c.save(); c.translate(x, y); c.scale(s, s); c.globalAlpha *= (o.a ?? 1);
+  c.fillStyle = o.col || '#060607';
+  c.beginPath(); c.ellipse(0, 40, 48, 58, 0, 0, 7); c.fill();
+  c.fillRect(-16, 90, 32, 30);
+  c.beginPath(); c.moveTo(-95, 150); c.quadraticCurveTo(-100, 110, -55, 100); c.lineTo(55, 100); c.quadraticCurveTo(100, 110, 95, 150); c.lineTo(85, 380); c.lineTo(-85, 380); c.closePath(); c.fill();
+  // 70s hair
+  c.beginPath(); c.ellipse(0, 18, 62, 50, 0, Math.PI, 0); c.fill(); c.beginPath(); c.ellipse(-50, 50, 18, 40, 0, 0, 7); c.ellipse(50, 50, 18, 40, 0, 0, 7); c.fill();
+  c.restore();
+}
+function stool(c, x, y){ c.fillStyle = '#c9a24a'; c.fillRect(x - 70, y, 140, 18); c.fillStyle = '#8a6a2a'; c.fillRect(x - 6, y + 18, 12, 200); c.fillRect(x - 50, y + 210, 100, 10); }
+SC.tvset = (c, p, lt, d) => {
+  // 1970s TV studio: flower-power wall in the middle, bachelors on the right, the woman on the left
+  bg(c, '#4a2a3a', '#1a0e14');
+  c.fillStyle = '#6b3550'; c.fillRect(0, 330, W, 760);
+  const r = R(11); for (let i = 0; i < 26; i++){ const x = r()*W, y = 360 + r()*680, s = 30 + r()*40; c.fillStyle = ['#f2a33a', '#e8507a', '#f6d84a', '#5fc3b0'][i%4]; c.globalAlpha = .55;
+    for (let k = 0; k < 5; k++){ c.beginPath(); c.ellipse(x + Math.cos(k*1.257)*s*.6, y + Math.sin(k*1.257)*s*.6, s*.45, s*.3, k*1.257, 0, 7); c.fill(); } c.globalAlpha = 1; c.fillStyle = '#fff3c0'; c.beginPath(); c.arc(x, y, s*.25, 0, 7); c.fill(); }
+  c.fillStyle = '#3a2030'; c.fillRect(0, 1090, W, 320);                                   // stage floor
+  // dividing wall
+  c.fillStyle = '#e9d9b6'; c.fillRect(380, 420, 60, 690); c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(430, 420, 10, 690);
+  // the woman (left), generic figure with her back half-turned
+  stool(c, 210, 880);
+  person(c, 210, 520, .78, {face: 'front', coat: '#e8b54a', legs: '#5a3a2a', skin: '#d8b89a', hairC: '#d6b25a', smile: .4});
+  // three bachelors (right)
+  const xs = [590, 760, 930];
+  xs.forEach((x, i) => {
+    stool(c, x, 880);
+    const hl = p.hl === i && lt > (p.hlAt ?? 0)*d;
+    if (hl){ const g = c.createRadialGradient(x, 600, 10, x, 600, 260); g.addColorStop(0, 'rgba(255,240,190,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(x - 260, 300, 520, 800); }
+    shadowMan(c, x, 520, .72, {col: hl && p.red ? '#3a0606' : '#0b0a0c'});
+    c.fillStyle = '#1b0f14'; c.fillRect(x - 40, 1000, 80, 56); text(c, String(i + 1), x, 1030, 46, 'Anton', '#f6d84a');
+  });
+  if (p.qmark){ xs.forEach((x, i) => text(c, '?', x, 470, 90, 'Anton', `rgba(255,255,255,${ease((lt - .2 - i*.25)/.3)*.8})`)); }
+  if (p.won && lt > p.won*d){ const a = ease((lt - p.won*d)/.25); c.save(); c.globalAlpha = a; c.translate(xs[p.hl ?? 0], 420); c.rotate(-.08); c.fillStyle = '#f6d84a'; c.beginPath(); c.roundRect(-150, -50, 300, 100, 20); c.fill(); text(c, 'WINNER', 0, 4, 64, 'Anton', '#3a0606'); c.restore(); }
+  if (p.tag) tag(c, p.tag, 540, 380, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
+  if (p.tag2) tag(c, p.tag2, 540, 1250, ease((lt - (p.tag2At || .3)*d)/.3), p.tag2Col || '#ff5a3a');
+};
+SC.backstage = (c, p, lt, d) => {
+  // dim corridor behind the set: the woman walking away, the dark figure watching from the end of the hall
+  bg(c, '#24262a', '#0a0b0c');
+  c.fillStyle = '#34373c'; c.beginPath(); c.moveTo(0, 300); c.lineTo(400, 640); c.lineTo(680, 640); c.lineTo(W, 300); c.lineTo(W, 1400); c.lineTo(680, 980); c.lineTo(400, 980); c.lineTo(0, 1400); c.fill();
+  c.fillStyle = '#1b1d20'; c.fillRect(400, 640, 280, 340);                                   // far end
+  c.fillStyle = '#2a2d31'; c.beginPath(); c.moveTo(0, 1400); c.lineTo(400, 980); c.lineTo(680, 980); c.lineTo(W, 1400); c.fill();  // floor
+  // a bare bulb
+  { const g = c.createRadialGradient(540, 420, 6, 540, 520, 520); g.addColorStop(0, 'rgba(255,220,160,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g; c.fillRect(0, 0, W, H); }
+  c.fillStyle = '#ffe3a8'; c.beginPath(); c.arc(540, 420, 14, 0, 7); c.fill();
+  c.fillStyle = '#c9a24a'; c.fillRect(150, 520, 120, 70); text(c, 'STAGE', 210, 556, 36, 'Anton', '#3a2010');
+  // the figure at the end of the hall
+  shadowMan(c, 540, 700, .5, {a: .95});
+  // Cheryl, near the camera; turning to leave
+  const k = p.leave ? ease((lt - .3)/(d*.8)) : 0;
+  person(c, 300 - 200*k, 700, 1.2, {face: p.leave ? 'back' : 'front', coat: '#e8b54a', legs: '#5a3a2a', skin: '#d8b89a', hairC: '#d6b25a', wide: !p.leave});
+  if (p.tag) tag(c, p.tag, 540, 260, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
+  if (p.tag2) tag(c, p.tag2, 540, 1250, ease((lt - (p.tag2At || .3)*d)/.3), p.tag2Col || '#ff5a3a');
+  if (p.follow) followBox(c, lt, d);
+};
+function camera70(c, x, y, s){
+  c.save(); c.translate(x, y); c.scale(s, s);
+  c.fillStyle = '#16171a'; c.beginPath(); c.roundRect(-300, -170, 600, 340, 30); c.fill();
+  c.fillStyle = '#c8c9cc'; c.fillRect(-300, -170, 600, 70); c.fillStyle = '#16171a'; c.fillRect(-120, -230, 240, 70);
+  c.fillStyle = '#2a2b2f'; c.beginPath(); c.roundRect(-240, -100, 120, 60, 8); c.fill();   // viewfinder
+  c.fillStyle = '#0b0b0d'; c.beginPath(); c.arc(40, 30, 150, 0, 7); c.fill();
+  c.strokeStyle = '#5a5c62'; c.lineWidth = 14; c.beginPath(); c.arc(40, 30, 150, 0, 7); c.stroke();
+  const g = c.createRadialGradient(10, 0, 5, 40, 30, 120); g.addColorStop(0, '#5f7fa8'); g.addColorStop(.4, '#1b2636'); g.addColorStop(1, '#050608'); c.fillStyle = g; c.beginPath(); c.arc(40, 30, 110, 0, 7); c.fill();
+  c.fillStyle = 'rgba(255,255,255,.7)'; c.beginPath(); c.ellipse(5, -10, 26, 14, -.6, 0, 7); c.fill();
+  c.fillStyle = '#e8e2d0'; c.fillRect(170, -150, 100, 50);                                  // flash cube
+  c.restore();
+}
+SC.camera = (c, p, lt, d) => {
+  bg(c, '#151618', '#050506');
+  const s = 1.15 + .12*(lt/d);
+  camera70(c, 540, 760, s);
+  const fa = p.flashAt != null ? lt - p.flashAt*d : -1;
+  if (fa >= 0 && fa < .5){ c.fillStyle = `rgba(255,255,255,${1 - fa/.5})`; c.fillRect(0, 0, W, H); }
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
+  if (p.tag2) tag(c, p.tag2, 540, 1240, ease((lt - (p.tag2At || .3)*d)/.3), p.tag2Col || '#ff5a3a');
+  if (p.follow) followBox(c, lt, d);
+};
+SC.polaroids = (c, p, lt, d) => {
+  // police release: rows of old photos of women, faces blurred into silhouettes; red UNIDENTIFIED stamps appear
+  bg(c, '#2a2622', '#0c0a09');
+  const r = R(23); const cols = 4, rows = 4;
+  for (let i = 0; i < cols*rows; i++){
+    const cx = 170 + (i%cols)*248, cy = 470 + Math.floor(i/cols)*235, rot = (r() - .5)*.12;
+    const a = ease((lt - i*.06)/.25); if (a <= 0) continue;
+    c.save(); c.globalAlpha = a; c.translate(cx, cy); c.rotate(rot);
+    c.shadowColor = 'rgba(0,0,0,.6)'; c.shadowBlur = 16; c.fillStyle = '#efe9dc'; c.fillRect(-100, -105, 200, 220); c.shadowBlur = 0;
+    const hues = ['#7d6a58', '#6a7d8a', '#8a6f6a', '#6f7d62'];
+    c.fillStyle = hues[i%4]; c.fillRect(-85, -90, 170, 160);
+    c.fillStyle = 'rgba(30,24,20,.75)'; c.beginPath(); c.ellipse(0, -30, 30, 36, 0, 0, 7); c.fill(); c.beginPath(); c.ellipse(0, 50, 58, 40, 0, Math.PI, 0); c.fill();
+    c.fillStyle = 'rgba(60,40,30,.8)'; c.beginPath(); c.ellipse(0, -40, 38, 34, 0, Math.PI, 0); c.fill(); c.fillRect(-38, -40, 14, 60); c.fillRect(24, -40, 14, 60);
+    if (p.unknown && lt > d*.45 && (i*7)%3 !== 0){ const b = ease((lt - d*.45 - (i%5)*.08)/.2); c.globalAlpha = a*b; c.rotate(-.2); c.strokeStyle = '#d0261d'; c.lineWidth = 5; c.strokeRect(-92, -18, 184, 44); text(c, 'UNIDENTIFIED', 0, 6, 30, 'Anton', '#d0261d'); }
+    c.restore();
+  }
+  if (p.tag) tag(c, p.tag, 540, 300, ease((lt - (p.tagAt || 0)*d)/.3), p.tagCol || '#d7fbe9');
+};
+
 function hud(sc, t){
   const blink = Math.floor(t*1.6)%2===0;
   X.fillStyle = 'rgba(0,0,0,.35)'; X.fillRect(0, 110, W, 120);
