@@ -315,5 +315,22 @@
     "status": "posted",
     "created": "2026-11-23 08:27 AEDT",
     "media_id": "18162095806513601"
+  },
+  {
+    "slug": "five-second-test",
+    "format": "reel",
+    "topic": "The 5 second test: made-up vague homepage (Halden Group, 'Elevating excellence, together.') with a live 5 s countdown, viewer can't tell what they do; homepage must answer what you do, where, what to do next; fixed version (Halden Roofing: 'Roof repairs in Geelong. Leaks fixed this week. Get a free quote.'); try it on your site with a friend. Tips/opinion only, no stats.",
+    "hook": "You've got 5 seconds. What does this business do?",
+    "style": "Nexa light brand (website-checkup-4 template): off-white #FAF9F6, navy #150C2B, indigo #6557E8, lavender #B9A6FF, DM Sans ExtraBold, made-up site mockups in browser/phone, countdown ring, red/green stamps, centred word-by-word captions; series tag '5 SECOND TEST'",
+    "voice": "Chatterbox built-in female voice, atempo 1.05 (no ElevenLabs key in this scheduled run)",
+    "media": [
+      "nexa/videos/five-second-test/five-second-test.mp4"
+    ],
+    "created": "2026-11-23 11:35 AEDT",
+    "post_on": "2026-11-23",
+    "approved": false,
+    "posted": false,
+    "status": "awaiting approval",
+    "note": "11:17 am reel slot. 36.7 s. capcheck 0 problems; synccheck 115/119 mean +0.013s, none >0.2s; final transcript complete (all scripted words)."
   }
 ]
