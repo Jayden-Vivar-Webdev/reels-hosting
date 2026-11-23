@@ -386,9 +386,10 @@
   "caption": "Facebook once deleted itself from the internet. By accident. 😳\n\nFor about 6 hours in 2021, Facebook, Instagram and WhatsApp vanished worldwide. If your business only lives on Instagram, that's 6 hours where customers can't find you.\n\nIf Instagram went down tomorrow, could customers still find you? Tell me in the comments 👇\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #techhistory #facebookdown #webdesign #smallbusinessaustralia #websitetips #digitalmarketing #socialmedia",
   "created": "2026-11-23 20:38 AEDT",
   "post_on": "2026-11-23",
-  "approved": false,
-  "posted": false,
-  "status": "awaiting approval",
-  "note": "8:17 pm reel slot. v1 Chatterbox -> Jayden: always ElevenLabs Brian. v2 re-voiced with Brian, 55.4 s. capcheck 0 problems; synccheck 152/157 mean +0.008s, none >0.2s; final transcript complete. Sources: Meta engineering blog 5 Oct 2021, Wikipedia 2021 Facebook outage (NYT badge report), NPR 5 Oct 2021."
+  "approved": true,
+  "posted": true,
+  "status": "posted",
+  "note": "8:17 pm reel slot. v1 Chatterbox -> Jayden: always ElevenLabs Brian. v2 re-voiced with Brian, 55.4 s. capcheck 0 problems; synccheck 152/157 mean +0.008s, none >0.2s; final transcript complete. Sources: Meta engineering blog 5 Oct 2021, Wikipedia 2021 Facebook outage (NYT badge report), NPR 5 Oct 2021. Approved by Jayden and posted 2026-11-23 23:10 AEDT (first Windsor attempt: container ERROR, retry succeeded).",
+  "media_id": "18177475570454655"
  }
 ]
