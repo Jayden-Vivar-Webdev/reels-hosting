@@ -391,5 +391,28 @@
   "status": "posted",
   "note": "8:17 pm reel slot. v1 Chatterbox -> Jayden: always ElevenLabs Brian. v2 re-voiced with Brian, 55.4 s. capcheck 0 problems; synccheck 152/157 mean +0.008s, none >0.2s; final transcript complete. Sources: Meta engineering blog 5 Oct 2021, Wikipedia 2021 Facebook outage (NYT badge report), NPR 5 Oct 2021. Approved by Jayden and posted 2026-11-23 23:10 AEDT (first Windsor attempt: container ERROR, retry succeeded).",
   "media_id": "18177475570454655"
+ },
+ {
+  "slug": "christmas-close-5",
+  "format": "carousel",
+  "topic": "Closing over Christmas? 5 website jobs first: holiday hours banner on the homepage, special hours in Google Business Profile (show in Search and Maps), out of office reply on the form inbox, check domain/hosting renewal date and that the card on file works, test your own contact form (check spam). Made-up business Little Fern Cafe, Geelong.",
+  "hook": "Closing over Christmas? Do these 5 website jobs first",
+  "style": "approved navy style (trust-checks-5): CC0 cafe photos top fading to navy, outlined lavender numbers, DM Sans ExtraBold headlines with lavender key words, white UI cards, indigo marker scribbles, checklist CTA.",
+  "media": [
+   "nexa/images/christmas-close-5/01.jpg",
+   "nexa/images/christmas-close-5/02.jpg",
+   "nexa/images/christmas-close-5/03.jpg",
+   "nexa/images/christmas-close-5/04.jpg",
+   "nexa/images/christmas-close-5/05.jpg",
+   "nexa/images/christmas-close-5/06.jpg",
+   "nexa/images/christmas-close-5/07.jpg"
+  ],
+  "caption": "Closing over Christmas? Do these 5 website jobs before you switch off. 🎄\n\nWhich one have you not done yet? Comment the number 👇 and save this for your last week before the break.\n\nTips from the team at Nexa Web Development. (Little Fern Cafe is a made-up example.)\n\n#websitetips #smallbusinessaustralia #googlebusinessprofile #smallbusinesstips #christmasclosure #webdesign #australianbusiness #websitedesign",
+  "created": "2026-11-24 08:40 AEDT",
+  "post_on": "2026-11-24",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval",
+  "note": "8:17 am carousel slot. Tips only, no stats. Fact: Google Business Profile 'special hours' for holidays (support.google.com/business/answer/6303076). Dates checked: Thu 24 Dec 2026, Tue 5 Jan 2027, Wed 6 Jan 2027. No dashes."
  }
 ]

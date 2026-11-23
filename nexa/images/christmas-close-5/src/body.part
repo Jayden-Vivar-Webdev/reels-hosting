@@ -1,0 +1,92 @@
+
+<!-- 1 cover -->
+<div class="s" id="s1">
+ <div class="ph" style="height:1350px"><img src="img/closed.jpg" style="object-position:50% 40%"></div>
+ <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,43,.05) 0%,rgba(21,12,43,.35) 30%,rgba(21,12,43,.97) 58%)"></div>
+ <div class="h" style="top:640px;font-size:100px;z-index:6">Closing over Christmas? Do these <em>5 website jobs</em> first</div>
+ <div class="sub" style="top:1110px;font-size:36px;color:#E4DEFF;z-index:6">About 20 minutes. Future you says thanks. Swipe &#8594;</div>
+ <div class="ft" style="z-index:6"><span>@nexaweb_dev</span><span class="dots" data-on="1"></span></div>
+</div>
+
+<!-- 2 banner -->
+<div class="s" id="s2">
+ <div class="ph"><img src="img/window.jpg" style="object-position:50% 55%"></div><div class="num">01</div>
+ <div class="h">Your site still says <em>"Open 7 days"</em></div>
+ <div class="sub" style="top:590px">So people turn up to a locked door.</div>
+ <div class="card" style="top:660px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span><span class="url"><b>littleferncafe</b>.com.au</span></div>
+  <div style="background:#2f5d3a;color:#fff;text-align:center;padding:16px 20px;font:600 22px Inter"><span class="mk">Closed Thu 24 Dec. Back Tue 5 Jan.</span> Merry Christmas!</div>
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 24px;font:700 26px Georgia;color:#2f5d3a">Little Fern Cafe<i style="font:500 15px Inter;font-style:normal;color:#8a8794">Menu &nbsp;Catering &nbsp;Visit</i></div>
+  <div style="position:relative;height:200px;background:url(img/cup.jpg) 50% 45%/cover">
+   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,30,20,.7),rgba(20,30,20,.05))"></div>
+   <div style="position:absolute;left:24px;top:44px;width:360px;color:#fff;font:700 30px/1.15 Georgia">Good coffee, slow mornings. Geelong.</div></div>
+ </div>
+ <div class="why" style="top:1130px"><b>Fix:</b> a banner at the top of your homepage with the day you close and the day you're back.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="2"></span></div>
+</div>
+
+<!-- 3 google hours -->
+<div class="s" id="s3">
+ <div class="ph"><img src="img/cup.jpg" style="object-position:50% 50%"></div><div class="num">02</div>
+ <div class="h">Google says <em>"Open now"</em></div>
+ <div class="sub">It's Christmas Day. You're at the beach.</div>
+ <div class="card" style="top:600px;transform:rotate(1deg)">
+  <div style="padding:26px 34px 14px"><div style="font:600 32px Inter">Little Fern Cafe</div><div style="font-size:22px;color:#70707a;margin-top:4px"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.7 &#183; Cafe in Geelong</div></div>
+  <div style="padding:6px 34px 8px;font:600 22px Inter;color:#70707a">Holiday hours</div>
+  <div class="row" style="padding:18px 34px"><span class="k" style="color:#44414b">Thu 24 Dec</span><span class="v">7am to 12pm</span></div>
+  <div class="row" style="padding:18px 34px"><span class="k" style="color:#44414b">Fri 25 Dec to Mon 4 Jan</span><span class="v" style="color:#c5342b"><span class="mk">Closed</span></span></div>
+  <div class="row" style="padding:18px 34px;border:0"><span class="k" style="color:#44414b">Tue 5 Jan</span><span class="v">7am to 3pm</span></div></div>
+ <div class="why" style="top:1110px"><b>Fix:</b> add special hours in your Google Business Profile for every day that's different. They show in Search and Maps.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="3"></span></div>
+</div>
+
+<!-- 4 auto reply -->
+<div class="s" id="s4">
+ <div class="ph"><img src="img/workcafe.jpg" style="object-position:50% 55%"></div><div class="num">03</div>
+ <div class="h">Enquiries into <em>the void</em></div>
+ <div class="sub">They fill in your form. Nobody replies for 2 weeks.</div>
+ <div class="card" style="top:600px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span>Automatic reply</div>
+  <div style="padding:22px 34px 8px;font-size:22px;color:#8a8794">Re: Catering for 20 people on 8 Jan</div>
+  <div style="padding:8px 34px 30px;font-size:26px;line-height:1.5;color:#2a2830">Thanks for your message! We're closed for the holidays. <span class="mk">We'll reply by Wed 6 Jan.</span><br>Happy holidays,<br>Jess, Little Fern Cafe</div></div>
+ <div class="note" style="left:590px;top:1000px;transform:rotate(-3deg)">5 seconds to set up</div>
+ <div class="why" style="top:1110px"><b>Fix:</b> turn on an out of office reply for the inbox your website form sends to. Say when you'll answer.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="4"></span></div>
+</div>
+
+<!-- 5 domain -->
+<div class="s" id="s5">
+ <div class="ph"><img src="img/calc.jpg" style="object-position:50% 50%"></div><div class="num">04</div>
+ <div class="h">Your domain renews on <em>28 Dec</em></div>
+ <div class="sub">And the card on file expired in October.</div>
+ <div class="card" style="top:610px;transform:rotate(1deg)">
+  <div class="bar"><span class="d"></span>My domains</div>
+  <div class="row"><span><span class="blur">littleferncafe</span>.com.au</span><span class="v">Renews 28 Dec 2026</span></div>
+  <div class="row"><span class="k">Auto renew</span><span class="v" style="color:#2f8f5d">On</span></div>
+  <div class="row" style="border:0"><span class="k">Payment card</span><span class="v">Visa ending 4821 &nbsp;<span class="mk" data-c="1" style="color:#c5342b">Expired 10/26</span></span></div></div>
+ <div class="why" style="top:1080px"><b>Fix:</b> check when your domain and hosting renew, and that the card still works. If the domain lapses, your website and email can stop working.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="5"></span></div>
+</div>
+
+<!-- 6 test form -->
+<div class="s" id="s6">
+ <div class="ph"><img src="img/tap.jpg" style="object-position:50% 50%"></div><div class="num">05</div>
+ <div class="h">Test your form <em>before you go</em></div>
+ <div class="sub">Broken forms don't tell you they're broken.</div>
+ <div class="card" style="top:600px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span>Inbox</div>
+  <div class="li"><span class="chk">&#10003;</span><div style="flex:1"><b>New website enquiry</b><small>From: Jess (test) &#183; "Does this thing work?"</small></div><span style="font-size:21px;color:#8a8794">9:41am</span></div>
+  <div class="li" style="opacity:.5"><span class="chk no">.</span><div style="flex:1">Supplier invoice<small>From: Beanline Roasters</small></div><span style="font-size:21px;color:#8a8794">Yesterday</span></div>
+  <div class="li" style="border:0;opacity:.5"><span class="chk no">.</span><div style="flex:1">Your weekly roster<small>From: Rostering app</small></div><span style="font-size:21px;color:#8a8794">Mon</span></div></div>
+ <div class="note" style="left:560px;top:985px;transform:rotate(-2deg)">it arrived!</div>
+ <div class="why" style="top:1100px"><b>Fix:</b> fill in your own contact form on your phone and check it lands in your inbox. Look in spam too.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="6"></span></div>
+</div>
+
+<!-- 7 cta -->
+<div class="s" id="s7">
+ <div class="h" style="top:110px;font-size:84px">Ready for <em>the break?</em></div>
+ <div id="list" style="position:absolute;left:80px;right:80px;top:260px;z-index:3;display:flex;flex-direction:column;gap:16px"></div>
+ <div style="position:absolute;left:80px;right:80px;top:900px;font-size:36px;line-height:1.5;color:#D9D3F2;z-index:3">Save this for your last week before the break.<br>Send it to a business owner who's closing up.<br>Follow <b style="color:var(--lav)">@nexaweb_dev</b> for more like this.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="7"></span></div>
+</div>
