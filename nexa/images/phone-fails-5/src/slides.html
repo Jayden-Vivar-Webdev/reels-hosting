@@ -1,0 +1,203 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--ind:#6557E8;--lav:#B9A6FF;--navy:#150C2B;--ib:#F2B705;--ibd:#1b1d20}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#444}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--navy);color:#fff}
+.s:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(700px 520px at 85% 72%,rgba(101,87,232,.30),transparent 70%),radial-gradient(500px 400px at 0% 100%,rgba(185,166,255,.10),transparent 70%)}
+.ph{position:absolute;left:0;right:0;top:0;height:640px;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,43,.15) 0%,rgba(21,12,43,.35) 45%,#150C2B 98%)}
+.num{position:absolute;left:62px;top:150px;font:800 260px/1 'DM Sans';letter-spacing:-.06em;color:transparent;-webkit-text-stroke:3px rgba(185,166,255,.85);z-index:2}
+.col{position:absolute;top:430px;width:480px;z-index:3}
+.col.l{left:80px}.col.r{right:80px}
+.h{font:800 72px/1.02 'DM Sans';letter-spacing:-.035em}
+.h em{font-style:normal;color:var(--lav)}
+.sub{margin-top:26px;font-size:32px;line-height:1.35;color:#C9C2E6}
+.why{margin-top:44px;font-size:31px;line-height:1.42;color:#D9D3F2}
+.why b{color:var(--lav);font-weight:700}
+.ft{position:absolute;left:80px;right:80px;bottom:46px;display:flex;justify-content:space-between;align-items:center;font:500 25px Inter;color:#8C84AD;z-index:3}
+.dots{display:flex;gap:9px}.dots span{width:10px;height:10px;border-radius:5px;background:#3A2F5E}.dots span.on{width:34px;background:var(--lav)}
+.note{position:absolute;font:700 34px 'DM Sans';color:var(--lav);z-index:7}
+svg.sc{position:absolute;overflow:visible;pointer-events:none;z-index:6}
+.chk{width:34px;height:34px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font:800 20px Inter;color:#fff;background:#2fb36d}
+.chk.no{background:#fff;border:2.5px solid #d6d3de;color:transparent}
+
+/* phone */
+.pf{position:absolute;width:420px;height:860px;border-radius:64px;background:#0e0c12;padding:13px;z-index:4;box-shadow:0 40px 90px rgba(0,0,0,.55),inset 0 0 0 2px #2b2833,0 0 0 1px rgba(255,255,255,.07)}
+.scr{position:relative;width:100%;height:100%;border-radius:52px;overflow:hidden;background:#fff;color:#1b1d20}
+.sb{height:50px;display:flex;justify-content:space-between;align-items:center;padding:6px 34px 0;font:600 17px Inter;color:#111}
+.isl{position:absolute;left:50%;top:11px;width:112px;height:32px;margin-left:-56px;border-radius:18px;background:#000}
+.ub{margin:4px 14px 0;height:38px;border-radius:12px;background:#eeeef1;display:flex;align-items:center;justify-content:center;font:500 15px Inter;color:#55525d}
+.ub b{filter:blur(3px);font-weight:500}
+.nv{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:var(--ibd);color:#fff}
+.logo{font:400 23px Anton;letter-spacing:.04em}.logo i{font-style:normal;color:var(--ib)}
+.burg{width:26px;height:3px;background:#fff;box-shadow:0 8px 0 #fff,0 -8px 0 #fff}
+.hero{position:relative;height:250px;background-size:cover;background-position:center}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.72))}
+.hero h4{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;color:#fff;font:400 31px/1.05 Anton;text-transform:uppercase;letter-spacing:.01em}
+.hero h4 i{font-style:normal;color:var(--ib)}
+.pbody{padding:16px 18px;font:400 16px/1.5 Roboto;color:#3b3d42}
+.bbtn{display:block;text-align:center;background:var(--ib);color:#111;font:700 19px Inter;padding:16px;border-radius:12px;margin:0 18px 12px}
+.bbtn.o{background:#fff;border:2px solid #1b1d20}
+.kb{position:absolute;left:0;right:0;bottom:0;background:#d1d3d9;padding:10px 4px 26px}
+.kr{display:flex;justify-content:center;gap:5px;margin:6px 0}
+.k{width:30px;height:42px;border-radius:6px;background:#fff;box-shadow:0 1px 0 #898a8d;display:flex;align-items:center;justify-content:center;font:400 20px Inter;color:#111}
+.np{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:4px 6px}
+.np div{height:54px;border-radius:7px;background:#fff;box-shadow:0 1px 0 #898a8d;display:flex;flex-direction:column;align-items:center;justify-content:center;font:400 25px Inter;color:#111;line-height:1}
+.np small{font:600 9px Inter;letter-spacing:.12em;color:#333;margin-top:2px}
+.fl{padding:0 18px}.fl label{display:block;font:600 14px Inter;color:#55525d;margin:12px 0 6px}
+.fl .in{height:46px;border:1.5px solid #c9c9cf;border-radius:10px;padding:0 12px;display:flex;align-items:center;font:400 18px Inter;color:#111}
+.fl .in.f{border:2px solid #2c6fe0;box-shadow:0 0 0 3px rgba(44,111,224,.18)}
+.cur{display:inline-block;width:2px;height:22px;background:#2c6fe0;margin-left:2px}
+.lbl2{position:absolute;font:700 26px 'DM Sans';letter-spacing:.02em;z-index:7}
+</style></head><body>
+
+<!-- 1 cover -->
+<div class="s" id="s1">
+ <div class="ph" style="height:1350px"><img src="img/coffee.jpg" style="object-position:40% 50%"></div>
+ <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,43,.05) 0%,rgba(21,12,43,.35) 30%,rgba(21,12,43,.97) 58%)"></div>
+ <div class="h" style="position:absolute;left:80px;right:80px;top:620px;font-size:102px;z-index:6">5 things that make people <em>leave your website</em> on a phone</div>
+ <div class="sub" style="position:absolute;left:80px;right:80px;top:1090px;font-size:36px;color:#E4DEFF;z-index:6">Grab your phone and open your site. Then swipe &#8594;</div>
+ <div class="ft" style="z-index:6"><span>@nexaweb_dev</span><span class="dots" data-on="1"></span></div>
+</div>
+
+<!-- 2 tiny buttons : phone right -->
+<div class="s" id="s2">
+ <div class="ph"><img src="img/tap.jpg" style="object-position:50% 60%"></div><div class="num">01</div>
+ <div class="col l"><div class="h">Buttons for <em>tiny fingers</em></div>
+  <div class="sub">Call, Book and Map, squashed into one line.</div>
+  <div class="why"><b>Fix:</b> make buttons big and give them space. Apple's guideline is at least 44 x 44 points per tap target.</div></div>
+ <div class="pf" style="left:600px;top:250px;transform:rotate(3deg)"><div class="scr">
+  <div class="isl"></div><div class="sb"><span>9:41</span><span>&#9679;&#9679;&#9679; 5G</span></div>
+  <div class="ub">&#128274; <b>ironbarkauto</b>.com.au</div>
+  <div class="nv" style="margin-top:8px"><span class="logo">IRONBARK <i>AUTO</i></span><span class="burg"></span></div>
+  <div class="hero" style="background-image:url(img/engine2.jpg)"><h4>Car servicing in <i>Ballarat</i></h4></div>
+  <div style="padding:12px 18px 6px;font:400 11px Roboto;color:#2c6fe0;letter-spacing:0"><span class="mk" data-c="1">Call&nbsp;|&nbsp;Book&nbsp;|&nbsp;Map&nbsp;|&nbsp;Hours</span></div>
+  <div class="pbody">Family owned workshop. Logbook servicing, brakes, tyres and roadworthies for all makes and models. Drop off before 8am and pick up the same day.</div>
+  <div class="pbody" style="padding-top:0">Open Monday to Friday, 7:30am to 5pm.</div>
+ </div></div>
+ <div class="note" style="left:640px;top:1150px;transform:rotate(-3deg)">good luck, thumb</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="2"></span></div>
+</div>
+
+<!-- 3 tiny text : phone left -->
+<div class="s" id="s3">
+ <div class="ph"><img src="img/browse.jpg" style="object-position:50% 40%"></div><div class="num" style="left:auto;right:62px">02</div>
+ <div class="col r"><div class="h">Pinch to <em>read</em></div>
+  <div class="sub">If they have to zoom in to read it, most just hit back.</div>
+  <div class="why"><b>Fix:</b> body text around 16 px or bigger, short paragraphs, and dark text on a plain background.</div></div>
+ <div class="pf" style="left:80px;top:250px;transform:rotate(-3deg)"><div class="scr">
+  <div class="isl"></div><div class="sb"><span>9:41</span><span>&#9679;&#9679;&#9679; 5G</span></div>
+  <div class="ub">&#128274; <b>ironbarkauto</b>.com.au</div>
+  <div class="nv" style="margin-top:8px"><span class="logo">IRONBARK <i>AUTO</i></span><span class="burg"></span></div>
+  <div style="padding:16px 18px 4px;font:400 26px Anton;text-transform:uppercase">Our services</div>
+  <div style="padding:4px 18px;font:400 9.5px/1.45 Roboto;color:#8d8f95"><span class="mk" data-c="1">Ironbark Auto offers a comprehensive range of automotive services including logbook servicing which will not void your new car warranty, brake and clutch repairs, suspension, steering, tyres and wheel alignments, cooling systems, timing belts, batteries, air conditioning regas and repairs, pre purchase inspections, roadworthy certificates and general mechanical repairs for all makes and models.</span> Our qualified technicians use the latest diagnostic equipment to quickly and accurately find faults and we always call you with a quote before any additional work is carried out on your vehicle. We also offer a courtesy car for customers in the Ballarat area, subject to availability, as well as a free pick up and drop off service within 10 km of our workshop. Payment can be made by card, cash or bank transfer. Terms and conditions apply to all services and quotes are valid for 14 days from the date of issue unless otherwise stated in writing.</div>
+  <div style="margin:10px 18px;height:160px;border-radius:10px;background:url(img/engine3.jpg) center/cover"></div>
+  <div style="padding:4px 18px;font:400 9.5px/1.45 Roboto;color:#8d8f95">Opening hours are Monday to Friday from 7:30am until 5pm and Saturday mornings by appointment only. Closed on public holidays.</div>
+ </div></div>
+ <div class="note" style="left:200px;top:1150px;transform:rotate(-2deg)">*squints*</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="3"></span></div>
+</div>
+
+<!-- 4 sideways : phone right, content spills -->
+<div class="s" id="s4">
+ <div class="ph"><img src="img/engine1.jpg" style="object-position:50% 50%"></div><div class="num">03</div>
+ <div class="col l"><div class="h">The page <em>slides sideways</em></div>
+  <div class="sub">Something on it is wider than the screen.</div>
+  <div class="why"><b>Fix:</b> find the wide thing (usually a big image, a table or a map embed) and make it shrink to fit the screen.</div></div>
+ <div class="pf" style="left:600px;top:250px;transform:rotate(2deg);overflow:visible"><div class="scr" style="overflow:visible;border-radius:52px">
+  <div style="position:absolute;inset:0;border-radius:52px;overflow:hidden;background:#fff">
+   <div class="isl"></div><div class="sb"><span>9:41</span><span>&#9679;&#9679;&#9679; 5G</span></div>
+   <div class="ub">&#128274; <b>ironbarkauto</b>.com.au</div>
+   <div class="nv" style="margin-top:8px"><span class="logo">IRONBARK <i>AUTO</i></span><span class="burg"></span></div>
+   <div style="padding:16px 18px 6px;font:400 26px Anton;text-transform:uppercase;white-space:nowrap">Service prices 2026</div>
+  </div>
+  <!-- overflowing table -->
+  <div style="position:absolute;left:0;top:224px;width:600px;z-index:2">
+   <table style="border-collapse:collapse;width:600px;font:500 17px Inter;color:#1b1d20;background:#fff">
+    <tr style="background:var(--ibd);color:#fff"><td style="padding:12px 12px 12px 18px">Service</td><td>Small car</td><td>4WD</td><td>Euro</td></tr>
+    <tr><td style="padding:12px;border-bottom:1px solid #eee">Logbook</td><td>from $249</td><td>from $329</td><td>from $389</td></tr>
+    <tr><td style="padding:12px;border-bottom:1px solid #eee">Brakes</td><td>from $189</td><td>from $259</td><td>from $299</td></tr>
+    <tr><td style="padding:12px;border-bottom:1px solid #eee">Tyres</td><td>from $139</td><td>from $219</td><td>from $239</td></tr>
+    <tr><td style="padding:12px">Roadworthy</td><td>from $180</td><td>from $180</td><td>from $180</td></tr>
+   </table></div>
+  <div style="position:absolute;left:0;right:0;top:224px;height:212px;z-index:3;pointer-events:none;background:linear-gradient(90deg,transparent 0 0,transparent 394px,rgba(21,12,43,.5) 394px)"></div>
+    <div style="position:absolute;left:0;right:0;top:438px;bottom:0;border-radius:0 0 52px 52px;overflow:hidden">
+   <div style="margin:22px 18px 0;height:200px;border-radius:10px;background:url(img/car.jpg) center/cover"></div>
+   <div style="padding:16px 18px;font:400 16px/1.5 Roboto;color:#3b3d42">Prices are a guide. Call for an exact quote.</div>
+   <div style="position:absolute;left:60px;right:120px;bottom:16px;height:6px;border-radius:3px;background:rgba(0,0,0,.35)"></div>
+  </div>
+ </div></div>
+ <div class="note" style="left:610px;top:1150px;transform:rotate(-3deg)">&#8592; wobble wobble &#8594;</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="4"></span></div>
+</div>
+
+<!-- 5 keyboard : two phones -->
+<div class="s" id="s5">
+ <div class="ph" style="height:500px"><img src="img/repair.jpg" style="object-position:50% 60%"></div><div class="num" style="top:70px">04</div>
+ <div class="h" style="position:absolute;left:80px;right:80px;top:290px;z-index:3">Phone number field, <em>letter keyboard</em></div>
+ <div class="pf" style="left:90px;top:520px;width:400px;height:600px;transform:rotate(-2deg)"><div class="scr">
+  <div class="isl"></div><div class="sb"><span>9:41</span><span>5G</span></div>
+  <div style="padding:10px 18px 0;font:400 24px Anton;text-transform:uppercase">Book a service</div>
+  <div class="fl"><label>Name</label><div class="in">Sam</div><label>Phone</label><div class="in f">04<span class="cur"></span></div></div>
+  <div class="kb"><div class="kr">${'QWERTYUIOP'}</div><div class="kr">${'ASDFGHJKL'}</div><div class="kr">${'ZXCVBNM'}</div>
+   <div class="kr"><div class="k" style="width:70px;font-size:16px">123</div><div class="k" style="width:190px;font-size:16px">space</div><div class="k" style="width:76px;font-size:16px">return</div></div></div>
+ </div></div>
+ <div class="pf" style="left:590px;top:520px;width:400px;height:600px;transform:rotate(2deg)"><div class="scr">
+  <div class="isl"></div><div class="sb"><span>9:41</span><span>5G</span></div>
+  <div style="padding:10px 18px 0;font:400 24px Anton;text-transform:uppercase">Book a service</div>
+  <div class="fl"><label>Name</label><div class="in">Sam</div><label>Phone</label><div class="in f">04<span class="cur"></span></div></div>
+  <div class="kb" style="padding:8px 4px 26px"><div class="np mk" data-c="1">${'NUMPAD'}</div></div>
+ </div></div>
+ <div class="lbl2" style="left:100px;top:466px;color:#C9C2E6">Before</div>
+ <div class="lbl2" style="left:600px;top:466px;color:var(--lav)">After</div>
+ <div class="why" style="position:absolute;left:80px;right:80px;top:1150px;margin:0;z-index:3"><b>Fix:</b> set the phone field to type="tel" and the number pad pops up. Same for email fields: type="email".</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="5"></span></div>
+</div>
+
+<!-- 6 call button : phone left -->
+<div class="s" id="s6">
+ <div class="ph"><img src="img/engine3.jpg" style="object-position:50% 50%"></div><div class="num" style="left:auto;right:62px">05</div>
+ <div class="col r"><div class="h">Where's the <em>call button?</em></div>
+  <div class="sub">Right at the bottom. Under the photos, the map and the footer.</div>
+  <div class="why"><b>Fix:</b> a call or quote bar that sticks to the bottom of the screen, right where the thumb already is.</div></div>
+ <div class="pf" style="left:80px;top:250px;transform:rotate(-2deg)"><div class="scr">
+  <div class="isl"></div><div class="sb"><span>9:41</span><span>&#9679;&#9679;&#9679; 5G</span></div>
+  <div class="ub">&#128274; <b>ironbarkauto</b>.com.au</div>
+  <div class="nv" style="margin-top:8px"><span class="logo">IRONBARK <i>AUTO</i></span><span class="burg"></span></div>
+  <div class="hero" style="background-image:url(img/engine2.jpg)"><h4>Car servicing in <i>Ballarat</i></h4></div>
+  <div class="pbody">Logbook servicing, brakes, tyres and roadworthies. Drop off before 8am, pick up the same day.</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 18px"><div style="height:110px;border-radius:10px;background:url(img/engine1.jpg) center/cover"></div><div style="height:110px;border-radius:10px;background:url(img/car.jpg) center/cover"></div></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:12px 14px 26px;background:rgba(255,255,255,.96);box-shadow:0 -8px 24px rgba(0,0,0,.12);display:flex;gap:10px">
+   <div class="mk" data-c="1" style="flex:1;display:flex;gap:10px"><div style="flex:1;text-align:center;background:var(--ib);color:#111;font:700 19px Inter;padding:16px 0;border-radius:12px">&#128222; Call now</div><div style="flex:1;text-align:center;background:var(--ibd);color:#fff;font:700 19px Inter;padding:16px 0;border-radius:12px">Get a quote</div></div></div>
+ </div></div>
+ <div class="note" style="left:620px;top:1160px;transform:rotate(-2deg)">always there &#8601;</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="6"></span></div>
+</div>
+
+<!-- 7 cta -->
+<div class="s" id="s7">
+ <div class="h" style="position:absolute;left:80px;right:80px;top:110px;font-size:84px;z-index:3">Your <em>phone check</em></div>
+ <div id="list" style="position:absolute;left:80px;right:80px;top:260px;z-index:3;display:flex;flex-direction:column;gap:16px"></div>
+ <div style="position:absolute;left:80px;right:80px;top:900px;font-size:36px;line-height:1.5;color:#D9D3F2;z-index:3">Save this and do the check tonight.<br>Send it to the person who built your site.<br>Follow <b style="color:var(--lav)">@nexaweb_dev</b> for more like this.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="7"></span></div>
+</div>
+<script>
+// keyboards
+document.querySelectorAll('.kr').forEach(r=>{const m=r.innerHTML.match(/\$\{'([A-Z]+)'\}/);if(m)r.innerHTML=[...m[1]].map(c=>`<div class="k">${c}</div>`).join('')});
+document.querySelectorAll('.np').forEach(n=>{const L=['','ABC','DEF','GHI','JKL','MNO','PQRS','TUV','WXYZ'];n.innerHTML=[1,2,3,4,5,6,7,8,9].map(i=>`<div>${i}<small>${L[i-1]}</small></div>`).join('')+`<div style="background:transparent;box-shadow:none;font-size:20px">+*#</div><div>0</div><div style="background:transparent;box-shadow:none;font-size:22px">&#9003;</div>`});
+document.querySelectorAll('.dots').forEach(d=>{const on=+d.dataset.on;d.innerHTML=[...Array(7)].map((_,i)=>`<span class="${i+1===on?'on':''}"></span>`).join('')});
+const items=[['Buttons big enough for a thumb','tap'],['Text you can read without zooming','browse'],['Page doesn\'t slide sideways','engine1'],['Phone field opens the number pad','repair'],['Call button always in reach','engine3']];
+document.getElementById('list').innerHTML=items.map(([l,p],i)=>`<div style="display:flex;align-items:center;gap:24px;padding:12px 24px 12px 12px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(185,166,255,.18)"><img src="img/${p}.jpg" style="width:82px;height:82px;border-radius:16px;object-fit:cover"><span style="font:800 40px 'DM Sans';color:var(--lav);width:58px">0${i+1}</span><span style="font:600 34px Inter;letter-spacing:-.01em;flex:1">${l}</span><span class="chk no" style="width:40px;height:40px;background:transparent;border-color:rgba(185,166,255,.5)">.</span></div>`).join('');
+let seed=53;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};const C='#6557E8';
+function P(p){return p.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ')}
+function circle(svg,w,h,rot=0){let out='';
+ for(let pass=0;pass<2;pass++){const pts=[];const st=-2.2+pass*.35,n=60,end=st+Math.PI*2*(1.08+pass*.04);
+  for(let i=0;i<=n;i++){const a=st+(end-st)*i/n;const k=1+(rnd()-.5)*.035+pass*.025;pts.push([w/2+Math.cos(a)*(w/2-10)*k,h/2+Math.sin(a)*(h/2-10)*k])}
+  out+=`<path d="${P(pts)}" stroke="${C}" stroke-width="${pass?4:6.5}" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="${pass?.75:.95}"/>`}
+ svg.innerHTML=`<g transform="rotate(${rot} ${w/2} ${h/2})">${out}</g>`}
+const mk=()=>{const v=document.createElementNS('http://www.w3.org/2000/svg','svg');v.setAttribute('class','sc');return v};
+document.fonts.ready.then(()=>{document.querySelectorAll('.mk').forEach(m=>{const s=m.closest('.s');const sr=s.getBoundingClientRect();
+ const r=m.getBoundingClientRect();const w=r.width+50,h=r.height+34;const v=mk();v.setAttribute('width',w);v.setAttribute('height',h);v.style.left=(r.left-sr.left-25)+'px';v.style.top=(r.top-sr.top-17)+'px';s.appendChild(v);circle(v,w,h,-3)});document.body.dataset.ready=1});
+</script>
+</body></html>

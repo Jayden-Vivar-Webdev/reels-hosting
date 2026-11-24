@@ -415,5 +415,28 @@
   "status": "posted",
   "note": "8:17 am carousel slot. Tips only, no stats. Fact: Google Business Profile 'special hours' for holidays (support.google.com/business/answer/6303076). Dates checked: Thu 24 Dec 2026, Tue 5 Jan 2027, Wed 6 Jan 2027. No dashes. Approved by Jayden and posted 2026-11-24 10:05 AEDT.",
   "media_id": "18113507600579123"
+ },
+ {
+  "slug": "phone-fails-5",
+  "format": "carousel",
+  "topic": "5 things that make people leave your website on a phone: tiny/crammed buttons (Apple guideline 44x44 pt tap targets), text you have to zoom to read (~16px body text), page slides sideways (wide image/table/map embed), phone field opens letter keyboard (type=\"tel\" / type=\"email\"), call button buried at the bottom (sticky call/quote bar). Made-up business Ironbark Auto, Ballarat.",
+  "hook": "5 things that make people leave your website on a phone",
+  "style": "approved navy style (CC0 photos top fading to navy, outlined lavender numbers, DM Sans ExtraBold headlines with lavender key words), varied layouts: phone mockup left/right with text column, before/after two-phone slide, indigo marker circles, checklist CTA.",
+  "media": [
+   "nexa/images/phone-fails-5/01.jpg",
+   "nexa/images/phone-fails-5/02.jpg",
+   "nexa/images/phone-fails-5/03.jpg",
+   "nexa/images/phone-fails-5/04.jpg",
+   "nexa/images/phone-fails-5/05.jpg",
+   "nexa/images/phone-fails-5/06.jpg",
+   "nexa/images/phone-fails-5/07.jpg"
+  ],
+  "caption": "5 things that make people leave your website on a phone. Most are a quick fix 📱\n\nOpen your site on your phone right now. How many did you spot? Comment the number 👇 and save this for later.\n\nTips from the team at Nexa Web Development. (Ironbark Auto is a made-up example.)\n\n#webdesign #websitetips #mobilefriendly #smallbusinessaustralia #ux #smallbusinesstips #websitedesign #australianbusiness",
+  "created": "2026-11-24 13:25 AEDT",
+  "post_on": "2026-11-24",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval",
+  "note": "1:17 pm slot. Tips/opinion only, no stats. Facts: Apple HIG minimum tap target 44x44 pt; input type=tel shows telephone keypad on mobile (MDN). Prices illustrative for a made-up business."
  }
 ]
