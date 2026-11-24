@@ -1,0 +1,154 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;color:#fff;background:#0A0616}
+#bg,#orbs,#grid,#parts,#stage,#vig{position:absolute;inset:0}
+#bg{background:radial-gradient(1200px 900px at 50% 35%,#1B1036 0%,#110A24 45%,#0A0616 100%)}
+#grid{perspective:900px;overflow:hidden}
+#floor{position:absolute;left:-600px;right:-600px;top:1150px;height:1400px;transform-origin:50% 0;transform:rotateX(72deg);
+ background-image:linear-gradient(rgba(140,120,255,.22) 2px,transparent 2px),linear-gradient(90deg,rgba(140,120,255,.22) 2px,transparent 2px);background-size:90px 90px;
+ -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 75%)}
+#vig{background:radial-gradient(1100px 1500px at 50% 45%,transparent 55%,rgba(5,2,12,.75) 100%);pointer-events:none}
+.lab{position:absolute;left:0;right:0;top:300px;text-align:center;font-weight:700;font-size:30px;letter-spacing:10px;color:#B9A6FF}
+.lab i{display:inline-block;width:14px;height:14px;border-radius:50%;background:#8B7BFF;margin-right:16px;vertical-align:4px;box-shadow:0 0 0 6px rgba(139,123,255,.18),0 0 24px #8B7BFF}
+.h{font-weight:800;letter-spacing:-.045em;line-height:.98;color:#fff}
+.grad{background:linear-gradient(100deg,#fff 10%,#CFC3FF 50%,#8B7BFF 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.box{display:inline-block;background:linear-gradient(135deg,#7C6CFF,#5845E0);color:#fff;padding:0 .16em .05em;border-radius:.14em;box-shadow:0 10px 40px rgba(101,87,232,.55),inset 0 1px 0 rgba(255,255,255,.35)}
+.glass{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.035));border:1.5px solid rgba(185,166,255,.22);border-radius:36px;
+ box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.2),0 0 80px rgba(101,87,232,.18),inset 0 1px 0 rgba(255,255,255,.14);overflow:hidden;backdrop-filter:blur(18px)}
+.mono{font-family:'DejaVu Sans Mono',monospace}
+.chip{display:inline-block;border-radius:999px;padding:16px 34px;font-weight:700;font-size:38px;white-space:nowrap;background:rgba(139,123,255,.16);border:1.5px solid rgba(185,166,255,.35);color:#DCD3FF;box-shadow:0 0 40px rgba(101,87,232,.25)}
+.bar{height:78px;display:flex;align-items:center;gap:14px;padding:0 30px;border-bottom:1.5px solid rgba(185,166,255,.14);background:rgba(255,255,255,.03)}
+.bar s{width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,.18);display:inline-block}
+.url{margin-left:16px;flex:1;height:44px;border-radius:12px;background:rgba(0,0,0,.25);display:flex;align-items:center;padding:0 18px;font-size:24px;color:#9C92C8}
+.muted{color:#9C92C8}
+.ok{color:#4BE39A}
+.bad{color:#FF5C7A}
+#cap{position:absolute;left:150px;width:780px;top:1385px;text-align:center;font-weight:800;font-size:80px;letter-spacing:-.04em;line-height:1.14;text-shadow:0 6px 30px rgba(0,0,0,.6)}
+#cap span{display:inline-block;margin:0 .1em}
+#cap span.k{background:linear-gradient(135deg,#7C6CFF,#5845E0);color:#fff;padding:0 .12em .05em;border-radius:.12em;text-shadow:none;box-shadow:0 8px 30px rgba(101,87,232,.5)}
+#tag{position:absolute;left:60px;top:232px;font-weight:700;font-size:26px;letter-spacing:5px;color:rgba(220,211,255,.55)}
+#tag b{color:#8B7BFF}
+#prog{position:absolute;left:60px;right:60px;top:276px;height:4px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden}
+#prog i{display:block;height:100%;background:linear-gradient(90deg,#5845E0,#B9A6FF);box-shadow:0 0 12px #8B7BFF}
+</style></head><body>
+<div id="bg"></div><div id="orbs"></div><div id="grid"><div id="floor"></div></div><div id="parts"></div>
+<div id="stage"></div><div id="vig"></div>
+<div id="tag"><b>●</b> INTERNET STORIES · EP.8</div><div id="prog"><i></i></div>
+<div id="cap"></div>
+<script>
+const DATA=/*DATA*/null;
+const $=id=>document.getElementById(id);
+const S=$('stage'),C=$('cap'),O=$('orbs'),P=$('parts'),F=$('floor'),PR=$('prog').firstChild;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const eio=x=>{x=clamp(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const spring=x=>{x=clamp(x);return 1-Math.exp(-6.5*x)*Math.cos(7.5*x)};
+const rnd=i=>{const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x)};
+// 3D entrance: rotateX flip-up + blur, then gentle float
+function at(p,d,html,x,y,o={}){
+ const s=spring((p-d)*3.2),e=ease((p-d)*4),tt=o.t||0;
+ const fl=Math.sin((tt+d*7)*1.3)*(o.float??6);
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(${o.c===false?0:'-50%'},${(1-s)*(o.dy??90)+fl}px) perspective(1400px) rotateX(${(1-s)*(o.rx??28)}deg) rotateZ(${(o.r||0)*(1-s)}deg) scale(${0.86+0.14*s});opacity:${clamp(e*1.6)};filter:blur(${(1-e)*14}px);transform-origin:50% 100%;${o.css||''}">${html}</div>`}
+// moving light sweep over a card
+const shine=(p,d=0)=>{const x=-60+clamp((p-d-.08)/.35)*220;return `<div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent ${x-18}%,rgba(255,255,255,.13) ${x}%,transparent ${x+18}%)"></div>`};
+function lab(t,p){const e=ease(p*5);return `<div class="lab" style="opacity:${e};letter-spacing:${10+(1-e)*14}px"><i></i>${t}</div>`}
+function typed(t,p,a,b){return t.slice(0,Math.floor(t.length*clamp((p-a)/(b-a))))}
+const caret=t=>`<span style="display:inline-block;width:4px;height:1em;background:#B9A6FF;vertical-align:-.12em;box-shadow:0 0 10px #B9A6FF;opacity:${Math.floor(t*3)%2}"></span>`;
+function browser(w,url,inner,p){return `<div class="glass" style="width:${w}px"><div class="bar"><s style="background:#FF5C7A"></s><s style="background:#FFC24B"></s><s style="background:#4BE39A"></s><div class="url mono">🔒 ${url}</div></div>${inner}${shine(p,0)}</div>`}
+function search(q,res,p,t){return browser(900,'domains.google',`<div style="padding:46px"><div class="h" style="font-size:56px">Find your perfect domain</div><div style="margin-top:30px;border:2px solid rgba(185,166,255,.5);border-radius:20px;padding:22px 28px;font-size:46px;font-weight:700;background:rgba(0,0,0,.25);box-shadow:0 0 0 6px rgba(139,123,255,.12)" class="mono">${q}${res?'':caret(t)}</div>${res||''}</div>`,p)}
+const RES=(s,t)=>`<div style="margin-top:30px;display:flex;align-items:center;justify-content:space-between;background:rgba(75,227,154,.08);border:1.5px solid rgba(75,227,154,.35);border-radius:22px;padding:24px 30px;transform:scale(${.9+.1*s});opacity:${clamp(s*2)};box-shadow:0 0 ${30+10*Math.sin(t*6)}px rgba(75,227,154,.25)"><div><div class="mono" style="font-size:40px;font-weight:700">google.com</div><div class="ok" style="font-size:32px;font-weight:700;margin-top:6px">● Available</div></div><div class="h" style="font-size:76px">$12</div></div>`;
+function morph(p){const src='6,006.13'.split(''),L={0:'G',2:'O',3:'O',4:'G',6:'L',7:'E'};let h='',k=0;const m0=clamp((p-.6)/.1);
+ src.forEach((c,i)=>{if(!(i in L)){h+=`<span style="display:inline-block;overflow:hidden;width:${(1-m0)*.6}em;opacity:${1-m0}">${c}</span>`;return}
+  const m=clamp((p-.64-k*.035)/.12);k++;
+  h+=`<span style="position:relative;display:inline-block;width:.62em;text-align:center"><span style="position:absolute;left:0;right:0;opacity:${1-m};filter:blur(${m*12}px);transform:translateY(${-m*30}px)">${c}</span><span class="grad" style="display:inline-block;opacity:${m};filter:blur(${(1-m)*12}px);transform:translateY(${(1-m)*30}px)">${L[i]}</span></span>`});return h}
+function ring(x,y,p,d,col='139,123,255'){const q=clamp((p-d)/.35);return q<=0||q>=1?'':`<div style="position:absolute;left:${x}px;top:${y}px;width:${200+700*ease(q)}px;height:${200+700*ease(q)}px;transform:translate(-50%,-50%);border-radius:50%;border:3px solid rgba(${col},${.7*(1-q)});box-shadow:0 0 40px rgba(${col},${.5*(1-q)})"></div>`}
+const stamp=(txt,fs=64,col='255,92,122')=>`<div class="h" style="font-size:${fs}px;padding:14px 34px;border:7px solid rgb(${col});color:rgb(${col});border-radius:18px;letter-spacing:4px;white-space:nowrap;background:rgba(10,6,22,.6);box-shadow:0 0 40px rgba(${col},.35)">${txt}</div>`;
+function phone(inner,o={}){return `<div style="width:${o.w||330}px;height:${o.h||600}px;border-radius:56px;background:#08050F;border:10px solid #2A2147;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 2px rgba(185,166,255,.25);position:relative;overflow:hidden"><div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);width:110px;height:30px;border-radius:20px;background:#000;z-index:2"></div><div style="position:absolute;inset:60px 18px 24px">${inner}</div></div>`}
+const CUR=(x,y,s=1)=>`<svg style="position:absolute;left:${x}px;top:${y}px;transform:scale(${s});transform-origin:0 0;filter:drop-shadow(0 6px 10px rgba(0,0,0,.6))" width="54" height="78" viewBox="0 0 18 26"><path d="M1 1 L1 21 L6 16 L9.5 24 L12.5 22.8 L9 15 L16 15 Z" fill="#fff" stroke="#000" stroke-width="1.4" stroke-linejoin="round"/></svg>`;
+function banner(w,p,t,o={}){const h=Math.round(w*60/468),fs=Math.round(h*.3),pr=o.press?1:0;
+ return `<div style="position:relative;width:${w}px;height:${h}px;background:linear-gradient(90deg,#1B1036,#2A1C5C 55%,#3B2A86);border:4px solid #CFC3FF;border-radius:6px;display:flex;align-items:center;justify-content:space-between;padding:0 ${h*.3}px;box-shadow:0 0 ${30+15*Math.sin(t*5)}px rgba(185,166,255,.45);transform:scale(${1-pr*.03});overflow:hidden">
+ <div style="font-family:'DejaVu Sans',sans-serif;font-weight:700;font-size:${fs}px;line-height:1.15;text-align:left;color:#fff;width:${w*.66}px">${o.text??'Have you ever clicked your mouse right here?'}</div>
+ <div style="font-family:'DejaVu Sans',sans-serif;font-weight:800;font-size:${fs*1.15}px;color:#FFD54A;white-space:nowrap;opacity:${o.will??1}">&#8594; YOU WILL</div></div>`}
+function retro(w,url,inner,p){return `<div style="width:${w}px;background:#C9C6D2;border:3px solid #fff;border-right-color:#5A5766;border-bottom-color:#5A5766;box-shadow:0 40px 90px rgba(0,0,0,.6);text-align:left">
+ <div style="height:52px;background:linear-gradient(90deg,#1F1A7A,#5A55C8);color:#fff;font-family:'DejaVu Sans',sans-serif;font-weight:700;font-size:26px;display:flex;align-items:center;padding:0 18px;justify-content:space-between"><span>Netsite: ${url}</span><span style="display:flex;gap:6px">${'<i style="display:inline-block;width:30px;height:28px;background:#C9C6D2;border:2px solid #fff;border-right-color:#5A5766;border-bottom-color:#5A5766"></i>'.repeat(3)}</span></div>
+ <div style="height:52px;display:flex;align-items:center;padding:0 14px;gap:10px;border-bottom:2px solid #8A8796;font-family:'DejaVu Sans Mono',monospace;font-size:22px;color:#222"><span>Location:</span><span style="flex:1;background:#fff;border:2px solid #5A5766;padding:4px 10px">http://${url}/</span></div>
+ <div style="background:#fff;margin:14px;border:2px solid #8A8796;color:#111">${inner}</div></div>`}
+const bar=(w,c='#D8D4E4')=>`<div style="height:20px;width:${w}%;background:${c};border-radius:4px;margin:12px 0"></div>`;
+function dots(p,t){let h='';const lit=clamp((p-.35)*3);for(let k=0;k<100;k++){const on=k===0;h+=`<div style="width:56px;height:56px;border-radius:50%;background:${on?`rgba(185,166,255,${.25+.75*lit})`:'rgba(255,255,255,.08)'};${on?`box-shadow:0 0 ${30*lit}px #B9A6FF;clip-path:inset(0 ${100-40*lit}% 0 0 round 50%)`:''};transform:scale(${spring((p-k*.003)*3)})"></div>`}return `<div style="display:grid;grid-template-columns:repeat(10,56px);gap:18px">${h}</div>`}
+function bars(p){const a=ease((p-.1)*2.5),b=ease((p-.35)*3);const row=(lbl,v,w,col)=>`<div style="display:flex;align-items:center;gap:26px;margin:22px 0"><div class="h" style="font-size:50px;width:150px;text-align:right">${lbl}</div><div style="width:560px;height:84px;border-radius:18px;background:rgba(255,255,255,.06);overflow:hidden"><div style="height:100%;width:${w}%;background:${col};border-radius:18px"></div></div><div class="h" style="font-size:54px;width:150px;text-align:left">${v}</div></div>`;
+ return row('1994','44%',44*a,'linear-gradient(90deg,#5845E0,#B9A6FF)')+row('Today','&lt;1%',Math.max(.6,1*b),'#FF5C7A')}
+function page(p,t,o={}){const ad=o.ad||0;return `<div style="padding:28px 34px"><div style="font-family:'DejaVu Sans',sans-serif;font-weight:800;font-size:40px">${o.title||'Daily Tech News'}</div>
+ <div style="margin:18px 0;position:relative">${o.slot||''}</div>${bar(92)}${bar(84)}${bar(88)}${bar(60)}</div>`}
+const SC=[
+ // 0 hook: the ad + cursor + click
+ (p,t)=>{const m=eio((p-.1)/.45),cx=800-290*m,cy=1000-450*m,cl=p>.58&&p<.66;
+  return lab('DID YOU KNOW',p)+at(p,0,'<div class="mono muted" style="font-size:32px;letter-spacing:6px">THE WEB · 1994</div>',540,400,{t})+at(p,0,banner(990,p,t,{press:cl}),540,470,{t})
+  +(p>.08?CUR(cx,cy,cl?.9:1):'')+(p>.58?ring(540,540,p,.58):'')
+  +at(p,.6,'<div class="h" style="font-size:118px;white-space:nowrap">almost <span class="box">half</span></div>',540,780,{t})
+  +at(p,.72,'<div class="chip" style="font-size:44px">of everyone who saw it clicked</div>',540,960,{r:-3,t})},
+ // 1 first banner ad, Oct 1994
+ (p,t)=>lab('THE FIRST ONE',p)+at(p,0,`<div class="glass" style="width:440px;padding:0 0 40px;text-align:center"><div style="background:linear-gradient(135deg,#7C6CFF,#5845E0);padding:20px;font-size:46px;font-weight:800;letter-spacing:8px">OCTOBER</div><div class="h grad" style="font-size:210px;margin-top:20px;letter-spacing:-8px">1994</div>${shine(p,.2)}</div>`,540,380,{t})
+  +at(p,.35,'<div class="h" style="font-size:86px;white-space:nowrap">the web\'s first <span class="box">banner ad</span></div>',540,980,{t}),
+ // 2 HotWired
+ (p,t)=>lab('WHERE IT RAN',p)+at(p,0,retro(900,'hotwired.com',page(p,t,{title:'HotWired',slot:'<div style="height:96px;border:3px dashed #B0ABC2;border-radius:6px"></div>'}),p),540,360,{t})
+  +at(p,.45,'<div class="chip" style="font-size:44px">📰 Wired magazine, but online</div>',540,1110,{r:-3,t}),
+ // 3 problem: free to read
+ (p,t)=>{const a=p>.45;return lab('THE PROBLEM',p)+at(p,0,`<div style="display:flex;gap:40px"><div class="glass" style="width:400px;padding:40px 20px;text-align:center"><div style="font-size:110px">📖</div><div class="h" style="font-size:44px;margin-top:14px">Readers pay</div><div class="h" style="font-size:110px;color:#4BE39A;margin-top:10px">$0</div></div><div class="glass" style="width:400px;padding:40px 20px;text-align:center;opacity:${a?1:.35}"><div style="font-size:110px">✍️</div><div class="h" style="font-size:44px;margin-top:14px">Writers need</div><div class="h" style="font-size:110px;color:#FF9DB0;margin-top:10px">$$$</div></div></div>`,540,400,{t})
+  +at(p,.6,'<div class="h" style="font-size:120px;white-space:nowrap"><span class="box">so who pays?</span></div>',540,1000,{r:-3,t})},
+ // 4 answer: sell space
+ (p,t)=>{const s=spring((p-.3)*3);return lab('THE ANSWER',p)+at(p,0,retro(900,'hotwired.com',page(p,t,{title:'HotWired',slot:`<div style="height:96px;border-radius:6px;border:3px solid #6557E8;background:rgba(101,87,232,${.12*s});display:flex;align-items:center;justify-content:center;font-family:'DejaVu Sans',sans-serif;font-weight:800;font-size:34px;color:#6557E8;transform:scale(${.6+.4*clamp(s,0,1.1)});opacity:${clamp(s*1.5)}">AD SPACE FOR SALE</div>`}),p),540,360,{t})
+  +at(p,.6,'<div class="chip" style="font-size:44px">🗞 just like a magazine page</div>',540,1110,{r:-3,t})},
+ // 5 $30,000 / 3 months
+ (p,t)=>{const v=Math.round(30000*eio((p-.1)/.5)/100)*100;return lab('THE PRICE',p)+at(p,0,`<div class="glass" style="width:880px;padding:50px;text-align:center"><div class="muted" style="font-size:32px;font-weight:700;letter-spacing:8px">ONE BANNER SPOT</div><div class="h grad mono" style="font-size:170px;margin-top:16px;letter-spacing:-8px">$${v.toLocaleString('en-US')}</div><div class="h" style="font-size:60px;margin-top:10px">for <span class="box">3 months</span></div>${shine(p,.55)}</div>`,540,380,{t})
+  +at(p,.55,'<div class="chip" style="font-size:40px">reportedly, per people who built it</div>',540,1060,{r:-3,t})},
+ // 6 the ad text
+ (p,t)=>{const tx=typed('Have you ever clicked your mouse right here?',p,.2,.68);return lab('THE AD',p)+at(p,0,'<div class="mono muted" style="font-size:30px;letter-spacing:4px">ADVERTISER: AT&amp;T · 1994</div>',540,420,{t})
+  +at(p,.05,banner(940,p,t,{text:tx+(p<.7?caret(t):''),will:clamp((p-.82)*8)}),540,520,{t})
+  +at(p,.84,'<div class="h" style="font-size:150px;white-space:nowrap;color:#FFD54A">You will.</div>',540,880,{r:-4,t,dy:-60})},
+ // 7 no product, no price, 44%
+ (p,t)=>{const x=(s,d)=>`<div class="glass" style="width:400px;padding:30px;text-align:center"><div class="h" style="font-size:56px">${s}</div><div style="font-size:90px;color:#FF5C7A;opacity:${clamp((p-d)*8)};margin-top:6px">✕</div></div>`;const v=Math.round(44*eio((p-.62)/.25));
+  return lab('NO PITCH AT ALL',p)+at(p,0,`<div style="display:flex;gap:40px">${x('product',.05)}${x('price',.15)}</div>`,540,380,{t})
+  +at(p,.6,`<div class="h grad" style="font-size:280px;letter-spacing:-12px">${v}%</div>`,540,700,{t})
+  +at(p,.7,'<div class="chip" style="font-size:44px">clicked it</div>',540,1060,{r:-3,t})},
+ // 8 today: under 1 in 100
+ (p,t)=>lab('TODAY',p)+at(p,0,bars(p),540,380,{t})+at(p,.4,'<div class="h" style="font-size:130px;white-space:nowrap"><span class="box">&lt; 1 in 100</span></div>',540,760,{r:-3,t})
+   +at(p,.6,'<div class="chip" style="font-size:44px">people click a banner ad now</div>',540,1000,{r:3,t}),
+ // 9 banner blindness
+ (p,t)=>{const b=clamp((p-.45)*3);return lab('BANNER BLINDNESS',p)+at(p,0,`<div class="glass" style="width:900px;padding:34px 40px;text-align:left;position:relative">
+  <div style="height:120px;border-radius:14px;background:linear-gradient(90deg,#FF5C7A,#FFC24B);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:44px;color:#150C2B;filter:blur(${b*8}px) grayscale(${b});opacity:${1-.65*b}">BIG SALE! CLICK NOW!</div>
+  <div class="h" style="font-size:52px;margin-top:34px">How to fix a leaking tap</div>${bar(95,'rgba(255,255,255,.22)')}${bar(88,'rgba(255,255,255,.22)')}${bar(70,'rgba(255,255,255,.22)')}
+  ${[[200,330],[420,340],[300,420]].map(([x,y],k)=>`<div style="position:absolute;left:${x}px;top:${y}px;width:220px;height:110px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,92,122,.55),rgba(255,194,75,.25),transparent);opacity:${clamp((p-.2-k*.08)*4)}"></div>`).join('')}${shine(p,.1)}</div>`,540,380,{t})
+  +at(p,.5,stamp('👁 SKIPPED',72,'255,92,122'),720,420,{r:-8,t,dy:-60})
+  +at(p,.6,'<div class="chip" style="font-size:42px">eyes go straight to the content</div>',540,1080,{r:-3,t})},
+ // 10 your website: key info in a flashy box
+ (p,t)=>{const sc=eio((p-.35)/.45)*260,b=clamp((p-.45)*3);return lab('ON YOUR WEBSITE',p)+at(p,0,phone(`<div style="height:100%;overflow:hidden;background:#fff;border-radius:20px;color:#150C2B;text-align:left"><div style="transform:translateY(${-sc}px)"><div style="padding:22px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #eee"><b style="font-size:30px">Harbour Plumbing</b><span style="font-size:30px">☰</span></div>
+   <div style="margin:22px;padding:24px;border-radius:18px;background:linear-gradient(135deg,#FF2D7A,#FFB020);color:#fff;text-align:center;box-shadow:0 0 ${20+12*Math.sin(t*8)}px #FF2D7A;filter:blur(${b*5}px);opacity:${1-.6*b}"><div style="font-size:34px;font-weight:900">🔥 HOT DEAL 🔥</div><div style="font-size:26px;font-weight:700;margin-top:8px">Open 24/7 · Same day call outs</div></div>
+   <div style="padding:6px 24px"><div style="font-size:40px;font-weight:800;line-height:1.1">Blocked drain? Burst pipe?</div>${bar(90,'#E6E3EE')}${bar(80,'#E6E3EE')}${bar(86,'#E6E3EE')}<div style="height:220px;border-radius:16px;background:linear-gradient(160deg,#C8D3E6,#8EA1C4);margin-top:20px"></div>${bar(75,'#E6E3EE')}${bar(88,'#E6E3EE')}</div></div></div>`,{w:470,h:780}),540,280,{t,float:3})
+  +at(p,.6,stamp('KEY INFO MISSED',52,'255,92,122'),540,1080,{r:-5,t,dy:-60})},
+ // 11 CTA
+ (p,t)=>lab('THE LESSON',p)+at(p,0,'<div class="h" style="font-size:110px;text-align:center;width:960px">Clear <span class="box">beats</span> flashy.</div>',540,370,{t})
+   +at(p,.3,`<div style="transform:scale(.8)">${banner(900,p,t)}</div>`,540,560,{t})
+   +at(p,.45,'<div class="h grad" style="font-size:84px;text-align:center;width:960px">Would you have clicked?</div>',540,760,{t})
+   +at(p,.62,'<div class="glass" style="border-radius:999px;padding:26px 54px;font-size:50px;font-weight:800;white-space:nowrap;background:linear-gradient(135deg,#7C6CFF,#5845E0);border-color:rgba(255,255,255,.3);box-shadow:0 20px 60px rgba(101,87,232,.6)">+ Follow @nexaweb_dev</div>',540,1000,{t}),
+];
+
+function lineAt(t){let i=0;for(let k=0;k<DATA.lines.length;k++)if(t>=DATA.lines[k].start-0.05)i=k;return i}
+window.render=function(t){
+ const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
+ const end=nx?nx.start:DATA.total,d=end-L.start,lt=t-L.start+0.05,p=clamp(lt/d);
+ // background motion
+ O.innerHTML=[[30,22,'101,87,232',.55,900],[78,60,'139,80,255',.38,800],[20,80,'60,120,255',.25,700]].map(([x,y,c,a,r],k)=>{const X=x+8*Math.sin(t*.25+k*2),Y=y+6*Math.cos(t*.2+k);return `<div style="position:absolute;left:${X}%;top:${Y}%;width:${r}px;height:${r}px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(${c},${a}),transparent 65%);filter:blur(30px)"></div>`}).join('');
+ F.style.backgroundPosition=`0 ${(t*40)%90}px`;
+ let ph='';for(let k=0;k<38;k++){const x=rnd(k)*1080,sp=10+rnd(k+50)*30,y=(1920-((rnd(k+9)*1920+t*sp)%1920)),sz=2+rnd(k+3)*4,a=.15+.5*rnd(k+7)*(.6+.4*Math.sin(t*2+k));ph+=`<div style="position:absolute;left:${x}px;top:${y}px;width:${sz}px;height:${sz}px;border-radius:50%;background:#CFC3FF;opacity:${a};box-shadow:0 0 ${sz*3}px #8B7BFF"></div>`}
+ P.innerHTML=ph;
+ PR.style.width=(100*t/DATA.total)+'%';
+ const out=nx?clamp((t-(end-0.16))/0.16):0, inn=ease(lt/0.3), zoom=1+0.03*p;
+ S.innerHTML=`<div style="position:absolute;inset:0;opacity:${inn*(1-out)};transform:scale(${zoom*(1+out*.06)}) translateY(${-out*30}px);transform-origin:540px 760px;filter:blur(${(1-inn)*10+out*12}px)">${SC[i](p,t)}</div>`
+  +(lt<.18&&i>0?`<div style="position:absolute;inset:0;background:radial-gradient(800px 600px at 50% 40%,rgba(139,123,255,${.22*(1-lt/.18)}),transparent 70%)"></div>`:'');
+ const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25);
+ if(!ch){C.innerHTML='';return}
+ C.innerHTML=ch.words.map(w=>{const a=t-(w.start-0.03),on=a>=0,pop=on?0.85+0.15*ease(a/0.12):1;return `<span class="${w.k?'k':''}" style="opacity:${on?1:0};transform:scale(${pop}) translateY(${on?(1-ease(a/0.15))*14:0}px)">${w.w}</span>`}).join(' ');
+};
+</script></body></html>
