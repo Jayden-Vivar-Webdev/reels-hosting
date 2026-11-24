@@ -1,0 +1,101 @@
+<!-- 1 cover -->
+<div class="s" id="s1">
+ <div class="ph" style="height:1350px"><img src="img/front.jpg" style="object-position:12% 50%"></div>
+ <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,43,.05) 0%,rgba(21,12,43,.35) 30%,rgba(21,12,43,.97) 58%)"></div>
+ <div class="h" style="top:650px;font-size:100px;z-index:6">Website jargon, explained with <em style="white-space:nowrap">a shop</em></div>
+ <div class="sub" style="top:1000px;font-size:36px;color:#E4DEFF;z-index:6">6 words your web designer uses.<br>Now you'll know what you're paying for. Swipe &#8594;</div>
+ <div class="ft" style="z-index:6"><span>@nexaweb_dev</span><span class="dots" data-on="1"></span></div>
+</div>
+
+<!-- 2 domain -->
+<div class="s" id="s2">
+ <div class="ph"><img src="img/street.jpg" style="object-position:50% 40%"></div><div class="num">01</div>
+ <div class="h">Domain = your <em>street address</em></div>
+ <div class="sub" style="top:580px">The name people type to find you.</div>
+ <div class="card" style="top:660px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span>My domains</div>
+  <div class="row"><span>saltbushbakehouse.com.au</span><span class="v" style="color:#2f8f5d">Active</span></div>
+  <div class="row"><span class="k">Registered to</span><span class="v"><span class="mk">Saltbush Bakehouse</span></span></div>
+  <div class="row" style="border:0"><span class="k">Renews</span><span class="v">Every year</span></div></div>
+ <div class="note" style="left:600px;top:1010px;transform:rotate(-3deg)">your name, not theirs</div>
+ <div class="why" style="top:1090px"><b>Know this:</b> you rent it, usually a year or more at a time. Let it lapse and someone else can buy your address.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="2"></span></div>
+</div>
+
+<!-- 3 hosting -->
+<div class="s" id="s3">
+ <div class="ph"><img src="img/hosting.jpg" style="object-position:50% 50%"></div><div class="num">02</div>
+ <div class="h">Hosting = the <em>building</em></div>
+ <div class="sub" style="top:510px">A computer that stores your site and hands it to every visitor.</div>
+ <div class="card" style="top:660px;transform:rotate(1deg)">
+  <div class="bar"><span class="d"></span>Hosting plan</div>
+  <div class="row"><span class="k">Website</span><span class="v">saltbushbakehouse.com.au</span></div>
+  <div class="row"><span class="k">Status</span><span class="v" style="color:#2f8f5d">&#9679; Online</span></div>
+  <div class="row" style="border:0"><span class="k">Billing</span><span class="v">Monthly</span></div></div>
+ <div class="why" style="top:1080px"><b>Know this:</b> it's rent, so it's an ongoing cost. A cheap, crowded building can mean a slow website.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="3"></span></div>
+</div>
+
+<!-- 4 DNS -->
+<div class="s" id="s4">
+ <div class="ph"><img src="img/map.jpg" style="object-position:50% 50%"></div><div class="num">03</div>
+ <div class="h">DNS = the <em>directions</em></div>
+ <div class="sub" style="top:510px">It tells browsers which building your address belongs to.</div>
+ <div class="card" style="top:660px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span>DNS records</div>
+  <div class="row" style="font:600 22px Inter;color:#8a8794;padding:18px 34px"><span style="width:120px">Type</span><span style="flex:1">Name</span><span>Points to</span></div>
+  <div class="row"><span style="width:120px;font-weight:700">A</span><span style="flex:1">@</span><span class="v"><span class="mk" data-c="1">203.0.113.24</span></span></div>
+  <div class="row" style="border:0"><span style="width:120px;font-weight:700">MX</span><span style="flex:1">@</span><span class="v">mail server</span></div></div>
+ <div class="why" style="top:1080px"><b>Know this:</b> move to a new host and this is what gets updated. Get it wrong and your site or email goes missing.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="4"></span></div>
+</div>
+
+<!-- 5 SSL -->
+<div class="s" id="s5">
+ <div class="ph"><img src="img/keydoor.jpg" style="object-position:50% 50%"></div><div class="num">04</div>
+ <div class="h">SSL = the <em>lock</em> on the door</div>
+ <div class="sub" style="top:580px">It's the https at the start of your address.</div>
+ <div class="card" style="top:670px;transform:rotate(1deg)">
+  <div style="padding:26px 30px 12px;font:600 20px Inter;color:#8a8794">With SSL</div>
+  <div style="margin:0 30px;height:58px;border-radius:29px;background:#efeef3;display:flex;align-items:center;padding:0 24px;font:500 25px Inter;color:#3a3842"><span class="mk">https://</span>saltbushbakehouse.com.au</div>
+  <div style="padding:24px 30px 12px;font:600 20px Inter;color:#8a8794">Without it</div>
+  <div style="margin:0 30px 30px;height:58px;border-radius:29px;background:#efeef3;display:flex;align-items:center;padding:0 24px;font:500 25px Inter;color:#3a3842"><span style="color:#c5342b;font-weight:700;margin-right:14px">&#9888; Not secure</span>saltbushbakehouse.com.au</div></div>
+ <div class="why" style="top:1090px"><b>Know this:</b> it scrambles what people type into your site. Without it, Chrome shows "Not secure" next to your address.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="5"></span></div>
+</div>
+
+<!-- 6 CMS -->
+<div class="s" id="s6">
+ <div class="ph"><img src="img/shelf.jpg" style="object-position:50% 45%"></div><div class="num">05</div>
+ <div class="h">CMS = your keys to <em>the shelves</em></div>
+ <div class="sub" style="top:580px">The editor where you change words, prices and photos yourself.</div>
+ <div class="card" style="top:700px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span>Edit page: Menu</div>
+  <div class="lbl">Item</div><div class="fld">Sourdough loaf</div>
+  <div class="lbl">Price</div><div class="fld"><s style="color:#a3a0ab">$9.00</s> &nbsp;$9.50</div>
+  <div style="display:flex;justify-content:flex-end;padding:20px 30px 24px"><span style="background:#6557E8;color:#fff;font:600 22px Inter;padding:12px 26px;border-radius:12px">Publish</span></div></div>
+ <div class="why" style="top:1130px"><b>Know this:</b> WordPress, Shopify, Squarespace and Wix are all examples. Ask if you'll get a login.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="6"></span></div>
+</div>
+
+<!-- 7 SEO -->
+<div class="s" id="s7">
+ <div class="ph"><img src="img/sign.jpg" style="object-position:50% 0%"></div><div class="num">06</div>
+ <div class="h">SEO = the sign that <em>brings people in</em></div>
+ <div class="sub" style="top:580px">Helping Google understand you, so it shows you to searchers.</div>
+ <div class="card" style="top:700px;transform:rotate(1deg)">
+  <div style="padding:22px 30px;border-bottom:1px solid #f0eff4"><div style="height:56px;border-radius:28px;border:1.5px solid #e4e2ea;display:flex;align-items:center;padding:0 24px;font:500 25px Inter;color:#3a3842">sourdough bakery wollongong</div></div>
+  <div style="padding:22px 30px 28px"><div style="font-size:19px;color:#5f5c68">saltbushbakehouse.com.au</div>
+   <div style="font:500 29px Inter;color:#3b34b8;margin-top:6px"><span class="mk">Sourdough Bakery in Wollongong</span> | Saltbush</div>
+   <div style="font-size:21px;color:#5f5c68;margin-top:18px;line-height:1.4">Fresh sourdough baked daily from 6am. Order online for pick up.</div></div></div>
+ <div class="why" style="top:1110px"><b>Know this:</b> it's not magic. Clear page titles, useful pages and a Google Business Profile, done over time.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="7"></span></div>
+</div>
+
+<!-- 8 cta -->
+<div class="s" id="s8">
+ <div class="h" style="top:110px;font-size:84px">Your <em>cheat sheet</em></div>
+ <div id="list" style="position:absolute;left:80px;right:80px;top:250px;z-index:3;display:flex;flex-direction:column;gap:14px"></div>
+ <div style="position:absolute;left:80px;right:80px;top:1030px;font-size:36px;line-height:1.5;color:#D9D3F2;z-index:3">Save this for your next web designer chat.<br>Send it to a mate who just nods along.<br>Follow <b style="color:var(--lav)">@nexaweb_dev</b> for more like this.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="8"></span></div>
+</div>
