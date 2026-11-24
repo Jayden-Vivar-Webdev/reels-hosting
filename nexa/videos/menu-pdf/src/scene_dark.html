@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;color:#fff;background:#0A0616}
+#bg,#orbs,#grid,#parts,#stage,#vig{position:absolute;inset:0}
+#bg{background:radial-gradient(1200px 900px at 50% 35%,#1B1036 0%,#110A24 45%,#0A0616 100%)}
+#grid{perspective:900px;overflow:hidden}
+#floor{position:absolute;left:-600px;right:-600px;top:1150px;height:1400px;transform-origin:50% 0;transform:rotateX(72deg);
+ background-image:linear-gradient(rgba(140,120,255,.22) 2px,transparent 2px),linear-gradient(90deg,rgba(140,120,255,.22) 2px,transparent 2px);background-size:90px 90px;
+ -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 75%)}
+#vig{background:radial-gradient(1100px 1500px at 50% 45%,transparent 55%,rgba(5,2,12,.75) 100%);pointer-events:none}
+.lab{position:absolute;left:0;right:0;top:300px;text-align:center;font-weight:700;font-size:30px;letter-spacing:10px;color:#B9A6FF}
+.lab i{display:inline-block;width:14px;height:14px;border-radius:50%;background:#8B7BFF;margin-right:16px;vertical-align:4px;box-shadow:0 0 0 6px rgba(139,123,255,.18),0 0 24px #8B7BFF}
+.h{font-weight:800;letter-spacing:-.045em;line-height:.98;color:#fff}
+.grad{background:linear-gradient(100deg,#fff 10%,#CFC3FF 50%,#8B7BFF 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.box{display:inline-block;background:linear-gradient(135deg,#7C6CFF,#5845E0);color:#fff;padding:0 .16em .05em;border-radius:.14em;box-shadow:0 10px 40px rgba(101,87,232,.55),inset 0 1px 0 rgba(255,255,255,.35)}
+.glass{position:relative;background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.035));border:1.5px solid rgba(185,166,255,.22);border-radius:36px;
+ box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.2),0 0 80px rgba(101,87,232,.18),inset 0 1px 0 rgba(255,255,255,.14);overflow:hidden;backdrop-filter:blur(18px)}
+.mono{font-family:'DejaVu Sans Mono',monospace}
+.chip{display:inline-block;border-radius:999px;padding:16px 34px;font-weight:700;font-size:38px;white-space:nowrap;background:rgba(139,123,255,.16);border:1.5px solid rgba(185,166,255,.35);color:#DCD3FF;box-shadow:0 0 40px rgba(101,87,232,.25)}
+.bar{height:78px;display:flex;align-items:center;gap:14px;padding:0 30px;border-bottom:1.5px solid rgba(185,166,255,.14);background:rgba(255,255,255,.03)}
+.bar s{width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,.18);display:inline-block}
+.url{margin-left:16px;flex:1;height:44px;border-radius:12px;background:rgba(0,0,0,.25);display:flex;align-items:center;padding:0 18px;font-size:24px;color:#9C92C8}
+.muted{color:#9C92C8}
+.ok{color:#4BE39A}
+.bad{color:#FF5C7A}
+#cap{position:absolute;left:150px;width:780px;top:1385px;text-align:center;font-weight:800;font-size:80px;letter-spacing:-.04em;line-height:1.14;text-shadow:0 6px 30px rgba(0,0,0,.6)}
+#cap span{display:inline-block;margin:0 .1em}
+#cap span.k{background:linear-gradient(135deg,#7C6CFF,#5845E0);color:#fff;padding:0 .12em .05em;border-radius:.12em;text-shadow:none;box-shadow:0 8px 30px rgba(101,87,232,.5)}
+#tag{position:absolute;left:60px;top:232px;font-weight:700;font-size:26px;letter-spacing:5px;color:rgba(220,211,255,.55)}
+#tag b{color:#8B7BFF}
+#prog{position:absolute;left:60px;right:60px;top:276px;height:4px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden}
+#prog i{display:block;height:100%;background:linear-gradient(90deg,#5845E0,#B9A6FF);box-shadow:0 0 12px #8B7BFF}
+</style></head><body>
+<div id="bg"></div><div id="orbs"></div><div id="grid"><div id="floor"></div></div><div id="parts"></div>
+<div id="stage"></div><div id="vig"></div>
+<div id="tag"><b>●</b> WEBSITE TIPS</div><div id="prog"><i></i></div>
+<div id="cap"></div>
+<script>
+const DATA=/*DATA*/null;
+const $=id=>document.getElementById(id);
+const S=$('stage'),C=$('cap'),O=$('orbs'),P=$('parts'),F=$('floor'),PR=$('prog').firstChild;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const eio=x=>{x=clamp(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const spring=x=>{x=clamp(x);return 1-Math.exp(-6.5*x)*Math.cos(7.5*x)};
+const rnd=i=>{const x=Math.sin(i*127.1+311.7)*43758.5453;return x-Math.floor(x)};
+// 3D entrance: rotateX flip-up + blur, then gentle float
+function at(p,d,html,x,y,o={}){
+ const s=spring((p-d)*3.2),e=ease((p-d)*4),tt=o.t||0;
+ const fl=Math.sin((tt+d*7)*1.3)*(o.float??6);
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(${o.c===false?0:'-50%'},${(1-s)*(o.dy??90)+fl}px) perspective(1400px) rotateX(${(1-s)*(o.rx??28)}deg) rotateZ(${(o.r||0)*(1-s)}deg) scale(${0.86+0.14*s});opacity:${clamp(e*1.6)};filter:blur(${(1-e)*14}px);transform-origin:50% 100%;${o.css||''}">${html}</div>`}
+// moving light sweep over a card
+const shine=(p,d=0)=>{const x=-60+clamp((p-d-.08)/.35)*220;return `<div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent ${x-18}%,rgba(255,255,255,.13) ${x}%,transparent ${x+18}%)"></div>`};
+function lab(t,p){const e=ease(p*5);return `<div class="lab" style="opacity:${e};letter-spacing:${10+(1-e)*14}px"><i></i>${t}</div>`}
+function typed(t,p,a,b){return t.slice(0,Math.floor(t.length*clamp((p-a)/(b-a))))}
+const caret=t=>`<span style="display:inline-block;width:4px;height:1em;background:#B9A6FF;vertical-align:-.12em;box-shadow:0 0 10px #B9A6FF;opacity:${Math.floor(t*3)%2}"></span>`;
+function browser(w,url,inner,p){return `<div class="glass" style="width:${w}px"><div class="bar"><s style="background:#FF5C7A"></s><s style="background:#FFC24B"></s><s style="background:#4BE39A"></s><div class="url mono">🔒 ${url}</div></div>${inner}${shine(p,0)}</div>`}
+function search(q,res,p,t){return browser(900,'domains.google',`<div style="padding:46px"><div class="h" style="font-size:56px">Find your perfect domain</div><div style="margin-top:30px;border:2px solid rgba(185,166,255,.5);border-radius:20px;padding:22px 28px;font-size:46px;font-weight:700;background:rgba(0,0,0,.25);box-shadow:0 0 0 6px rgba(139,123,255,.12)" class="mono">${q}${res?'':caret(t)}</div>${res||''}</div>`,p)}
+const RES=(s,t)=>`<div style="margin-top:30px;display:flex;align-items:center;justify-content:space-between;background:rgba(75,227,154,.08);border:1.5px solid rgba(75,227,154,.35);border-radius:22px;padding:24px 30px;transform:scale(${.9+.1*s});opacity:${clamp(s*2)};box-shadow:0 0 ${30+10*Math.sin(t*6)}px rgba(75,227,154,.25)"><div><div class="mono" style="font-size:40px;font-weight:700">google.com</div><div class="ok" style="font-size:32px;font-weight:700;margin-top:6px">● Available</div></div><div class="h" style="font-size:76px">$12</div></div>`;
+function morph(p){const src='6,006.13'.split(''),L={0:'G',2:'O',3:'O',4:'G',6:'L',7:'E'};let h='',k=0;const m0=clamp((p-.6)/.1);
+ src.forEach((c,i)=>{if(!(i in L)){h+=`<span style="display:inline-block;overflow:hidden;width:${(1-m0)*.6}em;opacity:${1-m0}">${c}</span>`;return}
+  const m=clamp((p-.64-k*.035)/.12);k++;
+  h+=`<span style="position:relative;display:inline-block;width:.62em;text-align:center"><span style="position:absolute;left:0;right:0;opacity:${1-m};filter:blur(${m*12}px);transform:translateY(${-m*30}px)">${c}</span><span class="grad" style="display:inline-block;opacity:${m};filter:blur(${(1-m)*12}px);transform:translateY(${(1-m)*30}px)">${L[i]}</span></span>`});return h}
+function ring(x,y,p,d,col='139,123,255'){const q=clamp((p-d)/.35);return q<=0||q>=1?'':`<div style="position:absolute;left:${x}px;top:${y}px;width:${200+700*ease(q)}px;height:${200+700*ease(q)}px;transform:translate(-50%,-50%);border-radius:50%;border:3px solid rgba(${col},${.7*(1-q)});box-shadow:0 0 40px rgba(${col},${.5*(1-q)})"></div>`}
+const stamp=(txt,fs=64,col='255,92,122')=>`<div class="h" style="font-size:${fs}px;padding:14px 34px;border:7px solid rgb(${col});color:rgb(${col});border-radius:18px;letter-spacing:4px;white-space:nowrap;background:rgba(10,6,22,.6);box-shadow:0 0 40px rgba(${col},.35)">${txt}</div>`;
+function phone(inner,o={}){return `<div style="width:${o.w||330}px;height:${o.h||600}px;border-radius:56px;background:${o.bg||'#08050F'};border:10px solid #2A2147;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 2px rgba(185,166,255,.25);position:relative;overflow:hidden"><div style="position:absolute;top:16px;left:50%;transform:translateX(-50%);width:110px;height:30px;border-radius:20px;background:#000;z-index:5"></div><div style="position:absolute;inset:${o.inset||'70px 22px 30px'};overflow:hidden">${inner}</div></div>`}
+const chipBad=(s,fs=42)=>`<div class="chip" style="font-size:${fs}px;background:rgba(255,92,122,.14);border-color:rgba(255,92,122,.5);color:#FFC2CE">${s}</div>`;
+const chipOk=(s,fs=42)=>`<div class="chip" style="font-size:${fs}px;background:rgba(75,227,154,.12);border-color:rgba(75,227,154,.5);color:#BDF7D9">${s}</div>`;
+const ITEMS=[['Smashed avo on sourdough','19','V'],['Buttermilk pancakes','18','GF'],['Chilli scrambled eggs','21',''],['Big breakfast','26',''],['Acai bowl','17','VG'],['Flat white','5','']];
+// cream PDF menu page (used tiny or zoomed)
+function pdfPage(w,title,o={}){return `<div style="width:${w}px;background:#F3EBDD;color:#3B2F25;padding:${w*.07}px;font-family:Georgia,serif;box-shadow:0 20px 50px rgba(0,0,0,.5);${o.css||''}"><div style="text-align:center;font-size:${w*.07}px;font-weight:700;letter-spacing:${w*.004}px">PEBBLE LANE KITCHEN</div><div style="text-align:center;font-size:${w*.04}px;margin:${w*.015}px 0 ${w*.04}px;font-style:italic">${title}</div>${ITEMS.concat(ITEMS.slice(0,4)).map(([n,p])=>`<div style="display:flex;justify-content:space-between;font-size:${w*.038}px;margin:${w*.018}px 0;border-bottom:1px dotted #9B8B77"><span>${n}</span><span>${o.price&&n.startsWith('Butter')?o.price:p}</span></div>`).join('')}</div>`}
+function webMenu(p,o={}){return `<div style="background:#FFFDF8;height:100%;color:#1E1A16;font-family:'DM Sans',sans-serif;text-align:left"><div style="background:#2F4A3A;color:#fff;padding:64px 26px 22px"><div style="font-size:30px;font-weight:800">Pebble Lane Kitchen</div><div style="font-size:22px;opacity:.8">Breakfast · 7am to 2pm</div></div><div style="padding:10px 26px">${ITEMS.slice(0,o.n||6).map(([n,pr,tg],i)=>{const q=clamp((p-.1-i*.07)*5);const price=o.edit&&i==1?o.edit:pr;return `<div style="padding:18px 0;border-bottom:1.5px solid #EAE3D6;opacity:${o.anim?q:1};transform:translateX(${o.anim?(1-q)*40:0}px)"><div style="display:flex;justify-content:space-between;font-size:32px;font-weight:800"><span>${n}</span><span>$${price}</span></div>${tg?`<span style="display:inline-block;margin-top:8px;font-size:22px;font-weight:800;padding:4px 14px;border-radius:999px;background:${tg=='GF'?'#FFE7B8':'#D5F2DE'};color:${tg=='GF'?'#8A5A00':'#1F6B3A'}">${tg=='GF'?'Gluten free':tg=='V'?'Vegetarian':'Vegan'}</span>`:''}</div>`}).join('')}${o.foot||''}</div></div>`}
+const SC=[
+ // 0 hook
+ (p,t)=>lab('WEBSITE TIPS',p)+at(p,0,'<div class="h" style="font-size:118px;text-align:left;width:940px">Is your menu<br>still a</div>',80,400,{c:false,t})
+   +at(p,.25,'<div class="h" style="font-size:200px;white-space:nowrap"><span class="box">PDF?</span></div>',80,660,{c:false,r:-4,t})
+   +at(p,.55,'<div style="font-size:150px;transform:rotate(-8deg)">📄</div>',830,700,{t})
+   +at(p,.6,stamp('PEOPLE LEAVE',76),540,1080,{r:-6,t,dy:-60}),
+ // 1 tap menu, downloading
+ (p,t)=>{const dl=clamp((p-.55)/.45);return lab('ON A PHONE',p)+at(p,0,phone(`<div style="background:#FFFDF8;height:100%;color:#1E1A16;text-align:center"><div style="background:#2F4A3A;color:#fff;padding:64px 26px 26px"><div style="font-size:32px;font-weight:800">Pebble Lane Kitchen</div></div><div style="height:250px;margin:24px;border-radius:20px;background:linear-gradient(135deg,#C9A27A,#7A5A3E)"></div><div style="margin:30px auto;width:300px;padding:22px;border-radius:999px;font-size:36px;font-weight:800;background:#2F4A3A;color:#fff;transform:scale(${p>.35&&p<.45?.92:1})">View menu</div>${p>.4?`<div style="position:absolute;left:20px;right:20px;bottom:30px;background:#1E1640;color:#fff;border-radius:22px;padding:22px;text-align:left"><div class="mono" style="font-size:24px">menu_FINAL_v3.pdf</div><div style="height:14px;border-radius:8px;background:rgba(255,255,255,.15);margin-top:14px;overflow:hidden"><div style="height:100%;width:${dl*62}%;background:#B9A6FF"></div></div><div style="font-size:22px;color:#9C92C8;margin-top:10px">Downloading… ${(dl*3.1).toFixed(1)} of 5.0 MB</div></div>`:''}</div>`,{w:520,h:950,inset:'0'}),540,350,{t,float:3})
+  +(p>.3&&p<.5?`<div style="position:absolute;left:600px;top:${880+(p<.4?20:0)}px;font-size:110px">👆</div>`:'')},
+ // 2 tiny, pinch zoom
+ (p,t)=>{const z=1+2.2*eio((p-.2)/.35),sx=-260*eio((p-.55)/.3);return lab('PINCH. ZOOM. SCROLL.',p)+at(p,0,phone(`<div style="background:#3A3A3A;height:100%;display:flex;align-items:flex-start;justify-content:center;padding-top:40px"><div style="transform:translate(${sx}px,${(z-1)*60}px) scale(${z});transform-origin:50% 20%">${pdfPage(330,'Breakfast')}</div></div>`,{w:520,h:950,inset:'0'}),540,350,{t,float:3})
+  +at(p,.25,'<div style="font-size:130px">🤏</div>',190,1060,{r:-10,t})+at(p,.6,chipBad('😩 where was I?'),720,1200,{r:3,t})},
+ // 3 old menu
+ (p,t)=>lab('OUT OF DATE',p)+at(p,0,pdfPage(600,'Winter Menu 2023',{css:'transform:rotate(-3deg)'}),540,340,{t})
+   +at(p,.4,stamp('OLD PRICES',90),540,700,{r:-10,t,dy:-60})
+   +at(p,.65,chipBad('1 price change = a whole new file',44),540,1210,{r:-2,t}),
+ // 4 scanned photo + screen reader
+ (p,t)=>lab('SCANNED PHOTO',p)+at(p,0,`<div style="filter:grayscale(.6) blur(1.2px) contrast(.9);transform:rotate(4deg)">${pdfPage(520,'Breakfast',{css:'background:#D9D2C4'})}</div>`,440,320,{t})
+   +at(p,.4,`<div class="glass" style="width:620px;padding:30px 36px;text-align:left"><div class="muted" style="font-size:26px;font-weight:800;letter-spacing:4px">🔊 SCREEN READER</div><div class="h" style="font-size:52px;margin-top:12px">"Image."</div><div style="font-size:34px;color:#FF9DB0;margin-top:8px;font-weight:700">…and nothing else.</div></div>`,620,1020,{t,r:2}),
+ // 5 customers can't find out
+ (p,t)=>lab('THE COST',p)+at(p,0,`<div style="display:flex;gap:30px">${[0,1,2].map(i=>`<div class="glass" style="width:280px;height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px"><div style="font-size:130px">👤</div><div class="h bad" style="font-size:100px;opacity:${clamp((p-.25-i*.1)*5)}">?</div></div>`).join('')}</div>`,540,380,{t})
+   +at(p,.45,'<div class="h" style="font-size:84px;text-align:center;width:960px">"So… what do<br>they <span class="box">sell?</span>"</div>',540,900,{t}),
+ // 6 fix
+ (p,t)=>lab('THE FIX',p)+at(p,0,`<div style="display:flex;align-items:center;gap:50px"><div style="font-size:230px;filter:grayscale(${clamp((p-.2)*4)});opacity:${1-.6*clamp((p-.2)*4)}">📄</div><div class="h" style="font-size:140px;color:#B9A6FF">→</div><div class="glass" style="width:460px;padding:44px 30px;text-align:center"><div style="font-size:150px">🌐</div><div class="h" style="font-size:58px;margin-top:10px">a normal<br>web page</div></div></div>`,540,470,{t})
+   +at(p,.55,stamp('✓ REAL TEXT',90,'75,227,154'),540,1060,{r:-5,t,dy:-60}),
+ // 7 web menu with tags
+ (p,t)=>lab('EASY TO READ',p)+at(p,0,phone(webMenu(p,{anim:1,n:5}),{w:620,h:960,inset:'0'}),540,350,{t,float:3}),
+ // 8 change price
+ (p,t)=>{const typed_=p<.35?'18':p<.5?'1':'19';const saved=p>.6;return lab('UPDATE IT',p)+at(p,0,`<div class="glass" style="width:860px;padding:40px;text-align:left"><div class="muted" style="font-size:28px;font-weight:800;letter-spacing:4px">EDIT MENU ITEM</div><div class="h" style="font-size:68px;margin-top:20px">Buttermilk pancakes</div><div style="display:flex;align-items:center;gap:24px;margin-top:30px"><div class="mono" style="font-size:70px;font-weight:700;padding:16px 34px;border-radius:20px;border:2px solid rgba(185,166,255,.5);background:rgba(0,0,0,.25)">$${typed_}${p>.25&&p<.55?caret(t):''}</div><div style="padding:22px 40px;border-radius:999px;font-size:40px;font-weight:800;background:${saved?'#4BE39A':'linear-gradient(135deg,#7C6CFF,#5845E0)'};color:${saved?'#0A2A1A':'#fff'}">${saved?'✓ Saved':'Save'}</div></div>${shine(p,.1)}</div>`,540,440,{t})
+  +at(p,.6,chipOk('⏱ about a minute',56),540,1060,{r:-3,t})},
+ // 9 PDF link at bottom
+ (p,t)=>lab('STILL WANT A PDF?',p)+at(p,0,phone(webMenu(1,{n:3,foot:`<div style="margin:30px 0;text-align:center;font-size:28px;font-weight:700;color:#2F4A3A;text-decoration:underline;padding:18px;border-radius:16px;background:${p>.5?'rgba(101,87,232,.15)':'transparent'}">⬇ Download printable menu (PDF)</div>`}),{w:620,h:960,inset:'0'}),540,350,{t,float:3})
+  +(p>.5?`<div style="position:absolute;left:800px;top:${1060+10*Math.sin(t*6)}px;font-size:100px">👈</div>`:''),
+ // 10 CTA
+ (p,t)=>lab('YOUR TURN',p)+at(p,0,'<div class="h" style="font-size:96px;text-align:center;width:960px">Open your menu<br>on your phone.</div>',540,380,{t})
+   +at(p,.3,'<div class="h grad" style="font-size:86px;text-align:center;width:960px">Would you<br>order from it?</div>',540,650,{t})
+   +at(p,.6,'<div class="glass" style="border-radius:999px;padding:26px 54px;font-size:50px;font-weight:800;white-space:nowrap;background:linear-gradient(135deg,#7C6CFF,#5845E0);border-color:rgba(255,255,255,.3);box-shadow:0 20px 60px rgba(101,87,232,.6)">+ Follow @nexaweb_dev</div>',540,1040,{t}),
+];
+
+function lineAt(t){let i=0;for(let k=0;k<DATA.lines.length;k++)if(t>=DATA.lines[k].start-0.05)i=k;return i}
+window.render=function(t){
+ const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
+ const end=nx?nx.start:DATA.total,d=end-L.start,lt=t-L.start+0.05,p=clamp(lt/d);
+ // background motion
+ O.innerHTML=[[30,22,'101,87,232',.55,900],[78,60,'139,80,255',.38,800],[20,80,'60,120,255',.25,700]].map(([x,y,c,a,r],k)=>{const X=x+8*Math.sin(t*.25+k*2),Y=y+6*Math.cos(t*.2+k);return `<div style="position:absolute;left:${X}%;top:${Y}%;width:${r}px;height:${r}px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(${c},${a}),transparent 65%);filter:blur(30px)"></div>`}).join('');
+ F.style.backgroundPosition=`0 ${(t*40)%90}px`;
+ let ph='';for(let k=0;k<38;k++){const x=rnd(k)*1080,sp=10+rnd(k+50)*30,y=(1920-((rnd(k+9)*1920+t*sp)%1920)),sz=2+rnd(k+3)*4,a=.15+.5*rnd(k+7)*(.6+.4*Math.sin(t*2+k));ph+=`<div style="position:absolute;left:${x}px;top:${y}px;width:${sz}px;height:${sz}px;border-radius:50%;background:#CFC3FF;opacity:${a};box-shadow:0 0 ${sz*3}px #8B7BFF"></div>`}
+ P.innerHTML=ph;
+ PR.style.width=(100*t/DATA.total)+'%';
+ const out=nx?clamp((t-(end-0.16))/0.16):0, inn=ease(lt/0.3), zoom=1+0.03*p;
+ S.innerHTML=`<div style="position:absolute;inset:0;opacity:${inn*(1-out)};transform:scale(${zoom*(1+out*.06)}) translateY(${-out*30}px);transform-origin:540px 760px;filter:blur(${(1-inn)*10+out*12}px)">${SC[i](p,t)}</div>`
+  +(lt<.18&&i>0?`<div style="position:absolute;inset:0;background:radial-gradient(800px 600px at 50% 40%,rgba(139,123,255,${.22*(1-lt/.18)}),transparent 70%)"></div>`:'');
+ const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25);
+ if(!ch){C.innerHTML='';return}
+ C.innerHTML=ch.words.map(w=>{const a=t-(w.start-0.03),on=a>=0,pop=on?0.85+0.15*ease(a/0.12):1;return `<span class="${w.k?'k':''}" style="opacity:${on?1:0};transform:scale(${pop}) translateY(${on?(1-ease(a/0.15))*14:0}px)">${w.w}</span>`}).join(' ');
+};
+</script></body></html>

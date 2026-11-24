@@ -438,5 +438,14 @@
   "posted": false,
   "status": "awaiting approval",
   "note": "1:17 pm slot. Tips/opinion only, no stats. Facts: Apple HIG minimum tap target 44x44 pt; input type=tel shows telephone keypad on mobile (MDN). Prices illustrative for a made-up business."
+ },
+ {
+  "slug": "menu-pdf",
+  "format": "reel",
+  "topic": "Website tip: stop using a PDF menu. On a phone it downloads, opens tiny (pinch/zoom/scroll sideways), is often out of date because one price change means a new file, and a scanned-photo menu can't be read by screen readers (BOIA). Fix: menu as a normal web page with real text, prices, GF/vegan tags; quick price edits; keep a small printable PDF link at the bottom. Made-up business Pebble Lane Kitchen.",
+  "video": "nexa/videos/menu-pdf/menu-pdf.mp4",
+  "posted": false,
+  "approved": false,
+  "post_on": "2026-11-24"
  }
 ]
