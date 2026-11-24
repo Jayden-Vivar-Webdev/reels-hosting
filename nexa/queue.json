@@ -455,9 +455,11 @@
   "hook": "Almost half the people who saw this ad clicked it.",
   "video": "nexa/videos/internet-stories-ep8-banner/ep8.mp4",
   "post_on": "2026-11-24",
-  "approved": false,
-  "posted": false,
-  "note": "8:17 pm reel slot. ElevenLabs Brian v3, 54.6 s. capcheck 0 problems; synccheck 153/156 mean +0.010s, none >0.2s; final transcript complete. Sources: Digiday 'How the banner ad was born' (2013), Wikipedia HotWired, Guinness World Records 'First banner ad'; display CTR benchmarks (Smart Insights, WordStream) well under 1%. | v2 (Jayden 2026-11-24: wanted a different style from other reels): restyled as retro 1994 desktop -> modern light; re-voiced with Brian v3, 53.0 s; capcheck 0 problems; synccheck 153/156 mean +0.009s, none >0.2s; final transcript complete. | v3 (Jayden 2026-11-24: retro style rejected, wants professional modern): light modern style throughout, same VO, 53.0 s; capcheck 0 problems; synccheck 153/156 mean +0.009s, none >0.2s; final transcript complete. | v4 (Jayden 2026-11-24): removed the top progress bar and INTERNET STORIES tag; checks re-run, all pass.",
-  "style": "v3 light modern: off-white/lavender background, white rounded cards, navy DM Sans ExtraBold, indigo #6557E8 + lavender #B9A6FF highlights (src/scene_modern.html)"
+  "approved": true,
+  "posted": true,
+  "note": "8:17 pm reel slot. ElevenLabs Brian v3, 54.6 s. capcheck 0 problems; synccheck 153/156 mean +0.010s, none >0.2s; final transcript complete. Sources: Digiday 'How the banner ad was born' (2013), Wikipedia HotWired, Guinness World Records 'First banner ad'; display CTR benchmarks (Smart Insights, WordStream) well under 1%. | v2 (Jayden 2026-11-24: wanted a different style from other reels): restyled as retro 1994 desktop -> modern light; re-voiced with Brian v3, 53.0 s; capcheck 0 problems; synccheck 153/156 mean +0.009s, none >0.2s; final transcript complete. | v3 (Jayden 2026-11-24: retro style rejected, wants professional modern): light modern style throughout, same VO, 53.0 s; capcheck 0 problems; synccheck 153/156 mean +0.009s, none >0.2s; final transcript complete. | v4 (Jayden 2026-11-24): removed the top progress bar and INTERNET STORIES tag; checks re-run, all pass. | Approved by Jayden and posted 2026-11-24 21:40 AEDT.",
+  "style": "v3 light modern: off-white/lavender background, white rounded cards, navy DM Sans ExtraBold, indigo #6557E8 + lavender #B9A6FF highlights (src/scene_modern.html)",
+  "media_id": "18037216010672488",
+  "caption": "In 1994, almost half the people who saw this ad clicked it. Today? Well under 1 in 100. \ud83d\udc40\n\nThe first banner ad on the web didn't sell anything, and that's exactly why it worked. Would you have clicked it? Tell us below, and save this before you redesign your homepage.\n\nClear beats flashy. Nexa Web Development builds websites people actually read.\n\n#internetstories #internethistory #webdesign #websitetips #digitalmarketing #smallbusinessaustralia #bannerblindness #techhistory"
  }
 ]
