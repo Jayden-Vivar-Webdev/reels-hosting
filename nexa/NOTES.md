@@ -36,3 +36,4 @@
 - 2026-11-23 (Jayden): EVERY Nexa reel must use ElevenLabs Brian (nPczCjzI2devNBz1zQrb, eleven_v3), no Chatterbox/Kokoro fallback.
   Use vo_el.py + join2.py (nexa/videos/internet-stories-ep7-outage/src). If no key is available, ask Jayden for one before voicing.
   Never write the API key into the repo.
+- 2026-11-24 (Jayden): reels all looked the same (dark purple glass); asked for variety. Rejected a retro 1994 desktop style (teal, beveled windows, pixel font): wants a professional modern look. Light modern reel style approved for review: nexa/videos/internet-stories-ep8-banner/src/scene_modern.html.
