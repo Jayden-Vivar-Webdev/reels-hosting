@@ -7,7 +7,7 @@ BADGE = json.load(open("badges.json")) if __import__("os").path.exists("badges.j
 
 def tokens(line):
     line = line.replace("a.m.", "AM")
-    return [w for w in re.findall(r"\d+:\d+[.,!?…]*|[A-Za-z0-9'\-]+[.,!?…]*|\.\.\.", line) if w != "..."]
+    return [w for w in re.findall(r"\$?\d+(?:[.,:]\d+)+[A-Za-z]*[.,!?…]*|\$?\d+[A-Za-z]*[.,!?…]*|[A-Za-z0-9'\-]+[.,!?…]*|\.\.\.", line) if w != "..."]
 
 for p in S:
     L = json.load(open(f"{p}_lines.json")); asr = json.load(open(f"{p}_words.json"))
