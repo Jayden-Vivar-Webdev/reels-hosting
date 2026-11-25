@@ -1,0 +1,2 @@
+The Lead Masks case (Vintem Hill, Niteroi, Brazil, Aug 1966). masks.js is inserted into scene.html before window.render. SFX: hsfx.py + examples/true-israel-keyes/extra.py (wind/hum); music_tc.py; MUSIC=0.22 python3 mix.py.
+Sources: en.wikipedia.org/wiki/Lead_masks_case; historicmysteries.com/the-lead-masks-case; allthatsinteresting.com/lead-masks-case
