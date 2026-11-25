@@ -1,0 +1,14 @@
+[
+ {"text":"Your website has a brutally honest critic. And it's free."},
+ {"text":"Copy the words from your homepage and paste them into ChatGPT, or any AI chatbot."},
+ {"text":"Then ask it: Pretend you're a customer who's never heard of us."},
+ {"text":"In one sentence, what do we do, and where?"},
+ {"text":"What would stop you from calling or booking?"},
+ {"text":"And what question does this page leave unanswered?"},
+ {"text":"Say you're an electrician, and it replies: You sell lighting, somewhere in Australia?"},
+ {"text":"That's what a rushed visitor thinks too. So fix your headline first."},
+ {"text":"Fix the top 3 things it flags, then run the test again.","say":"Fix the top three things it flags, then run the test again."},
+ {"text":"One rule: never paste customer details or passwords into it."},
+ {"text":"It won't replace real customer feedback, but it's a fast first check."},
+ {"text":"Try it today, and tell me what it said. Follow for more website tips."}
+]
