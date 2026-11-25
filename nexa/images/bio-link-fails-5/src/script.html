@@ -1,0 +1,19 @@
+<script>
+document.querySelectorAll('.dots').forEach(d=>{const on=+d.dataset.on;d.innerHTML=[...Array(7)].map((_,i)=>`<span class="${i+1===on?'on':''}"></span>`).join('')});
+const items=[['Right page','not the homepage','buckets'],['3 links','not 14','signpost'],['Fast','on phone data','phone'],['Guest','no forced sign up','locks'],['Still live','no old sales','closed']];
+document.getElementById('list').innerHTML=items.map(([t,l,p])=>`<div style="display:flex;align-items:center;gap:24px;padding:12px 24px 12px 12px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(185,166,255,.18)"><img src="img/${p}.jpg" style="width:84px;height:84px;border-radius:16px;object-fit:cover"><span style="font:800 40px 'DM Sans';color:var(--lav);width:230px">${t}</span><span style="font:600 34px Inter;letter-spacing:-.01em;flex:1">${l}</span></div>`).join('');
+let seed=41;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};const C='#6557E8';
+function P(p){return p.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ')}
+function circle(svg,w,h,rot=0){let out='';
+ for(let pass=0;pass<2;pass++){const pts=[];const st=-2.2+pass*.35,n=60,end=st+Math.PI*2*(1.08+pass*.04);
+  for(let i=0;i<=n;i++){const a=st+(end-st)*i/n;const k=1+(rnd()-.5)*.035+pass*.025;pts.push([w/2+Math.cos(a)*(w/2-10)*k,h/2+Math.sin(a)*(h/2-10)*k])}
+  out+=`<path d="${P(pts)}" stroke="${C}" stroke-width="${pass?4:6.5}" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="${pass?.75:.95}"/>`}
+ svg.innerHTML=`<g transform="rotate(${rot} ${w/2} ${h/2})">${out}</g>`}
+function under(svg,w,h){let out='';for(let pass=0;pass<2;pass++){const pts=[];const n=24;for(let i=0;i<=n;i++){const t=i/n;pts.push([4+t*(w-8),h/2+(pass?5:0)+Math.sin(t*3+pass)*2+(rnd()-.5)*2.2])}
+ out+=`<path d="${P(pts)}" stroke="${C}" stroke-width="${pass?4:6}" fill="none" stroke-linecap="round" opacity="${pass?.7:.95}"/>`}svg.innerHTML=out}
+const mk=()=>{const v=document.createElementNS('http://www.w3.org/2000/svg','svg');v.setAttribute('class','sc');return v};
+document.querySelectorAll('.mk').forEach(m=>{const s=m.closest('.s');const sr=s.getBoundingClientRect();
+ if(m.dataset.c){const r=m.getBoundingClientRect();const w=r.width+50,h=r.height+34;const v=mk();v.setAttribute('width',w);v.setAttribute('height',h);v.style.left=(r.left-sr.left-25)+'px';v.style.top=(r.top-sr.top-17)+'px';s.appendChild(v);circle(v,w,h,-3);return}
+ [...m.getClientRects()].forEach(r=>{const w=r.width+8,h=16;const v=mk();v.setAttribute('width',w);v.setAttribute('height',h);v.style.left=(r.left-sr.left-4)+'px';v.style.top=(r.bottom-sr.top-6)+'px';s.appendChild(v);under(v,w,h)})});
+</script>
+</body></html>
