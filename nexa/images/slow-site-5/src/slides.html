@@ -1,0 +1,154 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--ind:#6557E8;--lav:#B9A6FF;--navy:#150C2B;--bg:#F4F2EE;--red:#E5484D}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#444}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--bg);color:var(--navy)}
+.ph{position:absolute;left:56px;right:56px;top:56px;height:360px;border-radius:34px;overflow:hidden;z-index:1}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.num{position:absolute;right:96px;top:372px;z-index:3;width:92px;height:92px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font:800 38px 'DM Sans';box-shadow:0 0 0 10px var(--bg)}
+.kick{position:absolute;left:80px;top:452px;font:700 22px Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--ind);z-index:3}
+.h{position:absolute;left:80px;right:80px;top:490px;font:800 70px/1.02 'DM Sans';letter-spacing:-.035em;z-index:3}
+.h em{font-style:normal;color:var(--ind)}
+.card{position:absolute;left:80px;right:80px;top:600px;background:#fff;border-radius:26px;z-index:4;box-shadow:0 22px 50px rgba(21,12,43,.10),0 0 0 1px #e6e3dd;overflow:hidden}
+.bar{height:56px;display:flex;align-items:center;gap:12px;padding:0 26px;border-bottom:1px solid #eeedf2;background:#fbfbfd}
+.bar .d{width:12px;height:12px;border-radius:50%;background:#e2e0e8;box-shadow:20px 0 0 #e2e0e8,40px 0 0 #e2e0e8;margin-right:46px}
+.bar .url{flex:1;height:34px;border-radius:17px;background:#efeef3;display:flex;align-items:center;padding:0 18px;font:500 18px Inter;color:#7a7783}
+.bar .url b{filter:blur(4px);font-weight:500}
+.bar .t{font:700 18px Inter;color:#8a8794}
+.f{display:grid;grid-template-columns:1fr 150px 190px;align-items:center;gap:18px;padding:25px 56px 25px 30px;border-bottom:1px solid #f1f0f4;font:500 26px Inter}
+.f:last-child{border-bottom:0}
+.f .n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.f .n small{color:#9a97a3;font-size:19px;margin-left:8px}
+.f .sz{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.f .w{height:14px;border-radius:7px;background:#ecebf2;overflow:hidden}
+.f .w i{display:block;height:100%;border-radius:7px;background:#cfc8f5}
+.f.bad{background:#fff5f5}.f.bad .sz{color:var(--red)}.f.bad .w i{background:var(--red)}
+.why{position:absolute;left:80px;right:80px;top:1000px;font-size:29px;line-height:1.42;color:#2a2540;z-index:3}
+.why b,.fix b{color:var(--ind);font-weight:700}
+.fix{position:absolute;left:80px;right:80px;top:1150px;z-index:3;font-size:29px;line-height:1.42;font-weight:600}
+.ft{position:absolute;left:80px;right:80px;bottom:44px;display:flex;justify-content:space-between;align-items:center;font:500 24px Inter;color:#8a8794;z-index:3}
+.dots{display:flex;gap:9px}.dots span{width:10px;height:10px;border-radius:5px;background:#d9d5cc}.dots span.on{width:34px;background:var(--ind)}
+.note{position:absolute;font:700 32px 'DM Sans';color:var(--red);z-index:6}
+svg.sc{position:absolute;overflow:visible;pointer-events:none;z-index:7}
+.chip{display:inline-block;font:600 23px Inter;padding:11px 17px;border-radius:10px;background:#f1effa;color:#3d3480;margin:0 8px 10px 0}
+.chip.x{background:#fff0f0;color:#b4373b}
+</style></head><body>
+
+<!-- 1 cover -->
+<div class="s" id="s1">
+ <div class="ph" style="left:0;right:0;top:0;height:720px;border-radius:0"><img src="img/traffic.jpg" style="object-position:50% 60%"></div>
+ <div style="position:absolute;left:80px;top:640px;z-index:4;background:#fff;border-radius:22px;padding:18px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 20px 50px rgba(21,12,43,.22)">
+  <div style="width:42px;height:42px;border-radius:50%;border:6px solid #ebe9f1;border-top-color:var(--ind);transform:rotate(40deg)"></div>
+  <div style="font:600 26px Inter;color:#3a3842">Still loading... <span style="color:#9a97a3;font-weight:500">6.8 s</span></div></div>
+ <div class="h" style="top:790px;font-size:100px;line-height:1">Your website is <em class="mk">stuck in traffic.</em></div>
+ <div style="position:absolute;left:80px;right:80px;top:1050px;font-size:33px;line-height:1.42;color:#4d4862;z-index:3">Google's research found most people on a phone leave if a page takes more than 3 seconds. Here are the 5 usual reasons a small business site is slow. Swipe &#8594;</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="1"></span></div>
+</div>
+
+<!-- 2 photos -->
+<div class="s" id="s2">
+ <div class="ph"><img src="img/bathroom.jpg" style="object-position:50% 40%"></div><div class="num">1</div>
+ <div class="kick">Suspect one</div>
+ <div class="h">Photos straight <em>off the phone</em></div>
+ <div class="card" style="transform:rotate(-.8deg);top:650px">
+  <div class="bar"><span class="d"></span><span class="url"><b>kestrelplumbing.com.au</b></span><span class="t">homepage</span></div>
+  <div class="f bad"><span class="n">new-bathroom-job.jpg</span><span class="w"><i style="width:100%"></i></span><span class="sz mk">6.2 MB</span></div>
+  <div class="f"><span class="n">logo.png</span><span class="w"><i style="width:2%"></i></span><span class="sz">38 KB</span></div>
+  <div class="f"><span class="n">everything else</span><span class="w"><i style="width:15%"></i></span><span class="sz">0.9 MB</span></div></div>
+ <div class="why" style="top:1000px"><b>Why it hurts:</b> one photo can weigh more than the rest of the page put together. On phone data, people stare at a blank box.</div>
+ <div class="fix" style="top:1150px"><b>Fix:</b> resize to about 2000 px wide and compress it. A few hundred KB looks just as sharp.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="2"></span></div>
+</div>
+
+<!-- 3 video -->
+<div class="s" id="s3">
+ <div class="ph"><img src="img/clapper.jpg" style="object-position:50% 55%"></div><div class="num">2</div>
+ <div class="kick">Suspect two</div>
+ <div class="h">An autoplay video <em>behind the logo</em></div>
+ <div class="card" style="transform:rotate(.8deg);top:650px">
+  <div class="bar"><span class="d"></span><span class="url"><b>kestrelplumbing.com.au</b></span><span class="t">homepage</span></div>
+  <div class="f bad"><span class="n">background-video.mp4 <small>autoplay</small></span><span class="w"><i style="width:100%"></i></span><span class="sz mk">18 MB</span></div>
+  <div class="f"><span class="n">the actual page</span><span class="w"><i style="width:6%"></i></span><span class="sz">1.1 MB</span></div></div>
+ <div class="note" style="left:560px;top:880px;transform:rotate(-3deg)">nobody pressed play</div>
+ <div class="why" style="top:985px"><b>Why it hurts:</b> it looks great on the office screen. On a phone, it's a big download just to show a moving background while your phone number waits.</div>
+ <div class="fix" style="top:1170px"><b>Fix:</b> use a strong photo up top. Put the video further down, for people who choose to watch.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="3"></span></div>
+</div>
+
+<!-- 4 plugins -->
+<div class="s" id="s4">
+ <div class="ph"><img src="img/lego.jpg" style="object-position:50% 50%"></div><div class="num">3</div>
+ <div class="kick">Suspect three</div>
+ <div class="h">Plugins you <em>forgot you had</em></div>
+ <div class="card" style="transform:rotate(-.8deg);top:620px">
+  <div class="bar"><span class="d"></span><span class="url"><b>kestrelplumbing.com.au/wp-admin</b></span><span class="t">Plugins</span></div>
+  <div style="padding:28px 30px 20px">
+   <div style="font:700 26px 'DM Sans';margin-bottom:16px"><span class="mk">31 active plugins</span></div>
+   <span class="chip">Slider</span><span class="chip x">Slider (old)</span><span class="chip">Gallery</span><span class="chip x">Gallery Pro</span><span class="chip">SEO</span><span class="chip x">SEO Booster</span><span class="chip">Forms</span><span class="chip x">Snow effect</span><span class="chip x">Countdown</span><span class="chip">+ 22 more</span></div></div>
+ <div class="why" style="top:960px"><b>Why it hurts:</b> plugins are add-ons. Many load their own code on every page, even pages that don't use them. Thirty add-ons, thirty things to download.</div>
+ <div class="fix" style="top:1130px"><b>Fix:</b> delete what you don't use. One tool per job.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="4"></span></div>
+</div>
+
+<!-- 5 third party -->
+<div class="s" id="s5">
+ <div class="ph"><img src="img/toolkit.jpg" style="object-position:50% 55%"></div><div class="num">4</div>
+ <div class="kick">Suspect four</div>
+ <div class="h">Too many <em>bolt-on extras</em></div>
+ <div class="card" style="transform:rotate(.8deg);top:600px">
+  <div class="bar"><span class="d"></span><span class="url"><b>kestrelplumbing.com.au</b></span><span class="t">loaded from elsewhere</span></div>
+  <div class="f"><span class="n">chat bubble</span><span class="w"><i style="width:55%"></i></span><span class="sz">another server</span></div>
+  <div class="f"><span class="n">pop-up offer</span><span class="w"><i style="width:35%"></i></span><span class="sz">another server</span></div>
+  <div class="f"><span class="n">Instagram feed</span><span class="w"><i style="width:70%"></i></span><span class="sz">another server</span></div>
+  <div class="f bad"><span class="n">3 tracking codes</span><span class="w"><i style="width:90%"></i></span><span class="sz">3 servers</span></div></div>
+ <div class="why" style="top:1065px"><b>Why it hurts:</b> each extra loads from another company's server. Your page often waits on them, and you can't speed up their servers.</div>
+ <div class="fix" style="top:1210px"><b>Fix:</b> keep the ones that actually bring in work. Remove the rest.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="5"></span></div>
+</div>
+
+<!-- 6 hosting -->
+<div class="s" id="s6">
+ <div class="ph"><img src="img/server.jpg" style="object-position:50% 45%"></div><div class="num">5</div>
+ <div class="kick">Suspect five</div>
+ <div class="h">Your server is <em>overseas</em></div>
+ <div class="card" style="transform:rotate(-.8deg);top:650px;padding:40px 40px 30px">
+  <div style="display:flex;align-items:center;justify-content:space-between;font:700 28px 'DM Sans'">
+   <div style="text-align:center;padding:20px 26px;border-radius:20px;background:#f1effa">Customer<div style="font:500 21px Inter;color:#8a8794;margin-top:4px">Wollongong</div></div>
+   <div style="flex:1;margin:0 24px;position:relative;height:4px;background:repeating-linear-gradient(90deg,#cfc8f5 0 14px,transparent 14px 24px)">
+    <div style="position:absolute;left:0;right:0;top:-46px;text-align:center;font:600 22px Inter;color:#6557E8">across the Pacific and back</div>
+    <div style="position:absolute;left:0;right:0;top:20px;text-align:center;font:600 21px Inter;color:#8a8794">for every request</div></div>
+   <div style="text-align:center;padding:20px 26px;border-radius:20px;background:#fff0f0;color:#b4373b">Server<div style="font:500 21px Inter;color:#8a8794;margin-top:4px">USA</div></div></div>
+  <div style="margin-top:34px;padding-top:24px;border-top:1px solid #f1f0f4;display:flex;justify-content:space-between;font:500 24px Inter;color:#55525d"><span>One page load =</span><b style="color:#150C2B">dozens of these trips</b></div></div>
+ <div class="why" style="top:985px"><b>Why it hurts:</b> cheap hosting deals are often on servers overseas. A page needs lots of small trips to the server to load, and each one has further to go. The delay adds up.</div>
+ <div class="fix" style="top:1170px"><b>Fix:</b> if your customers are in Australia, host in Australia, or use a CDN (it keeps copies of your site closer to them).</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="6"></span></div>
+</div>
+
+<!-- 7 test + cta -->
+<div class="s" id="s7">
+ <div class="ph"><img src="img/stopwatch.jpg" style="object-position:50% 35%"></div>
+ <div class="h" style="top:460px;font-size:80px">Test yours in <em>one minute</em></div>
+ <div id="steps" style="position:absolute;left:80px;right:80px;top:580px;z-index:3;display:flex;flex-direction:column;gap:14px"></div>
+ <div style="position:absolute;left:80px;right:80px;top:1010px;font-size:34px;line-height:1.5;color:#2a2540;z-index:3">Save this for your next website job.<br>Send it to someone whose site takes forever.<br>Follow <b style="color:#6557E8">@nexaweb_dev</b> for more like this.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="7"></span></div>
+</div>
+
+<script>
+document.querySelectorAll('.dots').forEach(d=>{const on=+d.dataset.on;d.innerHTML=[...Array(7)].map((_,i)=>`<span class="${i+1===on?'on':''}"></span>`).join('')});
+const steps=[['1','Go to <b>pagespeed.web.dev</b>','free tool from Google'],['2','Paste your web address','then press Analyze'],['3','Look at the <b>Mobile</b> result','it lists what\'s slowing you down']];
+document.getElementById('steps').innerHTML=steps.map(([n,t,l])=>`<div style="display:flex;align-items:center;gap:26px;padding:20px 28px;border-radius:22px;background:#fff;border:1px solid #e6e3dd;box-shadow:0 6px 20px rgba(21,12,43,.05)"><span style="width:62px;height:62px;flex:none;border-radius:50%;background:#150C2B;color:#fff;display:flex;align-items:center;justify-content:center;font:800 30px 'DM Sans'">${n}</span><div><div style="font:600 34px Inter;letter-spacing:-.01em">${t.replace('<b>','<b style="color:#6557E8">')}</div><div style="font:500 23px Inter;color:#8a8794;margin-top:4px">${l}</div></div></div>`).join('');
+let seed=53;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+function P(p){return p.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ')}
+function circle(svg,w,h,C){let out='';
+ for(let pass=0;pass<2;pass++){const pts=[];const st=-2.2+pass*.35,n=60,end=st+Math.PI*2*(1.08+pass*.04);
+  for(let i=0;i<=n;i++){const a=st+(end-st)*i/n;const k=1+(rnd()-.5)*.035+pass*.025;pts.push([w/2+Math.cos(a)*(w/2-10)*k,h/2+Math.sin(a)*(h/2-10)*k])}
+  out+=`<path d="${P(pts)}" stroke="${C}" stroke-width="${pass?4:6}" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="${pass?.75:.95}"/>`}
+ svg.innerHTML=`<g transform="rotate(-3 ${w/2} ${h/2})">${out}</g>`}
+function under(svg,w,h,C){let out='';for(let pass=0;pass<2;pass++){const pts=[];const n=24;for(let i=0;i<=n;i++){const t=i/n;pts.push([4+t*(w-8),h/2+(pass?5:0)+Math.sin(t*3+pass)*2+(rnd()-.5)*2.2])}
+ out+=`<path d="${P(pts)}" stroke="${C}" stroke-width="${pass?4:6}" fill="none" stroke-linecap="round" opacity="${pass?.7:.95}"/>`}svg.innerHTML=out}
+const mk=()=>{const v=document.createElementNS('http://www.w3.org/2000/svg','svg');v.setAttribute('class','sc');return v};
+document.querySelectorAll('.mk').forEach(m=>{const s=m.closest('.s');const sr=s.getBoundingClientRect();const inCard=m.closest('.card');const C=inCard?'#E5484D':'#6557E8';
+ if(inCard){const r=m.getBoundingClientRect();const w=r.width+44,h=r.height+30;const v=mk();v.setAttribute('width',w);v.setAttribute('height',h);v.style.left=(r.left-sr.left-22)+'px';v.style.top=(r.top-sr.top-15)+'px';s.appendChild(v);circle(v,w,h,C);return}
+ [...m.getClientRects()].forEach(r=>{const w=r.width+8,h=16;const v=mk();v.setAttribute('width',w);v.setAttribute('height',h);v.style.left=(r.left-sr.left-4)+'px';v.style.top=(r.bottom-sr.top-4)+'px';s.appendChild(v);under(v,w,h,C)})});
+</script>
+</body></html>
