@@ -1,0 +1,136 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;color:#150C2B;background:#FAF9F7}
+#bg,#stage,#fx{position:absolute;inset:0}
+.h{font-weight:800;letter-spacing:-.04em;line-height:1}
+.card{position:relative;background:#fff;border-radius:30px;box-shadow:0 26px 60px rgba(21,12,43,.13),0 0 0 2px rgba(21,12,43,.06);text-align:left}
+.pill{display:inline-block;border-radius:999px;padding:16px 34px;font-weight:700;font-size:40px;white-space:nowrap;background:#150C2B;color:#fff}
+.hl{background:linear-gradient(transparent 58%,#B9A6FF 58%,#B9A6FF 92%,transparent 92%);padding:0 .06em}
+#cap{position:absolute;left:150px;width:780px;top:1385px;text-align:center;font-weight:800;font-size:80px;letter-spacing:-.04em;line-height:1.14}
+#cap span{display:inline-block;margin:0 .1em;color:#150C2B}
+#cap span.k{color:#4A3CD6;background:linear-gradient(transparent 60%,rgba(185,166,255,.75) 60%,rgba(185,166,255,.75) 94%,transparent 94%)}
+.bub{border-radius:34px;padding:22px 30px;font-size:42px;font-weight:500;line-height:1.2;max-width:640px}
+.me{background:#6557E8;color:#fff;border-bottom-right-radius:10px;margin-left:auto}
+.them{background:#ECEAF0;color:#150C2B;border-bottom-left-radius:10px}
+.mono{font-family:'DejaVu Sans Mono',monospace}
+</style></head><body>
+<div id="bg"></div><div id="stage"></div><div id="fx"></div>
+<div id="cap"></div>
+<script>
+const DATA=/*DATA*/null;
+const $=id=>document.getElementById(id);
+const S=$('stage'),C=$('cap'),BG=$('bg'),FX=$('fx');
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const spring=x=>{x=clamp(x);return 1-Math.exp(-6.5*x)*Math.cos(7.5*x)};
+function at(p,d,html,x,y,o={}){const s=spring((p-d)*3.2),e=ease((p-d)*4);
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(${o.c===false?0:'-50%'},${(1-s)*60}px) scale(${.9+.1*s}) rotate(${(o.r||0)*(1-s)}deg);opacity:${clamp(e*1.6)}">${html}</div>`}
+const stampM=(t,fs=60,col='#E5484D')=>`<div class="h" style="font-size:${fs}px;padding:12px 30px;border:7px solid ${col};color:${col};border-radius:16px;background:#fff;white-space:nowrap;letter-spacing:2px">${t}</div>`;
+const caret=t=>`<span style="display:inline-block;width:5px;height:.9em;background:currentColor;vertical-align:-.1em;margin-left:3px;opacity:${Math.floor(t*3)%2}"></span>`;
+const typed=(s,p,a,b)=>s.slice(0,Math.floor(s.length*clamp((p-a)/(b-a))));
+// freehand marker ellipse (drawn progressively)
+function ring(w,h,p,col='#6557E8'){const L=Math.PI*(w+h)*1.15;return `<svg width="${w+40}" height="${h+40}" style="overflow:visible"><path d="M${w*.55+20} ${18} C ${w+30} ${10}, ${w+36} ${h+26}, ${w*.5+20} ${h+30} C ${4} ${h+32}, ${0} ${14}, ${w*.4+20} ${16} C ${w*.6+20} ${12}, ${w*.75+20} ${20}, ${w*.8+20} ${24}" fill="none" stroke="${col}" stroke-width="9" stroke-linecap="round" stroke-dasharray="${L}" stroke-dashoffset="${L*(1-clamp(p))}"/></svg>`}
+const note=(t,col='#6557E8')=>`<div class="h" style="font-size:48px;color:${col};white-space:nowrap;letter-spacing:-.02em">${t}</div>`;
+// roof photo (drawn)
+function roofImg(w,h,o={}){return `<div style="position:relative;width:${w}px;height:${h}px;overflow:hidden;background:linear-gradient(180deg,#7EC3F0,#CDE9F7 70%,#E9F4EC)">
+ <div style="position:absolute;right:${w*.12}px;top:${h*.12}px;width:${h*.2}px;height:${h*.2}px;border-radius:50%;background:#FFE08A;box-shadow:0 0 ${h*.15}px #FFE9A8"></div>
+ <div style="position:absolute;left:0;right:0;bottom:0;height:${h*.18}px;background:#7FB069"></div>
+ <div style="position:absolute;left:${w*.18}px;bottom:${h*.16}px;width:${w*.64}px;height:${h*.32}px;background:#F3EDE2"></div>
+ <div style="position:absolute;left:${w*.42}px;bottom:${h*.16}px;width:${w*.09}px;height:${h*.2}px;background:#2F4858;border-radius:4px 4px 0 0"></div>
+ <div style="position:absolute;left:${w*.24}px;bottom:${h*.27}px;width:${w*.11}px;height:${h*.11}px;background:#9DC7E0;border:4px solid #fff"></div>
+ <div style="position:absolute;left:${w*.62}px;bottom:${h*.27}px;width:${w*.11}px;height:${h*.11}px;background:#9DC7E0;border:4px solid #fff"></div>
+ <div style="position:absolute;left:${w*.1}px;bottom:${h*.46}px;width:${w*.8}px;height:${h*.34}px;background:repeating-linear-gradient(90deg,#B4473A 0 ${w*.035}px,#9E3B30 ${w*.035}px ${w*.04}px);clip-path:polygon(0 100%,50% 0,100% 100%)"></div>
+ ${o.brand?`<div style="position:absolute;left:${w*.05}px;top:${h*.08}px;background:#fff;border-radius:${h*.04}px;padding:${h*.03}px ${h*.05}px;font-weight:800;font-size:${h*.085}px;color:#1F3A4D;letter-spacing:-.02em">▲ Ridgeway Roofing</div>`:''}
+ </div>`}
+// link preview card
+function prev(w,o={}){const good=o.good;const ih=Math.round(w*630/1200);
+ const img=good?roofImg(w,ih,{brand:true}):(o.noimg?'':`<div style="height:${ih*.55}px;background:#E6E4EA;display:flex;align-items:center;justify-content:center;font-size:${w*.09}px;color:#B9B5C4">🖼</div>`);
+ return `<div style="width:${w}px;border-radius:30px;overflow:hidden;background:#ECEAF0;${o.glow?'box-shadow:0 0 0 6px #6557E8':''}">${img}
+ <div style="padding:${w*.035}px ${w*.045}px">
+  <div style="font-weight:700;font-size:${w*.058}px;line-height:1.15;color:#150C2B">${good?(o.title??'Ridgeway Roofing | Roof repairs in Toowoomba'):'Home'}</div>
+  ${good?(o.desc===''?'':`<div style="font-size:${w*.045}px;color:#5B5570;margin-top:8px;line-height:1.2">${o.desc??'Same-week leak repairs. Free quotes.'}</div>`):`<div style="font-size:${w*.045}px;color:#5B5570;margin-top:8px;line-height:1.2">© 2019 All rights reserved | Privacy | Terms | Site by</div>`}
+  <div style="font-size:${w*.04}px;color:#8C87A0;margin-top:8px;filter:blur(${good?0:5}px)">${good?'ridgewayroofing.com.au':'mysite-builder.com/home'}</div></div></div>`}
+// phone chat
+function phone(inner,o={}){return `<div style="width:${o.w||780}px;border-radius:70px;background:#150C2B;padding:18px;box-shadow:0 40px 90px rgba(21,12,43,.28)"><div style="border-radius:54px;background:#fff;overflow:hidden;height:${o.h||1000}px;position:relative">
+ <div style="display:flex;align-items:center;gap:18px;padding:40px 36px 24px;border-bottom:2px solid #F0EEF3"><div style="width:72px;height:72px;border-radius:50%;background:${o.av||'#FFD3B6'};display:flex;align-items:center;justify-content:center;font-weight:800;font-size:34px;color:#150C2B">${o.ini||'S'}</div><div class="h" style="font-size:40px;letter-spacing:-.02em">${o.name||'Sam (new customer)'}</div></div>
+ <div style="padding:34px 30px;display:flex;flex-direction:column;gap:22px">${inner}</div></div></div>`}
+const dots=t=>`<div class="bub them" style="display:flex;gap:12px;width:140px">${[0,1,2].map(k=>`<i style="width:18px;height:18px;border-radius:50%;background:#8A82A8;display:inline-block;opacity:${.35+.65*((Math.floor(t*4)+k)%3==0)}"></i>`).join('')}</div>`;
+const appchip=(name,bg,ic)=>`<div class="card" style="display:flex;align-items:center;gap:20px;padding:22px 34px 22px 24px;border-radius:999px"><div style="width:74px;height:74px;border-radius:22px;background:${bg};display:flex;align-items:center;justify-content:center;font-size:40px;color:#fff">${ic}</div><div class="h" style="font-size:46px;letter-spacing:-.02em">${name}</div></div>`;
+const tagline=(k,v,c)=>`<div><span style="color:#8C87A0">&lt;meta</span> <span style="color:#6557E8">property</span>=<span style="color:#C2410C">"${k}"</span><br>&nbsp;&nbsp;<span style="color:#6557E8">content</span>=<span style="color:${c||'#12805C'}">"${v}"</span><span style="color:#8C87A0">&gt;</span></div>`;
+const SC=[
+ // 0 hook: send link, ugly preview arrives
+ (p,t)=>at(p,0,phone(`<div class="bub me">Here's our website 👉</div>${p>.3?`<div style="margin-left:auto;transform:scale(${.85+.15*spring((p-.3)*3)});transform-origin:100% 0">${prev(560)}</div>`:''}${p>.75?dots(t):''}`,{h:780}),540,300,{r:-2}),
+ // 1 annotate the 3 problems
+ (p,t)=>{const a=clamp(p/.15),b=clamp((p-.42)/.15),c=clamp((p-.74)/.15);
+  const R=(x,y,w,h,q,col)=>`<div style="position:absolute;left:${x-20}px;top:${y-20}px">${ring(w,h,q,col)}</div>`;
+  return at(p,0,`<div style="position:relative;width:900px;height:520px"><div style="position:absolute;left:0;top:0;transform:scale(1.5);transform-origin:0 0">${prev(600)}
+   ${R(190,6,220,160,a,'#E5484D')}${R(8,184,132,54,b,'#E5484D')}${R(6,240,588,62,c,'#E5484D')}${b>0?`<div class="h" style="position:absolute;left:160px;top:${196+(1-spring(b*1.5))*20}px;font-size:34px;color:#E5484D;opacity:${b};white-space:nowrap">← just "Home"</div>`:''}</div></div>`,540,380)
+  +(a>0?at(p,.08,note('no picture ✕','#E5484D'),540,260,{r:-3}):'')
+  +(c>0?at(p,.78,note('random footer text','#E5484D'),540,960,{r:3}):'')},
+ // 2 first impression
+ (p,t)=>at(p,0,'<div class="h" style="font-size:96px;text-align:center;width:960px">their <span class="hl">first look</span><br>at your business</div>',540,310)
+  +at(p,.2,`<div style="transform:rotate(-5deg)">${prev(470)}</div>`,300,620)
+  +at(p,.35,`<div style="transform:rotate(4deg)">${prev(470)}</div>`,780,660)
+  +at(p,.55,'<div class="pill" style="font-size:40px;background:#fff;color:#150C2B;box-shadow:0 14px 30px rgba(21,12,43,.15)">👥 group chats</div>',300,1080,{r:-3})
+  +at(p,.62,'<div class="pill" style="font-size:40px;background:#fff;color:#150C2B;box-shadow:0 14px 30px rgba(21,12,43,.15)">📣 social posts</div>',780,1080,{r:3}),
+ // 3 open graph tags
+ (p,t)=>{const n=Math.floor(clamp((p-.15)/.6)*3.99);const rows=[['og:title','Home'],['og:description',''],['og:image','']];
+  return at(p,0,'<div class="pill" style="background:#ECE8FF;color:#3B2FA8">hidden in your page\'s code</div>',540,310,{r:-2})
+  +at(p,.05,`<div class="card mono" style="width:960px;padding:40px 44px;font-size:36px;line-height:1.45;background:#1B1430;color:#E9E6F5">${rows.slice(0,n).map(([k,v])=>`<div style="margin:10px 0">${tagline(k,v,v?'#7EE0B5':'#FF8A8A')}</div>`).join('')}${n<3?caret(t):''}</div>`,540,410)
+  +at(p,.72,'<div class="h" style="font-size:100px;white-space:nowrap"><span class="hl">Open Graph</span> tags</div>',540,1050)},
+ // 4 apps read them
+ (p,t)=>{const k=clamp((p-.55)/.3);return at(p,0,appchip('Messages','#34C759','💬'),300,330,{r:-3})
+  +at(p,.15,appchip('WhatsApp','#25A35A','📞'),760,420,{r:3})
+  +at(p,.35,appchip('Facebook','#3B5BDB','👍'),360,540,{r:-2})
+  +at(p,.45,`<div style="font-size:90px;color:#6557E8;font-weight:800">↓</div>`,540,660)
+  +at(p,.55,`<div class="card mono" style="width:760px;padding:30px 36px;font-size:34px;line-height:1.6"><div style="color:#8C87A0">reading tags...</div>${['og:title','og:description','og:image'].map((s,j)=>`<div>${s} <span style="color:${k>(j+1)/3.2?'#E5484D':'#C9C5D6'}">${k>(j+1)/3.2?'✕ not found':'...'}</span></div>`).join('')}</div>`,540,800)},
+ // 5 app guesses
+ (p,t)=>at(p,0,`<div style="transform:rotate(-3deg)">${prev(760)}</div>`,540,330)
+  +at(p,.2,'<div style="font-size:150px">🎲</div>',860,280,{r:20})
+  +at(p,.48,'<div class="h" style="font-size:108px;white-space:nowrap">it <span class="hl">guesses</span>.</div>',540,880)
+  +at(p,.7,stampM('BADLY',84),720,1050,{r:-8}),
+ // 6 share image 1200x630
+ (p,t)=>{const w=860,h=Math.round(w*630/1200);return at(p,0,`<div style="display:flex;align-items:center;gap:18px"><div style="width:96px;height:96px;border-radius:50%;border:7px solid #150C2B;position:relative"><i style="position:absolute;left:39px;top:8px;width:8px;height:38px;background:#150C2B;border-radius:4px;transform-origin:4px 34px;transform:rotate(${p*300}deg)"></i></div><div class="h" style="font-size:76px">5 minute fix</div></div>`,540,300,{r:-2})
+  +at(p,.35,`<div style="position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 70px rgba(21,12,43,.2)">${roofImg(w,h,{brand:true})}</div>`,540,470)
+  +at(p,.62,`<div style="width:${w}px;display:flex;align-items:center;gap:16px;color:#6557E8;font-weight:800;font-size:46px"><div style="flex:1;height:6px;background:#6557E8"></div>1200 px<div style="flex:1;height:6px;background:#6557E8"></div></div>`,540,470+h+30)
+  +at(p,.8,`<div class="pill" style="background:#6557E8;font-size:46px">630 px tall</div>`,800,470+h+110,{r:3})},
+ // 7 title + description
+ (p,t)=>{const tt='Ridgeway Roofing | Roof repairs in Toowoomba',dd='Same-week leak repairs. Free quotes.';
+  const T=typed(tt,p,.02,.4),Dd=typed(dd,p,.55,.85);
+  return at(p,0,prev(860,{good:true,title:T||'&nbsp;',desc:p>.55?(Dd||'&nbsp;'):''}),540,330)
+  +at(p,.3,'<div class="pill">✓ what you do + where</div>',360,1000,{r:-3})
+  +at(p,.85,'<div class="pill" style="background:#6557E8">✓ why pick you</div>',720,1100,{r:3})},
+ // 8 builders setting
+ (p,t)=>{const up=clamp((p-.55)/.3);return at(p,0,`<div style="display:flex;gap:18px">${['Wix','Squarespace','Shopify'].map(s=>`<div class="pill" style="background:#fff;color:#150C2B;box-shadow:0 12px 28px rgba(21,12,43,.13);font-size:44px">${s}</div>`).join('')}</div>`,540,310)
+  +at(p,.25,`<div class="card" style="width:900px;padding:40px 46px"><div style="font-size:32px;color:#8C87A0;font-weight:700">Settings › SEO › Social sharing</div><div class="h" style="font-size:56px;margin:18px 0 28px;letter-spacing:-.03em">Social share image</div>
+   <div style="border:5px dashed ${up>=1?'#12A150':'#C9C5D6'};border-radius:24px;height:330px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative">${up>0?`<div style="opacity:${up};transform:scale(${.9+.1*up})">${roofImg(560,294,{brand:true})}</div>`:'<div style="font-size:44px;color:#8C87A0;font-weight:700">⬆ Upload image</div>'}</div>
+   <div style="display:flex;justify-content:flex-end;margin-top:28px"><span style="background:${up>=1?'#12A150':'#6557E8'};color:#fff;font-weight:800;font-size:40px;padding:18px 40px;border-radius:16px">${up>=1?'✓ Saved':'Save'}</span></div></div>`,540,430)},
+ // 9 send to yourself
+ (p,t)=>at(p,0,phone(`<div class="bub me">ridgewayroofing.com.au</div>${p>.3?`<div style="margin-left:auto;transform:scale(${.85+.15*spring((p-.3)*3)});transform-origin:100% 0">${prev(560,{good:true})}</div>`:''}`,{h:800,name:'Me',ini:'Me',av:'#B9A6FF'}),540,300,{r:2})
+  +at(p,.7,stampM('✓ LOOKS RIGHT',64,'#12A150'),620,1150,{r:-6}),
+ // 10 CTA
+ (p,t)=>at(p,0,'<div class="h" style="font-size:96px;text-align:center;width:980px">Send this to whoever does <span class="hl">your website</span></div>',540,330)
+  +at(p,.15,`<div style="display:flex;align-items:center;gap:30px"><div style="transform:rotate(-4deg)">${prev(380)}</div><div style="font-size:90px;color:#6557E8;font-weight:800">→</div><div style="transform:rotate(4deg)">${prev(380,{good:true})}</div></div>`,540,640)
+  +at(p,.55,'<div style="display:flex;gap:22px"><div style="border-radius:999px;padding:26px 46px;font-size:50px;font-weight:800;white-space:nowrap;background:#150C2B;color:#fff">➤ Send</div><div style="border-radius:999px;padding:26px 50px;font-size:50px;font-weight:800;white-space:nowrap;background:#6557E8;color:#fff;box-shadow:0 18px 40px rgba(101,87,232,.45)">+ Follow @nexaweb_dev</div></div>',540,1040),
+];
+const FIT=[];
+function measure(){const tmp=document.createElement('div');tmp.style.cssText='position:absolute;inset:0;visibility:hidden';document.body.appendChild(tmp);
+ SC.forEach((f,i)=>{tmp.innerHTML=f(1,0);let T=1e9,B=-1e9,Lf=1e9,R=-1e9;tmp.querySelectorAll(':scope > div').forEach(e=>{const r=e.getBoundingClientRect();T=Math.min(T,r.top);B=Math.max(B,r.bottom);Lf=Math.min(Lf,r.left);R=Math.max(R,r.right)});
+  const h=B-T,w=R-Lf,sc=Math.min(1.22,1000/h,990/w);FIT[i]={cy:(T+B)/2,sc}});tmp.remove()}
+function lineAt(t){let i=0;for(let k=0;k<DATA.lines.length;k++)if(t>=DATA.lines[k].start-0.05)i=k;return i}
+window.render=function(t){ if(!FIT.length) measure();
+ const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
+ const end=nx?nx.start:DATA.total,d=end-L.start,lt=t-L.start+0.05,p=clamp(lt/d);
+ BG.style.cssText=`background:radial-gradient(800px 600px at ${25+6*Math.sin(t*.3)}% 25%,rgba(185,166,255,.22),transparent 70%),radial-gradient(900px 700px at ${78+5*Math.cos(t*.25)}% 70%,rgba(255,214,186,.35),transparent 70%),#FAF9F7`;
+ const zoom=1+0.025*p;
+ const out=nx?clamp((t-(end-0.16))/0.16):0;
+ S.innerHTML=`<div style="position:absolute;inset:0;opacity:${1-out};transform:scale(${zoom*(1+out*.04)}) translateY(${-out*24}px);transform-origin:540px 790px"><div style="position:absolute;inset:0;transform:translateY(${790-FIT[i].cy}px) scale(${FIT[i].sc});transform-origin:540px ${FIT[i].cy}px">${SC[i](p,t)}</div></div>`;
+ FX.innerHTML=(i>0&&lt<.15)?`<div style="position:absolute;inset:0;background:rgba(255,255,255,${.5*(1-lt/.15)})"></div>`:'';
+ const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25);
+ if(!ch){C.innerHTML='';return}
+ C.innerHTML=ch.words.map(w=>{const a=t-(w.start-0.03),on=a>=0,pop=on?0.85+0.15*ease(a/0.12):1;return `<span class="${w.k?'k':''}" style="opacity:${on?1:0};transform:scale(${pop})">${w.w}</span>`}).join(' ');
+};
+window.fontsReady=document.fonts.ready.then(measure);
+</script></body></html>

@@ -1,0 +1,13 @@
+[
+ {"text":"Send someone your website link, and this is what they see."},
+ {"text":"No picture. A title that just says Home. And a line of random text."},
+ {"text":"That little preview is often the first thing people see of your business."},
+ {"text":"It comes from hidden tags on your page, called Open Graph tags."},
+ {"text":"Messages, WhatsApp and Facebook read them to build the preview."},
+ {"text":"When they're missing, the app has to guess. And it usually guesses badly."},
+ {"text":"The fix takes five minutes. Add a share image, about 1200 by 630 pixels.","say":"The fix takes five minutes. Add a share image, about twelve hundred by six thirty pixels."},
+ {"text":"A title that says what you do and where, and one short line on why to pick you."},
+ {"text":"Wix, Squarespace and Shopify all have a social share image setting."},
+ {"text":"Then send the link to yourself, and check it looks right."},
+ {"text":"Send this to whoever looks after your website. And follow for more website tips."}
+]

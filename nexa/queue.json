@@ -520,5 +520,21 @@
     "status": "awaiting approval",
     "created": "2026-11-25 13:40 AEDT",
     "note": "1:17 pm slot. Tips/opinion only, no stats or factual claims. Made-up business. No dashes. Navy v2 style. | v2 (Jayden 2026-11-25: feed is all purple, change it up): light style, warm white #FAF9F7, crisp photo top, indigo number pill, navy headline with lavender highlighter. v2 awaiting approval. | v3 (Jayden 2026-11-25: explain it more, target renovators not a florist): renovator business Ironbark Renovations (Geelong, made up), 'Why it hurts' + 'Fix' on every slide, kitchen/build photos, light style. v3 awaiting approval."
+  },
+  {
+    "slug": "link-preview-fix",
+    "format": "reel",
+    "topic": "Website tip: ugly link previews. When you send your website link the preview shows no picture, a title of 'Home' and random footer text. Previews come from Open Graph tags (og:title, og:description, og:image) that Messages, WhatsApp and Facebook read; missing tags = app guesses. Fix: share image ~1200x630, title = what you do + where, one line on why pick you; Wix/Squarespace/Shopify have a social share image setting; send the link to yourself to check. Made-up business Ridgeway Roofing, Toowoomba.",
+    "hook": "Send someone your website link, and this is what they see.",
+    "style": "warm light modern variant: warm white #FAF9F7 bg with lavender/peach glows, navy DM Sans ExtraBold, lavender highlighter-underline key words (instead of indigo boxes), phone chat + link preview card mockups, red freehand marker rings",
+    "voice": "ElevenLabs Brian, eleven_v3, stability 0.5, join2.py (pause trim + atempo 1.12)",
+    "video": "nexa/videos/link-preview-fix/link-preview-fix.mp4",
+    "caption": "Send someone your website link. Does the preview look like this? 😬\n\nThat little card is often the first thing people see of your business. It comes from hidden Open Graph tags, and it's a 5 minute fix: a share image, a title that says what you do and where, and one line on why to pick you.\n\nSend this to whoever looks after your website 👇 and save it for later.\n\nWebsite tips from Nexa Web Development. Follow @nexaweb_dev for more.\n\n#websitetips #webdesign #smallbusinessaustralia #smallbusinesstips #seotips #opengraph #websitedesign #digitalmarketing",
+    "created": "2026-11-25 17:50 AEDT",
+    "post_on": "2026-11-25",
+    "approved": false,
+    "posted": false,
+    "status": "awaiting approval",
+    "note": "5:17 pm reel slot. 45.9 s. capcheck 0 problems (41 chunks); synccheck 141/141 mean +0.013s, none >0.2s; final transcript complete."
   }
 ]
