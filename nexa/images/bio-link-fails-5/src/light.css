@@ -1,0 +1,16 @@
+<style>
+.s{background:#FAF9F7;color:#150C2B}
+.s:after{display:none}
+.ph{height:500px}
+.ph:after{display:none}
+.num{left:80px;top:440px;font:800 40px/1 'DM Sans';letter-spacing:0;color:#fff;-webkit-text-stroke:0;background:#6557E8;padding:16px 26px;border-radius:40px;box-shadow:0 10px 30px rgba(101,87,232,.35)}
+.h{top:540px;color:#150C2B;font-size:72px}
+.h em{color:#150C2B;background:linear-gradient(180deg,transparent 58%,#B9A6FF 58%,#B9A6FF 92%,transparent 92%);padding:0 4px}
+.sub{top:630px;color:#5b5670}
+.card{top:720px;box-shadow:0 24px 60px rgba(21,12,43,.16),0 0 0 1px #e7e5ee}
+.why{color:#2a2540}
+.why b{color:#6557E8}
+.note{color:#6557E8}
+.ft{color:#8a8794}
+.dots span{background:#dcd8ea}.dots span.on{background:#6557E8}
+</style>

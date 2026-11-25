@@ -37,3 +37,4 @@
   Use vo_el.py + join2.py (nexa/videos/internet-stories-ep7-outage/src). If no key is available, ask Jayden for one before voicing.
   Never write the API key into the repo.
 - 2026-11-24 (Jayden): reels all looked the same (dark purple glass); asked for variety. Rejected a retro 1994 desktop style (teal, beveled windows, pixel font): wants a professional modern look. Light modern reel style approved for review: nexa/videos/internet-stories-ep8-banner/src/scene_modern.html.
+- 2026-11-25 (Jayden): feed is all the purple/navy carousels, looks too similar. Vary the colour/look between posts. Light variant made for bio-link-fails-5 (src/slides.html: warm white #FAF9F7, crisp photo top 500 px, indigo number pill, navy headline with lavender highlighter underline); navy original kept as src/slides_v1_navy.html.
