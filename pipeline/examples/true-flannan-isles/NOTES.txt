@@ -1,0 +1,2 @@
+Flannan Isles lighthouse keepers (Eilean Mor, Scotland, Dec 1900). fl_helpers.js + flannan.js are inserted into scene.html before window.render. SFX: hsfx.py + examples/true-israel-keyes/extra.py (wind/hum); music_tc.py; MUSIC=0.2 python3 mix.py. join.py: atempo 1.2, squeeze mx 0.2.
+Sources: NRS archivist blog (blog.nrscotland.gov.uk/2023/12/12/...) quoting Muirhead's 8 Jan 1901 report; nrscotland.gov.uk research guide; rmg.co.uk (Royal Museums Greenwich); skeptoid.com/episodes/610; historyhit.com; John May, Scotia (brooklyn.cuny.edu) quoting Moore's 28 Dec 1900 report.
