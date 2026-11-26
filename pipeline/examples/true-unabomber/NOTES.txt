@@ -1,0 +1,2 @@
+UNABOM case (USA 1978-1996). un.js + first line of true-flannan-isles/flannan.js (lbl) are inserted into scene.html before window.render. join.py atempo 1.2; music_tc.py; MUSIC=0.2 python3 mix.py.
+Sources: fbi.gov/news/stories/2008/april/unabomber_042408; postalmuseum.si.edu (Behind the Badge: Unabomber); smithsonianmag.com (Unabomber arrested, 2018); history.com/articles/unabomber-ted-kaczynski; cbsnews.com/news/unabomber-kin-gets-1m-reward (AP 1998).
