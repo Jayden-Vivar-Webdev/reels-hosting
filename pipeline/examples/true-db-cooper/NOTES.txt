@@ -1,0 +1,3 @@
+D.B. Cooper hijacking (Northwest Orient Flight 305, 24 Nov 1971). dbc.js is inserted into scene.html before window.render. SFX: hsfx.py (OUT="sfx") + extra.py + generated engine.wav/rain.wav; music_tc.py; MUSIC=0.2 python3 mix.py. join.py: atempo 1.2, squeeze mx 0.15.
+Sources: fbi.gov/news/stories/2006/november/dbcooper_112406; historylink.org/file/1997; npr.org (2016-07-13, FBI no longer actively investigating); kiro7.com (Brian Ingram/Tena Bar money find, 1980).
+Left out (sources disagree): bourbon+soda vs Seven-Up, exact jump location, altitude/speed, loafers.
