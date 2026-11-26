@@ -1,0 +1,119 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;color:#150C2B;background:#F7F4EE}
+#bg,#stage,#fx{position:absolute;inset:0}
+.h{font-weight:800;letter-spacing:-.04em;line-height:1}
+.card{position:relative;background:#fff;border-radius:34px;box-shadow:0 30px 70px rgba(21,12,43,.13),0 0 0 2px rgba(21,12,43,.05);text-align:left}
+.pill{display:inline-block;border-radius:999px;padding:16px 34px;font-weight:700;font-size:40px;white-space:nowrap;background:#ECE8FF;color:#3B2FA8}
+.hl{background:linear-gradient(transparent 55%,#B9A6FF 55%);padding:0 .06em}
+.lab{font-weight:700;font-size:30px;letter-spacing:7px;color:#8A82A8}
+#cap{position:absolute;left:150px;width:780px;top:1385px;text-align:center;font-weight:800;font-size:80px;letter-spacing:-.04em;line-height:1.14}
+#cap span{display:inline-block;margin:0 .1em;color:#150C2B}
+#cap span.k{color:#fff;background:#6557E8;padding:0 .12em .04em;border-radius:.12em}
+</style></head><body>
+<div id="bg"></div><div id="stage"></div><div id="fx"></div>
+<div id="cap"></div>
+<script>
+const DATA=/*DATA*/null;
+const $=id=>document.getElementById(id);
+const S=$('stage'),C=$('cap'),BG=$('bg'),FX=$('fx');
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const eio=x=>{x=clamp(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const spring=x=>{x=clamp(x);return 1-Math.exp(-6.5*x)*Math.cos(7.5*x)};
+function at(p,d,html,x,y,o={}){const s=spring((p-d)*3.2),e=ease((p-d)*4);
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(${o.c===false?0:'-50%'},${(1-s)*60}px) scale(${.9+.1*s}) rotate(${(o.r||0)*(1-s)}deg);opacity:${clamp(e*1.6)}">${html}</div>`}
+const bar=(w,c='#E8E5F0',h=20)=>`<div style="height:${h}px;width:${w}%;background:${c};border-radius:6px;margin:14px 0"></div>`;
+const stamp=(t,c='#E5484D',fs=64)=>`<div class="h" style="font-size:${fs}px;padding:12px 30px;border:7px solid ${c};color:${c};border-radius:16px;background:#fff;white-space:nowrap;letter-spacing:3px">${t}</div>`;
+// stamp that slams in (scale from 1.6)
+function slam(p,d,html,x,y,r=-8){const q=clamp((p-d)/.08);if(q<=0)return '';const s=1+.6*(1-ease(q));
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(-50%,-50%) scale(${s}) rotate(${r}deg);opacity:${clamp(q*2)}">${html}</div>`}
+function phone(inner,w,h,scrollY=0){return `<div style="width:${w}px;height:${h}px;border-radius:64px;background:#150C2B;padding:16px;box-shadow:0 40px 80px rgba(21,12,43,.28)"><div style="width:100%;height:100%;border-radius:50px;overflow:hidden;background:#fff;position:relative"><div style="position:absolute;left:0;right:0;top:${-scrollY}px">${inner}</div><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:120px;height:34px;border-radius:20px;background:#150C2B"></div></div></div>`}
+// made-up business homepage (mobile)
+const hero=(o={})=>`<div style="padding:80px 34px 0">
+ <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:800;font-size:30px;color:#0F3D2E;letter-spacing:-.02em">⚡ Banksia<span style="color:#E7A100">Electrical</span></div><div style="width:44px;height:30px;border-top:5px solid #0F3D2E;border-bottom:5px solid #0F3D2E;position:relative"><div style="position:absolute;top:8px;left:0;right:0;height:5px;background:#0F3D2E"></div></div></div>
+ <div style="margin-top:34px;height:240px;border-radius:22px;background:linear-gradient(150deg,#2E6A52,#0F3D2E);position:relative;overflow:hidden"><div style="position:absolute;right:-30px;bottom:-40px;width:220px;height:220px;border-radius:50%;background:rgba(231,161,0,.35)"></div><div style="position:absolute;left:28px;top:30px;width:120px;height:160px;border-radius:12px;background:rgba(255,255,255,.12)"></div></div>
+ <div class="h" style="font-size:52px;margin-top:30px;color:#0F3D2E;line-height:1.05">Electrician in Newcastle.</div>
+ <div style="font-size:28px;font-weight:600;color:#4A6B5E;margin-top:14px">Same-week call-outs. Licensed and insured.</div>
+ <div style="margin-top:26px;display:inline-block;background:#E7A100;color:#0F3D2E;font-weight:800;font-size:32px;padding:20px 40px;border-radius:16px">📞 Call now</div>
+ ${o.more?`<div style="margin-top:60px">${['Switchboards','Lighting','Safety checks','EV chargers'].map(s=>`<div style="padding:26px 0;border-top:2px solid #E6EEE9;font-weight:700;font-size:32px;color:#0F3D2E">${s} <span style="float:right;color:#9DB3A9">›</span></div>`).join('')}<div style="height:200px;border-radius:22px;background:#EEF4F0;margin-top:20px"></div>${bar(90,'#E6EEE9')}${bar(70,'#E6EEE9')}${bar(84,'#E6EEE9')}<div style="height:200px;border-radius:22px;background:#EEF4F0;margin-top:20px"></div>${bar(80,'#E6EEE9')}${bar(60,'#E6EEE9')}</div>`:''}
+</div>`;
+const SC=[
+ // 0 hook: three myth cards fan in, stamped
+ (p,t)=>{const c=(n,txt,d,x,r)=>at(p,d,`<div class="card" style="width:260px;height:400px;padding:34px 28px;display:flex;flex-direction:column;justify-content:space-between"><div class="lab">MYTH</div><div class="h" style="font-size:150px;color:#6557E8">${n}</div><div style="font-weight:700;font-size:30px;color:#8A82A8;line-height:1.2">${txt}</div></div>`,x,640,{r});
+  return at(p,0,'<div class="h" style="font-size:108px;text-align:center;width:960px">3 website <span class="hl">myths</span></div>',540,330)
+  +`<div style="position:absolute;left:0;top:0;width:1080px">${c(1,'the fold',.08,250,-6)}${c(2,'word of mouth',.16,540,0)}${c(3,'built = done',.24,830,6)}</div>`
+  +slam(p,.55,stamp('COSTING YOU CUSTOMERS','#E5484D',50),540,1150,-4)},
+ // 1 myth one: crammed first screen
+ (p,t)=>{const cram=clamp((p-.25)*2.5);
+  return at(p,0,`<div style="display:flex;gap:46px;align-items:center"><div style="font-weight:800;font-size:76px;line-height:1.05;width:330px">Myth <span style="color:#6557E8">1</span><br><span style="font-size:42px;color:#8A82A8;font-weight:700;line-height:1.2;display:block;margin-top:20px">"Fit it ALL on the first screen"</span></div>${phone(`<div style="padding:70px 24px;display:grid;grid-template-columns:1fr 1fr;gap:10px">${Array(Math.round(4+cram*14)).fill(0).map((_,k)=>`<div style="height:${[70,50,90,40,60][k%5]}px;border-radius:10px;background:${['#FDE8E9','#ECE8FF','#FFF3D6','#E6F4EC','#E8E5F0'][k%5]};font-size:18px;font-weight:800;color:#8A82A8;padding:8px">${['DEAL!','NEW','CALL','SALE','INFO','BOOK','FAQ','PROMO','LINKS'][k%9]}</div>`).join('')}</div>`,390,880)}</div>`,520,290)
+  +slam(p,.6,stamp('MYTH'),760,1060,-10)},
+ // 2 the fold explained
+ (p,t)=>{const y=clamp((p-.25)*3);
+  return at(p,0,`<div style="position:relative;width:440px">${phone(hero({more:1}),440,800)}<div style="position:absolute;left:-150px;right:-150px;top:${800-16}px;border-top:7px dashed #E5484D;opacity:${y}"></div></div>`,540,290)
+  +at(p,.3,'<div class="pill" style="background:#150C2B;color:#fff">THE FOLD</div>',230,1100,{r:-3})
+  +at(p,.55,`<div style="font-weight:700;font-size:36px;color:#8A82A8;text-align:center;width:380px">end of the first screen,<br>before you scroll</div>`,720,1090)},
+ // 3 people do scroll + stat
+ (p,t)=>{const sc=420*eio((p-.05)/.35);const v=Math.round(43*eio((p-.45)/.3));
+  return at(p,0,phone(hero({more:1}),380,900,sc),250,290)
+  +at(p,0,`<div style="font-size:70px;transform:translateY(${-30*Math.sin(t*5)}px)">👆</div>`,250,1200)
+  +at(p,.3,`<div class="card" style="width:480px;padding:36px 40px"><div class="lab" style="font-size:24px;letter-spacing:5px">2018 EYE-TRACKING STUDY</div><div class="h" style="font-size:150px;color:#6557E8;margin-top:18px">${v>=43?'40%+':Math.min(40,Math.round(v*40/43))+'%'}</div><div class="h" style="font-size:40px;line-height:1.1;margin-top:10px">of viewing time was <span class="hl">below</span> the fold</div>
+   <div style="display:flex;height:34px;border-radius:17px;overflow:hidden;margin-top:28px"><div style="width:${100-v}%;background:#ECE8FF"></div><div style="width:${v}%;background:#6557E8"></div></div><div style="display:flex;justify-content:space-between;font-weight:700;font-size:24px;color:#8A82A8;margin-top:10px"><span>above</span><span>below</span></div><div style="font-weight:600;font-size:22px;color:#AFA8C6;margin-top:18px">Nielsen Norman Group</div></div>`,690,330,{r:2})},
+ // 4 the top just needs 3 things
+ (p,t)=>{const chk=(txt,d)=>`<div style="display:flex;gap:22px;align-items:center;margin:18px 0;opacity:${clamp((p-d)*5)}"><div style="width:70px;height:70px;flex:none;border-radius:20px;background:${p>d+.06?'#6557E8':'#ECE8FF'};color:#fff;font-size:44px;font-weight:800;display:flex;align-items:center;justify-content:center">${p>d+.06?'✓':''}</div><div class="h" style="font-size:46px;line-height:1.05">${txt}</div></div>`;
+  return at(p,0,phone(hero(),420,820),300,300)
+  +at(p,.08,`<div class="card" style="width:470px;padding:30px 34px"><div class="lab" style="font-size:24px">TOP OF THE PAGE</div>${chk('What you do',.12)}${chk('Where',.32)}${chk('One next step',.62)}</div>`,780,520,{r:2})},
+ // 5 myth two: word of mouth
+ (p,t)=>at(p,0,`<div class="card" style="width:880px;padding:46px 50px"><div class="lab">MYTH 2</div><div style="display:flex;gap:28px;align-items:center;margin-top:30px"><div style="font-size:120px">🗣️</div><div class="h" style="font-size:66px;line-height:1.08">"My work comes from <span class="hl">word of mouth</span>"</div></div></div>`,540,330)
+  +at(p,.45,'<div class="card" style="padding:30px 50px;font-weight:800;font-size:52px;text-align:center">so... no website? 🤷</div>',540,780,{r:-2})
+  +slam(p,.7,stamp('MYTH'),790,700,-10),
+ // 6 mate recommends -> look them up
+ (p,t)=>{const q='banksia electrical newcastle';const n=Math.round(q.length*clamp((p-.55)/.3));
+  return at(p,0,`<div class="card" style="width:860px;padding:34px 40px"><div style="display:flex;gap:20px;align-items:center"><div style="width:76px;height:76px;border-radius:50%;background:#FFE7C2;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:34px;color:#A35F00">S</div><div><div class="h" style="font-size:38px">Sam</div><div style="font-weight:600;font-size:24px;color:#8A82A8">your mate</div></div></div>
+   <div style="margin-top:26px;background:#EFEDF5;border-radius:30px 30px 30px 8px;padding:26px 32px;font-weight:600;font-size:38px;line-height:1.25;width:640px">Use Banksia Electrical, they did our switchboard 👍</div></div>`,540,300)
+  +at(p,.45,`<div class="card" style="width:860px;padding:30px 36px"><div style="display:flex;align-items:center;gap:20px;border:3px solid #E4E0F2;border-radius:40px;padding:20px 28px"><div style="font-size:40px">🔍</div><div style="font-weight:600;font-size:38px;color:#150C2B">${q.slice(0,n)}<span style="opacity:${Math.floor(t*3)%2};color:#6557E8">|</span></div></div></div>`,540,800,{r:1})
+  +at(p,.85,'<div class="pill" style="background:#150C2B;color:#fff">you look them up</div>',540,1030,{r:-2})},
+ // 7 nothing / abandoned -> cold
+ (p,t)=>{const cold=clamp((p-.65)*4);
+  return at(p,0,`<div class="card" style="width:430px;padding:34px 34px;height:470px"><div style="border:3px solid #E4E0F2;border-radius:30px;padding:12px 20px;font-weight:600;font-size:24px;color:#8A82A8">🔍 banksia electrical</div><div style="text-align:center;margin-top:70px;font-size:90px">🤷</div><div class="h" style="text-align:center;font-size:40px;margin-top:20px">Nothing useful</div></div>`,300,320,{r:-2})
+  +at(p,.25,`<div class="card" style="width:430px;height:470px;overflow:hidden"><div style="height:54px;background:#F4F2FA;display:flex;align-items:center;padding:0 20px;font-size:20px;color:#8A82A8;font-weight:600">banksiaelec.com.au</div><div style="padding:30px;filter:grayscale(1);opacity:.75"><div style="font-family:'Times New Roman',serif;font-size:40px;font-weight:700;color:#333">Welcome!!</div><div style="margin:24px 0;padding:22px;background:#FFF3B0;border:3px dashed #B59B00;font-weight:800;font-size:30px;color:#6B5A00;text-align:center">🚧 Under construction</div>${bar(90)}${bar(70)}<div style="font-size:22px;color:#999;margin-top:30px">Last updated 2016</div></div></div>`,780,320,{r:2})
+  +at(p,.62,`<div class="card" style="padding:30px 46px;display:flex;align-items:center;gap:26px;background:${cold>.5?'#E3F1FF':'#fff'}"><div style="font-size:84px">${cold>.5?'🥶':'🙂'}</div><div class="h" style="font-size:56px">referral <span style="color:${cold>.5?'#1C6FD1':'#150C2B'}">gone cold</span></div></div>`,540,930,{r:-1})},
+ // 8 myth three: built = done
+ (p,t)=>{const conf=Array(14).fill(0).map((_,k)=>{const a=k*2.4,r=200+240*ease(p*2.5);return `<div style="position:absolute;left:${540+Math.cos(a)*r}px;top:${620+Math.sin(a)*r*.7+80*p*p}px;width:22px;height:34px;border-radius:5px;background:${['#6557E8','#B9A6FF','#E7A100','#12A150'][k%4]};transform:rotate(${k*40+p*200}deg);opacity:${1-clamp((p-.5)*3)}"></div>`}).join('');
+  return conf+at(p,0,`<div class="card" style="width:820px;padding:50px;text-align:center"><div class="lab">MYTH 3</div><div style="font-size:120px;margin-top:20px">🚀</div><div class="h" style="font-size:84px;margin-top:20px">Website <span class="hl">launched</span></div><div style="font-weight:700;font-size:40px;color:#12A150;margin-top:20px">✓ job done, forever?</div></div>`,540,330)
+  +slam(p,.62,stamp('MYTH'),780,1000,-10)},
+ // 9 like a ute: service log
+ (p,t)=>{const row=(txt,d,ic)=>`<div style="display:flex;gap:24px;align-items:center;padding:22px 0;border-top:2px solid #F0EDF7;opacity:${clamp((p-d)*5)}"><div style="font-size:52px;width:70px;text-align:center">${ic}</div><div class="h" style="font-size:46px;flex:1">${txt}</div><div style="width:64px;height:64px;border-radius:18px;border:4px solid ${p>d+.08?'#12A150':'#E4E0F2'};background:${p>d+.08?'#12A150':'#fff'};color:#fff;font-size:42px;font-weight:800;display:flex;align-items:center;justify-content:center">${p>d+.08?'✓':''}</div></div>`;
+  return at(p,0,`<div style="display:flex;align-items:center;gap:30px"><div style="font-size:150px;transform:translateX(${-20+20*ease(p*3)}px) scaleX(-1)">🛻</div><div class="h" style="font-size:64px;line-height:1.05">needs a<br><span class="hl">service</span></div></div>`,540,290)
+  +at(p,.2,`<div class="card" style="width:860px;padding:34px 44px 20px"><div class="lab" style="margin-bottom:12px">WEBSITE SERVICE LOG</div>${row('Software updates',.38,'🔧')}${row('Current prices',.55,'🏷️')}${row('New photos of your work',.72,'📸')}</div>`,540,560,{r:1})},
+ // 10 things break quietly: old prices + 2019
+ (p,t)=>{const c1=clamp((p-.45)*4),c2=clamp((p-.72)*4);const circ=(q,w,h)=>`<svg style="position:absolute;left:-24px;top:-20px" width="${w+48}" height="${h+40}" viewBox="0 0 ${w+48} ${h+40}"><ellipse cx="${(w+48)/2}" cy="${(h+40)/2}" rx="${(w+30)/2}" ry="${(h+20)/2}" fill="none" stroke="#E5484D" stroke-width="7" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="${1-q}" transform="rotate(-3 ${(w+48)/2} ${(h+40)/2})"/></svg>`;
+  return at(p,0,`<div class="card" style="width:880px;overflow:hidden"><div style="height:70px;display:flex;align-items:center;gap:12px;padding:0 26px;background:#F4F2FA"><s style="width:16px;height:16px;border-radius:50%;background:#FF5F57;display:inline-block"></s><s style="width:16px;height:16px;border-radius:50%;background:#FEBC2E;display:inline-block"></s><s style="width:16px;height:16px;border-radius:50%;background:#28C840;display:inline-block"></s><div style="margin-left:16px;flex:1;height:42px;border-radius:21px;background:#fff;display:flex;align-items:center;padding:0 20px;font-size:24px;color:#8A82A8;font-weight:600">banksiaelectrical.com.au/prices</div></div>
+   <div style="padding:36px 44px"><div class="h" style="font-size:52px;color:#0F3D2E">Our prices</div>
+   <div style="display:flex;justify-content:space-between;align-items:center;margin-top:30px;padding:24px 0;border-top:2px solid #E6EEE9"><div style="font-weight:700;font-size:38px;color:#0F3D2E">Standard call-out</div><div style="position:relative;font-weight:800;font-size:44px;color:#0F3D2E">$79${circ(c1,90,50)}</div></div>
+   <div style="display:flex;gap:20px;align-items:center;padding:20px 0;border-top:2px solid #E6EEE9"><div style="width:120px;height:90px;border-radius:12px;background:#F1EEF9;display:flex;align-items:center;justify-content:center;font-size:44px;filter:grayscale(1)">🖼️</div><div style="font-weight:600;font-size:28px;color:#B0AAC4">image failed to load</div></div>
+   <div style="text-align:center;margin-top:24px;padding-top:24px;border-top:2px solid #E6EEE9;font-weight:600;font-size:30px;color:#8A9C94"><span style="position:relative;display:inline-block">© 2019 Banksia Electrical${circ(c2,410,40)}</span></div></div></div>`,540,300)
+  +at(p,.48,'<div class="pill" style="background:#FDE8E9;color:#C2272D">old price</div>',830,700,{r:5})
+  +at(p,.75,'<div class="pill" style="background:#FDE8E9;color:#C2272D">still says 2019</div>',540,1010,{r:-2})},
+ // 11 CTA poll + follow
+ (p,t)=>{const o=(n,txt,d)=>at(p,d,`<div class="card" style="width:800px;padding:26px 36px;display:flex;align-items:center;gap:28px"><div class="h" style="width:80px;height:80px;border-radius:22px;background:#ECE8FF;color:#6557E8;font-size:52px;display:flex;align-items:center;justify-content:center">${n}</div><div class="h" style="font-size:48px">${txt}</div></div>`,540,0);
+  return at(p,0,'<div class="h" style="font-size:80px;text-align:center;width:960px;line-height:1.05">Which one have<br>you <span class="hl">heard</span>?</div>',540,290)
+  +`<div style="position:absolute;top:530px;left:0;width:1080px">${o(1,'Fit it all above the fold',.1)}</div><div style="position:absolute;top:690px;left:0;width:1080px">${o(2,'Word of mouth is enough',.18)}</div><div style="position:absolute;top:850px;left:0;width:1080px">${o(3,'Built once, done forever',.26)}</div>`
+  +at(p,.5,'<div style="border-radius:999px;padding:26px 56px;font-size:52px;font-weight:800;white-space:nowrap;background:#6557E8;color:#fff;box-shadow:0 18px 40px rgba(101,87,232,.45)">+ Follow @nexaweb_dev</div>',540,1040)},
+];
+function lineAt(t){let i=0;for(let k=0;k<DATA.lines.length;k++)if(t>=DATA.lines[k].start-0.05)i=k;return i}
+window.render=function(t){
+ const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
+ const end=nx?nx.start:DATA.total,d=end-L.start,lt=t-L.start+0.05,p=clamp(lt/d);
+ BG.style.cssText=`background:radial-gradient(700px 600px at ${25+6*Math.sin(t*.3)}% 25%,rgba(185,166,255,.22),transparent 70%),radial-gradient(800px 700px at ${78+5*Math.cos(t*.25)}% 70%,rgba(231,161,0,.08),transparent 70%),linear-gradient(#FAF8F3,#F2EEE6)`;
+ const zoom=1+0.025*p;
+ const out=nx?clamp((t-(end-0.16))/0.16):0;S.innerHTML=`<div style="position:absolute;inset:0;opacity:${1-out};transform:scale(${zoom*(1+out*.04)}) translateY(${-out*24}px);transform-origin:540px 760px">${SC[i](p,t)}</div>`;
+ FX.innerHTML=(i>0&&lt<.15)?`<div style="position:absolute;inset:0;background:rgba(185,166,255,${.22*(1-lt/.15)})"></div>`:'';
+ const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25);
+ if(!ch){C.innerHTML='';return}
+ C.innerHTML=ch.words.map(w=>{const a=t-(w.start-0.03),on=a>=0,pop=on?0.85+0.15*ease(a/0.12):1;return `<span class="${w.k?'k':''}" style="opacity:${on?1:0};transform:scale(${pop})">${w.w}</span>`}).join(' ');
+};
+window.fontsReady=document.fonts.ready;
+</script></body></html>
