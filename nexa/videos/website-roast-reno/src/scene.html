@@ -1,0 +1,133 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;color:#150C2B;background:#EEF0F6}
+#bg,#stage,#fx,#hud{position:absolute;inset:0}
+.h{font-weight:800;letter-spacing:-.04em;line-height:1}
+.card{position:relative;background:#fff;border-radius:34px;box-shadow:0 30px 70px rgba(21,12,43,.14),0 0 0 2px rgba(21,12,43,.05);text-align:left}
+.pill{display:inline-block;border-radius:999px;padding:16px 34px;font-weight:700;font-size:40px;white-space:nowrap;background:#ECE8FF;color:#3B2FA8}
+.hl{background:linear-gradient(transparent 55%,#B9A6FF 55%);padding:0 .06em}
+.lab{font-weight:700;font-size:30px;letter-spacing:7px;color:#8A82A8}
+.serif{font-family:Georgia,'Times New Roman',serif}
+.bubble{background:#150C2B;color:#fff;font-weight:800;font-size:46px;padding:20px 34px;border-radius:30px 30px 30px 8px;white-space:nowrap;box-shadow:0 18px 40px rgba(21,12,43,.25)}
+#cap{position:absolute;left:150px;width:780px;top:1385px;text-align:center;font-weight:800;font-size:80px;letter-spacing:-.04em;line-height:1.14}
+#cap span{display:inline-block;margin:0 .1em;color:#150C2B}
+#cap span.k{color:#fff;background:#6557E8;padding:0 .12em .04em;border-radius:.12em}
+</style></head><body>
+<div id="bg"></div><div id="stage"></div><div id="fx"></div><div id="hud"></div>
+<div id="cap"></div>
+<script>
+const DATA=/*DATA*/null;
+const $=id=>document.getElementById(id);
+const S=$('stage'),C=$('cap'),BG=$('bg'),FX=$('fx'),HUD=$('hud');
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const eio=x=>{x=clamp(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const spring=x=>{x=clamp(x);return 1-Math.exp(-6.5*x)*Math.cos(7.5*x)};
+function at(p,d,html,x,y,o={}){const s=spring((p-d)*3.2),e=ease((p-d)*4);
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(${o.c===false?0:'-50%'},${(1-s)*60}px) scale(${.9+.1*s}) rotate(${(o.r||0)*(1-s)}deg);opacity:${clamp(e*1.6)}">${html}</div>`}
+const stamp=(t,c='#E5484D',fs=64)=>`<div class="h" style="font-size:${fs}px;padding:12px 30px;border:7px solid ${c};color:${c};border-radius:16px;background:#fff;white-space:nowrap;letter-spacing:3px">${t}</div>`;
+function slam(p,d,html,x,y,r=-8){const q=clamp((p-d)/.08);if(q<=0)return '';const s=1+.6*(1-ease(q));
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(-50%,-50%) scale(${s}) rotate(${r}deg);opacity:${clamp(q*2)}">${html}</div>`}
+function phone(inner,w,h,scrollY=0){return `<div style="width:${w}px;height:${h}px;border-radius:64px;background:#150C2B;padding:16px;box-shadow:0 40px 80px rgba(21,12,43,.28)"><div style="width:100%;height:100%;border-radius:50px;overflow:hidden;background:#fff;position:relative"><div style="position:absolute;left:0;right:0;top:${-scrollY}px">${inner}</div><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:120px;height:34px;border-radius:20px;background:#150C2B"></div></div></div>`}
+const IMG=['frame','kitchen1','drill','kitchen2','kitchen3'];
+const ph=(k,w,h,r=0,extra='')=>`<div style="width:${w}px;height:${h}px;border-radius:${r}px;background:url(img/${IMG[k%5]}.jpg) center/cover;${extra}"></div>`;
+// made-up business: Saltbush Reno Co (sage + sand, Georgia serif)
+const SG='#3F4D33',SD='#EFE7D6';
+const logo=(fs=30)=>`<div class="serif" style="font-weight:700;font-size:${fs}px;color:${SG};letter-spacing:.01em;white-space:nowrap">Saltbush <i style="color:#A3784A">Reno Co.</i></div>`;
+const burger=`<div style="width:44px;height:30px;border-top:5px solid ${SG};border-bottom:5px solid ${SG};position:relative"><div style="position:absolute;top:7px;left:0;right:0;height:5px;background:${SG}"></div></div>`;
+const numImg=(fs=24)=>`<div style="display:inline-block;padding:6px 12px;background:${SD};border:2px solid #D8CBB0;border-radius:6px;font-family:Georgia,serif;font-style:italic;font-size:${fs}px;color:${SG};filter:blur(.4px);image-rendering:pixelated">Ph: 04XX XXX XXX</div>`;
+function slider(t,w,h,speed=2){const k=Math.floor(t/speed*1),f=(t/speed)%1;const sl=Math.min(1,f*8);
+ return `<div style="position:relative;width:${w}px;height:${h}px;overflow:hidden;border-radius:18px">
+ <div style="position:absolute;inset:0;background:url(img/${IMG[k%5]}.jpg) center/cover"></div>
+ <div style="position:absolute;inset:0;background:url(img/${IMG[(k+1)%5]}.jpg) center/cover;opacity:${f>.85?(f-.85)/.15:0}"></div>
+ <div style="position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(transparent,rgba(0,0,0,.6))"></div>
+ <div class="serif" style="position:absolute;left:24px;bottom:50px;color:#fff;font-size:${Math.round(w/15)}px;font-weight:700;width:80%;line-height:1.1">${['Quality you can trust','Excellence in every detail','Your dream, our passion','Built to last','Award winning service'][k%5]}</div>
+ <div style="position:absolute;bottom:20px;left:0;right:0;display:flex;gap:10px;justify-content:center">${[0,1,2,3,4].map(j=>`<div style="width:12px;height:12px;border-radius:50%;background:${j==k%5?'#fff':'rgba(255,255,255,.45)'}"></div>`).join('')}</div></div>`}
+const site=(t,o={})=>`<div style="padding:76px 26px 0;background:#FBF8F2;min-height:1400px">
+ <div style="display:flex;justify-content:space-between;align-items:center">${logo(30)}${burger}</div>
+ <div style="margin-top:14px;text-align:right">${numImg(22)}</div>
+ <div style="margin-top:18px">${slider(t,o.w||346,o.h||300,o.speed||2)}</div>
+ <div class="serif" style="font-size:44px;font-weight:700;margin-top:28px;color:${SG};line-height:1.05">Quality you can trust.</div>
+ <div style="font-size:24px;color:#7C7462;margin-top:12px;line-height:1.35">Welcome to Saltbush Reno Co. We pride ourselves on excellence and attention to detail.</div>
+ <div style="margin-top:22px;display:inline-block;background:${SG};color:#fff;font-weight:700;font-size:26px;padding:16px 30px;border-radius:8px">Learn more</div>
+</div>`;
+const meter=n=>`<div style="display:flex;align-items:center;gap:12px;background:#fff;border-radius:999px;padding:12px 24px;box-shadow:0 10px 30px rgba(21,12,43,.12)"><span style="font-weight:700;font-size:24px;letter-spacing:4px;color:#8A82A8">ROAST</span>${[0,1,2,3,4].map(j=>`<span style="font-size:34px;filter:${j<n?'none':'grayscale(1) opacity(.25)'};display:inline-block;transform:scale(${j<n?1:.8})">🔥</span>`).join('')}</div>`;
+const SC=[
+ // 0 hook
+ (p,t)=>at(p,0,'<div class="h" style="font-size:96px;text-align:center;width:980px;line-height:1.02">Website <span class="hl">roast</span></div>',540,300)
+  +at(p,.05,phone(site(t,{speed:.7}),430,860),540,450,{r:-3})
+  +slam(p,.45,stamp('LOSING JOBS','#E5484D',62),790,1180,-8)
+  +at(p,.7,'<div style="font-size:120px">🔥</div>',250,1080),
+ // 1 Saltbush intro: desktop browser
+ (p,t)=>at(p,0,`<div class="card" style="width:920px;overflow:hidden"><div style="height:64px;display:flex;align-items:center;gap:12px;padding:0 24px;background:#F1EFF6"><s style="width:16px;height:16px;border-radius:50%;background:#FF5F57;display:inline-block"></s><s style="width:16px;height:16px;border-radius:50%;background:#FEBC2E;display:inline-block"></s><s style="width:16px;height:16px;border-radius:50%;background:#28C840;display:inline-block"></s><div style="margin-left:16px;flex:1;height:38px;border-radius:19px;background:#fff;display:flex;align-items:center;padding:0 20px"><div style="width:330px;height:14px;border-radius:7px;background:#CFCBDC;filter:blur(3px)"></div></div></div>
+  <div style="background:#FBF8F2;padding:26px 34px 34px"><div style="display:flex;align-items:center;justify-content:space-between">${logo(32)}<div style="display:flex;gap:14px;font-size:16px;color:${SG};font-weight:600">${['Home','About','Services','Gallery','Blog','Testimonials','FAQ','Contact'].map(x=>`<span>${x}</span>`).join('')}</div></div>
+  <div style="margin-top:22px">${slider(t,852,520,.7)}</div></div></div>`,540,330,{r:1})
+  +at(p,.45,'<div class="pill" style="background:#150C2B;color:#fff;font-size:44px">made-up business</div>',540,1060,{r:-3})
+  +at(p,.7,'<div style="font-weight:700;font-size:40px;color:#8A82A8;white-space:nowrap">...but you\'ve seen this site 👀</div>',540,1190),
+ // 2 slider
+ (p,t)=>{const per=0.45,f=(t/per)%1;
+  return at(p,0,phone(site(t,{speed:per}),440,900),330,300,{r:-2})
+  +at(p,.12,`<div class="card" style="width:400px;padding:30px 32px"><div class="lab" style="font-size:24px">SLIDE TIMER</div><div class="h" style="font-size:110px;color:#6557E8;margin-top:12px">2s</div><div style="height:22px;border-radius:11px;background:#ECE8FF;margin-top:18px;overflow:hidden"><div style="height:100%;width:${f*100}%;background:#6557E8"></div></div><div style="font-weight:700;font-size:28px;color:#8A82A8;margin-top:16px">5 photos on repeat</div></div>`,820,360,{r:3})
+  +at(p,.58,`<div class="card" style="width:400px;padding:28px 32px"><div style="font-weight:700;font-size:30px;color:#150C2B">Reading the slide...</div><div style="height:16px;border-radius:8px;background:#F3E3E4;margin-top:16px;overflow:hidden"><div style="height:100%;width:${Math.min(f*1.6,1)*60}%;background:#E5484D"></div></div><div style="font-weight:800;font-size:30px;color:#E5484D;margin-top:14px">gone 💨</div></div>`,820,760,{r:-2})
+  +slam(p,.66,stamp('TOO FAST'),540,1220,-6)},
+ // 3 headline
+ (p,t)=>at(p,0,`<div class="card" style="width:900px;overflow:hidden"><div style="height:400px;position:relative">${ph(1,900,400)}<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.65),rgba(0,0,0,.1))"></div><div class="serif" style="position:absolute;left:50px;top:110px;color:#fff;font-size:84px;font-weight:700;line-height:1.05;width:600px">Quality you can trust.</div></div><div style="padding:26px 50px;display:flex;gap:16px;align-items:center"><div style="background:${SG};color:#fff;font-weight:700;font-size:28px;padding:14px 26px;border-radius:8px">Learn more</div><div style="font-size:24px;color:#7C7462">Excellence. Passion. Detail.</div></div></div>`,540,320)
+  +at(p,.42,'<div class="bubble" style="font-size:52px">Trust to do what? 🤔</div>',540,880,{r:-2})
+  +at(p,.64,'<div class="bubble" style="background:#6557E8">Kitchens?</div>',230,1060,{r:-4})
+  +at(p,.75,'<div class="bubble" style="background:#6557E8">Decks?</div>',540,1090,{r:3})
+  +at(p,.86,'<div class="bubble" style="background:#E5484D">Where?</div>',830,1060,{r:-3}),
+ // 4 phone number is a picture
+ (p,t)=>{const tap=p>.38,tp=(t*2.2)%1;
+  return at(p,0,`<div class="card" style="width:900px;padding:44px 48px 60px;background:#FBF8F2"><div style="display:flex;justify-content:space-between;align-items:center">${logo(48)}${burger}</div>
+   <div style="margin-top:34px"><div style="display:inline-block;background:#150C2B;color:#fff;font-weight:700;font-size:26px;padding:8px 16px;border-radius:8px;margin-bottom:14px">phone-number.png</div><br><div style="display:inline-block;border:4px dashed #E5484D;border-radius:12px;padding:8px">${numImg(70)}</div></div>
+   ${tap?`<div style="position:absolute;left:560px;top:250px;font-size:120px;transform:scale(${1-.12*Math.sin(tp*Math.PI)})">👆</div>`:''}</div>`,540,320)
+  +at(p,.42,`<div class="card" style="padding:32px 46px;display:flex;align-items:center;gap:24px"><div style="font-size:76px">🚫</div><div><div class="h" style="font-size:54px">Nothing happens</div><div style="font-weight:600;font-size:32px;color:#8A82A8;margin-top:8px">it's just an image, not a link</div></div></div>`,540,780,{r:-2})
+  +at(p,.78,`<div class="card" style="padding:28px 44px;display:flex;align-items:center;gap:22px;background:#FFF6DA"><div style="font-size:66px">🧠</div><div class="h" style="font-size:48px">04XX... wait, what was it?</div></div>`,540,1080,{r:2})},
+ // 5 gallery
+ (p,t)=>{const n=Math.round(200*ease(p*3)),sc=260*eio((p-.05)/.6);
+  const grid=Array(30).fill(0).map((_,k)=>ph((k*3+1)%5,190,190,8,`filter:hue-rotate(${(k*23)%40-20}deg) brightness(${.9+(k%3)*.06})`)).join('');
+  return at(p,0,`<div class="card" style="width:900px;height:820px;overflow:hidden;padding:0"><div style="position:relative;z-index:2;background:#FBF8F2;padding:26px 34px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #EEE"><div class="serif" style="font-size:44px;font-weight:700;color:${SG}">Our Gallery</div><div class="h" style="font-size:40px;color:#6557E8">${n} photos</div></div><div style="padding:20px 26px;display:grid;grid-template-columns:repeat(4,190px);gap:18px;transform:translateY(${-sc}px)">${grid}</div></div>`,540,300)
+  +at(p,.0,'<div class="pill" style="background:#FDE8E9;color:#C2272D">no captions</div>',540,1170,{r:-2})
+  +at(p,.49,'<div class="bubble">What job?</div>',260,500,{r:-5})
+  +at(p,.63,'<div class="bubble" style="background:#6557E8">Which suburb?</div>',780,680,{r:4})
+  +at(p,.79,'<div class="bubble" style="background:#E5484D">How long? ⏳</div>',330,880,{r:-3})},
+ // 6 quote form budget first
+ (p,t)=>{const f=(lab,val,d,hi)=>`<div style="margin-top:20px;opacity:${clamp((p-d)*6)}"><div style="font-weight:700;font-size:28px;color:${SG}">${lab}</div><div style="margin-top:8px;height:72px;border-radius:10px;border:3px solid ${hi?'#E5484D':'#DDD5C4'};background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 22px;font-size:28px;color:#9A927F">${val}</div></div>`;
+  return at(p,0,`<div class="card" style="width:640px;padding:40px 44px;background:#FBF8F2;zoom:1.12"><div class="serif" style="font-size:46px;font-weight:700;color:${SG}">Get a quote</div>${f('Your budget *','Select a range ▾',.02,p>.2)}${f('Your name *','',.05)}${f('Phone *','',.07)}</div>`,410,300,{r:-2})
+  +slam(p,.28,`<div style="font-size:100px">😬</div>`,880,420,8)
+  +at(p,.47,`<div class="card" style="width:560px;padding:32px 36px;text-align:center"><div style="font-size:90px">🍝🕯️</div><div class="h" style="font-size:46px;margin-top:10px">First date energy</div></div>`,640,930,{r:3})
+  +at(p,.86,'<div class="bubble" style="font-size:40px">"So... what do you earn?"</div>',460,1210,{r:-3})},
+ // 7 the fix
+ (p,t)=>{const chk=(txt,d)=>`<div style="display:flex;gap:20px;align-items:center;margin:16px 0;opacity:${clamp((p-d)*5)}"><div style="width:62px;height:62px;flex:none;border-radius:18px;background:${p>d+.06?'#12A150':'#E3F3EA'};color:#fff;font-size:40px;font-weight:800;display:flex;align-items:center;justify-content:center">${p>d+.06?'✓':''}</div><div class="h" style="font-size:40px;line-height:1.05">${txt}</div></div>`;
+  const fixed=`<div style="padding:76px 26px 0;background:#FBF8F2;min-height:1000px"><div style="display:flex;justify-content:space-between;align-items:center">${logo(28)}${burger}</div>
+  <div style="margin-top:22px">${ph(1,346,250,18)}</div>
+  <div class="serif" style="font-size:40px;font-weight:700;margin-top:24px;color:${SG};line-height:1.08">Kitchen and bathroom renos in Ballarat.</div>
+  <div style="margin-top:22px;display:block;text-align:center;background:${p>.45?'#A3784A':SG};color:#fff;font-weight:800;font-size:28px;padding:20px 0;border-radius:12px;transform:scale(${p>.45&&p<.55?1.06:1})">📞 Call for a free quote</div>
+  <div style="display:flex;gap:10px;margin-top:22px">${[3,4].map(k=>`<div style="flex:1">${ph(k,168,120,10)}<div style="font-weight:700;font-size:18px;color:${SG};margin-top:8px;opacity:${clamp((p-.7)*6)}">${k==3?'Kitchen, Sebastopol':'Kitchen, Wendouree'}<br><span style="color:#9A927F;font-weight:600">${k==3?'4 weeks':'6 weeks'}</span></div></div>`).join('')}</div></div>`;
+  return at(p,0,phone(fixed,410,900),285,300,{r:-2})
+  +at(p,0,'<div class="pill" style="background:#12A150;color:#fff;font-size:44px">THE FIX</div>',770,330,{r:3})
+  +at(p,.1,`<div class="card" style="width:480px;padding:26px 30px">${chk('What you build + where',.12)}${chk('Tap to call button',.43)}${chk('Caption your best 10 jobs',.68)}</div>`,770,470,{r:2})},
+ // 8 CTA
+ (p,t)=>{const o=(n,txt,d,y)=>`<div style="position:absolute;top:${y}px;left:0;width:1080px">${at(p,d,`<div class="card" style="width:820px;padding:22px 34px;display:flex;align-items:center;gap:26px"><div style="font-size:52px">${n}</div><div class="h" style="font-size:44px">${txt}</div></div>`,540,0)}</div>`;
+  return at(p,0,'<div class="h" style="font-size:78px;text-align:center;width:960px;line-height:1.05">Which one makes<br>you <span class="hl">leave</span>?</div>',540,280)
+  +o('🎠','The 2 second slider',.06,500)+o('🤷','"Quality you can trust"',.1,630)+o('🖼️','Phone number picture',.14,760)+o('📸','200 photos, no captions',.18,890)+o('💸','Budget before name',.22,1020)
+  +at(p,.38,'<div style="border-radius:999px;padding:24px 54px;font-size:50px;font-weight:800;white-space:nowrap;background:#6557E8;color:#fff;box-shadow:0 18px 40px rgba(101,87,232,.45)">+ Follow @nexaweb_dev</div>',540,1180)},
+];
+const ROAST=[0,0,1,2,3,4,5,5,5];
+function lineAt(t){let i=0;for(let k=0;k<DATA.lines.length;k++)if(t>=DATA.lines[k].start-0.05)i=k;return i}
+window.render=function(t){
+ const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
+ const end=nx?nx.start:DATA.total,d=end-L.start,lt=t-L.start+0.05,p=clamp(lt/d);
+ BG.style.cssText=`background:radial-gradient(700px 600px at ${25+6*Math.sin(t*.3)}% 22%,rgba(185,166,255,.28),transparent 70%),radial-gradient(800px 700px at ${78+5*Math.cos(t*.25)}% 72%,rgba(229,72,77,.07),transparent 70%),linear-gradient(#F3F4FA,#E9EBF3)`;
+ const zoom=1+0.025*p;
+ const out=nx?clamp((t-(end-0.16))/0.16):0;S.innerHTML=`<div style="position:absolute;inset:0;opacity:${1-out};transform:scale(${zoom*(1+out*.04)}) translateY(${-out*24}px);transform-origin:540px 760px">${SC[i](p,t)}</div>`;
+ FX.innerHTML=(i>0&&lt<.15)?`<div style="position:absolute;inset:0;background:rgba(185,166,255,${.22*(1-lt/.15)})"></div>`:'';
+ HUD.innerHTML=i>0&&i<8?`<div style="position:absolute;left:70px;top:236px;font-weight:700;font-size:26px;letter-spacing:6px;color:#8A82A8">WEBSITE ROAST</div><div style="position:absolute;right:170px;top:222px">${meter(ROAST[i])}</div>`:'';
+ const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25);
+ if(!ch){C.innerHTML='';return}
+ C.innerHTML=ch.words.map(w=>{const a=t-(w.start-0.03),on=a>=0,pop=on?0.85+0.15*ease(a/0.12):1;return `<span class="${w.k?'k':''}" style="opacity:${on?1:0};transform:scale(${pop})">${w.w}</span>`}).join(' ');
+};
+window.fontsReady=document.fonts.ready;
+</script></body></html>
