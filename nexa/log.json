@@ -1,162 +1,173 @@
 [
-  {
-    "slug": "internet-stories-ep2-chatbot",
-    "format": "reel",
-    "topic": "Internet Stories ep.2: AI chatbots speak for your business — Chevy dealer bot agrees to $1 Tahoe (Dec 2023) + Air Canada liable for its chatbot (Feb 2024)",
-    "hook": "an AI agreed to sell a brand-new SUV for $1",
-    "style": "warm cream dot-grid reference style + CC0 photos",
-    "voice": "ElevenLabs Brian v3",
-    "caption": "An AI chatbot agreed to sell a brand-new SUV for $1. 🚙💵\nThen an airline learned the hard way that its chatbot's promises were its promises.\n\nDoes your website have an AI chatbot? What rules did you give it? 👇 Save this before you add one.\n\nFollow for more Internet Stories from Nexa Web Development.\n\n#aichatbot #artificialintelligence #chatgpt #smallbusinessaustralia #websitetips #digitalmarketing #techstories #webdesign",
-    "media_id": "18051328793821436",
-    "date": "2026-11-19",
-    "time": "23:50 AEDT"
-  },
-  {
-    "slug": "website-myths-3",
-    "format": "reel",
-    "topic": "3 website myths: homepage sliders (Notre Dame 2013 data: ~1% click, ~9 in 10 clicks on slide 1), instant full-screen pop-ups (Google mobile intrusive interstitials, since Jan 2017), desktop-first design (most web traffic is mobile)",
-    "hook": "That fancy slider on your homepage? Almost nobody clicks it.",
-    "style": "Nexa brand off-white/indigo/navy, mock UIs, safe-zone layout, centred captions",
-    "voice": "ElevenLabs Brian v3",
-    "caption": "That fancy slider on your homepage? Almost nobody clicks it. 🎠\nPlus 2 more website myths quietly costing you customers.\n\nWhich one is your site guilty of? Be honest 👇 Save this for your next website update.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #ux #seo #mobilefirst #digitalmarketing #websitedesign",
-    "media_id": "18077031464757414",
-    "date": "2026-11-20",
-    "time": "12:03 AEDT"
-  },
-  {
-    "slug": "internet-stories-ep3-domains",
-    "format": "reel",
-    "topic": "Internet Stories ep.3: lost domains. google.com bought for $12 via Google Domains by a former Google employee (Sept 2015, owned ~1 min, $6,006.13 reward spells 'Google', doubled when donated to charity) + Microsoft forgot to renew passport.com (Dec 1999, Hotmail partly broken, a programmer paid the $35 fee). Lesson: turn on auto-renew.",
-    "hook": "Someone bought google.com. For $12.",
-    "style": "v2 dark motion graphics (src/scene_dark.html)",
-    "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
-    "caption": "Someone bought google.com for $12. 🤯\nAnd Microsoft once forgot to renew a domain that Hotmail needed to work.\n\nDo you know when your domain renews? Check today, then tell me below 👇 Save this so you don't forget.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #domainname #webdesign #websitetips #smallbusinessaustralia #techhistory #google #digitalmarketing",
-    "media_id": "18093641684243030",
-    "date": "2026-11-20",
-    "time": "21:11 AEDT",
-    "note": "superseded by v2 repost 18134619034826987; Jayden to delete in app"
-  },
-  {
-    "slug": "internet-stories-ep3-domains-v2",
-    "format": "reel",
-    "topic": "Internet Stories ep.3: lost domains. google.com bought for $12 via Google Domains by a former Google employee (Sept 2015, owned ~1 min, $6,006.13 reward spells 'Google', doubled when donated to charity) + Microsoft forgot to renew passport.com (Dec 1999, Hotmail partly broken, a programmer paid the $35 fee). Lesson: turn on auto-renew.",
-    "hook": "Someone bought google.com. For $12.",
-    "style": "dark motion graphics (src-v2/scene_dark.html)",
-    "voice": "ElevenLabs Brian v3, atempo 1.12, mid-line pauses shortened",
-    "caption": "Someone bought google.com for $12. 🤯\nAnd Microsoft once forgot to renew a domain that Hotmail needed to work.\n\nDo you know when your domain renews? Check today, then tell me below 👇 Save this so you don't forget.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #domainname #webdesign #websitetips #smallbusinessaustralia #techhistory #google #digitalmarketing",
-    "media_id": "18134619034826987",
-    "date": "2026-11-20",
-    "time": "22:14 AEDT",
-    "note": "replacement for 18093641684243030 (clearer script, pauses fixed)"
-  },
-  {
-    "slug": "google-free-wins-5",
-    "format": "carousel",
-    "topic": "5 free ways to show up on Google: page titles that say 'Home', unclaimed Google Business Profile, not asking for reviews (text review link), missing meta descriptions (Google pulls random text), no sitemap in Search Console",
-    "caption": "5 free ways to show up on Google. No ads, no agency, no tech skills 👇\n\nHow many has your business already done? Tell me your score below, and save this for your next quiet afternoon.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#seo #localseo #googlebusinessprofile #smallbusinessaustralia #smallbusinesstips #websitetips #webdesign #digitalmarketing",
-    "media_id": "18119362121136454",
-    "date": "2026-11-21",
-    "time": "08:44 AEDT"
-  },
-  {
-    "slug": "ai-prompts-5",
-    "format": "carousel",
-    "topic": "5 AI prompts that save a small business hours: reply to a bad review, rough notes into a quote email, chase an unpaid invoice, write a website FAQ, a month of post ideas; plus 'read it before you send it' rule (made-up $450 vs $4,500 example) and don't paste private info",
-    "caption": "5 AI prompts that save a small business hours every week 🤖\nCopy them, fill in the [brackets], done.\n\nWhich one are you trying first? Comment the number 👇 and save this for the next time you need one.\n\nFollow @nexaweb_dev for more AI and website tips from Nexa Web Development.\n\n#aiforbusiness #aitools #smallbusinessaustralia #smallbusinesstips #chatgpttips #productivity #businesstips #digitalmarketing",
-    "media_id": "18173167537474972",
-    "date": "2026-11-21",
-    "time": "13:51 AEDT"
-  },
-  {
-    "slug": "internet-stories-ep4-cadabra",
-    "format": "reel",
-    "topic": "Internet Stories ep.4: Amazon's original name Cadabra (incorporated July 1994) sounded like 'cadaver' to his lawyer over the phone; Bezos registered relentless.com (still redirects to Amazon); picked Amazon from the dictionary (biggest river, starts with A for alphabetical lists). Lesson: phone test your business name/domain.",
-    "hook": "Amazon's first name sounded like a dead body.",
-    "style": "ep.3 dark motion graphics (src/scene_dark.html)",
-    "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12, mid-line pauses shortened (join2.py)",
-    "caption": "Amazon's first name sounded like a dead body. 💀\nThen a phone call changed everything (and one old domain still works today).\n\nWould your business name pass the phone test? Say it out loud and tell me below 👇 Save this before you buy your next domain.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #amazon #branding #businessname #domainname #techhistory #smallbusinessaustralia #webdesign",
-    "media_id": "18404841655206542",
-    "date": "2026-11-21",
-    "time": "22:22 AEDT"
-  },
-  {
-    "slug": "website-questions-6",
-    "format": "carousel",
-    "topic": "6 questions to ask before you pay for a website: whose name is the domain in, will I get all the logins, what does it cost every year (free hosting then $79/month made-up quote), can I change it myself, can I see it on my phone, is it set up for Google (titles, GBP, Search Console sitemap, redirects from old pages)",
-    "caption": "6 questions to ask before you pay anyone for a website. Number 1 is the big one.\n\nSave this for when you need a site, and send it to a mate who's getting one built.\n\nWhich one would you have forgotten to ask? Comment the number 👇\n\nWe build websites at Nexa Web Development, and we think every client should own the keys. Follow @nexaweb_dev for more.\n\n#webdesign #smallbusiness #smallbusinessaustralia #websitetips #webdevelopment #businesstips #australianbusiness #digitalmarketing",
-    "media_id": "17925997752222540",
-    "date": "2026-11-22",
-    "time": "10:37 AEDT"
-  },
-  {
-    "slug": "website-photos-5",
-    "format": "carousel",
-    "topic": "5 website photo mistakes: stock photos instead of real ones, huge photos straight off the phone (resize + compress, WebP usually smaller than JPEG), stretched/squashed photos (crop, don't drag), no alt text (screen readers + Google uses it to understand images), best work hidden on a gallery page instead of the homepage. Made-up business Crumb & Co bakery, Marrickville.",
-    "caption": "Your website photos might be losing you customers 📸\n5 quick fixes, and number 2 makes your site faster too.\n\nHow many does your site pass? Comment your score out of 5 👇 and save this for your next website update.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #smallbusinesstips #imageseo #pagespeed #websitedesign #digitalmarketing",
-    "media_id": "18124212103922558",
-    "date": "2026-11-22",
-    "time": "13:26 AEDT"
-  },
-  {
-    "slug": "trust-checks-5",
-    "format": "carousel",
-    "topic": "5 things customers check before they call you (trust signals): prices or 'from' prices, real Google reviews with names and dates (fake reviews break Australian Consumer Law), an About bit with a real name/photo/licence number, saying what happens after the contact form, an up to date footer (business name, ABN, service area, phone, hours, current year). Made-up business Tidewire Electrical, Newcastle.",
-    "caption": "Before anyone calls you, they check your website for these 5 things 👀\n\nHow many does your site pass? Comment your score out of 5, and save this for your next website update.\n\nTips from the team at Nexa Web Development. (Tidewire Electrical is a made-up example.)\n\n#websitedesign #webdesigntips #smallbusinessaustralia #smallbusinesstips #websitetips #tradiesofaustralia #australianbusiness #customertrust",
-    "media_id": "18162095806513601",
-    "date": "2026-11-23",
-    "time": "08:53 AEDT"
-  },
-  {
-    "slug": "internet-stories-ep7-outage",
-    "format": "reel",
-    "topic": "Internet Stories ep.7: the Oct 4 2021 Facebook outage. A command during routine maintenance (meant to check backbone capacity) cut every link between Facebook's data centres; its DNS servers withdrew their routes so the 'internet's phone book' had no answer and Facebook/Instagram/WhatsApp didn't exist to phones; staff reportedly couldn't get into buildings with badges (NYT via Wikipedia); engineers went to the data centres in person; ~6 hours. Lesson: social media is rented land, your website is land you own.",
-    "caption": "Facebook once deleted itself from the internet. By accident. 😳\n\nFor about 6 hours in 2021, Facebook, Instagram and WhatsApp vanished worldwide. If your business only lives on Instagram, that's 6 hours where customers can't find you.\n\nIf Instagram went down tomorrow, could customers still find you? Tell me in the comments 👇\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #techhistory #facebookdown #webdesign #smallbusinessaustralia #websitetips #digitalmarketing #socialmedia",
-    "media_id": "18177475570454655",
-    "date": "2026-11-23",
-    "time": "23:10 AEDT",
-    "media": [
-      "nexa/videos/internet-stories-ep7-outage/ep7.mp4"
-    ],
-    "voice": "ElevenLabs Brian, eleven_v3, join2.py (pause trim + atempo 1.12)"
-  },
-  {
-    "slug": "christmas-close-5",
-    "format": "carousel",
-    "topic": "Closing over Christmas? 5 website jobs first: holiday hours banner on the homepage, special hours in Google Business Profile (show in Search and Maps), out of office reply on the form inbox, check domain/hosting renewal date and that the card on file works, test your own contact form (check spam). Made-up business Little Fern Cafe, Geelong.",
-    "caption": "Closing over Christmas? Do these 5 website jobs before you switch off. 🎄\n\nWhich one have you not done yet? Comment the number 👇 and save this for your last week before the break.\n\nTips from the team at Nexa Web Development. (Little Fern Cafe is a made-up example.)\n\n#websitetips #smallbusinessaustralia #googlebusinessprofile #smallbusinesstips #christmasclosure #webdesign #australianbusiness #websitedesign",
-    "media_id": "18113507600579123",
-    "date": "2026-11-24",
-    "time": "10:05 AEDT",
-    "images": [
-      "nexa/images/christmas-close-5/01.jpg",
-      "nexa/images/christmas-close-5/02.jpg",
-      "nexa/images/christmas-close-5/03.jpg",
-      "nexa/images/christmas-close-5/04.jpg",
-      "nexa/images/christmas-close-5/05.jpg",
-      "nexa/images/christmas-close-5/06.jpg",
-      "nexa/images/christmas-close-5/07.jpg"
-    ]
-  },
-  {
-    "slug": "internet-stories-ep8-banner",
-    "format": "reel",
-    "topic": "Internet Stories ep.8: the first web banner ad. AT&T on HotWired (Wired magazine's website), October 1994: 'Have you ever clicked your mouse right here? You will.' About 44% clicked (agency's recalled figure). HotWired sold page space like a magazine to pay writers; a spot reportedly cost $30,000 for 3 months. It led to a page of art museum sites, not a sales pitch. Today banner ads get clicked by well under 1 in 100; banner blindness means flashy boxes get skipped, so keep key website info clear and plain.",
-    "hook": "Almost half the people who saw this ad clicked it.",
-    "style": "v3 light modern: off-white/lavender background, white rounded cards, navy DM Sans ExtraBold, indigo #6557E8 + lavender #B9A6FF highlights (src/scene_modern.html); no top tag/progress bar",
-    "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
-    "caption": "In 1994, almost half the people who saw this ad clicked it. Today? Well under 1 in 100. 👀\n\nThe first banner ad on the web didn't sell anything, and that's exactly why it worked. Would you have clicked it? Tell us below, and save this before you redesign your homepage.\n\nClear beats flashy. Nexa Web Development builds websites people actually read.\n\n#internetstories #internethistory #webdesign #websitetips #digitalmarketing #smallbusinessaustralia #bannerblindness #techhistory",
-    "media_id": "18037216010672488",
-    "date": "2026-11-24",
-    "time": "21:40 AEDT"
-  },
-  {
-    "slug": "slow-site-5",
-    "format": "carousel",
-    "topic": "Why your website is slow: 5 usual suspects. Photos straight off the phone (resize ~2000px + compress), autoplay background video on the homepage, forgotten plugins loading code on every page, bolt-on extras from other companies' servers (chat, pop-up, Instagram feed, tracking codes), overseas hosting (host in Australia or use a CDN). Cover stat: Google 2016 research, 53% of mobile visits abandoned over 3 s. Last slide: test at pagespeed.web.dev. Made-up business Kestrel Plumbing, Wollongong. New light 'warm grey + inset photo card + navy number' look.",
-    "caption": "Your website isn't broken. It's stuck in traffic. 🚗\n\nGoogle's research found most people on a phone leave if a page takes more than 3 seconds to load. These are the 5 usual suspects we find on small business sites, and how to fix each one.\n\nSave this for your next website job, then run your site through the free test on the last slide. Which suspect is yours? Tell us below 👇\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#websitetips #smallbusinessaustralia #webdesign #pagespeed #websitedesign #smallbusinesstips #seotips #australianbusiness",
-    "media_id": "18130975004483352",
-    "account": "17841440401815967",
-    "date": "2026-11-26",
-    "time": "09:07 AEDT"
-  }
+ {
+  "slug": "internet-stories-ep2-chatbot",
+  "format": "reel",
+  "topic": "Internet Stories ep.2: AI chatbots speak for your business — Chevy dealer bot agrees to $1 Tahoe (Dec 2023) + Air Canada liable for its chatbot (Feb 2024)",
+  "hook": "an AI agreed to sell a brand-new SUV for $1",
+  "style": "warm cream dot-grid reference style + CC0 photos",
+  "voice": "ElevenLabs Brian v3",
+  "caption": "An AI chatbot agreed to sell a brand-new SUV for $1. 🚙💵\nThen an airline learned the hard way that its chatbot's promises were its promises.\n\nDoes your website have an AI chatbot? What rules did you give it? 👇 Save this before you add one.\n\nFollow for more Internet Stories from Nexa Web Development.\n\n#aichatbot #artificialintelligence #chatgpt #smallbusinessaustralia #websitetips #digitalmarketing #techstories #webdesign",
+  "media_id": "18051328793821436",
+  "date": "2026-11-19",
+  "time": "23:50 AEDT"
+ },
+ {
+  "slug": "website-myths-3",
+  "format": "reel",
+  "topic": "3 website myths: homepage sliders (Notre Dame 2013 data: ~1% click, ~9 in 10 clicks on slide 1), instant full-screen pop-ups (Google mobile intrusive interstitials, since Jan 2017), desktop-first design (most web traffic is mobile)",
+  "hook": "That fancy slider on your homepage? Almost nobody clicks it.",
+  "style": "Nexa brand off-white/indigo/navy, mock UIs, safe-zone layout, centred captions",
+  "voice": "ElevenLabs Brian v3",
+  "caption": "That fancy slider on your homepage? Almost nobody clicks it. 🎠\nPlus 2 more website myths quietly costing you customers.\n\nWhich one is your site guilty of? Be honest 👇 Save this for your next website update.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #ux #seo #mobilefirst #digitalmarketing #websitedesign",
+  "media_id": "18077031464757414",
+  "date": "2026-11-20",
+  "time": "12:03 AEDT"
+ },
+ {
+  "slug": "internet-stories-ep3-domains",
+  "format": "reel",
+  "topic": "Internet Stories ep.3: lost domains. google.com bought for $12 via Google Domains by a former Google employee (Sept 2015, owned ~1 min, $6,006.13 reward spells 'Google', doubled when donated to charity) + Microsoft forgot to renew passport.com (Dec 1999, Hotmail partly broken, a programmer paid the $35 fee). Lesson: turn on auto-renew.",
+  "hook": "Someone bought google.com. For $12.",
+  "style": "v2 dark motion graphics (src/scene_dark.html)",
+  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
+  "caption": "Someone bought google.com for $12. 🤯\nAnd Microsoft once forgot to renew a domain that Hotmail needed to work.\n\nDo you know when your domain renews? Check today, then tell me below 👇 Save this so you don't forget.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #domainname #webdesign #websitetips #smallbusinessaustralia #techhistory #google #digitalmarketing",
+  "media_id": "18093641684243030",
+  "date": "2026-11-20",
+  "time": "21:11 AEDT",
+  "note": "superseded by v2 repost 18134619034826987; Jayden to delete in app"
+ },
+ {
+  "slug": "internet-stories-ep3-domains-v2",
+  "format": "reel",
+  "topic": "Internet Stories ep.3: lost domains. google.com bought for $12 via Google Domains by a former Google employee (Sept 2015, owned ~1 min, $6,006.13 reward spells 'Google', doubled when donated to charity) + Microsoft forgot to renew passport.com (Dec 1999, Hotmail partly broken, a programmer paid the $35 fee). Lesson: turn on auto-renew.",
+  "hook": "Someone bought google.com. For $12.",
+  "style": "dark motion graphics (src-v2/scene_dark.html)",
+  "voice": "ElevenLabs Brian v3, atempo 1.12, mid-line pauses shortened",
+  "caption": "Someone bought google.com for $12. 🤯\nAnd Microsoft once forgot to renew a domain that Hotmail needed to work.\n\nDo you know when your domain renews? Check today, then tell me below 👇 Save this so you don't forget.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #domainname #webdesign #websitetips #smallbusinessaustralia #techhistory #google #digitalmarketing",
+  "media_id": "18134619034826987",
+  "date": "2026-11-20",
+  "time": "22:14 AEDT",
+  "note": "replacement for 18093641684243030 (clearer script, pauses fixed)"
+ },
+ {
+  "slug": "google-free-wins-5",
+  "format": "carousel",
+  "topic": "5 free ways to show up on Google: page titles that say 'Home', unclaimed Google Business Profile, not asking for reviews (text review link), missing meta descriptions (Google pulls random text), no sitemap in Search Console",
+  "caption": "5 free ways to show up on Google. No ads, no agency, no tech skills 👇\n\nHow many has your business already done? Tell me your score below, and save this for your next quiet afternoon.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#seo #localseo #googlebusinessprofile #smallbusinessaustralia #smallbusinesstips #websitetips #webdesign #digitalmarketing",
+  "media_id": "18119362121136454",
+  "date": "2026-11-21",
+  "time": "08:44 AEDT"
+ },
+ {
+  "slug": "ai-prompts-5",
+  "format": "carousel",
+  "topic": "5 AI prompts that save a small business hours: reply to a bad review, rough notes into a quote email, chase an unpaid invoice, write a website FAQ, a month of post ideas; plus 'read it before you send it' rule (made-up $450 vs $4,500 example) and don't paste private info",
+  "caption": "5 AI prompts that save a small business hours every week 🤖\nCopy them, fill in the [brackets], done.\n\nWhich one are you trying first? Comment the number 👇 and save this for the next time you need one.\n\nFollow @nexaweb_dev for more AI and website tips from Nexa Web Development.\n\n#aiforbusiness #aitools #smallbusinessaustralia #smallbusinesstips #chatgpttips #productivity #businesstips #digitalmarketing",
+  "media_id": "18173167537474972",
+  "date": "2026-11-21",
+  "time": "13:51 AEDT"
+ },
+ {
+  "slug": "internet-stories-ep4-cadabra",
+  "format": "reel",
+  "topic": "Internet Stories ep.4: Amazon's original name Cadabra (incorporated July 1994) sounded like 'cadaver' to his lawyer over the phone; Bezos registered relentless.com (still redirects to Amazon); picked Amazon from the dictionary (biggest river, starts with A for alphabetical lists). Lesson: phone test your business name/domain.",
+  "hook": "Amazon's first name sounded like a dead body.",
+  "style": "ep.3 dark motion graphics (src/scene_dark.html)",
+  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12, mid-line pauses shortened (join2.py)",
+  "caption": "Amazon's first name sounded like a dead body. 💀\nThen a phone call changed everything (and one old domain still works today).\n\nWould your business name pass the phone test? Say it out loud and tell me below 👇 Save this before you buy your next domain.\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #amazon #branding #businessname #domainname #techhistory #smallbusinessaustralia #webdesign",
+  "media_id": "18404841655206542",
+  "date": "2026-11-21",
+  "time": "22:22 AEDT"
+ },
+ {
+  "slug": "website-questions-6",
+  "format": "carousel",
+  "topic": "6 questions to ask before you pay for a website: whose name is the domain in, will I get all the logins, what does it cost every year (free hosting then $79/month made-up quote), can I change it myself, can I see it on my phone, is it set up for Google (titles, GBP, Search Console sitemap, redirects from old pages)",
+  "caption": "6 questions to ask before you pay anyone for a website. Number 1 is the big one.\n\nSave this for when you need a site, and send it to a mate who's getting one built.\n\nWhich one would you have forgotten to ask? Comment the number 👇\n\nWe build websites at Nexa Web Development, and we think every client should own the keys. Follow @nexaweb_dev for more.\n\n#webdesign #smallbusiness #smallbusinessaustralia #websitetips #webdevelopment #businesstips #australianbusiness #digitalmarketing",
+  "media_id": "17925997752222540",
+  "date": "2026-11-22",
+  "time": "10:37 AEDT"
+ },
+ {
+  "slug": "website-photos-5",
+  "format": "carousel",
+  "topic": "5 website photo mistakes: stock photos instead of real ones, huge photos straight off the phone (resize + compress, WebP usually smaller than JPEG), stretched/squashed photos (crop, don't drag), no alt text (screen readers + Google uses it to understand images), best work hidden on a gallery page instead of the homepage. Made-up business Crumb & Co bakery, Marrickville.",
+  "caption": "Your website photos might be losing you customers 📸\n5 quick fixes, and number 2 makes your site faster too.\n\nHow many does your site pass? Comment your score out of 5 👇 and save this for your next website update.\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#webdesign #websitetips #smallbusinessaustralia #smallbusinesstips #imageseo #pagespeed #websitedesign #digitalmarketing",
+  "media_id": "18124212103922558",
+  "date": "2026-11-22",
+  "time": "13:26 AEDT"
+ },
+ {
+  "slug": "trust-checks-5",
+  "format": "carousel",
+  "topic": "5 things customers check before they call you (trust signals): prices or 'from' prices, real Google reviews with names and dates (fake reviews break Australian Consumer Law), an About bit with a real name/photo/licence number, saying what happens after the contact form, an up to date footer (business name, ABN, service area, phone, hours, current year). Made-up business Tidewire Electrical, Newcastle.",
+  "caption": "Before anyone calls you, they check your website for these 5 things 👀\n\nHow many does your site pass? Comment your score out of 5, and save this for your next website update.\n\nTips from the team at Nexa Web Development. (Tidewire Electrical is a made-up example.)\n\n#websitedesign #webdesigntips #smallbusinessaustralia #smallbusinesstips #websitetips #tradiesofaustralia #australianbusiness #customertrust",
+  "media_id": "18162095806513601",
+  "date": "2026-11-23",
+  "time": "08:53 AEDT"
+ },
+ {
+  "slug": "internet-stories-ep7-outage",
+  "format": "reel",
+  "topic": "Internet Stories ep.7: the Oct 4 2021 Facebook outage. A command during routine maintenance (meant to check backbone capacity) cut every link between Facebook's data centres; its DNS servers withdrew their routes so the 'internet's phone book' had no answer and Facebook/Instagram/WhatsApp didn't exist to phones; staff reportedly couldn't get into buildings with badges (NYT via Wikipedia); engineers went to the data centres in person; ~6 hours. Lesson: social media is rented land, your website is land you own.",
+  "caption": "Facebook once deleted itself from the internet. By accident. 😳\n\nFor about 6 hours in 2021, Facebook, Instagram and WhatsApp vanished worldwide. If your business only lives on Instagram, that's 6 hours where customers can't find you.\n\nIf Instagram went down tomorrow, could customers still find you? Tell me in the comments 👇\n\nFollow @nexaweb_dev for more Internet Stories from Nexa Web Development.\n\n#internetstories #techhistory #facebookdown #webdesign #smallbusinessaustralia #websitetips #digitalmarketing #socialmedia",
+  "media_id": "18177475570454655",
+  "date": "2026-11-23",
+  "time": "23:10 AEDT",
+  "media": [
+   "nexa/videos/internet-stories-ep7-outage/ep7.mp4"
+  ],
+  "voice": "ElevenLabs Brian, eleven_v3, join2.py (pause trim + atempo 1.12)"
+ },
+ {
+  "slug": "christmas-close-5",
+  "format": "carousel",
+  "topic": "Closing over Christmas? 5 website jobs first: holiday hours banner on the homepage, special hours in Google Business Profile (show in Search and Maps), out of office reply on the form inbox, check domain/hosting renewal date and that the card on file works, test your own contact form (check spam). Made-up business Little Fern Cafe, Geelong.",
+  "caption": "Closing over Christmas? Do these 5 website jobs before you switch off. 🎄\n\nWhich one have you not done yet? Comment the number 👇 and save this for your last week before the break.\n\nTips from the team at Nexa Web Development. (Little Fern Cafe is a made-up example.)\n\n#websitetips #smallbusinessaustralia #googlebusinessprofile #smallbusinesstips #christmasclosure #webdesign #australianbusiness #websitedesign",
+  "media_id": "18113507600579123",
+  "date": "2026-11-24",
+  "time": "10:05 AEDT",
+  "images": [
+   "nexa/images/christmas-close-5/01.jpg",
+   "nexa/images/christmas-close-5/02.jpg",
+   "nexa/images/christmas-close-5/03.jpg",
+   "nexa/images/christmas-close-5/04.jpg",
+   "nexa/images/christmas-close-5/05.jpg",
+   "nexa/images/christmas-close-5/06.jpg",
+   "nexa/images/christmas-close-5/07.jpg"
+  ]
+ },
+ {
+  "slug": "internet-stories-ep8-banner",
+  "format": "reel",
+  "topic": "Internet Stories ep.8: the first web banner ad. AT&T on HotWired (Wired magazine's website), October 1994: 'Have you ever clicked your mouse right here? You will.' About 44% clicked (agency's recalled figure). HotWired sold page space like a magazine to pay writers; a spot reportedly cost $30,000 for 3 months. It led to a page of art museum sites, not a sales pitch. Today banner ads get clicked by well under 1 in 100; banner blindness means flashy boxes get skipped, so keep key website info clear and plain.",
+  "hook": "Almost half the people who saw this ad clicked it.",
+  "style": "v3 light modern: off-white/lavender background, white rounded cards, navy DM Sans ExtraBold, indigo #6557E8 + lavender #B9A6FF highlights (src/scene_modern.html); no top tag/progress bar",
+  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
+  "caption": "In 1994, almost half the people who saw this ad clicked it. Today? Well under 1 in 100. 👀\n\nThe first banner ad on the web didn't sell anything, and that's exactly why it worked. Would you have clicked it? Tell us below, and save this before you redesign your homepage.\n\nClear beats flashy. Nexa Web Development builds websites people actually read.\n\n#internetstories #internethistory #webdesign #websitetips #digitalmarketing #smallbusinessaustralia #bannerblindness #techhistory",
+  "media_id": "18037216010672488",
+  "date": "2026-11-24",
+  "time": "21:40 AEDT"
+ },
+ {
+  "slug": "slow-site-5",
+  "format": "carousel",
+  "topic": "Why your website is slow: 5 usual suspects. Photos straight off the phone (resize ~2000px + compress), autoplay background video on the homepage, forgotten plugins loading code on every page, bolt-on extras from other companies' servers (chat, pop-up, Instagram feed, tracking codes), overseas hosting (host in Australia or use a CDN). Cover stat: Google 2016 research, 53% of mobile visits abandoned over 3 s. Last slide: test at pagespeed.web.dev. Made-up business Kestrel Plumbing, Wollongong. New light 'warm grey + inset photo card + navy number' look.",
+  "caption": "Your website isn't broken. It's stuck in traffic. 🚗\n\nGoogle's research found most people on a phone leave if a page takes more than 3 seconds to load. These are the 5 usual suspects we find on small business sites, and how to fix each one.\n\nSave this for your next website job, then run your site through the free test on the last slide. Which suspect is yours? Tell us below 👇\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#websitetips #smallbusinessaustralia #webdesign #pagespeed #websitedesign #smallbusinesstips #seotips #australianbusiness",
+  "media_id": "18130975004483352",
+  "account": "17841440401815967",
+  "date": "2026-11-26",
+  "time": "09:07 AEDT"
+ },
+ {
+  "slug": "website-myths-part2",
+  "format": "reel",
+  "topic": "3 more website myths: 'everything must fit above the fold' (NN/g 2018 eye-tracking: ~57% of viewing time above the fold, so over 40% below; top just needs what you do, where, one next step), 'word of mouth means no website' (referrals look you up first; nothing or an abandoned site = referral goes cold), 'once it's built it's done' (website is like a ute, needs servicing: software updates, current prices, new photos; otherwise old prices and a 2019 footer). Made-up business Banksia Electrical, Newcastle. Light warm-white style.",
+  "hook": "Three website myths that quietly cost you customers.",
+  "caption": "3 website myths that are quietly costing you customers.\n\nNumber 2 catches out a lot of tradies.\n\nWhich one have you heard? 1, 2 or 3? Save this for your next website chat.\n\nFollow @nexaweb_dev for more website tips. We build and look after websites for Aussie small businesses at Nexa Web Development.\n\n#websitetips #smallbusinessaustralia #webdesign #tradies #smallbusinesstips #websitedesign #australianbusiness #digitalmarketing",
+  "video": "nexa/videos/website-myths-part2/website-myths-part2.mp4",
+  "media_id": "18118449983148800",
+  "date": "2026-11-26",
+  "time": "12:13 AEDT"
+ }
 ]
