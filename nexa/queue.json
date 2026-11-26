@@ -613,5 +613,26 @@
   "status": "posted",
   "media_id": "18160040677525113",
   "note": "approved by Jayden and posted 2026-11-26 21:44 AEDT"
+ },
+ {
+  "slug": "service-page-5",
+  "format": "carousel",
+  "topic": "5 things every service page needs (customers often land on the job page from Google, not the homepage): its own page per job instead of one list, say where you work (town + suburbs in heading), show how the job goes (steps + how long), answer the worries (FAQ), link to the next/related job (internal links help Google find/understand pages). Made-up business Ridgeline Roofing, Port Macquarie. New soft lavender look: outlined indigo number, highlighter headline, tilted browser/phone mockups, marker scribbles.",
+  "hook": "Lots of customers never see your homepage.",
+  "caption": "Most of your customers never see your homepage. 🏠\n\nThey search for the job, and Google sends them straight to that job's page. So that page has to do the selling. Here's the 5 point check, using a made-up roofer.\n\nSave this and run your best paying job's page through it. Which one is your site missing? Tell us below 👇\n\nFollow @nexaweb_dev for more website tips from Nexa Web Development.\n\n#websitetips #smallbusinessaustralia #tradies #webdesign #localseo #seotips #smallbusinesstips #australianbusiness",
+  "image_paths": [
+   "nexa/images/service-page-5/01.jpg",
+   "nexa/images/service-page-5/02.jpg",
+   "nexa/images/service-page-5/03.jpg",
+   "nexa/images/service-page-5/04.jpg",
+   "nexa/images/service-page-5/05.jpg",
+   "nexa/images/service-page-5/06.jpg",
+   "nexa/images/service-page-5/07.jpg"
+  ],
+  "created": "2026-11-27 08:40 AEDT",
+  "post_on": "2026-11-27",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval"
  }
 ]
