@@ -1,0 +1,3 @@
+Axeman of New Orleans (1918-1919, jazz letter March 1919). axeman.js is inserted into scene.html before window.render. SFX: hsfx.py (OUT="sfx") + examples/true-israel-keyes/extra.py + extra2.py (chisel taps, creak, muffled old jazz); music_tc.py; creak gain 0.14 in mix.py; MUSIC=0.2 python3 mix.py. join.py: atempo 1.2, squeeze mx 0.16.
+Sources: hnoc.org (Historic New Orleans Collection, 'Mysterious Axman'), mentalfloss.com (Jake Rossen 2016), blog.newspapers.com/the-axeman-of-new-orleans, mprnews.org (2019-03-19).
+Left out (sources disagree): exact letter date (Mar 14 vs 16), March 18 vs 19 night label, death toll beyond 'at least six', start date (Dec 1917 vs May 1918), 'fell demon' wording, the Mumfre suspect.
