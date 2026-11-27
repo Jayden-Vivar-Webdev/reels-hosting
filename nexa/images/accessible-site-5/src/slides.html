@@ -1,0 +1,174 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--ind:#6557E8;--lav:#B9A6FF;--navy:#150C2B;--bg:#FFFFFF;--panel:#F3F1FB;--red:#E5484D;--sage:#3F5E4F;--cream:#F6F1E7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#444}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--bg);color:var(--navy);margin-bottom:20px}
+.tag{position:absolute;left:72px;top:70px;display:flex;align-items:center;gap:18px;font:700 24px Inter;letter-spacing:.14em;color:var(--ind);text-transform:uppercase}
+.tag b{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;background:var(--navy);color:#fff;font:800 32px 'DM Sans';letter-spacing:0}
+.h{position:absolute;left:72px;right:72px;top:160px;font:800 64px/1.05 'DM Sans';letter-spacing:-.035em}
+.h em{font-style:normal;color:var(--ind)}
+.panel{position:absolute;left:40px;right:40px;border-radius:34px;background:var(--panel);overflow:hidden}
+.why{position:absolute;left:72px;right:72px;font-size:28px;line-height:1.45;color:#2a2540}
+.why b{color:var(--ind);font-weight:700}
+.fix{position:absolute;left:72px;right:72px;font-size:28px;line-height:1.45;font-weight:600}
+.fix b{color:var(--ind)}
+.ft{position:absolute;left:72px;right:72px;bottom:42px;display:flex;justify-content:space-between;align-items:center;font:500 24px Inter;color:#8a85a0}
+.dots{display:flex;gap:9px}.dots span{width:10px;height:10px;border-radius:5px;background:#d9d4ee}.dots span.on{width:34px;background:var(--ind)}
+.br{position:absolute;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(21,12,43,.16),0 0 0 1px #e2ddf0}
+.bar{height:50px;display:flex;align-items:center;gap:12px;padding:0 22px;border-bottom:1px solid #eceaf2;background:#f7f6fa}
+.bar .d{width:12px;height:12px;border-radius:50%;background:#ff5f57;box-shadow:20px 0 0 #febc2e,40px 0 0 #28c840;margin-right:46px}
+.bar .url{flex:1;height:32px;border-radius:9px;background:#ecebf1;display:flex;align-items:center;padding:0 16px;font:500 17px Inter;color:#6f6b7d}
+.bar .url i{font-style:normal;filter:blur(3.5px)}
+.nav{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:var(--cream);border-bottom:1px solid #e6dfd0}
+.logo{font:700 27px Gelasio;color:var(--sage)}.logo span{font-style:italic;font-weight:400}
+.nav .l{display:flex;gap:20px;font:500 16px 'Fira Sans';color:#5b6b62}
+.site{font-family:'Fira Sans';color:#2b332f}
+svg.sc{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:9}
+.note{position:absolute;font:800 32px/1.1 'DM Sans';color:var(--red);z-index:9;transform:rotate(-4deg)}
+.photo{position:absolute;overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover;display:block}
+</style></head><body>
+
+<!-- 1 cover -->
+<div class="s" id="s1">
+ <div class="photo" style="left:0;right:0;top:0;height:640px"><img src="img/eyelaptop.jpg" style="object-position:50% 55%"></div>
+ <div style="position:absolute;left:72px;top:560px;background:#fff;border-radius:18px;padding:22px 30px;box-shadow:0 18px 40px rgba(21,12,43,.18);font:600 26px/1.3 Inter;color:var(--navy)">
+  <span style="font:800 52px 'DM Sans';color:var(--ind);letter-spacing:-.03em">1 in 5</span><br>Australians has a disability</div>
+ <div class="h" style="top:790px;font-size:84px;line-height:1.0">Can they actually <em>use</em> your website?</div>
+ <div class="why" style="top:990px;font-size:30px">5 quick fixes. They make your site easier for everyone, and usually help sales too. Made-up physio, real tips. Swipe →</div>
+ <div style="position:absolute;left:72px;top:1180px;font:500 19px Inter;color:#9a95ad">Source: ABS Survey of Disability, Ageing and Carers, 2022</div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span class="on"></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+</div>
+
+<!-- 2 contrast -->
+<div class="s" id="s2">
+ <div class="tag"><b>1</b>Fix one</div>
+ <div class="h">Light grey text <em>on white</em></div>
+ <div class="panel" style="top:330px;height:500px">
+  <div class="photo" style="left:0;right:0;top:0;height:500px"><img src="img/glassphone.jpg" style="object-position:50% 60%"></div>
+ </div>
+ <div class="br" style="left:150px;right:150px;top:400px;transform:rotate(1deg)">
+  <div class="bar"><span class="d"></span><div class="url"><i>tallowoodphysio.com.au</i></div></div>
+  <div class="nav"><div class="logo">Tallowood <span>Physio</span></div><div class="l"><span>Services</span><span>Team</span><span>Book</span></div></div>
+  <div class="site" style="padding:34px 34px 38px;background:#fff">
+   <div style="font:700 40px/1.1 Gelasio;color:#c8c8c8">Back pain? We can help.</div>
+   <div style="font:400 20px/1.45 'Fira Sans';color:#d2d2d2;margin-top:12px">Same week appointments in Bunbury. Health fund rebates on the spot. Open Saturdays 8 till 12.</div>
+   <div style="display:inline-block;margin-top:20px;padding:12px 22px;border-radius:8px;background:#e9efe9;color:#c4d0c6;font:600 18px 'Fira Sans'">Book online</div>
+  </div>
+ </div>
+ <svg class="sc" width="1080" height="1350"><path d="M190 548 C 330 515, 760 520, 905 560 C 935 600, 930 680, 880 700 C 700 730, 330 728, 200 700 C 160 670, 160 590, 200 552" stroke="var(--red)" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+ <div class="note" style="left:640px;top:760px;background:#fff;padding:6px 14px;border-radius:10px">can you read this?</div>
+ <div class="why" style="top:880px"><b>Why it hurts:</b> older eyes, low vision, or just a phone outside in the Aussie sun. If people can't read your hours or prices, they don't squint. They leave.</div>
+ <div class="fix" style="top:1085px"><b>Fix:</b> dark text on a light background. Search "WebAIM contrast checker" and aim for at least 4.5 to 1 on normal text.</div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div></div>
+</div>
+
+<!-- 3 tap targets -->
+<div class="s" id="s3">
+ <div class="tag"><b>2</b>Fix two</div>
+ <div class="h">Buttons too <em>tiny to tap</em></div>
+ <div class="panel" style="top:330px;height:520px;background:#EDEAF7">
+  <div class="photo" style="left:0;right:0;top:0;height:520px"><img src="img/handphone.jpg" style="object-position:50% 30%"></div>
+ </div>
+ <div style="position:absolute;left:392px;top:330px;width:302px;height:520px;overflow:hidden;background:#fff;z-index:2">
+  <div style="height:60px;background:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:0 16px;font:700 21px Gelasio;color:var(--sage)"><span>Tallowood <i style="font-weight:400">Physio</i></span><span style="font:400 22px Inter">&#9776;</span></div>
+  <div style="padding:20px 16px">
+   <div style="font:700 30px/1.1 Gelasio;color:#2b332f">Back pain? We can help.</div>
+   <div style="font:400 14px/1.4 'Fira Sans';color:#555;margin-top:10px">Same week appointments in Bunbury. Health fund rebates on the spot.</div>
+   <div style="display:flex;gap:6px;margin-top:16px;font:600 11px 'Fira Sans'"><span style="color:var(--sage);text-decoration:underline">Book</span><span style="color:var(--sage);text-decoration:underline">Call</span><span style="color:var(--sage);text-decoration:underline">Map</span><span style="color:var(--sage);text-decoration:underline">Fees</span></div>
+   <div style="height:150px;border-radius:10px;background:#dfe7e1;margin-top:20px"></div>
+   <div style="font:400 13px/1.4 'Fira Sans';color:#777;margin-top:10px">Physio, dry needling, pilates, sports injuries.</div>
+  </div>
+ </div>
+ <svg class="sc" width="1080" height="1350"><path d="M400 538 C 440 528, 520 530, 528 544 C 528 560, 460 564, 410 558 C 392 552, 392 540, 408 535" stroke="var(--red)" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M530 552 C 650 600, 720 640, 790 690" stroke="var(--red)" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+ <div class="note" style="left:700px;top:690px;background:#fff;padding:6px 14px;border-radius:10px">4 links, 1 thumb</div>
+ <div class="why" style="top:900px"><b>Why it hurts:</b> shaky hands, sore joints, big thumbs or a bumpy bus. People miss, hit the wrong link, try again, then give up.</div>
+ <div class="fix" style="top:1070px"><b>Fix:</b> make your main buttons big and easy to hit, about the size of a fingertip, with space between them. Booking and calling come first.</div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span></span><span class="on"></span><span></span><span></span><span></span><span></span></div></div>
+</div>
+
+<!-- 4 click here -->
+<div class="s" id="s4">
+ <div class="tag"><b>3</b>Fix three</div>
+ <div class="h">Links that just say <em>"click here"</em></div>
+ <div class="panel" style="top:330px;height:510px"></div>
+ <div class="br" style="left:90px;width:560px;top:380px;transform:rotate(-1.2deg)">
+  <div class="bar"><span class="d"></span><div class="url"><i>tallowoodphysio.com.au</i>/services</div></div>
+  <div class="site" style="padding:28px 30px 32px;font:400 20px/1.6 'Fira Sans'">
+   <div style="font:700 30px Gelasio;color:var(--sage);margin-bottom:10px">Our services</div>
+   <p>Want to know our fees? <u style="color:#2a6bd1">Click here</u>.</p>
+   <p>Sore back after work? <u style="color:#2a6bd1">Click here</u>.</p>
+   <p>Ready to book? <u style="color:#2a6bd1">Click here</u>.</p>
+   <p>Pilates timetable <u style="color:#2a6bd1">here</u>.</p>
+  </div>
+ </div>
+ <div style="position:absolute;left:600px;top:540px;width:380px;background:var(--navy);color:#fff;border-radius:18px;padding:24px 26px;box-shadow:0 20px 50px rgba(21,12,43,.25);transform:rotate(1.5deg)">
+  <div style="font:700 15px Inter;letter-spacing:.12em;color:var(--lav);margin-bottom:12px">SCREEN READER: LINKS</div>
+  <div style="font:500 22px/1.7 Inter">1. click here<br>2. click here<br>3. click here<br>4. here</div>
+ </div>
+ <div class="note" style="left:640px;top:800px;background:#fff;padding:6px 14px;border-radius:10px">...which one?</div>
+ <div class="why" style="top:880px"><b>Why it hurts:</b> screen readers read a page out loud, and their users often jump through a list of just the links. Four "click here"s tell them nothing. Google also reads link words to work out what the page is about.</div>
+ <div class="fix" style="top:1120px"><b>Fix:</b> let the link say where it goes. "See our fees". "Book an appointment".</div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span></span><span></span><span class="on"></span><span></span><span></span><span></span></div></div>
+</div>
+
+<!-- 5 text in image -->
+<div class="s" id="s5">
+ <div class="tag"><b>4</b>Fix four</div>
+ <div class="h">Hours and prices <em>stuck in a picture</em></div>
+ <div class="panel" style="top:330px;height:510px;background:#EEF2EF"></div>
+ <div class="br" style="left:110px;right:110px;top:370px;transform:rotate(.8deg)">
+  <div class="bar"><span class="d"></span><div class="url"><i>tallowoodphysio.com.au</i>/contact</div></div>
+  <div style="padding:22px;background:#fff;display:flex;gap:22px;align-items:center">
+   <div style="width:400px;height:330px;flex:none;border-radius:10px;background:#3F5E4F;color:var(--cream);padding:24px 28px;font-family:Gelasio;filter:blur(.7px);position:relative">
+    <div style="font:700 34px Gelasio">Opening Hours</div>
+    <div style="font:400 19px/1.7 Gelasio;margin-top:10px">Mon to Fri &nbsp;7am till 6pm<br>Saturday &nbsp;8am till 12pm<br>Initial consult &nbsp;$95<br>Follow up &nbsp;$80<br>Call 08 5550 1234</div>
+    <div style="position:absolute;right:18px;bottom:12px;font:500 13px Inter;color:#9fb5a8">hours-poster-FINAL2.png</div>
+   </div>
+   <div style="flex:1;font:400 18px/1.5 'Fira Sans';color:#555">
+    <div style="font:700 26px Gelasio;color:var(--sage);margin-bottom:8px">Contact us</div>
+    See our hours and fees in the image. We look forward to seeing you!</div>
+  </div>
+ </div>
+ <svg class="sc" width="1080" height="1350"><path d="M150 645 C 240 636, 330 642, 336 660 C 332 680, 230 688, 160 680 C 135 672, 135 650, 165 643" stroke="var(--red)" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+ <div class="note" style="left:560px;top:760px;background:#fff;padding:6px 14px;border-radius:10px">can't tap to call</div>
+ <div class="why" style="top:880px"><b>Why it hurts:</b> screen readers can't read words baked into an image. Zoom in and it goes blurry. Nobody can tap the number or copy the address. And Google reads real text far better than pictures.</div>
+ <div class="fix" style="top:1110px"><b>Fix:</b> type your hours, prices and phone number as real text on the page. Keep the pretty graphic for socials.</div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span></span><span></span><span></span><span class="on"></span><span></span><span></span></div></div>
+</div>
+
+<!-- 6 forms -->
+<div class="s" id="s6">
+ <div class="tag"><b>5</b>Fix five</div>
+ <div class="h">Form boxes with <em>no labels</em></div>
+ <div class="panel" style="top:330px;height:510px">
+  <div class="photo" style="left:0;top:0;width:430px;height:510px"><img src="img/typing.jpg" style="object-position:40% 50%"></div>
+ </div>
+ <div class="br" style="left:380px;right:90px;top:370px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span><div class="url"><i>tallowoodphysio.com.au</i>/book</div></div>
+  <div class="site" style="padding:26px 30px 30px">
+   <div style="font:700 28px Gelasio;color:var(--sage);margin-bottom:16px">Request a booking</div>
+   <div style="height:52px;border:1.5px solid #ddd;border-radius:8px;margin-bottom:12px;display:flex;align-items:center;padding:0 16px;font:400 19px 'Fira Sans';color:#2b332f">Sam Ellis</div>
+   <div style="height:52px;border:2.5px solid #e66;border-radius:8px;margin-bottom:12px;display:flex;align-items:center;padding:0 16px;font:400 19px 'Fira Sans';color:#2b332f">0491</div>
+   <div style="height:52px;border:1.5px solid #ddd;border-radius:8px;margin-bottom:16px;display:flex;align-items:center;padding:0 16px;font:400 19px 'Fira Sans';color:#c9c9c9">Preferred day</div>
+   <div style="height:52px;border-radius:8px;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;font:600 19px 'Fira Sans'">Send</div>
+  </div>
+ </div>
+  <div class="note" style="left:590px;top:790px;background:#fff;padding:6px 14px;border-radius:10px">what's wrong with it?</div>
+ <div class="why" style="top:880px"><b>Why it hurts:</b> grey hint text inside the box disappears as soon as you type, so people lose track of what each box was for. And if the only sign of a mistake is a red border, colour blind visitors may never see it. Form fails, enquiry gone.</div>
+ <div class="fix" style="top:1120px"><b>Fix:</b> a label above every box, and errors in plain words. "Please add your full phone number."</div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span></span><span></span><span></span><span></span><span class="on"></span><span></span></div></div>
+</div>
+
+<!-- 7 CTA -->
+<div class="s" id="s7">
+ <div class="photo" style="left:40px;right:40px;top:40px;height:420px;border-radius:30px"><img src="img/mag.jpg" style="object-position:50% 50%"></div>
+ <div class="h" style="top:510px;font-size:72px">Try these <em>3 tests</em> tonight</div>
+ <div style="position:absolute;left:72px;right:72px;top:620px;display:flex;flex-direction:column;gap:16px">
+  <div style="display:flex;gap:22px;align-items:center;background:var(--panel);border-radius:20px;padding:22px 26px"><b style="flex:none;width:52px;height:52px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font:800 26px 'DM Sans'">1</b><div style="font:600 27px/1.35 Inter">Read your homepage on your phone, outside in the sun.</div></div>
+  <div style="display:flex;gap:22px;align-items:center;background:var(--panel);border-radius:20px;padding:22px 26px"><b style="flex:none;width:52px;height:52px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font:800 26px 'DM Sans'">2</b><div style="font:600 27px/1.35 Inter">Pinch to zoom right in. Does anything go blurry or get cut off?</div></div>
+  <div style="display:flex;gap:22px;align-items:center;background:var(--panel);border-radius:20px;padding:22px 26px"><b style="flex:none;width:52px;height:52px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font:800 26px 'DM Sans'">3</b><div style="font:600 27px/1.35 Inter">Ask an older relative to book with you on your site. Watch, don't help.</div></div>
+ </div>
+ <div class="why" style="top:1080px;font-size:29px">Save this for your next website job. Send it to someone who has a website. Follow <b>@nexaweb_dev</b> for more like this.</div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span><span class="on"></span></div></div>
+</div>
+</body></html>
