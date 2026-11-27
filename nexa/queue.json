@@ -634,5 +634,20 @@
   "approved": false,
   "posted": false,
   "status": "awaiting approval"
+ },
+ {
+  "slug": "contact-form-test",
+  "format": "reel",
+  "topic": "Website tip: your contact form could be broken and you'd never know (no error, it just goes quiet). 3 usual causes: sends to an old staff email, lands in spam because the inbox doesn't trust the address the site sends from, a plugin/website update broke it. Fix: monthly test from your phone, check main inbox not spam, phone number next to the form. Made-up business Harbourline Decks, ACMA fictional number 0491 570 156.",
+  "style": "bold indigo #6557E8 background with lavender glow, white UI cards, white captions with lavender key-word boxes (light-on-indigo variant of website-myths-part2)",
+  "voice": "ElevenLabs Brian, eleven_v3, atempo 1.12",
+  "media": [
+   "nexa/videos/contact-form-test/contact-form-test.mp4"
+  ],
+  "created": "2026-11-27 11:40 AEDT",
+  "post_on": "2026-11-27",
+  "approved": false,
+  "posted": false,
+  "status": "awaiting approval"
  }
 ]
