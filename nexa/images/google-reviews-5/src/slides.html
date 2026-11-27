@@ -1,0 +1,188 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--ind:#6557E8;--lav:#B9A6FF;--navy:#150C2B}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#444}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--navy);color:#fff}
+.s:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(700px 520px at 85% 72%,rgba(101,87,232,.30),transparent 70%),radial-gradient(500px 400px at 0% 100%,rgba(185,166,255,.10),transparent 70%)}
+.ph{position:absolute;left:0;right:0;top:0;height:640px;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,43,.15) 0%,rgba(21,12,43,.35) 45%,#150C2B 98%)}
+.num{position:absolute;left:62px;top:120px;font:800 260px/1 'DM Sans';letter-spacing:-.06em;color:transparent;-webkit-text-stroke:3px rgba(185,166,255,.85);z-index:2}
+.h{position:absolute;left:80px;right:80px;top:420px;font:800 74px/1.02 'DM Sans';letter-spacing:-.035em;z-index:3}
+.h em{font-style:normal;color:var(--lav)}
+.sub{position:absolute;left:80px;right:80px;top:510px;font-size:32px;line-height:1.35;color:#C9C2E6;z-index:3}
+.card{position:absolute;left:80px;right:80px;top:600px;background:#fff;color:#1f1d24;border-radius:30px;z-index:4;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06);overflow:hidden}
+.bar{height:60px;display:flex;align-items:center;gap:12px;padding:0 28px;border-bottom:1px solid #eeedf2;font:600 19px Inter;color:#55525d;background:#fbfbfd}
+.bar .d{width:12px;height:12px;border-radius:50%;background:#e2e0e8;box-shadow:20px 0 0 #e2e0e8,40px 0 0 #e2e0e8;margin-right:46px}
+.bar .url{flex:1;height:36px;border-radius:18px;background:#efeef3;display:flex;align-items:center;padding:0 18px;font:500 18px Inter;color:#7a7783}
+.bar .url b{filter:blur(4px);font-weight:500}
+.row{display:flex;justify-content:space-between;align-items:center;padding:27px 34px;border-bottom:1px solid #f0eff4;font-size:29px}
+.row .k{color:#8a8794;font-size:24px}
+.row .v{font-weight:600;text-align:right}
+.why{position:absolute;left:80px;right:80px;top:1135px;font-size:32px;line-height:1.4;color:#D9D3F2;z-index:3}
+.why b{color:var(--lav);font-weight:700}
+.ft{position:absolute;left:80px;right:80px;bottom:46px;display:flex;justify-content:space-between;align-items:center;font:500 25px Inter;color:#8C84AD;z-index:3}
+.dots{display:flex;gap:9px}.dots span{width:10px;height:10px;border-radius:5px;background:#3A2F5E}.dots span.on{width:34px;background:var(--lav)}
+.note{position:absolute;font:700 34px 'DM Sans';color:var(--lav);z-index:6}
+.chk{width:34px;height:34px;border-radius:9px;flex:none;display:flex;align-items:center;justify-content:center;font:800 20px Inter;color:#fff;background:#2fb36d}
+.chk.no{background:#fff;border:2.5px solid #d6d3de;color:transparent}
+.li{display:flex;align-items:center;gap:22px;padding:25px 34px;border-bottom:1px solid #f0eff4;font-size:27px}
+.li small{display:block;font-size:20px;color:#8a8794;margin-top:3px}
+svg.sc{position:absolute;overflow:visible;pointer-events:none;z-index:6}
+
+.mini{border-radius:18px;overflow:hidden;border:1px solid #e9e7ee;background:#fff}
+.mini .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;font:700 17px 'DM Sans';color:#3b2a1e;border-bottom:1px solid #f0eee9}
+.mini .nav i{font:500 11px Inter;font-style:normal;color:#8a8794}
+.mini .hero{position:relative;height:230px;background-size:cover;background-position:center}
+.mini .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.55))}
+.mini .hero span{position:absolute;left:16px;right:16px;bottom:14px;z-index:2;color:#fff;font:700 21px/1.15 Georgia}
+.mini .btn{margin:12px 16px 14px;display:inline-block;background:#3b2a1e;color:#fff;font:600 14px Inter;padding:9px 16px;border-radius:18px}
+.tag{position:absolute;font:800 20px Inter;letter-spacing:.06em;padding:7px 14px;border-radius:10px;color:#fff;z-index:5}
+.file{display:flex;align-items:center;gap:22px;padding:24px 30px}
+.file .th{width:120px;height:90px;border-radius:12px;background-size:cover;background-position:center;flex:none}
+.file .nm{font:600 27px Inter}
+.file .mt{font-size:22px;color:#8a8794;margin-top:4px}
+.file .sz{margin-left:auto;font:800 30px Inter}
+.fld{margin:0 30px;border:1.5px solid #e4e2ea;border-radius:14px;padding:15px 18px;font-size:25px;line-height:1.35}
+.lbl{padding:20px 30px 9px;font:600 19px Inter;color:#8a8794}
+.rv{display:flex;gap:18px;padding:22px 30px;border-bottom:1px solid #f0eff4}
+.av{width:54px;height:54px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font:700 22px Inter;color:#fff}
+.stars{color:#f5a623;font-size:22px;letter-spacing:2px}
+.blur{filter:blur(5px)}
+.chip{display:inline-block;font:600 19px Inter;padding:8px 14px;border-radius:10px;background:#f1effa;color:#3d3480;margin:0 8px 8px 0}
+</style></head><body>
+<style>
+.why2{position:absolute;left:80px;right:80px;font-size:30px;line-height:1.4;color:#D9D3F2;z-index:3}
+.why2 b{color:var(--lav);font-weight:700}
+.why2 p+p{margin-top:18px}
+.bub{max-width:78%;padding:16px 22px;border-radius:26px;font-size:25px;line-height:1.38;margin:10px 26px}
+.bub.l{background:#ecebf1;color:#26242c;border-bottom-left-radius:8px}
+.bub.r{background:#6557E8;color:#fff;margin-left:auto;border-bottom-right-radius:8px}
+.step{display:flex;gap:14px;align-items:center;font-size:23px;color:#3a3842;padding:8px 0}
+.step i{font-style:normal;width:32px;height:32px;border-radius:50%;background:#efeef3;color:#6b6876;font:700 17px Inter;display:flex;align-items:center;justify-content:center;flex:none}
+.qr{display:grid;grid-template-columns:repeat(21,1fr);width:168px;height:168px;flex:none}
+.qr span{background:#fff}.qr span.k{background:#150C2B}
+</style>
+
+<!-- 1 cover -->
+<div class="s" id="s1">
+ <div class="ph" style="height:1350px"><img src="img/bath3.jpg" style="object-position:40% 50%"></div>
+ <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,12,43,.10) 0%,rgba(21,12,43,.30) 28%,rgba(21,12,43,.97) 56%)"></div>
+ <div class="card" style="left:auto;right:90px;top:250px;width:520px;transform:rotate(2deg);z-index:6">
+  <div style="padding:26px 30px 22px"><div style="font:600 30px Inter">Marlow Bathrooms</div>
+  <div style="font-size:22px;color:#70707a;margin-top:6px"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5.0 &#183; <span class="mk" data-c="1" style="color:#2a2830;font-weight:600">3 reviews</span></div>
+  <div style="font-size:21px;color:#70707a;margin-top:6px">Bathroom renovator in Geelong</div></div></div>
+ <div class="h" style="top:660px;font-size:96px;z-index:6">You do great work. So why only <em>3 Google reviews?</em></div>
+ <div class="sub" style="top:1090px;font-size:35px;color:#E4DEFF;z-index:6">5 ways to get more, without the awkward ask. Made-up bathroom reno business, real tips. Swipe &#8594;</div>
+ <div class="ft" style="z-index:6"><span>@nexaweb_dev</span><span class="dots" data-on="1"></span></div>
+</div>
+
+<!-- 2 ask on the day -->
+<div class="s" id="s2">
+ <div class="ph"><img src="img/bath.jpg" style="object-position:50% 50%"></div><div class="num">01</div>
+ <div class="h">Ask on <em>handover day</em></div>
+ <div class="sub">Not two weeks later.</div>
+ <div class="card" style="top:590px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span>Messages &#183; Priya (new bathroom)</div>
+  <div style="padding:14px 0 18px">
+   <div class="bub l">Just had my first shower in it. Unreal, thank you!</div>
+   <div class="bub r">So glad you love it, Priya! Would you mind leaving us a quick Google review? Takes 30 secs: <span style="text-decoration:underline">g.page/r/<span class="blur" style="display:inline-block">marlowb</span>/review</span></div>
+  </div></div>
+ <div class="note" style="left:600px;top:925px;transform:rotate(-3deg)">same afternoon</div>
+ <div class="why2" style="top:1000px"><p><b>Why it hurts:</b> wait a fortnight and they've moved on. Happy customers mean to leave a review, then just forget.</p><p><b>Fix:</b> ask every customer the day the job wraps up. Say it in person, then text the link that afternoon.</p></div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="2"></span></div>
+</div>
+
+<!-- 3 direct link -->
+<div class="s" id="s3">
+ <div class="ph"><img src="img/phone.jpg" style="object-position:50% 40%"></div><div class="num">02</div>
+ <div class="h" style="top:360px;font-size:68px">Send a link, not <em>"look us up"</em></div>
+ <div class="card" style="top:575px;transform:rotate(1deg);display:flex">
+  <div style="flex:1.25;padding:24px 28px;border-right:1px solid #eeedf2">
+   <div style="font:700 24px Inter;margin-bottom:8px">"Just search us on Google"</div>
+   <div class="step"><i>1</i>Open Google</div><div class="step"><i>2</i>Type the business name</div>
+   <div class="step"><i>3</i>Pick the right one</div><div class="step"><i>4</i>Find the reviews</div>
+   <div class="step"><i>5</i>Tap <span class="mk">"Write a review"</span></div></div>
+  <div style="flex:1;padding:24px 28px;background:#f7f6fd">
+   <div style="font:700 24px Inter;margin-bottom:8px">Your review link</div>
+   <div class="step"><i style="background:#6557E8;color:#fff">1</i>Tap it</div>
+   <div style="margin-top:22px;font-size:46px;color:#f5a623;letter-spacing:4px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+   <div style="font-size:21px;color:#8a8794;margin-top:6px">The review box opens straight away.</div></div>
+ </div>
+ <div class="why2" style="top:985px"><p><b>Why it hurts:</b> every extra step is a chance to give up, or to review a different business with a similar name.</p><p><b>Fix:</b> in your Google Business Profile, use the option to ask for reviews. It gives you a direct link and a QR code. Save it in your phone.</p></div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="3"></span></div>
+</div>
+
+<!-- 4 QR on invoice -->
+<div class="s" id="s4">
+ <div class="ph"><img src="img/notes.jpg" style="object-position:50% 50%;filter:blur(3px);transform:scale(1.04)"></div><div class="num">03</div>
+ <div class="h" style="top:360px;font-size:68px">Put it where they <em>already look</em></div>
+ <div class="card" style="top:575px;transform:rotate(-1deg)">
+  <div style="display:flex;justify-content:space-between;padding:26px 34px 16px;border-bottom:1px solid #f0eff4"><div style="font:700 30px Georgia;color:#1f4e5a">Marlow Bathrooms</div><div style="text-align:right;font-size:21px;color:#8a8794">Tax invoice #1042<br>Paid in full</div></div>
+  <div class="row" style="padding:16px 34px"><span class="k">Bathroom renovation, 14 Ash St</span><span class="v">Complete</span></div>
+  <div style="display:flex;align-items:center;gap:28px;padding:22px 34px 26px;background:#f7f6fd">
+   <div class="qr" id="qr"></div>
+   <div style="font-size:27px;line-height:1.55"><b>Happy with your new bathroom?</b><br><span class="mk">Scan to leave us a Google review.</span><br><span style="font-size:21px;color:#8a8794">It really helps a small business.</span></div></div>
+ </div>
+ <div class="why2" style="top:1000px"><p><b>Why it hurts:</b> the invoice is the one thing every customer reads properly. A link buried in a separate email gets missed.</p><p><b>Fix:</b> add the QR code and link to your invoice, your "job done" email and a card you leave on site.</p></div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="4"></span></div>
+</div>
+
+<!-- 5 reply -->
+<div class="s" id="s5">
+ <div class="ph"><img src="img/laptop.jpg" style="object-position:50% 50%"></div><div class="num">04</div>
+ <div class="h" style="top:360px;font-size:68px">Reply to every review. <em>Yes, the bad one.</em></div>
+ <div class="card" style="top:580px;transform:rotate(1deg)">
+  <div class="rv" style="border:0;padding-bottom:10px"><div class="av" style="background:#8d6e63">M</div><div><div style="font:600 24px Inter">Mark T.</div><div class="stars">&#9733;&#9733;<span style="color:#d9d7df">&#9733;&#9733;&#9733;</span></div><div style="font-size:24px;line-height:1.4;margin-top:6px;color:#2a2830">Tiling looks great, but they left grout dust all through the hallway.</div></div></div>
+  <div style="margin:4px 30px 24px 102px;padding:16px 20px;border-left:4px solid #6557E8;background:#f7f6fd;border-radius:0 14px 14px 0;font-size:23px;line-height:1.62;color:#2a2830"><b style="font-size:20px;color:#6557E8">Reply from the owner</b><br><b>Fair call, Mark. We should have cleaned that up.</b> Sam's coming back tomorrow to sort it. Jason</div>
+ </div>
+ <div class="why2" style="top:960px"><p><b>Why it hurts:</b> people deciding whether to call you read your replies. Silence on a bad review looks like you don't care.</p><p><b>Fix:</b> thank happy reviewers by name and mention the job. For bad ones, own it, offer to fix it, never argue.</p></div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="5"></span></div>
+</div>
+
+<!-- 6 don't buy -->
+<div class="s" id="s6">
+ <div class="ph"><img src="img/gift.jpg" style="object-position:50% 60%;transform:scaleX(-1)"></div><div class="num">05</div>
+ <div class="h">Never <em>pay</em> for them</div>
+ <div class="sub">Not with cash, discounts or freebies.</div>
+ <div class="card" style="top:600px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span>Draft text to all customers</div>
+  <div style="padding:26px 34px 30px;font-size:27px;line-height:1.8;color:#2a2830">Hi! <span class="mk">Leave us a 5 star review and get 10% off your next job!</span> Only if you were happy though &#128521;</div></div>
+ <div class="note" style="left:640px;top:845px;transform:rotate(-3deg)">delete this</div>
+ <div class="why2" style="top:1010px"><p><b>Why it hurts:</b> Google's rules ban offering anything for reviews, and only asking the happy customers. Reviews that break the rules can be removed.</p><p><b>Fix:</b> ask everyone, the same way, with nothing attached.</p></div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="6"></span></div>
+</div>
+
+<!-- 7 cta -->
+<div class="s" id="s7">
+ <div class="h" style="top:100px;font-size:84px">Your next <em>5 reviews</em></div>
+ <div id="list" style="position:absolute;left:80px;right:80px;top:240px;z-index:3;display:flex;flex-direction:column;gap:16px"></div>
+ <div style="position:absolute;left:80px;right:80px;top:900px;font-size:34px;line-height:1.5;color:#D9D3F2;z-index:3">Then put your best ones on your website, right next to the quote button.<br><br>Save this for your next handover. Send it to a tradie mate. Follow <b style="color:var(--lav)">@nexaweb_dev</b> for more like this.</div>
+ <div class="ft"><span>@nexaweb_dev</span><span class="dots" data-on="7"></span></div>
+</div>
+<script>
+const items=[['Ask on handover day','bath'],['Text the direct link','phone'],['QR code on the invoice','notes'],['Reply to every review','laptop'],['Never pay for them','gift']];
+document.getElementById('list').innerHTML=items.map(([l,p],i)=>`<div style="display:flex;align-items:center;gap:24px;padding:12px 24px 12px 12px;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid rgba(185,166,255,.18)"><img src="img/${p}.jpg" style="width:82px;height:82px;border-radius:16px;object-fit:cover"><span style="font:800 40px 'DM Sans';color:var(--lav);width:58px">0${i+1}</span><span style="font:600 36px Inter;letter-spacing:-.01em;flex:1">${l}</span><span class="chk no" style="width:40px;height:40px;background:transparent;border-color:rgba(185,166,255,.5)">.</span></div>`).join('');
+// fake QR (decorative, not scannable)
+(function(){const n=21;let s=7;const r=()=>{s=(s*16807)%2147483647;return s/2147483647};const g=[];
+for(let y=0;y<n;y++)for(let x=0;x<n;x++){const f=(fx,fy)=>x>=fx&&x<fx+7&&y>=fy&&y<fy+7;let k=r()>.52;
+ for(const [fx,fy] of [[0,0],[14,0],[0,14]]){if(f(fx,fy)){const dx=x-fx,dy=y-fy;k=(dx==0||dx==6||dy==0||dy==6||(dx>=2&&dx<=4&&dy>=2&&dy<=4))}
+  if(x>=fx-1&&x<=fx+7&&y>=fy-1&&y<=fy+7&&!f(fx,fy))k=false}
+ g.push(`<span class="${k?'k':''}"></span>`)}document.getElementById('qr').innerHTML=g.join('')})();
+</script>
+<script>
+document.querySelectorAll('.dots').forEach(d=>{const on=+d.dataset.on;d.innerHTML=[...Array(7)].map((_,i)=>`<span class="${i+1===on?'on':''}"></span>`).join('')});
+let seed=41;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};const C='#6557E8';
+function P(p){return p.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join(' ')}
+function circle(svg,w,h,rot=0){let out='';
+ for(let pass=0;pass<2;pass++){const pts=[];const st=-2.2+pass*.35,n=60,end=st+Math.PI*2*(1.08+pass*.04);
+  for(let i=0;i<=n;i++){const a=st+(end-st)*i/n;const k=1+(rnd()-.5)*.035+pass*.025;pts.push([w/2+Math.cos(a)*(w/2-10)*k,h/2+Math.sin(a)*(h/2-10)*k])}
+  out+=`<path d="${P(pts)}" stroke="${C}" stroke-width="${pass?4:6.5}" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="${pass?.75:.95}"/>`}
+ svg.innerHTML=`<g transform="rotate(${rot} ${w/2} ${h/2})">${out}</g>`}
+function under(svg,w,h){let out='';for(let pass=0;pass<2;pass++){const pts=[];const n=24;for(let i=0;i<=n;i++){const t=i/n;pts.push([4+t*(w-8),h/2+(pass?5:0)+Math.sin(t*3+pass)*2+(rnd()-.5)*2.2])}
+ out+=`<path d="${P(pts)}" stroke="${C}" stroke-width="${pass?4:6}" fill="none" stroke-linecap="round" opacity="${pass?.7:.95}"/>`}svg.innerHTML=out}
+const mk=()=>{const v=document.createElementNS('http://www.w3.org/2000/svg','svg');v.setAttribute('class','sc');return v};
+document.querySelectorAll('.mk').forEach(m=>{const s=m.closest('.s');const sr=s.getBoundingClientRect();
+ if(m.dataset.c){const r=m.getBoundingClientRect();const w=r.width+50,h=r.height+34;const v=mk();v.setAttribute('width',w);v.setAttribute('height',h);v.style.left=(r.left-sr.left-25)+'px';v.style.top=(r.top-sr.top-17)+'px';s.appendChild(v);circle(v,w,h,-3);return}
+ [...m.getClientRects()].forEach(r=>{const w=r.width+8,h=16;const v=mk();v.setAttribute('width',w);v.setAttribute('height',h);v.style.left=(r.left-sr.left-4)+'px';v.style.top=(r.bottom-sr.top-6)+'px';s.appendChild(v);under(v,w,h)})});
+</script></body></html>
