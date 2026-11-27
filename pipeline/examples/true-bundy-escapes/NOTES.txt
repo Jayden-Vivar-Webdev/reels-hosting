@@ -1,0 +1,3 @@
+Ted Bundy's two 1977 escapes (Aspen courthouse library window, June 7; Garfield County Jail ceiling hole, Dec 30). bundy.js (includes its own lbl with alpha) is inserted into scene.html before window.render. join.py atempo 1.2; music_tc.py; MUSIC=0.2 python3 mix.py. Format: case-file countdown / creepiest-detail hook (books under the blanket).
+Sources: aspentimes.com (Bundy's escape forever a part of Garfield County history, 2019); denvergazette.com (Looking back: escapes custody twice, 2022); crimeandinvestigation.co.uk (how Ted Bundy escaped from jail twice); oxygen.com (why did Ted Bundy intentionally lose weight in jail, 2019).
+Left out (single source or sources disagree): hacksaw, exact weight lost, 17-hour figure, capture city, victims' names.
