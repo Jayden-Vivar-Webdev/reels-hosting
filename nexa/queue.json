@@ -774,5 +774,16 @@
   "posted": false,
   "status": "script+visuals ready; NOT voiced: ElevenLabs quota_exceeded (0 credits). Silent preview only.",
   "video": "nexa/videos/redesign-redirects/redesign-redirects_preview_silent.mp4"
+ },
+ {
+  "slug": "internet-stories-ep12-laser",
+  "format": "reel",
+  "topic": "Internet Stories ep.12: the broken laser pointer. Labor Day weekend 1995, Pierre Omidyar builds AuctionWeb; tests it by listing his own laser pointer that didn't work even with new batteries, says so in the listing, starting bid $1; no bids for a week, then a bidding war; sold for $14.83 (eBay Inc / TIME 2015); he emailed the buyer to check, buyer reportedly replied 'I collect broken laser pointers' (Yahoo AU; buyer Mark Fraser, unnamed in reel); AuctionWeb rebranded eBay in 1997. Lesson: be specific about what you sell, even the flaws; your website should say exactly what you do so the right people find you. Made-up example Harbourline Decks, Geelong.",
+  "post_on": "2026-11-28",
+  "created": "2026-11-28 20:40 AEDT",
+  "approved": false,
+  "posted": false,
+  "status": "script+visuals ready; NOT voiced: ElevenLabs quota_exceeded (0 credits). Silent preview with estimated caption timing.",
+  "video": "nexa/videos/internet-stories-ep12-laser/ep12_preview_silent.mp4"
  }
 ]
