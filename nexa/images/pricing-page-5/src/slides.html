@@ -1,0 +1,200 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root{--ind:#6557E8;--lav:#B9A6FF;--navy:#150C2B;--bg:#F3EFE8;--red:#E5484D;--teal:#1F5E5B;--cream:#FBF8F3}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#444}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--bg);color:var(--navy);margin-bottom:20px}
+.cnt{position:absolute;left:72px;top:66px;font:700 26px 'DM Sans';color:var(--ind);letter-spacing:.02em}
+.cnt span{color:#a49fb5;font-weight:500}
+.h{position:absolute;left:72px;right:72px;top:118px;font:800 70px/1.03 'DM Sans';letter-spacing:-.035em}
+.h em{font-style:normal;color:var(--ind)}
+.cards{position:absolute;left:56px;right:56px;top:870px;display:flex;gap:20px;height:370px}
+.c{flex:1;border-radius:26px;padding:32px 32px;font:400 29px/1.4 Inter}
+.c .k{display:block;font:700 21px Inter;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+.c.w{background:#fff;color:#2a2540}.c.w .k{color:#9a92b5}
+.c.f{background:var(--navy);color:#fff;font-weight:500}.c.f .k{color:var(--lav)}
+.ft{position:absolute;left:72px;right:72px;bottom:36px;display:flex;justify-content:space-between;align-items:center;font:500 23px Inter;color:#8f8a9e}
+.dots{display:flex;gap:9px}.dots span{width:10px;height:10px;border-radius:5px;background:#d6cfc3}.dots span.on{width:34px;background:var(--ind)}
+.br{position:absolute;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 26px 60px rgba(40,30,20,.16),0 0 0 1px #e6e0d6}
+.bar{height:48px;display:flex;align-items:center;gap:12px;padding:0 22px;border-bottom:1px solid #eceaf2;background:#f7f6f4}
+.bar .d{width:12px;height:12px;border-radius:50%;background:#ff5f57;box-shadow:20px 0 0 #febc2e,40px 0 0 #28c840;margin-right:46px}
+.bar .url{flex:1;height:30px;border-radius:9px;background:#ecebe8;display:flex;align-items:center;padding:0 16px;font:500 16px Inter;color:#6f6b7d}
+.bar .url i{font-style:normal;filter:blur(3.5px)}
+.nav{height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;background:#fff;border-bottom:1px solid #eee9e1}
+.logo{font:800 23px 'Inter Display';color:var(--teal);letter-spacing:-.01em}.logo span{font-weight:400;color:#5f7f7c}
+.nav .l{display:flex;gap:20px;font:500 15px 'Fira Sans';color:#5b6766}
+.site{font-family:'Fira Sans';color:#1f2b2a}
+.btn{display:inline-block;background:var(--teal);color:#fff;border-radius:8px;padding:11px 20px;font:600 17px 'Fira Sans'}
+svg.sc{position:absolute;left:0;top:0;overflow:visible;pointer-events:none;z-index:9}
+.note{position:absolute;font:800 30px/1.1 'DM Sans';color:var(--red);z-index:9;transform:rotate(-4deg);background:#fff;padding:6px 14px;border-radius:10px;box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.photo{position:absolute;overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.row{display:flex;gap:22px;align-items:center;background:#fff;border-radius:20px;padding:17px 24px}
+.row b{flex:none;width:48px;height:48px;border-radius:14px;background:var(--ind);color:#fff;display:flex;align-items:center;justify-content:center;font:800 24px 'DM Sans'}
+.row div{font:600 26px/1.3 Inter}
+.sm{font:500 17px 'Fira Sans';color:#8a9493}
+</style></head><body>
+
+<!-- 1 cover -->
+<div class="s" id="s1" style="background:var(--navy);color:#fff">
+ <div class="photo" style="left:0;right:0;top:0;height:820px"><img src="img/brush3.jpg" style="object-position:60% 50%"></div>
+ <div style="position:absolute;left:0;right:0;top:0;height:820px;background:linear-gradient(180deg,rgba(21,12,43,0) 40%,rgba(21,12,43,1) 100%)"></div>
+ <div class="br" style="left:110px;width:560px;top:150px;transform:rotate(-2deg)">
+  <div class="bar"><span class="d"></span><div class="url"><i>fernbrookpainting.com.au</i></div></div>
+  <div class="site" style="padding:26px 28px 28px">
+   <div style="font:600 15px 'Fira Sans';letter-spacing:.12em;color:#8a9493">OUR SERVICES</div>
+   <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;font:500 21px 'Fira Sans'"><span>Interior repaint</span><span style="color:#5b6766" data-c>Price on application</span></div>
+   <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;font:500 21px 'Fira Sans'"><span>Exterior repaint</span><span style="color:#5b6766">Price on application</span></div>
+  </div>
+ </div>
+ <div class="h" style="top:700px;font-size:96px;line-height:.98;color:#fff">"Just tell me<br><em style="color:var(--lav)">the price."</em></div>
+ <div style="position:absolute;left:72px;right:90px;top:930px;font:400 31px/1.42 Inter;color:#e6e1f5">Hiding your prices sends people to the next website. 5 ways to show them without scaring anyone off. Made-up painter, real tips. Swipe →</div>
+ <div class="ft" style="color:#b9b1d6"><span>@nexaweb_dev</span><div class="dots"><span class="on" style="background:#fff"></span><span style="background:rgba(255,255,255,.3)"></span><span style="background:rgba(255,255,255,.3)"></span><span style="background:rgba(255,255,255,.3)"></span><span style="background:rgba(255,255,255,.3)"></span><span style="background:rgba(255,255,255,.3)"></span><span style="background:rgba(255,255,255,.3)"></span></div></div>
+</div>
+
+<!-- 2 no price -->
+<div class="s" id="s2">
+ <div class="cnt">01 <span>/ 05</span></div>
+ <div class="h">No price. Just <em>"call us."</em></div>
+ <div class="br" style="left:80px;right:80px;top:300px;transform:rotate(1deg)">
+  <div class="bar"><span class="d"></span><div class="url"><i>fernbrookpainting.com.au/interior</i></div></div>
+  <div class="nav"><div class="logo">Fernbrook <span>Painting</span></div><div class="l"><span>Interior</span><span>Exterior</span><span>About</span><span>Contact</span></div></div>
+  <div style="position:relative;height:240px"><div class="photo" style="inset:0"><img src="img/living2.jpg" style="object-position:50% 55%"></div>
+   <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,30,29,.85),rgba(15,30,29,.2) 80%)"></div>
+   <div style="position:absolute;left:30px;top:44px;color:#fff;font:700 38px/1.1 'Inter Display';width:420px">Interior painting, done properly.</div>
+   <div style="position:absolute;left:30px;top:150px;color:#e5eeed;font:500 21px 'Fira Sans'"><span data-c="#fff">Pricing: on application</span></div>
+  </div>
+ </div>
+ <div class="note" style="left:640px;top:690px">so... how much?</div>
+ <div class="cards">
+  <div class="c w"><span class="k">Why it hurts</span>Most people want a rough idea before they pick up the phone. No number, so they open the next painter's site. The one that has one.</div>
+  <div class="c f"><span class="k">Fix</span>Give a range. "Most 3 bedroom interiors: $5,500 to $8,500." It's not a quote, it's a starting point.</div>
+ </div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span class="on"></span><span></span><span></span><span></span><span></span><span></span></div></div>
+</div>
+
+<!-- 3 what's included -->
+<div class="s" id="s3">
+ <div class="cnt">02 <span>/ 05</span></div>
+ <div class="h">A price, but <em>for what?</em></div>
+ <div class="br" style="left:110px;width:520px;top:310px;transform:rotate(-1.5deg)">
+  <div class="bar"><span class="d"></span><div class="url"><i>fernbrookpainting.com.au</i></div></div>
+  <div class="photo" style="position:relative;height:170px"><img src="img/living1.jpg" style="object-position:50% 50%"></div>
+  <div class="site" style="padding:24px 28px 30px">
+   <div style="font:500 19px 'Fira Sans';color:#5b6766">Interior repaint</div>
+   <div style="font:800 48px 'Inter Display';margin-top:18px;margin-left:12px"><span data-c>$6,200</span></div>
+   <div style="margin-top:16px"><span class="btn">Book now</span></div>
+  </div>
+ </div>
+ <div class="br" style="left:600px;width:390px;top:400px;transform:rotate(2deg);padding:26px 28px">
+  <div class="site" style="font:700 20px 'Fira Sans';color:var(--teal)">What's included</div>
+  <div class="site" style="font:400 19px/1.9 'Fira Sans';margin-top:8px">✓ All walls and ceilings<br>✓ Two coats, premium paint<br>✓ Patch small dents and holes<br>✓ Furniture moved and covered<br>✓ Full clean up</div>
+ </div>
+ <div class="note" style="left:150px;top:745px">every room?</div>
+ <div class="cards">
+  <div class="c w"><span class="k">Why it hurts</span>$6,200 for what? Ceilings? Doors? If people can't tell, they can't compare you. So they compare on price alone, and pick the cheapest.</div>
+  <div class="c f"><span class="k">Fix</span>List what's in the price, in plain words. Ceilings, coats, prep, clean up. The stuff the cheap guy leaves out.</div>
+ </div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span></span><span class="on"></span><span></span><span></span><span></span><span></span></div></div>
+</div>
+
+<!-- 4 too many options -->
+<div class="s" id="s4">
+ <div class="cnt">03 <span>/ 05</span></div>
+ <div class="h">8 packages. <em>Pick one.</em></div>
+ <div class="photo" style="left:56px;right:56px;top:290px;height:520px;border-radius:30px"><img src="img/roller.jpg" style="object-position:50% 40%"></div>
+ <div style="position:absolute;left:56px;right:56px;top:290px;height:520px;border-radius:30px;background:rgba(21,12,43,.35)"></div>
+ <div class="br" style="left:110px;right:110px;top:360px;padding:22px 22px 24px;transform:rotate(-1deg)">
+  <div class="site" style="font:700 22px 'Inter Display';margin-bottom:14px">Choose your package</div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px" class="site">
+   <div style="border:1px solid #e3ded6;border-radius:10px;padding:14px 12px;font:600 19px 'Fira Sans'">Basic<div class="sm">$2,900</div></div>
+   <div style="border:1px solid #e3ded6;border-radius:10px;padding:14px 12px;font:600 19px 'Fira Sans'">Basic Plus<div class="sm">$3,600</div></div>
+   <div style="border:1px solid #e3ded6;border-radius:10px;padding:14px 12px;font:600 19px 'Fira Sans'">Standard<div class="sm">$4,400</div></div>
+   <div style="border:1px solid #e3ded6;border-radius:10px;padding:14px 12px;font:600 19px 'Fira Sans'">Standard Plus<div class="sm">$5,100</div></div>
+   <div style="border:1px solid #e3ded6;border-radius:10px;padding:14px 12px;font:600 19px 'Fira Sans'">Premium<div class="sm">$6,200</div></div>
+   <div style="border:1px solid #e3ded6;border-radius:10px;padding:14px 12px;font:600 19px 'Fira Sans'">Premium Plus<div class="sm">$7,300</div></div>
+   <div style="border:1px solid #e3ded6;border-radius:10px;padding:14px 12px;font:600 19px 'Fira Sans'">Signature<div class="sm">$8,900</div></div>
+   <div style="border:1px solid #e3ded6;border-radius:10px;padding:14px 12px;font:600 19px 'Fira Sans'">Custom<div class="sm">Ask us</div></div>
+  </div>
+ </div>
+ <div class="note" style="left:620px;top:720px">I'll decide later</div>
+ <div class="cards">
+  <div class="c w"><span class="k">Why it hurts</span>Choosing between 8 boxes feels like homework. So people put it off. And "I'll look later" usually means never.</div>
+  <div class="c f"><span class="k">Fix</span>Three options, tops. Mark the one most people pick as "most popular" so the choice is easy.</div>
+ </div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span></span><span></span><span class="on"></span><span></span><span></span><span></span></div></div>
+</div>
+
+<!-- 5 dead end -->
+<div class="s" id="s5">
+ <div class="cnt">04 <span>/ 05</span></div>
+ <div class="h">A price, then <em>a dead end</em></div>
+ <div class="photo" style="right:0;width:470px;top:280px;height:560px;border-radius:30px 0 0 30px"><img src="img/brush.jpg" style="object-position:30% 50%"></div>
+ <div class="br" style="left:80px;width:560px;top:330px;transform:rotate(-1deg)">
+  <div class="bar"><span class="d"></span><div class="url"><i>fernbrookpainting.com.au/pricing</i></div></div>
+  <div class="site" style="padding:24px 28px 0">
+   <div style="border:2px solid var(--teal);border-radius:14px;padding:20px 22px">
+    <div style="font:600 14px 'Fira Sans';letter-spacing:.1em;color:var(--teal)">MOST POPULAR</div>
+    <div style="font:700 24px 'Inter Display';margin-top:6px">Full interior</div>
+    <div style="font:800 42px 'Inter Display';margin-top:2px">$6,200</div>
+    <div style="font:400 17px/1.6 'Fira Sans';color:#5b6766;margin-top:6px">Walls, ceilings, two coats, prep and clean up.</div>
+   </div>
+   <div style="height:40px"></div>
+   <div style="border-top:1px solid #eee;padding:14px 0 18px;font:400 15px 'Fira Sans';color:#9aa3a2"><span data-c>© Fernbrook Painting</span></div>
+  </div>
+ </div>
+ <div class="note" style="left:470px;top:780px">now what?</div>
+ <div class="cards">
+  <div class="c w"><span class="k">Why it hurts</span>They like the price and they're ready right now. If they have to go hunting for the contact page, plenty won't bother.</div>
+  <div class="c f"><span class="k">Fix</span>A button right under every price. "Get my exact quote." Add how fast you reply, like "we call back the same day".</div>
+ </div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span></span><span></span><span></span><span class="on"></span><span></span><span></span></div></div>
+</div>
+
+<!-- 6 surprise extras -->
+<div class="s" id="s6">
+ <div class="cnt">05 <span>/ 05</span></div>
+ <div class="h">Surprise extras <em>at the end</em></div>
+ <div class="photo" style="left:0;width:520px;top:290px;height:520px;border-radius:0 30px 30px 0"><img src="img/brush2.jpg" style="object-position:50% 50%"></div>
+ <div class="br" style="left:330px;width:640px;top:340px;transform:rotate(1.2deg);padding:26px 30px 28px">
+  <div class="site" style="font:600 15px 'Fira Sans';letter-spacing:.12em;color:#8a9493">YOUR QUOTE</div>
+  <div class="site" style="font:400 21px/2 'Fira Sans';margin-top:8px">
+   <div style="display:flex;justify-content:space-between"><span>Exterior repaint</span><span>$7,400</span></div>
+   <div style="display:flex;justify-content:space-between;color:#a2453f"><span>+ Materials</span><span>$1,150</span></div>
+   <div style="display:flex;justify-content:space-between;color:#a2453f"><span>+ Site setup fee</span><span>$290</span></div>
+   <div style="display:flex;justify-content:space-between;color:#a2453f"><span>+ GST</span><span>$884</span></div>
+   <div style="display:flex;justify-content:space-between;border-top:1px solid #eee;margin-top:6px;padding-top:6px;font:700 24px 'Inter Display'"><span>Total</span><span data-c>$9,724</span></div>
+  </div>
+ </div>
+ <div class="note" style="left:120px;top:740px">wait, what?</div>
+ <div class="cards">
+  <div class="c w"><span class="k">Why it hurts</span>A price that keeps growing feels like a trick, even when it isn't. Once that first number moves, people stop trusting the rest.</div>
+  <div class="c f"><span class="k">Fix</span>Show the full price up front, GST and fees in. Selling to the public in Australia? The ACCC expects that total anyway.</div>
+ </div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span></span><span></span><span></span><span></span><span class="on"></span><span></span></div></div>
+</div>
+
+<!-- 7 CTA -->
+<div class="s" id="s7">
+ <div class="photo" style="left:40px;right:40px;top:40px;height:330px;border-radius:30px"><img src="img/living4.jpg" style="object-position:50% 45%"></div>
+ <div class="h" style="top:410px;font-size:70px">Your <em>pricing page</em> check</div>
+ <div style="position:absolute;left:72px;right:72px;top:520px;display:flex;flex-direction:column;gap:12px">
+  <div class="row"><b>1</b><div>Is there a number, or at least a range?</div></div>
+  <div class="row"><b>2</b><div>Does it say what's included?</div></div>
+  <div class="row"><b>3</b><div>Three options or fewer?</div></div>
+  <div class="row"><b>4</b><div>A quote button under every price?</div></div>
+  <div class="row"><b>5</b><div>Full price, GST and fees in?</div></div>
+ </div>
+ <div style="position:absolute;left:72px;right:72px;top:1065px;font:400 29px/1.45 Inter;color:#2a2540">Save this for when you next update your site. Send it to a tradie mate. Follow <b style="color:var(--ind)">@nexaweb_dev</b> for more like this.</div>
+ <div class="ft"><span>@nexaweb_dev</span><div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span><span class="on"></span></div></div>
+</div>
+
+<script>
+document.querySelectorAll('.s').forEach(sl=>{
+ const R=sl.getBoundingClientRect();const ns='http://www.w3.org/2000/svg';
+ const svg=document.createElementNS(ns,'svg');svg.setAttribute('class','sc');svg.setAttribute('width',1080);svg.setAttribute('height',1350);
+ sl.querySelectorAll('[data-c]').forEach(el=>{
+  const r=el.getBoundingClientRect();const col=el.getAttribute('data-c')||'#E5484D';
+  const cx=(r.left+r.right)/2-R.left,cy=(r.top+r.bottom)/2-R.top,rx=(r.right-r.left)/2+18,ry=(r.bottom-r.top)/2+10;
+  const d=`M${cx-rx*.2} ${cy-ry*1.05} C ${cx+rx*.7} ${cy-ry*1.15}, ${cx+rx*1.02} ${cy-ry*.5}, ${cx+rx} ${cy+ry*.1} C ${cx+rx*.95} ${cy+ry*1.0}, ${cx-rx*.4} ${cy+ry*1.1}, ${cx-rx*.95} ${cy+ry*.5} C ${cx-rx*1.08} ${cy-ry*.2}, ${cx-rx*.7} ${cy-ry*1.0}, ${cx+rx*.05} ${cy-ry*1.1}`;
+  const p=document.createElementNS(ns,'path');p.setAttribute('d',d);p.setAttribute('stroke',col);p.setAttribute('stroke-width',5);p.setAttribute('fill','none');p.setAttribute('stroke-linecap','round');svg.appendChild(p);
+ });sl.appendChild(svg);});
+</script></body></html>
