@@ -1,0 +1,110 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden}
+body{font-family:'DM Sans',sans-serif;color:#150C2B;background:#FAF9F7}
+#bg,#stage,#fx{position:absolute;inset:0}
+.h{font-weight:800;letter-spacing:-.04em;line-height:1}
+.card{position:relative;background:#fff;border-radius:34px;box-shadow:0 24px 60px rgba(21,12,43,.10),0 0 0 2px rgba(21,12,43,.06);text-align:left}
+.pill{display:inline-block;border-radius:999px;padding:16px 34px;font-weight:700;font-size:40px;white-space:nowrap;background:#ECE8FF;color:#3B2FA8}
+.hl{background:#B9A6FF;padding:0 .1em;border-radius:.1em}
+.lab{font-weight:700;font-size:28px;letter-spacing:6px;color:#8A82A8}
+.mono{font-family:'DejaVu Sans Mono',monospace;letter-spacing:-.02em}
+#cap{position:absolute;left:150px;width:780px;top:1385px;text-align:center;font-weight:800;font-size:80px;letter-spacing:-.04em;line-height:1.14}
+#cap span{display:inline-block;margin:0 .1em;color:#150C2B}
+#cap span.k{color:#fff;background:#6557E8;padding:0 .12em .04em;border-radius:.12em}
+#tag{position:absolute;left:60px;top:236px;font-weight:800;font-size:30px;letter-spacing:5px;color:#6557E8}
+</style></head><body>
+<div id="bg"></div><div id="stage"></div><div id="fx"></div>
+<div id="cap"></div><div id="tag">WEBSITE TIP · OWNERSHIP</div>
+<script>
+const DATA=/*DATA*/null;
+const $=id=>document.getElementById(id);
+const S=$('stage'),C=$('cap'),BG=$('bg'),FX=$('fx');
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const eio=x=>{x=clamp(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const spring=x=>{x=clamp(x);return 1-Math.exp(-6.5*x)*Math.cos(7.5*x)};
+function at(p,d,html,x,y,o={}){if(y>800&&o.c!==false)x-=40;const s=spring((p-d)*3.2),e=ease((p-d)*4);
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(${o.c===false?0:'-50%'},${(1-s)*60}px) scale(${.9+.1*s}) rotate(${(o.r||0)*(1-s)}deg);opacity:${clamp(e*1.6)}">${html}</div>`}
+const bar=(w,c='#E8E5F0',h=20)=>`<div style="height:${h}px;width:${w}%;background:${c};border-radius:6px;margin:14px 0"></div>`;
+const stamp=(t,c='#E5484D',fs=64)=>`<div class="h" style="font-size:${fs}px;padding:12px 30px;border:7px solid ${c};color:${c};border-radius:16px;background:#fff;white-space:nowrap;letter-spacing:3px">${t}</div>`;
+// stamp that slams in (scale from 1.6)
+function slam(p,d,html,x,y,r=-8){const q=clamp((p-d)/.08);if(q<=0)return '';const s=1+.6*(1-ease(q));
+ return `<div style="position:absolute;left:${x}px;top:${y}px;transform:translate(-50%,-50%) scale(${s}) rotate(${r}deg);opacity:${clamp(q*2)}">${html}</div>`}
+function phone(inner,w,h,scrollY=0){return `<div style="width:${w}px;height:${h}px;border-radius:64px;background:#150C2B;padding:16px;box-shadow:0 40px 80px rgba(21,12,43,.28)"><div style="width:100%;height:100%;border-radius:50px;overflow:hidden;background:#fff;position:relative"><div style="position:absolute;left:0;right:0;top:${-scrollY}px">${inner}</div><div style="position:absolute;top:14px;left:50%;transform:translateX(-50%);width:120px;height:34px;border-radius:20px;background:#150C2B"></div></div></div>`}
+const DOM='wattlebanklandscaping.com.au',NAVY='#150C2B',IND='#6557E8',RED='#E5484D',GRN='#12A150';
+const brow=(inner,w,url)=>`<div class="card" style="width:${w}px;overflow:hidden"><div style="display:flex;align-items:center;gap:12px;padding:20px 24px;background:#F1EFF6"><i style="width:20px;height:20px;border-radius:50%;background:#FF5F57"></i><i style="width:20px;height:20px;border-radius:50%;background:#FEBC2E"></i><i style="width:20px;height:20px;border-radius:50%;background:#28C840"></i><div style="flex:1;margin-left:14px;background:#fff;border-radius:12px;padding:10px 20px;font-weight:600;font-size:24px;color:#5A5470;white-space:nowrap;overflow:hidden">${url}</div></div>${inner}</div>`;
+const logo=(fs=34)=>`<span style="font-weight:800;font-size:${fs}px;color:#2F5D3A;letter-spacing:-.02em">🌿 Wattlebank<span style="color:#C98A1B"> Landscaping</span></span>`;
+const site=(h=300)=>`<div style="padding:34px 40px 40px">${logo(38)}<div style="margin-top:28px;height:${h}px;border-radius:24px;background:linear-gradient(150deg,#5E9C5B,#2F5D3A);position:relative;overflow:hidden"><div style="position:absolute;left:-60px;bottom:-90px;width:420px;height:220px;border-radius:50%;background:rgba(201,138,27,.45)"></div><div style="position:absolute;right:-30px;bottom:-110px;width:480px;height:260px;border-radius:50%;background:rgba(255,255,255,.16)"></div><div class="h" style="position:absolute;left:34px;top:34px;color:#fff;font-size:54px;line-height:1.05">Gardens built<br>to last. Toowoomba.</div></div></div>`;
+const tick=(on,c=GRN)=>`<div style="width:62px;height:62px;flex:none;border-radius:18px;background:${on?c:'#EEF0EE'};color:#fff;font-size:40px;font-weight:800;display:flex;align-items:center;justify-content:center">${on?'✓':''}</div>`;
+const cross=(on)=>`<div style="width:62px;height:62px;flex:none;border-radius:18px;background:${on?RED:'#EEF0EE'};color:#fff;font-size:40px;font-weight:800;display:flex;align-items:center;justify-content:center">${on?'✕':''}</div>`;
+const own=(who,c)=>`<div class="pill" style="font-size:28px;padding:10px 22px;background:${c==='r'?'#FDE8E9':'#E9F6EE'};color:${c==='r'?'#B0262B':'#0B6B37'}">${who}</div>`;
+const num=n=>`<div class="h" style="width:150px;height:150px;border-radius:40px;background:${IND};color:#fff;font-size:100px;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 40px rgba(101,87,232,.35)">${n}</div>`;
+const typed=(str,q)=>str.slice(0,Math.round(str.length*clamp(q)));
+const row=(ic,name,right,o='')=>`<div style="display:flex;align-items:center;gap:24px;padding:24px 0;border-top:2px solid #EFEDF5;${o}"><div style="font-size:56px;width:70px;text-align:center">${ic}</div><div class="h" style="flex:1;font-size:46px">${name}</div>${right}</div>`;
+const SC=[
+ // 0 hook: try to edit your own site -> locked
+ (p,t)=>{const lock=p>.45;
+  return at(p,0,brow(site(280),900,`🔒 ${DOM}/admin`),540,290,{r:-1.2})
+  +at(p,.25,`<div class="card" style="width:760px;padding:36px 44px"><div class="lab">SITE LOGIN</div><div style="margin-top:20px;border:3px solid #DDD9EA;border-radius:16px;padding:16px 22px;font-weight:700;font-size:34px">${typed('owner@wattlebank',(p-.25)*6)}</div><div style="margin-top:14px;border:3px solid ${lock?RED:'#DDD9EA'};border-radius:16px;padding:16px 22px;font-weight:700;font-size:34px">••••••••</div>${lock?`<div style="margin-top:20px;font-weight:800;font-size:34px;color:${RED}">✕ Account not found. Contact your developer.</div>`:''}</div>`,540,870,{r:1.5})
+  +slam(p,.62,stamp('LOCKED OUT',RED,80),760,820,-7)},
+ // 1 honest answer is no
+ (p,t)=>at(p,0,`<div class="card" style="width:860px;padding:30px 44px 20px"><div class="lab" style="padding-bottom:10px">CAN YOU DO IT YOURSELF?</div>${[['Change opening hours',.1],['Add a new service',.3],['Fix a typo',.5]].map(([a,d],k)=>`<div style="display:flex;align-items:center;gap:24px;padding:22px 0;border-top:2px solid #EFEDF5;opacity:${clamp((p-d+.12)*6)}">${cross(p>d+.06)}<div class="h" style="font-size:46px">${a}</div></div>`).join('')}</div>`,540,300,{r:-1})
+  +slam(p,.72,`<div class="h" style="font-size:170px;color:${NAVY}">No.</div>`,540,1130,-4),
+ // 2 designer bought domain, hosting, logins
+ (p,t)=>at(p,0,`<div class="card" style="width:900px;padding:30px 44px 20px"><div class="lab" style="padding-bottom:16px">WHO'S ACCOUNT IS IT IN?</div>
+   ${row('🌐','Domain',p>.12?own('designer','r'):'',`opacity:${clamp((p-.02)*6)}`)}
+   ${row('🖥️','Hosting',p>.42?own('designer','r'):'',`opacity:${clamp((p-.3)*6)}`)}
+   ${row('🔑','Every login',p>.75?own('designer','r'):'',`opacity:${clamp((p-.62)*6)}`)}</div>`,540,330,{r:-1})
+  +at(p,.85,`<div class="pill" style="background:${NAVY};color:#fff;font-size:42px">and you have none of them</div>`,540,1080,{r:-2}),
+ // 3 paying but not in control
+ (p,t)=>at(p,0,`<div class="card" style="width:860px;padding:34px 44px"><div class="lab">INVOICE · MONTHLY</div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px"><div class="h" style="font-size:52px">Website hosting<br><span style="font-size:36px;color:#7A7490">+ maintenance</span></div><div class="pill" style="background:#E9F6EE;color:#0B6B37">PAID</div></div></div>`,540,320,{r:-1.5})
+  +at(p,.35,`<div class="card" style="width:760px;padding:30px 44px">${[['You pay',1,.4],['You control',0,.62]].map(([s,ok,d])=>`<div style="display:flex;gap:24px;align-items:center;margin:14px 0">${ok?tick(p>d):cross(p>d)}<div class="h" style="font-size:54px">${s}</div></div>`).join('')}</div>`,540,760,{r:1.5}),
+ // 4 three things to own
+ (p,t)=>at(p,0,`<div class="h" style="font-size:92px;text-align:center;width:960px;line-height:1.02">3 things to own<br><span class="hl">in your name</span></div>`,540,300)
+  +at(p,.3,`<div class="card" style="width:800px;padding:20px 44px">${[['🌐','Domain'],['🖥️','Hosting'],['🔑','Logins']].map(([i,n],k)=>`<div style="display:flex;align-items:center;gap:26px;padding:22px 0;${k?'border-top:2px solid #EFEDF5;':''}opacity:${clamp((p-.35-k*.12)*6)}">${tick(0)}<div style="font-size:52px">${i}</div><div class="h" style="font-size:50px">${n}</div></div>`).join('')}</div>`,540,620,{r:-1}),
+ // 5 domain
+ (p,t)=>{const q=clamp((p-.22)/.3);
+  return at(p,0,`<div style="display:flex;align-items:center;gap:30px">${num(1)}<div class="h" style="font-size:96px">Domain</div></div>`,540,290)
+  +at(p,.1,`<div class="card" style="width:920px;padding:40px 24px;text-align:center"><div class="lab">YOUR WEB ADDRESS</div><div class="h mono" style="font-size:44px;margin-top:20px;white-space:nowrap;color:${IND}">${typed(DOM,q)}</div></div>`,540,510)
+  +at(p,.5,`<div class="card" style="width:860px;padding:22px 44px">${row('🏢','Registered to your business',tick(p>.58),'border-top:none')}${row('🔐','Your own login',tick(p>.82))}</div>`,540,830,{r:1})},
+ // 6 renewal missed
+ (p,t)=>{const dead=p>.5;
+  return at(p,0,`<div class="card" style="width:860px;padding:30px 40px"><div class="lab">REMINDER SENT TO</div><div class="mono" style="font-weight:800;font-size:34px;margin-top:12px">old-designer@hotmail.com</div><div style="display:flex;gap:18px;align-items:center;margin-top:18px"><div class="pill" style="font-size:28px;padding:10px 22px">Domain renewal due</div><div style="font-weight:700;font-size:28px;color:#9A94B0">unread</div></div></div>`,540,290,{r:-1.5})
+  +at(p,.35,`<div class="card" style="width:860px;padding:44px 44px;text-align:center;background:${dead?'#fff':'#fff'}">${dead?`<div style="font-size:90px">😵</div><div class="h" style="font-size:54px;margin-top:14px">This site can't be reached</div><div class="mono" style="font-weight:700;font-size:28px;color:#9A94B0;margin-top:14px">${DOM}</div>`:`<div style="height:220px"></div>`}</div>`,540,690,{r:1})
+  +(p>.72?at(p,.72,`<div class="card" style="width:760px;padding:26px 36px;display:flex;gap:22px;align-items:center">${cross(1)}<div class="h" style="font-size:42px">Emails bouncing</div></div>`,540,1120,{r:-2}):'')
+  +slam(p,.52,stamp('EXPIRED',RED,76),790,700,8)},
+ // 7 hosting
+ (p,t)=>{const k=ease((p-.62)*5),on=p>.62;
+  return at(p,0,`<div style="display:flex;align-items:center;gap:30px">${num(2)}<div class="h" style="font-size:96px">Hosting</div></div>`,540,290)
+  +at(p,.12,`<div class="card" style="width:860px;padding:36px 44px;display:flex;gap:34px;align-items:center"><div style="width:170px;flex:none">${[0,1,2].map(j=>`<div style="height:46px;border-radius:12px;background:${NAVY};margin:10px 0;position:relative"><i style="position:absolute;right:16px;top:16px;width:14px;height:14px;border-radius:50%;background:${(Math.floor(t*4)+j)%3?'#3BD16F':'#B9A6FF'}"></i></div>`).join('')}</div><div><div class="h" style="font-size:48px;line-height:1.1">Where your<br>website lives</div></div></div>`,540,520,{r:-1})
+  +at(p,.55,`<div class="card" style="width:860px;padding:34px 44px"><div style="display:flex;align-items:center;justify-content:space-between"><div class="h" style="font-size:46px">Your account<br><span style="font-size:32px;color:#7A7490">or admin access</span></div><div style="width:170px;height:96px;border-radius:999px;background:${on?GRN:'#DDD9EA'};position:relative"><div style="position:absolute;top:10px;left:${10+74*k}px;width:76px;height:76px;border-radius:50%;background:#fff;box-shadow:0 4px 10px rgba(0,0,0,.2)"></div></div></div></div>`,540,890,{r:1.2})},
+ // 8 logins
+ (p,t)=>at(p,0,`<div style="display:flex;align-items:center;gap:30px">${num(3)}<div class="h" style="font-size:96px">Logins</div></div>`,540,290)
+  +at(p,.08,`<div class="card" style="width:900px;padding:20px 44px">${[['🛠️','Website admin',.12],['📍','Google Business Profile',.6],['📈','Analytics',.84]].map(([i,n,d],k)=>row(i,n,tick(p>d+.05),`${k?'':'border-top:none;'}opacity:${clamp((p-d+.1)*6)};font-size:40px`)).join('')}</div>`,540,520,{r:-1}),
+ // 9 asking isn't rude
+ (p,t)=>{const bub=(txt,me,d,y)=>at(p,d,`<div style="width:${me?800:640}px;padding:28px 36px;border-radius:40px;${me?`background:${IND};color:#fff;border-bottom-right-radius:12px`:'background:#fff;color:#150C2B;border-bottom-left-radius:12px;box-shadow:0 14px 34px rgba(21,12,43,.1)'};font-weight:700;font-size:40px;line-height:1.25">${txt}</div>`,me?200:80,y,{c:false});
+  return bub('Hey! Can you send me the logins for our domain and hosting?',1,0,300)
+   +(p>.55?bub('Of course, sending them now 👍',0,.55,640):'')
+   +at(p,.25,`<div class="pill" style="background:${NAVY};color:#fff;font-size:44px">a normal request</div>`,540,1000,{r:-2})},
+ // 10 CTA
+ (p,t)=>{const o=(txt,d,y,hi)=>`<div style="position:absolute;top:${y}px;left:0;width:1080px">${at(p,d,`<div class="card" style="width:700px;padding:26px 36px;${hi?'box-shadow:0 0 0 5px '+IND+',0 24px 60px rgba(21,12,43,.1)':''}"><div class="h" style="font-size:48px">${txt}</div></div>`,540,0)}</div>`;
+  return at(p,0,`<div class="h" style="font-size:84px;text-align:center;width:960px;line-height:1.05">Who owns<br><span class="hl" style="color:#150C2B">your domain</span>?</div>`,540,290)
+   +o('🙋 Me',.08,540,1)+o('🧑‍💻 My designer',.16,690)+o('🤷 No idea',.24,840)
+   +at(p,.42,`<div style="border-radius:999px;padding:26px 56px;font-size:52px;font-weight:800;white-space:nowrap;background:${IND};color:#fff;box-shadow:0 18px 40px rgba(101,87,232,.35)">+ Follow @nexaweb_dev</div>`,540,1060)},
+];
+function lineAt(t){let i=0;for(let k=0;k<DATA.lines.length;k++)if(t>=DATA.lines[k].start-0.05)i=k;return i}
+window.render=function(t){
+ const i=lineAt(t),L=DATA.lines[i],nx=DATA.lines[i+1];
+ const end=nx?nx.start:DATA.total,d=end-L.start,lt=t-L.start+0.05,p=clamp(lt/d);
+ BG.style.cssText=`background:radial-gradient(800px 700px at ${70+6*Math.sin(t*.3)}% 20%,rgba(255,255,255,.75),transparent 70%),radial-gradient(760px 640px at ${20+5*Math.cos(t*.25)}% 75%,rgba(101,87,232,.14),transparent 70%),#ECE8FB`;
+ const zoom=1+0.025*p;
+ const out=nx?clamp((t-(end-0.16))/0.16):0;S.innerHTML=`<div style="position:absolute;inset:0;opacity:${1-out};transform:scale(${zoom*(1+out*.04)}) translateY(${-out*24}px);transform-origin:540px 760px">${SC[i](p,t)}</div>`;
+ FX.innerHTML=(i>0&&lt<.15)?`<div style="position:absolute;inset:0;background:rgba(101,87,232,${.08*(1-lt/.15)})"></div>`:'';
+ const ch=DATA.chunks.find(c=>t>=c.start&&t<c.end+0.25);
+ if(!ch){C.innerHTML='';return}
+ C.innerHTML=ch.words.map(w=>{const a=t-(w.start-0.03),on=a>=0,pop=on?0.85+0.15*ease(a/0.12):1;return `<span class="${w.k?'k':''}" style="opacity:${on?1:0};transform:scale(${pop})">${w.w}</span>`}).join(' ');
+};
+window.fontsReady=document.fonts.ready;
+</script></body></html>
