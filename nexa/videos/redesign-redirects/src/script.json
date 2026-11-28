@@ -1,0 +1,12 @@
+[
+ {"text": "This new website looked amazing. Then the phone stopped ringing."},
+ {"text": "Kestrel Bay Physio. Made up, but this happens all the time."},
+ {"text": "For years, their back pain page sat near the top of Google."},
+ {"text": "Then they launched a shiny new website, and that page got a new address."},
+ {"text": "But Google was still sending people to the old address, and it didn't exist anymore."},
+ {"text": "So patients clicked, hit 'Page not found', and booked with someone else."},
+ {"text": "The fix is called a redirect. A 301 tells Google this page moved, and where it lives now.", "say": "The fix is called a redirect. A three oh one tells Google this page moved, and where it lives now."},
+ {"text": "Before any redesign, list every old page and redirect each one to its new home."},
+ {"text": "Then check Google Search Console for 'not found' errors in the weeks after launch."},
+ {"text": "Has a new website ever hurt your calls? Follow for more website tips."}
+]
